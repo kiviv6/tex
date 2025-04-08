@@ -1,0 +1,345 @@
+\documentclass{article}
+\usepackage{graphicx, tikz-cd, float, titlepic, booktabs} % Required for inserting images
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+\usepackage{amsmath, amssymb, amsthm, amsfonts, siunitx, physics, gensymb}
+\AtBeginDocument{\RenewCommandCopy\qty\SI}
+\usepackage[version=4]{mhchem}
+\usepackage[most,many,breakable]{tcolorbox}
+\usepackage{xcolor, fancyhdr, varwidth}
+\usepackage[Glenn]{fncychap}
+%Options: Sonny, Lenny, Glenn, Conny, Rejne, Bjarne, Bjornstrup
+\usepackage{hyperref, cleveref}
+\usepackage{icomma, enumitem} %comma as decimal and continue enumerate with [resume]
+\usepackage[danish]{babel}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SELF MADE COLORS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{myg}{RGB}{56, 140, 70}
+\definecolor{myb}{RGB}{45, 111, 177}
+\definecolor{myr}{RGB}{199, 68, 64}
+\definecolor{mytheorembg}{HTML}{F2F2F9}
+\definecolor{mytheoremfr}{HTML}{00007B}
+\definecolor{mylenmabg}{HTML}{FFFAF8}
+\definecolor{mylenmafr}{HTML}{983b0f}
+\definecolor{mypropbg}{HTML}{f2fbfc}
+\definecolor{mypropfr}{HTML}{191971}
+\definecolor{myexamplebg}{HTML}{F2FBF8}
+\definecolor{myexamplefr}{HTML}{88D6D1}
+\definecolor{myexampleti}{HTML}{2A7F7F}
+\definecolor{mydefinitbg}{HTML}{E5E5FF}
+\definecolor{mydefinitfr}{HTML}{3F3FA3}
+\definecolor{notesgreen}{RGB}{0,162,0}
+\definecolor{myp}{RGB}{197, 92, 212}
+\definecolor{mygr}{HTML}{2C3338}
+\definecolor{myred}{RGB}{127,0,0}
+\definecolor{myyellow}{RGB}{169,121,69}
+\definecolor{myexercisebg}{HTML}{F2FBF8}
+\definecolor{myexercisefg}{HTML}{88D6D1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Box environments for theorems and problems
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\parindent}{1cm}
+%================================
+% Question BOX
+%================================
+\makeatletter
+\newtcbtheorem{question}{Opgave}{enhanced,
+	breakable,
+	colback=white,
+	colframe=myb!80!black,
+	attach boxed title to top left={yshift*=-\tcboxedtitleheight},
+	fonttitle=\bfseries,
+	title={#2},
+	boxed title size=title,
+	boxed title style={%
+			sharp corners,
+			rounded corners=northwest,
+			colback=tcbcolframe,
+			boxrule=0pt,
+		},
+	underlay boxed title={%
+			\path[fill=tcbcolframe] (title.south west)--(title.south east)
+			to[out=0, in=180] ([xshift=5mm]title.east)--
+			(title.center-|frame.east)
+			[rounded corners=\kvtcb@arc] |-
+			(frame.north) -| cycle;
+		},
+	#1
+}{def}
+\makeatother
+%================================
+% DEFINITION BOX
+%================================
+
+\newtcbtheorem[]{Definition}{Definition}{enhanced,
+	before skip=2mm,after skip=2mm, colback=red!5,colframe=red!80!black,boxrule=0.5mm,
+	attach boxed title to top left={xshift=1cm,yshift*=1mm-\tcboxedtitleheight}, varwidth boxed title*=-3cm,
+	boxed title style={frame code={
+					\path[fill=tcbcolback]
+					([yshift=-1mm,xshift=-1mm]frame.north west)
+					arc[start angle=0,end angle=180,radius=1mm]
+					([yshift=-1mm,xshift=1mm]frame.north east)
+					arc[start angle=180,end angle=0,radius=1mm];
+					\path[left color=tcbcolback!60!black,right color=tcbcolback!60!black,
+						middle color=tcbcolback!80!black]
+					([xshift=-2mm]frame.north west) -- ([xshift=2mm]frame.north east)
+					[rounded corners=1mm]-- ([xshift=1mm,yshift=-1mm]frame.north east)
+					-- (frame.south east) -- (frame.south west)
+					-- ([xshift=-1mm,yshift=-1mm]frame.north west)
+					[sharp corners]-- cycle;
+				},interior engine=empty,
+		},
+	fonttitle=\bfseries,
+	title={#2},#1}{def}
+\newtcbtheorem[]{definition}{Definition}{enhanced,
+	before skip=2mm,after skip=2mm, colback=red!5,colframe=red!80!black,boxrule=0.5mm,
+	attach boxed title to top left={xshift=1cm,yshift*=1mm-\tcboxedtitleheight}, varwidth boxed title*=-3cm,
+	boxed title style={frame code={
+					\path[fill=tcbcolback]
+					([yshift=-1mm,xshift=-1mm]frame.north west)
+					arc[start angle=0,end angle=180,radius=1mm]
+					([yshift=-1mm,xshift=1mm]frame.north east)
+					arc[start angle=180,end angle=0,radius=1mm];
+					\path[left color=tcbcolback!60!black,right color=tcbcolback!60!black,
+						middle color=tcbcolback!80!black]
+					([xshift=-2mm]frame.north west) -- ([xshift=2mm]frame.north east)
+					[rounded corners=1mm]-- ([xshift=1mm,yshift=-1mm]frame.north east)
+					-- (frame.south east) -- (frame.south west)
+					-- ([xshift=-1mm,yshift=-1mm]frame.north west)
+					[sharp corners]-- cycle;
+				},interior engine=empty,
+		},
+	fonttitle=\bfseries,
+	title={#2},#1}{def}
+
+\newtcbtheorem{theo}%
+    {Theorem}{}{theorem}
+\newtcolorbox{prob}[1]{colback=red!5!white,colframe=red!50!black,fonttitle=\bfseries,title={#1}}
+%================================
+% NOTE BOX
+%================================
+
+\usetikzlibrary{arrows,calc,shadows.blur}
+\tcbuselibrary{skins}
+\newtcolorbox{note}[1][]{%
+	enhanced jigsaw,
+	colback=gray!20!white,%
+	colframe=gray!80!black,
+	size=small,
+	boxrule=1pt,
+	title=\textbf{Note:},
+	halign title=flush center,
+	coltitle=black,
+	breakable,
+	drop shadow=black!50!white,
+	attach boxed title to top left={xshift=1cm,yshift=-\tcboxedtitleheight/2,yshifttext=-\tcboxedtitleheight/2},
+	minipage boxed title=1.5cm,
+	boxed title style={%
+			colback=white,
+			size=fbox,
+			boxrule=1pt,
+			boxsep=2pt,
+			underlay={%
+					\coordinate (dotA) at ($(interior.west) + (-0.5pt,0)$);
+					\coordinate (dotB) at ($(interior.east) + (0.5pt,0)$);
+					\begin{scope}
+						\clip (interior.north west) rectangle ([xshift=3ex]interior.east);
+						\filldraw [white, blur shadow={shadow opacity=60, shadow yshift=-.75ex}, rounded corners=2pt] (interior.north west) rectangle (interior.south east);
+					\end{scope}
+					\begin{scope}[gray!80!black]
+						\fill (dotA) circle (2pt);
+						\fill (dotB) circle (2pt);
+					\end{scope}
+				},
+		},
+	#1,
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SELF MADE COMMANDS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\sol}{\setlength{\parindent}{0cm}\textbf{\textit{Løsning:}}\setlength{\parindent}{1cm}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[tmargin=2cm,rmargin=1in,lmargin=1in,margin=0.85in,bmargin=2cm,footskip=.2in]{geometry}\pagestyle{fancy}
+\lhead{Minrui Kevin Zhou 2.b}
+\rhead{Aflevering 25}
+
+\title{Aflevering 25\\
+{\Large \textbf{2.b mat A}}}
+\author{Kevin Zhou}
+\date{\today}
+
+\begin{document}
+\maketitle
+\section*{Bedømmelseskriterier:}
+\begin{itemize}
+    \setlength\itemsep{3cm}
+    \Large
+    \item  Redegørelse og dokumentation for metode
+    \item Figurer, grafer og andre illustrationer
+    \item Notation og layout
+    \item Formidling og forklaring
+\end{itemize}
+\pagebreak
+\begin{question}{}{}
+  I en model kan dugen på en drage beskrives ved parallelogrammet udspændt af vektorerne
+  \[
+  \va{a} =\mqty(2\\ 3) \text{ og } \va{b} =\mqty(2\\ -4).
+  \] 
+  Enheden i modellen er \unit{dm }.  
+\begin{itemize}
+  \item[a.] Tegn en model af dragen i et koordinatsystem med enheden \unit{dm } på begge akser.
+  \item[b.] Benyt modellen til at bestemme arealet af dugen.
+\end{itemize}
+\end{question}
+\sol \\
+\textbf{a.}
+En model af dragen ses i \cref{fig:drage} med enheden \unit{dm } på begge akser.
+\begin{figure}[H]
+\begin{center}
+\definecolor{zzttqq}{rgb}{0.6,0.2,0.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\begin{axis}[
+x=1.0cm,y=1.0cm,
+axis lines=middle,
+ymajorgrids=true,
+xmajorgrids=true,
+xmin=-1.0,
+xmax=5.0,
+ymin=-4.5,
+ymax=3.5,
+xtick={-1.0,0.0,...,5.0},
+ytick={-4.0,-3.0,...,3.0},]
+\clip(-1.,-4.5) rectangle (5.,3.5);
+\fill[line width=2.pt,color=zzttqq,fill=zzttqq,fill opacity=0.10000000149011612] (0.,0.) -- (2.,3.) -- (4.,-1.) -- (2.,-4.) -- cycle;
+\draw [->,line width=2.pt] (0.,0.) -- (2.,3.);
+\draw [->,line width=2.pt] (0.,0.) -- (2.,-4.);
+\draw [line width=2.pt,color=zzttqq] (2.,3.)-- (4.,-1.);
+\draw [line width=2.pt,color=zzttqq] (4.,-1.)-- (2.,-4.);
+\draw (0.5598802395209581,2.51946107784432) node[anchor=north west] {$\vec{a}$};
+\draw (0.5763473053892216,-2.1077844311377163) node[anchor=north west] {$\vec{b}$};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+  \caption{Model tegnet med GeoGebra og TikZ, hvor enheden på akserne er \unit{dm}}
+\label{fig:drage}
+\end{figure}
+\textbf{b.}
+Arealet af parallelogrammet udspændt af de to vektorer er da
+\begin{equation*}
+\begin{split}
+  A&=\left| \det \left(\va{a}, \va{b} \right)  \right| \\ 
+  &= \left| \mdet{2 & 2 \\ 3 & -4}  \right| \\ 
+  &=14
+\end{split}
+\end{equation*}
+Altså er arealet af dugen $14 \;\unit{dm^2} $.
+\begin{question}{}{}
+  En ret linje i planen går gennem punktet $P(2,5)$, og en normalvektor til linjen er givet ved $\va{n} =\mqty(7\\ 2) $. 
+  \begin{itemize}
+    \item[a.] Bestem en ligning for linjen.
+    \item[b.] Bestem en parameterfremstilling af linjen.
+  \end{itemize}
+\end{question}
+\sol \\
+\textbf{a.}
+For en linje gennem $P_0(x_0,y_0)$ med normalvektor $\va{n} =\mqty(a\\ b) $ har den ligningen 
+\begin{equation*}
+\begin{split}
+  a \cdot \left(x-x_0\right) + b \cdot \left(y-y_0\right) =0 &\implies 7 \cdot \left(x-2\right) + 2 \cdot \left(y-5\right) =0 \\ 
+  &\iff 7x + 2y -24 = 0
+\end{split}
+\end{equation*}
+\textbf{b.}
+Stedvektoren for punktet $P(2,5)$ på linjen er $\mqty(2\\ 5) $. Tværvektoren for normalvektoren til linjen må være en retningsvektor for linjen, og er $\mqty(-2\\ 7) $.
+Altså er en parameterfremstilling af linjen
+\[
+\mqty(x\\ y) =\mqty(2\\ 5) + t \cdot \mqty(-2\\ 7) 
+\] 
+\begin{question}{}{}
+  Lad vektorerne $\va{a} \text{ og } \va{b} $ være givet ved 
+  \[
+  \va{a} =\mqty(-3\\ 2) \text{ og } \va{b} = \mqty(5\\ 4) 
+  \] 
+  \begin{itemize}
+    \item[a.] Bestem $t \in \mathbb{R}$, således at $\left(\va{a} + t \cdot \va{b} \right) \perp \va{b} $.
+    \item[b.] Undersøg, om der findes $t \in \mathbb{R}$, således at $\left(\va{a} + t \cdot \va{b} \right) \parallel \va{b} $.
+    \item[c.] Bestem projektionen af $\va{a} \text{ på } \va{b} $.
+  \end{itemize}
+\end{question}
+\sol \\
+\textbf{a.}
+Skalarproduktet af de to ortogonale vektorer må være 0.
+\begin{equation*}
+\begin{split}
+  \left(\va{a} + t \cdot \va{b} \right) \cdot \va{b} =0 &\implies \mqty(-3+ t \cdot 5\\ 2+t \cdot 4) \cdot \mqty(5\\ 4) =0 \\ 
+  &\iff 5 \cdot \left(-3 + 5t\right) + 4 \cdot \left(2+4t\right) =0 \\ 
+  &\iff 41t=7 \\ 
+  &\iff t=\frac{7}{41}
+\end{split}
+\end{equation*}
+\textbf{b.}
+Når to vektorer er parallele, så må determinanten for dem være 0.
+\begin{equation*}
+\begin{split}
+  \left(\va{a} +t \cdot \va{b} \right) \parallel \va{b} &\implies \mdet{-3+5t & 5 \\ 2+4t & 4} =0 \\ 
+  &\iff 4 \cdot \left(-3+5t\right) - 5 \cdot \left(2+4t\right) =0 \\ 
+  &\iff -24=0
+\end{split}
+\end{equation*}
+Altså vil det sige at
+\[
+\nexists t \in \mathbb{R} \text{ sådan at }  \left(\va{a} + t \cdot \va{b} \right) \parallel \va{b} 
+\] 
+\textbf{c.}
+Projektionen af $\va{a} $ på $\va{b} $ er da
+\begin{equation*}
+\begin{split}
+  \va{a}_b &=\frac{\va{a} \cdot \va{b} }{\abs{\va{b}}^2} \cdot \va{b}  \\ 
+  &= \frac{-3 \cdot 5 + 2 \cdot 4}{5^2+4^2} \cdot \mqty(5\\ 4) \\ 
+  &=-\frac{7}{41} \cdot \mqty(5\\ 4) \\ 
+  &=\mqty(-\frac{35}{41}\\ -\frac{28}{41}) 
+\end{split}
+\end{equation*}
+\begin{question}{}{}
+  To linjer $m \text{ og } l$ i planen er givet ved
+  \begin{equation*}
+  \begin{split}
+    &l:\mqty(x\\ y) =\mqty(7\\ 0) +t \cdot \mqty(3\\ 4) \\ 
+    &m: \mqty(x\\ y) =\mqty(3\\ 2) + t \cdot \mqty(2\\ 7) 
+  \end{split}
+  \end{equation*}
+Undersøg, om vinklen mellem linjerne $l$ og $m$ er spids.
+\end{question}
+\sol \\
+Vi finder den lille vinkel mellem de to retningsvektorer i parameterfremstillingerne for linjerne.
+\begin{equation*}
+\begin{split}
+  \theta &= \cos^{-1}\left(\frac{\mqty(3\\ 4) \cdot \mqty(2\\ 7) }{\sqrt{(3^2+4^2)\cdot (2^2+7^2)} }\right) \\ 
+  &=\cos^{-1}\left(\frac{34}{5 \sqrt{53} }\right) \\ 
+  &\approx 20,92 \degree 
+\end{split}
+\end{equation*}
+Altså er der en spids og en stump vinkel mellem linjerne $l$ og $m  $. 
+\begin{question}{}{}
+ En linje $l$ er givet ved ligningen
+  \[
+  2x+3y+1=0
+  \] 
+  Linjen $m  $ står vinkelret på $l$ og går gennem punktet $P_0(5,-7)$. \\ 
+  Bestem en parameterfremstilling for $m  $.
+\end{question}
+\sol \\
+Ligningen for $l$ kan omskrives til 
+\[
+2x+3y+1=0 \iff 2 \left(x-1\right) +3 \left(y+1\right) =0
+\] 
+Altså er $\mqty(2\\ 3) $ en normalvektor til linjen $l$ og derfor en retningsvektor for linjen $m$. 
+Vi kan da bestemme en parameterfremstilling for $m$, da vi også kender et punkt, der tilhører $m$.
+\[
+m: \mqty(x\\ y) =\mqty(5\\ -7) +t \cdot \mqty(2\\ 3) 
+\] 
+\end{document}

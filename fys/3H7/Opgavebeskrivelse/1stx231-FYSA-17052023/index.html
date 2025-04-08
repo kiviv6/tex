@@ -1,0 +1,711 @@
+<!DOCTYPE html><html>
+                <head><title>1stx231-FYS/A-17052023</title>
+                    <meta charset="utf-8">
+                    <link rel="stylesheet" type="text/css" href="./css/general-web-theme.css">
+                    <link rel="stylesheet" type="text/css" href="./css/proeveelement-digital-proeve-theme.css"><script src="./assets/videoplayer/js/jquery.js"></script><script src="./assets/videoplayer/js/jquery-ui.js"></script><script src="./assets/videoplayer/js/video-player.js"></script><link rel="stylesheet" type="text/css" href="./assets/videoplayer/css/video-player.css"><link rel="stylesheet" type="text/css" href="./assets/videoplayer/css/jquery-ui.css"><script type="text/javascript">var subtitles = {};
+
+                function UndefinedToZero(value) {
+                    if(typeof value === "undefined") {
+                        return 0;
+                    }
+                    return value;
+                }
+
+                function _Time(frames, seconds, minutes, hours) {
+                    frames = UndefinedToZero(frames) / 24;
+                    seconds = UndefinedToZero(seconds);
+                    minutes = UndefinedToZero(minutes) * 60;
+                    hours = UndefinedToZero(hours) * 3600;
+                    return hours + minutes + seconds + frames;
+                }
+
+                function TTime(value) {
+                    if(typeof value === "undefined") {
+                        value = "00:00:00:00";
+                    }
+                    var split = value.split(":");
+                    var frames = (split[3]*1)/24;
+                    var seconds = split[2]*1;
+                    var minutes = (split[1]*1)*60;
+                    var hours = (split[0]*1)*3600;
+                    var output = hours + minutes + seconds + frames;
+                    return output;
+                }
+
+                function T(start, end, text, direction) {
+                    if(typeof direction === "undefined") {
+                        direction = "ltr";
+                    }
+                    return {
+                        start: start,
+                        end: end,
+                        text: text,
+                        direction: direction
+                    }
+                }</script></head>
+                <body>
+                <style>
+                    a:hover {
+                        cursor: pointer;
+                    } 
+
+                    .content-editable {
+                        position: relative; 
+                    }
+
+                    .draggable-reading-field {
+                        display: inline-block; 
+                        position: absolute; 
+                        z-index: 9; 
+                        border: 1px solid gray;
+                        padding: 2px;
+                    }
+
+                    .draggable-reading-field-invisible {
+                        opacity: 0 !important;
+                        border-style: none;
+                    }
+
+                    .line-numbers-container {
+                        resize: none !important;
+                        border: none !important;
+                        padding: 0 !important;
+                        counter-reset: line;
+                    }
+
+                    .line-numbers-container p.numbered-line {
+                        margin-block-start: 0;
+                        margin-block-end: 0;
+                    }
+
+                    .line-numbers-container p.numbered-line:before {
+                        content: counter(line);
+                        counter-increment: line;
+                        color: #888;
+                        visibility: hidden;
+                        display: inline-block;
+                        width: 20px;
+                    }
+
+                    .line-numbers-container p.numbered-line:first-child:before, 
+                    .line-numbers-container p.numbered-line:nth-child(5n):before {
+                        visibility: visible;
+                    }
+                </style>
+            <div class="skabelon">
+                <header class="skabelon-header">
+                    <div style="position: relative;" class="skabelon-header-institution_logo">
+                    <p style="position: absolute; color: transparent; top: 2%;">
+                        Studentereksamen
+                    </p></div>
+                    <img class="skabelon-header-stuk_logo" id="uvm_logo" src="assets/images/uvm_logo_stuk.png">
+                </header>
+                <div class="skabelon-wrapper">
+                    <div class="skabelon-wrapper-menu" id="skabelon-wrapper-menu">
+                        <ul><ul>
+<li><a href="javascript:void(0)" class="web-document-link active parent-document" 
+                id="web-document-link-1362" data-document-id="1362" 
+                onclick="changeDocument(this);VideoPlayer.InitPlayers('.web-document-active .new-player');VideoPlayer.PauseAll();" >Forside</a></li>
+<li><a href="javascript:void(0)" class="web-document-link parent-document" 
+                id="web-document-link-4767" data-document-id="4767" 
+                onclick="changeDocument(this);VideoPlayer.InitPlayers('.web-document-active .new-player');VideoPlayer.PauseAll();" >Opgaver</a></li>
+<li><a href="javascript:void(0)" class="web-document-link parent-document" 
+                id="web-document-link-3543" data-document-id="3543" 
+                onclick="changeDocument(this);VideoPlayer.InitPlayers('.web-document-active .new-player');VideoPlayer.PauseAll();" >Opgave 1</a></li>
+<li><a href="javascript:void(0)" class="web-document-link parent-document" 
+                id="web-document-link-3544" data-document-id="3544" 
+                onclick="changeDocument(this);VideoPlayer.InitPlayers('.web-document-active .new-player');VideoPlayer.PauseAll();" >Opgave 2</a></li>
+<li><a href="javascript:void(0)" class="web-document-link parent-document" 
+                id="web-document-link-4770" data-document-id="4770" 
+                onclick="changeDocument(this);VideoPlayer.InitPlayers('.web-document-active .new-player');VideoPlayer.PauseAll();" >Opgave 3</a></li>
+<li><a href="javascript:void(0)" class="web-document-link parent-document" 
+                id="web-document-link-4771" data-document-id="4771" 
+                onclick="changeDocument(this);VideoPlayer.InitPlayers('.web-document-active .new-player');VideoPlayer.PauseAll();" >Opgave 4</a></li>
+<li><a href="javascript:void(0)" class="web-document-link parent-document" 
+                id="web-document-link-4772" data-document-id="4772" 
+                onclick="changeDocument(this);VideoPlayer.InitPlayers('.web-document-active .new-player');VideoPlayer.PauseAll();" >Opgave 5</a></li>
+<li><a href="javascript:void(0)" class="web-document-link parent-document" 
+                id="web-document-link-4773" data-document-id="4773" 
+                onclick="changeDocument(this);VideoPlayer.InitPlayers('.web-document-active .new-player');VideoPlayer.PauseAll();" >Opgave 6</a></li>
+<li><a href="javascript:void(0)" class="web-document-link parent-document" 
+                id="web-document-link-4774" data-document-id="4774" 
+                onclick="changeDocument(this);VideoPlayer.InitPlayers('.web-document-active .new-player');VideoPlayer.PauseAll();" >Opgave 7</a></li>
+<li><a href="javascript:void(0)" class="web-document-link parent-document" 
+                id="web-document-link-4769" data-document-id="4769" 
+                onclick="changeDocument(this);VideoPlayer.InitPlayers('.web-document-active .new-player');VideoPlayer.PauseAll();" >Bilag</a></li>
+<li><a href="javascript:void(0)" class="web-document-link parent-document" 
+                id="web-document-link-4768" data-document-id="4768" 
+                onclick="changeDocument(this);VideoPlayer.InitPlayers('.web-document-active .new-player');VideoPlayer.PauseAll();" >Billedhenvisninger</a></li>
+</ul></ul>
+                        <a id="proeveforekomst">1stx231-FYS/A-17052023</a>
+                    </div>
+                    <div class="skabelon-wrapper-content">
+                        <div class="content-editable" id="content-editable">
+                            <style>
+                                .web-document {
+                                    display: none;
+                                }
+                        
+                                .web-document-active {
+                                    display: block;
+                                }
+                            </style>
+                            <div class="web-document " id="web-document-4768">
+                                <h2>Billedhenvisninger</h2>
+                                <p style="line-height: 1;" data-mce-style="line-height: 1;"><br data-mce-bogus="1"></p>
+                                <p style="line-height: 1;" data-mce-style="line-height: 1;">Opgave
+                                    1:<br>https://www.angi.com/articles/how-much-would-it-cost-replace-ice-maker.htm</p>
+                                <p style="line-height: 1;" data-mce-style="line-height: 1;">
+                                    https://www.ereplacementparts.com/whirlpool-eckmf90-ice-maker-kit-parts-c-163752_296794_296858.html</p>
+                                <p style="line-height: 1;" data-mce-style="line-height: 1;"><br></p>
+                                <p style="line-height: 1;" data-mce-style="line-height: 1;">Opgave 2:<br>https://isolde.cern/isoltrap</p>
+                                <p style="line-height: 1;" data-mce-style="line-height: 1;"><br></p>
+                                <p style="line-height: 1;" data-mce-style="line-height: 1;">Opgave
+                                    3:<br>https://cps.unileoben.ac.at/high-accuracy-sensor-glove-ros-gazebo/</p>
+                                <p style="line-height: 1;" data-mce-style="line-height: 1;"><br></p>
+                                <p style="line-height: 1;" data-mce-style="line-height: 1;">Opgave
+                                    4:<br>https://iopscience.iop.org/article/10.3847/1538-4357/ab98f8</p>
+                                <p style="line-height: 1;" data-mce-style="line-height: 1;"><br></p>
+                                <p style="line-height: 1;" data-mce-style="line-height: 1;">Opgave
+                                    5:<br>https://aktivtraening.dk/traening/fitness/loebebaand-varieret-og-sjov-traening</p>
+                                <p style="line-height: 1;" data-mce-style="line-height: 1;"><br></p>
+                                <p style="line-height: 1;" data-mce-style="line-height: 1;">Opgave
+                                    6:<br>https://www.equinor.com/news/archive/worlds-first-floating-wind-farm-started-production</p>
+                                <p style="line-height: 1;" data-mce-style="line-height: 1;"><br></p>
+                                <p style="line-height: 1;" data-mce-style="line-height: 1;">Opgave
+                                    7:<br>https://www.eoportal.org/satellite-missions/aeolus#eop-quick-facts-section</p>
+                                <p style="line-height: 1;" data-mce-style="line-height: 1;"> </p>
+                                <p><br data-mce-bogus="1"></p>
+                            </div>
+                            <div class="web-document " id="web-document-4769">
+                                <h2>Bilag</h2>
+                                Bilag til opgave 5: <a href="assets/Loebebaend_mp4-9122.zip" target="_blank" rel="noopener">Løbebånd.mp4</a>
+                                <p></p>
+                                <!-- <div class="new-player mceNonEditable" contenteditable="false">
+                                    <div class="new-player-video" style="width: 600px; height: 300px;"
+                                        data-mce-style="width: 600px; height: 300px;"><video width="600" height="300"
+                                            src="assets/Loebebaend_mp4-9122.zip" pbyg-data-src-id="9122"></video></div>
+                                    <div class="subtitles new-player-subtitles" style="width: 600px;" data-mce-style="width: 600px;"><br></div>
+                                    <div class="new-player-footer" style="width: 600px;" data-mce-style="width: 600px;">
+                                        <div class="new-player-title">Løbebånd</div>
+                                    </div>
+                                </div> -->
+                                <p><br data-mce-bogus="1"></p>
+                                <p><br data-mce-bogus="1"></p>
+                            </div>
+                            <div class="web-document " id="web-document-4774">
+                                <h3>Opgave 7   Satellitten Aeolus</h3>
+                                <p><strong></strong><br></p>
+                                <figure style="text-align: center;" class="image align-center" contenteditable="false"
+                                    data-mce-style="text-align: center;"><img pbyg-data-src-id="9139" src="assets/Billede_opg7-9139.jpg" alt=""
+                                        width="296" height="164"
+                                        data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/HptwKYb_BF3ReXhAl_T0Iw/document/Billede_opg7.jpg">
+                                </figure>
+                                <p><em><span class="" pbyg-data-comment-id="2724" id="comment-2724">S</span>atellitten Aeolus måler på
+                                        vindforholdene over hele jordkloden til brug i vejrudsigter og klimamodeller.</em></p>
+                                <p><br></p>
+                                <p>Satellitten Aeolus blev opsendt i 2018 med en raket af typen Vega. I de første 5,5 s efter affyringen var
+                                    rakettens bevægelse lodret, og massen faldt i dette tidsrum fra 137,0·10<sup>3</sup> kg til
+                                    132,5·10<sup>3</sup> kg. Udstødningsfarten for raketten Vega var 2,75 km/s.</p>
+                                <table border="0" cellpadding="5" style="border-collapse: collapse; width: 100%; border-style: none;"
+                                    data-mce-style="border-collapse: collapse; width: 100%; border-style: none;" class="mce-item-table">
+                                    <tbody>
+                                        <tr>
+                                            <td style="width: 8.21232%; text-align: right;"
+                                                data-mce-style="width: 8.21232%; text-align: right;">a)</td>
+                                            <td style="width: 91.9332%;" data-mce-style="width: 91.9332%;">Bestem farten af raketten Vega 5,5 s
+                                                efter affyringen.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p>Aeolus har nogle små raketmotorer til justeringer af sin bane om Jorden. En raketmotor har motorkraften 5,0 N
+                                    ved udsendelse af 2,37·10<sup>-3</sup> kg/s af raketbrændstoffet bagud i forhold til bevægelsesretningen.
+                                </p>
+                                <p>I 2019 tændtes raketmotoren for at undgå en kollision med en anden satellit. Aeolus fik herved øget farten
+                                    med 0,194 m/s i fremadgående retning. Massen af Aeolus var 1340 kg.</p>
+                                <table border="0" cellpadding="5" style="border-collapse: collapse; width: 100%; border-style: none;"
+                                    data-mce-style="border-collapse: collapse; width: 100%; border-style: none;" class="mce-item-table">
+                                    <tbody>
+                                        <tr>
+                                            <td style="width: 8.21232%; text-align: right;"
+                                                data-mce-style="width: 8.21232%; text-align: right;">b)</td>
+                                            <td style="width: 91.9332%;" data-mce-style="width: 91.9332%;">Beregn, hvor lang tid raketmotoren
+                                                var tændt.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p>Aeolus kredser i en lav, cirkulær bane 320 km over Jordens overflade. Den bremses dog langsomt af
+                                    luftmodstanden fra atmosfæren, som i denne højde har densiteten 4,21⋅10<sup>-12</sup> kg/m<sup>3</sup>. For
+                                    at modvirke dette må satellitten jævnligt tænde for sine raketmotorer.</p>
+                                <p>Formfaktoren for Aeolus er 2,2. Dens tværsnitsareal vinkelret på bevægelsesretningen er 11 m<sup>2</sup>.</p>
+                                <table border="0" cellpadding="5" style="border-collapse: collapse; width: 100%; border-style: none;"
+                                    data-mce-style="border-collapse: collapse; width: 100%; border-style: none;" class="mce-item-table">
+                                    <tbody>
+                                        <tr>
+                                            <td style="width: 8.21232%; text-align: right; vertical-align: top;"
+                                                data-mce-style="width: 8.21232%; text-align: right; vertical-align: top;">c)</td>
+                                            <td style="width: 91.9332%;" data-mce-style="width: 91.9332%;">Beregn størrelsen af det arbejde, som
+                                                luftmodstanden udfører <br>på Aeolus i løbet af 3,0 år.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p><br></p>
+                                <p><br data-mce-bogus="1"></p>
+                            </div>
+                            <div class="web-document " id="web-document-4773">
+                                <h3>Opgave 6   Flydende havvindmøller</h3>
+                                <p><strong></strong><br></p>
+                                <figure style="text-align: center;" class="image align-center" contenteditable="false"
+                                    data-mce-style="text-align: center;"><img pbyg-data-src-id="9137" src="assets/Billede1_opg6-9137.jpg" alt=""
+                                        width="479" height="301"
+                                        data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/Xo04wOAzTLnFLgJ9W2MG4g/document/Billede1_opg6.jpg">
+                                </figure>
+                                <p><em>Hywind i Skotland er verdens første flydende havvindmøllepark. Den første vindmølle i parken blev taget i
+                                        brug i 2017.</em></p>
+                                <p><br></p>
+                                <p>Vingespidserne på en mølle i havvindmølleparken Hywind udfører en jævn cirkelbevægelse med radius 77 m og
+                                    omløbstid 6,06 s.</p>
+                                <table border="0" cellpadding="5" style="border-collapse: collapse; width: 100%; border-style: none;"
+                                    data-mce-style="border-collapse: collapse; width: 100%; border-style: none;" class="mce-item-table">
+                                    <tbody>
+                                        <tr>
+                                            <td style="width: 8.21232%; text-align: right;"
+                                                data-mce-style="width: 8.21232%; text-align: right;">a)</td>
+                                            <td style="width: 91.9332%;" data-mce-style="width: 91.9332%;">Beregn vingespidsernes fart.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p>Vindmøllerne i Hywind flyder på havet.</p>
+                                <p>I roligt vejr flyder en vindmølle stabilt på havet. På grund af bølger stikker vindmøllen på et tidspunkt 1,2
+                                    m længere ned under vandoverfladen end i roligt vejr. Møllens opadgående acceleration har på dette tidspunkt
+                                    størrelsen 0,15 m/s<sup>2</sup>.</p>
+                                <p>Den del af møllen, som er under havoverfladen, har tværsnitsarealet 154 m<sup>2</sup>.</p>
+                                <p><br></p>
+                                <figure style="text-align: center;" class="image align-center" contenteditable="false"
+                                    data-mce-style="text-align: center;"><img pbyg-data-src-id="9138" src="assets/Billede2_opg6-9138.jpg" alt="1,2 m"
+                                        width="468" height="475"
+                                        data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/ZQicbrv16-hzeKCDjG7vIg/document/Billede2_opg6.jpg">
+                                </figure>
+                                <table border="0" cellpadding="5" style="border-collapse: collapse; width: 100%; border-style: none;"
+                                    data-mce-style="border-collapse: collapse; width: 100%; border-style: none;" class="mce-item-table">
+                                    <tbody>
+                                        <tr>
+                                            <td style="width: 8.21232%; text-align: right; vertical-align: top;"
+                                                data-mce-style="width: 8.21232%; text-align: right; vertical-align: top;">b)</td>
+                                            <td style="width: 91.9332%;" data-mce-style="width: 91.9332%;">Vurdér vindmøllens masse.<br>Vurdér,
+                                                hvor dybt vindmøllen stikker ned under havoverfladen i roligt vejr.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p><br></p>
+                                <p><br></p>
+                                <p><br data-mce-bogus="1"></p>
+                            </div>
+                            <div class="web-document " id="web-document-4772">
+                                <h3>Opgave 5   Løbebånd</h3>
+                                <p> </p>
+                                <figure style="text-align: center;" class="image align-center" contenteditable="false"
+                                    data-mce-style="text-align: center;"><img pbyg-data-src-id="9136" src="assets/Billede_opg5-9136.jpg" alt=""
+                                        width="460" height="306"
+                                        data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/qyFVGfy6zxB0Xu4D03R80Q/document/Billede_opg5.jpg">
+                                </figure>
+                                <p style="text-align: center;" data-mce-style="text-align: center;"><em>Løbebånd er udstyret med et nødstop, som
+                                        kan aktiveres, hvis løberen er ved at falde.</em></p>
+                                <p> </p>
+                                <p>En person løber 10 km på et løbebånd med farten 12 km/h.</p>
+                                <table border="0" cellpadding="5" style="border-collapse: collapse; width: 100%; border-style: none;"
+                                    data-mce-style="border-collapse: collapse; width: 100%; border-style: none;" class="mce-item-table">
+                                    <tbody>
+                                        <tr>
+                                            <td style="width: 8.21232%; text-align: right;"
+                                                data-mce-style="width: 8.21232%; text-align: right;">a)</td>
+                                            <td style="width: 91.9332%;" data-mce-style="width: 91.9332%;">Hvor lang tid tager det personen at
+                                                løbe 10 km på løbebåndet?</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p>Bilaget <em><span class="" pbyg-data-comment-id="2726" id="comment-2726">Løbebånd</span></em> er en video,
+                                    som viser en mindre del af tidsrummet, hvor et løbebånd er ved at stoppe, fordi løbebåndets nødstop er
+                                    aktiveret. Der er 1,0 m mellem de to gule streger. Løbebåndet bremser med konstant acceleration.</p>
+                                <p>Mens en person løber på løbebåndet med farten 12 km/h, bliver nødstoppet aktiveret.</p>
+                                <table border="0" cellpadding="5" style="border-collapse: collapse; width: 100%; border-style: none;"
+                                    data-mce-style="border-collapse: collapse; width: 100%; border-style: none;" class="mce-item-table">
+                                    <tbody>
+                                        <tr>
+                                            <td style="width: 8.21232%; text-align: right; vertical-align: top;"
+                                                data-mce-style="width: 8.21232%; text-align: right; vertical-align: top;">b)</td>
+                                            <td style="width: 91.9332%;" data-mce-style="width: 91.9332%;">Brug bilaget Løbebånd til at
+                                                bestemme, hvor langt personen skal løbe på løbebåndet, inden det er stoppet helt.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p><br></p>
+                                <p><br></p>
+                                <p><br data-mce-bogus="1"></p>
+                            </div>
+                            <div class="web-document " id="web-document-4771">
+                                <h3>Opgave 4   Supernovaen XT 110621</h3>
+                                <p><br></p>
+                                <figure style="text-align: center;" class="image align-center" contenteditable="false"
+                                    data-mce-style="text-align: center;"><img pbyg-data-src-id="9134" src="assets/Billede_opg4-9134.jpg" alt=""
+                                        width="288" height="289"
+                                        data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/Pa8GpwyOuLMYNCBIVZ9yxg/document/Billede_opg4.jpg">
+                                </figure>
+                                <p><em>Ved studier af røntgendata fra satellitten XMM-Newton opdagede forskere stråling fra supernovaen XT
+                                        110621. Afstanden til galaksen, hvor man fandt supernovaen, blev bestemt ud fra galaksens spektrum.</em>
+                                </p>
+                                <p> </p>
+                                <p>Supernovaen XT 110621 blev opdaget ved observationer af en kraftig udsendelse af stråling fra en fjern
+                                    galakse. Supernovaen udsendte røntgenstråling med energien 2,8⋅10<sup>39</sup> J i løbet af 315 s.</p>
+                                <table border="0" cellpadding="5" style="border-collapse: collapse; width: 100%; border-style: none;"
+                                    data-mce-style="border-collapse: collapse; width: 100%; border-style: none;" class="mce-item-table">
+                                    <tbody>
+                                        <tr>
+                                            <td style="width: 8.21232%; text-align: right;"
+                                                data-mce-style="width: 8.21232%; text-align: right;">a)</td>
+                                            <td style="width: 91.9332%;" data-mce-style="width: 91.9332%;">Bestem med hvilken gennemsnitlig
+                                                effekt, supernovaen udsendte røntgenstråling.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p>Afstanden til den galakse, hvor supernovaeksplosionen fandt sted, blev bestemt ud fra galaksens spektrum, som
+                                    er vist på figuren. Spektrallinjen med den største intensitet har laboratoriebølgelængden 656,3 nm.</p>
+                                <p><br></p>
+                                <figure style="text-align: center;" class="image align-center" contenteditable="false"
+                                    data-mce-style="text-align: center;"><img pbyg-data-src-id="9135" src="assets/Billede2_opg4-9135.jpg" alt="Intensitet, Lambda / nm"
+                                        width="610" height="208"
+                                        data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/nZ9rLVrV5Tt3mmhp4p9v_w/document/Billede2_opg4.jpg">
+                                </figure>
+                                <table border="0" cellpadding="5" style="border-collapse: collapse; width: 100%; border-style: none;"
+                                    data-mce-style="border-collapse: collapse; width: 100%; border-style: none;" class="mce-item-table">
+                                    <tbody>
+                                        <tr>
+                                            <td style="width: 8.21232%; text-align: right;"
+                                                data-mce-style="width: 8.21232%; text-align: right;">b)</td>
+                                            <td style="width: 91.9332%;" data-mce-style="width: 91.9332%;">Vurdér galaksens nuværende fart væk
+                                                fra os.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p><br></p>
+                                <p><br></p>
+                                <p><br data-mce-bogus="1"></p>
+                            </div>
+                            <div class="web-document " id="web-document-4770">
+                                <h3>Opgave 3   Flexsensor</h3>
+                                <p><br></p>
+                                <figure style="text-align: center;" class="image align-center" contenteditable="false"
+                                    data-mce-style="text-align: center;"><img pbyg-data-src-id="9131" src="assets/Billede1_opg3-9131.png" alt=""
+                                        width="393" height="313"
+                                        data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/rXE4BULx8AGd4SPS4aJ3eg/document/Billede1_opg3.png">
+                                </figure>
+                                <p><em>Forskere prøver at udvikle en metode til at aflæse tegnsprog ved at montere flexsensorer på en hånd.
+                                        Flexsensorernes resistans afhænger af, hvor meget fingrene på en hånd er bøjet.</em></p>
+                                <p><br></p>
+                                <p>En flexsensor har resistansen 23 kΩ, når den ikke er bøjet. Flexsensoren kan omsætte elektrisk energi med en
+                                    effekt på 1,0 W.</p>
+                                <table border="0" cellpadding="5" style="border-collapse: collapse; width: 100%; border-style: none;"
+                                    data-mce-style="border-collapse: collapse; width: 100%; border-style: none;" class="mce-item-table">
+                                    <tbody>
+                                        <tr>
+                                            <td style="width: 8.21232%; text-align: right; vertical-align: top;"
+                                                data-mce-style="width: 8.21232%; text-align: right; vertical-align: top;">a)</td>
+                                            <td style="width: 91.9332%;" data-mce-style="width: 91.9332%;">Beregn strømstyrken gennem en
+                                                flexsensor, der ikke er bøjet, når den omsætter elektrisk energi med effekten 1,0 W.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p>Flexsensoren monteres på en finger for at måle, hvor meget fingeren bøjes. Flexsensoren er koblet til et
+                                    elektrisk kredsløb, som vist på diagrammet.</p>
+                                <p><br></p>
+                                <figure style="text-align: center;" class="image align-center" contenteditable="false"
+                                    data-mce-style="text-align: center;"><img pbyg-data-src-id="9132" src="assets/Billede2_opg3-9132.jpg" alt="3,0 V, R-flex, 145 k Omega;, U-ud" 
+                                        width="293" height="231"
+                                        data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/PDniGlpjJJhoxujEm4LJKA/document/Billede2_opg3.jpg">
+                                </figure>
+                                <p><br></p>
+                                <p>Flexsensoren ændrer resistans, når den bøjes. Herved ændres spændingsfaldet <em>U</em><sub>ud</sub>. Grafen
+                                    viser sammenhængen mellem vinklen <em>v</em>, som flexsensoren er bøjet, og flexsensorens resistans
+                                    <em>R</em><sub>flex</sub>.</p>
+                                <figure style="text-align: center;" class="image align-center" contenteditable="false"
+                                    data-mce-style="text-align: center;"><img pbyg-data-src-id="9133" src="assets/Billede3_opg3-9133.jpg" alt="R-flex / k Omega, V"
+                                        width="481" height="310"
+                                        data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/u_T5VBz5RN9TuDgMqCJHfQ/document/Billede3_opg3.jpg">
+                                </figure>
+                                <p> </p>
+                                <p>Ved en bøjning af flexsensoren måles spændingsfaldet <em>U</em><sub>ud</sub> til 2,1 V.</p>
+                                <table border="0" cellpadding="5" style="border-collapse: collapse; width: 100%; border-style: none;"
+                                    data-mce-style="border-collapse: collapse; width: 100%; border-style: none;" class="mce-item-table">
+                                    <tbody>
+                                        <tr>
+                                            <td style="width: 8.21232%; text-align: right;"
+                                                data-mce-style="width: 8.21232%; text-align: right;">b)</td>
+                                            <td style="width: 91.9332%;" data-mce-style="width: 91.9332%;">Bestem vinklen, flexsensoren er
+                                                bøjet, når <em>U</em><sub>ud</sub> er 2,1 V.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p> </p>
+                                <p><br></p>
+                                <p><br></p>
+                                <p><br data-mce-bogus="1"></p>
+                            </div>
+                            <div class="web-document " id="web-document-3544">
+                                <h3>Opgave 2   Tinisotopen <sup>100</sup>Sn</h3>
+                                <p><strong> </strong></p>
+                                <figure style="text-align: center;" class="image align-center" contenteditable="false"
+                                    data-mce-style="text-align: center;"><img pbyg-data-src-id="9130" src="assets/Billede_opg2-9130.jpg" alt=""
+                                        width="389" height="261"
+                                        data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/lPvQ4X42-8G0Rr6nk5gBzg/document/Billede_opg2.jpg">
+                                </figure>
+                                <p><em>Forskere ved CERN har bestemt kernemassen for tinisotopen <sup>100</sup>Sn, som er meget vanskelig at
+                                        fremstille. Denne isotop er særligt interessant, da den er sammensat af 50 protoner og 50 neutroner, som
+                                        giver kerner med høj bindingsenergi. </em></p>
+                                <p><br></p>
+                                <p>Ved et eksperiment er det lykkedes forskere at fremstille 250 kerner af isotopen <sup>100</sup>Sn. Isotopen
+                                    <sup>100</sup>Sn er radioaktiv med halveringstiden 1,18 s.</p>
+                                <table border="0" cellpadding="5" style="border-collapse: collapse; width: 100%; border-style: none;"
+                                    data-mce-style="border-collapse: collapse; width: 100%; border-style: none;" class="mce-item-table">
+                                    <tbody>
+                                        <tr>
+                                            <td style="width: 8.21232%; text-align: right;"
+                                                data-mce-style="width: 8.21232%; text-align: right;">a)</td>
+                                            <td style="width: 91.9332%;" data-mce-style="width: 91.9332%;">Vurdér, hvor lang tid der går, inden
+                                                der kun er 20 kerner tilbage af isotopen <sup>100</sup>Sn.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p>Isotopen <sup>100</sup>Sn henfalder ved et <em>β</em><sup>+</sup>-henfald. </p>
+                                <table border="0" cellpadding="5" style="border-collapse: collapse; width: 100%; border-style: none;"
+                                    data-mce-style="border-collapse: collapse; width: 100%; border-style: none;" class="mce-item-table">
+                                    <tbody>
+                                        <tr>
+                                            <td style="width: 8.21232%; text-align: right; vertical-align: top;"
+                                                data-mce-style="width: 8.21232%; text-align: right; vertical-align: top;">b)</td>
+                                            <td style="width: 91.9332%; vertical-align: top;"
+                                                data-mce-style="width: 91.9332%; vertical-align: top;">Opskriv reaktionsskemaet for henfaldet af
+                                                <sup>100</sup>Sn.<br>Benyt masserne af de indgående partikler til at bestemme henfaldets
+                                                <em>Q</em>-værdi. </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p><br></p>
+                                <p><br></p>
+                                <p><br></p>
+                                <p><br data-mce-bogus="1"></p>
+                                <p><br data-mce-bogus="1"></p>
+                                <p><br data-mce-bogus="1"></p>
+                            </div>
+                            <div class="web-document " id="web-document-3543">
+                                <h3 data-mce-style="line-height: 1;" style="line-height: 1;">Opgave 1   Kølefryseskab</h3>
+                                <table border="1"
+                                    data-mce-style="border-collapse: collapse; width: 88.6628%; height: 274px; border-color: #ffffff; border-style: hidden;"
+                                    style="border-collapse: collapse; width: 88.6628%; height: 274px; border-color: rgb(255, 255, 255); border-style: hidden;">
+                                    <tbody>
+                                        <tr style="height: 275.594px;">
+                                            <td style="width: 58.3091%; height: 275.594px;">
+                                                <figure class="image align-center" contenteditable="false"><img pbyg-data-src-id="9128"
+                                                        src="assets/Billede1_opg1-9128.jpg" alt="" width="328" height="185"
+                                                        data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/d9cD6D5O7nJjDZ-sfqRmPg/document/Billede1_opg1.jpg">
+                                                </figure>
+                                                <p data-mce-caret="after" data-mce-bogus="all" style="top: 117px;"><br data-mce-bogus="1"></p>
+                                            </td>
+                                            <td style="width: 41.6933%; height: 275.594px;">
+                                                <figure class="image align-right" contenteditable="false"><img pbyg-data-src-id="9129"
+                                                        src="assets/Billede2_opg1-9129.jpg" alt="" width="180" height="180"
+                                                        data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/aGjFqaE6mYCF-H44kcBlLQ/document/Billede2_opg1.jpg">
+                                                </figure>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p><em>I USA er kølefryseskabe, som kan producere isterninger, udbredte. Isterningerne produceres i en form, som
+                                        opvarmes, når isterningerne skal løsnes, og derfor kræver det ekstra energi at lave is på denne
+                                        måde.</em></p>
+                                <p style="line-height: 1;" data-mce-style="line-height: 1;"><br></p>
+                                <p>I et amerikansk kølefryseskab løsnes isterninger ved hjælp af et elektrisk varmelegeme. Strømstyrken gennem
+                                    varmelegemet er 1,40 A. Varmelegemet omsætter elektrisk energi med effekten 168 W.</p>
+                                <table border="0" cellpadding="5" data-mce-style="border-collapse: collapse; width: 100%; border-style: none;"
+                                    style="border-collapse: collapse; width: 100%; border-style: none;" class="mce-item-table">
+                                    <tbody>
+                                        <tr>
+                                            <td style="width: 8.21232%; text-align: right;"
+                                                data-mce-style="width: 8.21232%; text-align: right;">a)</td>
+                                            <td style="width: 91.9332%;">Bestem spændingsfaldet over varmelegemet.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p>Isterningerne fryses i en form, som er lavet af aluminium. Formens masse er 0,544 kg. Når isterningerne skal
+                                    løsnes, tændes varmelegemet i 90 s. Herved opvarmes formen fra -18 °C til      0 °C, og desuden smeltes
+                                    noget af isen.</p>
+                                <table border="0" cellpadding="5" data-mce-style="border-collapse: collapse; width: 100%; border-style: none;"
+                                    style="border-collapse: collapse; width: 100%; border-style: none;" class="mce-item-table">
+                                    <tbody>
+                                        <tr>
+                                            <td style="width: 8.21232%; text-align: right;"
+                                                data-mce-style="width: 8.21232%; text-align: right;">b)</td>
+                                            <td style="width: 91.9332%;" data-mce-style="width: 91.9332%;">Vurdér massen af is, der smeltes, når
+                                                isterningerne skal løsnes.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p><br data-mce-bogus="1"></p>
+                                <p><br data-mce-bogus="1"></p>
+                                <p><br data-mce-bogus="1"></p>
+                                <div class="mce-visual-caret mce-visual-caret-hidden" data-mce-bogus="all"
+                                    style="inset: 117px 354px 305px; width: 1px; height: 188px;"></div>
+                                <p><br data-mce-bogus="1"></p>
+                            </div>
+                            <div class="web-document " id="web-document-4767">
+                                <h2>Opgaver</h2>
+                                <p>Opgavesættet består af 7 opgaver med tilsammen 15 spørgsmål.</p>
+                                <p>Svarene på de stillede spørgsmål indgår med samme vægt i vurderingen. </p>
+                                <p>  </p>
+                                <table border="0" cellspacing="0" style="border-collapse: collapse; width: 100%; border-style: none;"
+                                    data-mce-style="border-collapse: collapse; width: 100%; border-style: none;" class="mce-item-table">
+                                    <tbody>
+                                        <tr style="height: 36px;" data-mce-style="height: 36px;">
+                                            <td style="width: 25.4676%; vertical-align: middle;"
+                                                data-mce-style="width: 25.4676%; vertical-align: middle;"><strong>Opgaverne</strong></td>
+                                            <td style="width: 74.5324%; vertical-align: middle;"
+                                                data-mce-style="width: 74.5324%; vertical-align: middle;"></td>
+                                        </tr>
+                                        <tr style="height: 36px;" data-mce-style="height: 36px;">
+                                            <td style="width: 25.4676%; vertical-align: middle;"
+                                                data-mce-style="width: 25.4676%; vertical-align: middle;">Opgave 1</td>
+                                            <td style="width: 74.5324%; vertical-align: middle;"
+                                                data-mce-style="width: 74.5324%; vertical-align: middle;">Kølefryseskab</td>
+                                        </tr>
+                                        <tr style="height: 36px;" data-mce-style="height: 36px;">
+                                            <td style="width: 25.4676%; vertical-align: middle;"
+                                                data-mce-style="width: 25.4676%; vertical-align: middle;">Opgave 2</td>
+                                            <td style="width: 74.5324%; vertical-align: middle;"
+                                                data-mce-style="width: 74.5324%; vertical-align: middle;">Tinisotopen <sup>100</sup>Sn</td>
+                                        </tr>
+                                        <tr style="height: 36px;" data-mce-style="height: 36px;">
+                                            <td style="width: 25.4676%; vertical-align: middle;"
+                                                data-mce-style="width: 25.4676%; vertical-align: middle;">Opgave 3</td>
+                                            <td style="width: 74.5324%; vertical-align: middle;"
+                                                data-mce-style="width: 74.5324%; vertical-align: middle;">Flexsensor</td>
+                                        </tr>
+                                        <tr style="height: 36px;" data-mce-style="height: 36px;">
+                                            <td style="width: 25.4676%; vertical-align: middle;"
+                                                data-mce-style="width: 25.4676%; vertical-align: middle;">Opgave 4</td>
+                                            <td style="width: 74.5324%; vertical-align: middle;"
+                                                data-mce-style="width: 74.5324%; vertical-align: middle;">Supernovaen XT 110621</td>
+                                        </tr>
+                                        <tr style="height: 36px;" data-mce-style="height: 36px;">
+                                            <td style="width: 25.4676%; vertical-align: middle;"
+                                                data-mce-style="width: 25.4676%; vertical-align: middle;">Opgave 5</td>
+                                            <td style="width: 74.5324%; vertical-align: middle;"
+                                                data-mce-style="width: 74.5324%; vertical-align: middle;">Løbebånd</td>
+                                        </tr>
+                                        <tr style="height: 36px;" data-mce-style="height: 36px;">
+                                            <td style="width: 25.4676%; vertical-align: middle;"
+                                                data-mce-style="width: 25.4676%; vertical-align: middle;">Opgave 6</td>
+                                            <td style="width: 74.5324%; vertical-align: middle;"
+                                                data-mce-style="width: 74.5324%; vertical-align: middle;">Flydende havvindmøller</td>
+                                        </tr>
+                                        <tr style="height: 36px;" data-mce-style="height: 36px;">
+                                            <td style="width: 25.4676%; vertical-align: middle;"
+                                                data-mce-style="width: 25.4676%; vertical-align: middle;">Opgave 7</td>
+                                            <td style="width: 74.5324%; vertical-align: middle;"
+                                                data-mce-style="width: 74.5324%; vertical-align: middle;">Satellitten Aeolus</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p><br></p>
+                                <table border="0" cellspacing="0" style="border-collapse: collapse; width: 100%; border-style: none;"
+                                    data-mce-style="border-collapse: collapse; width: 100%; border-style: none;" class="mce-item-table">
+                                    <tbody>
+                                        <tr style="height: 36px;" data-mce-style="height: 36px;">
+                                            <td style="width: 25.4676%; vertical-align: top;"
+                                                data-mce-style="width: 25.4676%; vertical-align: top;"><strong>Bilag</strong></td>
+                                            <td style="width: 74.3871%; vertical-align: top;"
+                                                data-mce-style="width: 74.3871%; vertical-align: top;"></td>
+                                        </tr>
+                                        <tr style="height: 36px;" data-mce-style="height: 36px;">
+                                            <td style="width: 25.4676%; vertical-align: top;"
+                                                data-mce-style="width: 25.4676%; vertical-align: top;">Bilag til opgave 5: </td>
+                                            <td style="width: 74.3871%; vertical-align: top;"
+                                                data-mce-style="width: 74.3871%; vertical-align: top;">Løbebånd.mp4  </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p> </p>
+                                <p>Følgende hjælpemidler forudsættes:</p>
+                                <p>Databog fysik kemi (F&K Forlaget), 11. udgave (2007) eller senere udgave.</p>
+                                <p><br></p>
+                            </div>
+                            <div class="web-document frontpage-web-document web-document-active" id="web-document-1362">
+                <div class="frontpage-fields">
+                    <h1 class="frontpage-proeve-title" contenteditable="false">Fysik A</h1>
+                    <p class="frontpage-proeve-proeveordning" contenteditable="false"></p>
+                    <p class="frontpage-dato-for-afholdelse" contenteditable="false">Onsdag den 17. maj 2023</p><p class="frontpage-proeve-start-slut-tidspunkt"contenteditable="false"></p></div><p style="line-height: 1;" data-mce-style="line-height: 1;">    Kl. 9.00 - 14.00</p><p><br></p><p><br></p><p><br data-mce-bogus="1"></p></div></div>
+                    </div>
+                </div>
+            </div>
+            <script>
+                (function resetWordCounters() {
+                    var wordCounters = document.getElementsByClassName('word-counter')
+                    Array.prototype.forEach.call(wordCounters, function(wordCounter) {
+                        wordCounter.innerHTML = 0;
+                    });
+                })();
+
+                function countWords(obj) {
+                    let res = [];
+                    let str = obj.value.replace(/[\t\n\r\.\?\!]/gm, ' ').split(' ');
+                    str.map((s) => {
+                        let trimStr = s.trim();
+                        if (trimStr.length > 0)
+                        {
+                          res.push(trimStr);
+                        }
+                    });
+                    obj.closest('.wordcount-textarea').getElementsByClassName('word-counter')[0].innerHTML = res.length;
+                }
+            </script>
+            <script>
+            function changeDocument(element) {
+              	document.querySelectorAll(".web-document").forEach(element => {
+                	if(element.classList.contains("web-document-active")) {
+                    	element.classList.remove("web-document-active");
+                    }
+                });
+            	var webDocument = document.getElementById("web-document-" + element.getAttribute("data-document-id"));
+                if (!webDocument.classList.contains("web-document-active")) {
+                	webDocument.classList.add("web-document-active");
+                }
+                this.changeActiveMenuLink(element.id);
+            }
+            
+            function changeActiveMenuLink(elementId) {
+              	document.querySelectorAll(".web-document-link").forEach(element => {
+                	if(element.classList.contains("active")) {
+                    	element.classList.remove("active");
+                    }
+                });
+                
+            	var activeElement = document.getElementById(elementId);
+                if (!activeElement.classList.contains("active")) {
+                	activeElement.classList.add("active");
+                }
+
+                var activeElementParentId = activeElement.getAttribute("data-document-id");
+                if (activeElement.hasAttribute("data-parent-document-id")) {
+                    activeElementParentId = activeElement.getAttribute("data-parent-document-id");
+                }
+
+                document.querySelectorAll(".web-document-link").forEach(document => {
+                    if(document.classList.contains("parent-document") || activeElementParentId == document.getAttribute("data-parent-document-id")) {
+                        document.classList.remove("noActiveRelation");
+                    } else {
+                        document.classList.add("noActiveRelation");
+                    }
+                });
+            }
+
+            VideoPlayer.InitPlayers('.web-document-active .new-player');
+            VideoPlayer.PauseAll();
+            </script></body></html>

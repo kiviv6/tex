@@ -1,0 +1,42 @@
+\begin{thebibliography}{7}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{{\tt #1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+
+\bibitem[{Brydensholt(2021)}]{Brydensholt2021}
+Brydensholt, M. (2021).
+\newblock {\em {Orbit B stx}\/}.
+\newblock {Aarhus}: {Systime}, 2. ed.
+
+\bibitem[{Mayerh{\"o}fer et~al.(2019)Mayerh{\"o}fer, Pipa, \& Popp}]{Mayerhofer2019}
+Mayerh{\"o}fer, T.~G., Pipa, A.~V., \& Popp, J. (2019).
+\newblock Beer's {{Law}}-{{Why Integrated Absorbance Depends Linearly}} on {{Concentration}}.
+\newblock {\em ChemPhysChem\/}, {\em 20\/}(21), 2748--2753.
+
+\bibitem[{Mygind et~al.(2022)Mygind, Axelsen, \& Vesterlund~Nielsen}]{Mygind2022}
+Mygind, H., Axelsen, V., \& Vesterlund~Nielsen, O. (2022).
+\newblock {\em {Basiskemi B}\/}.
+\newblock {Kbh.}: {Praxis}, 3. ed.
+
+\bibitem[{PubChem(2023{\natexlab{a}})}]{PubChem2023}
+PubChem (2023{\natexlab{a}}).
+\newblock Azorubin.
+\newblock https://pubchem.ncbi.nlm.nih.gov/compound/135436509.
+
+\bibitem[{PubChem(2023{\natexlab{b}})}]{PubChem2023a}
+PubChem (2023{\natexlab{b}}).
+\newblock Sunset {{Yellow FCF}}.
+\newblock https://pubchem.ncbi.nlm.nih.gov/compound/17730.
+
+\bibitem[{PubChem(2023{\natexlab{c}})}]{PubChem2023b}
+PubChem (2023{\natexlab{c}}).
+\newblock Tartrazine.
+\newblock https://pubchem.ncbi.nlm.nih.gov/compound/164825.
+
+\bibitem[{{Rice University}(2023)}]{RiceUniversity2023}
+{Rice University} (2023).
+\newblock 6.4 {{Bohr}}'s {{Model}} of the {{Hydrogen Atom}} - {{University Physics Volume}} 3 | {{OpenStax}}.
+\newblock https://openstax.org/books/university-physics-volume-3/pages/6-4-bohrs-model-of-the-hydrogen-atom.
+
+\end{thebibliography}

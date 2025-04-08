@@ -1,0 +1,366 @@
+\documentclass{report}
+\usepackage{graphicx, tikz-cd, float, titlepic, booktabs} % Required for inserting images
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+\usepackage{amsmath, amssymb, amsthm, amsfonts, siunitx, physics, gensymb}
+\AtBeginDocument{\RenewCommandCopy\qty\SI}
+\usepackage[version=4]{mhchem}
+\usepackage[most,many,breakable]{tcolorbox}
+\usepackage{xcolor, fancyhdr, varwidth}
+\usepackage[Glenn]{fncychap}
+%Options: Sonny, Lenny, Glenn, Conny, Rejne, Bjarne, Bjornstrup
+\usepackage{hyperref, cleveref}
+\usepackage{icomma, enumitem} %comma as decimal and continue enumerate with [resume]
+\usepackage{plimsoll} %use standard state symbol with \stst
+\usepackage[danish]{babel}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SELF MADE COLORS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{myg}{RGB}{56, 140, 70}
+\definecolor{myb}{RGB}{45, 111, 177}
+\definecolor{myr}{RGB}{199, 68, 64}
+\definecolor{mytheorembg}{HTML}{F2F2F9}
+\definecolor{mytheoremfr}{HTML}{00007B}
+\definecolor{mylenmabg}{HTML}{FFFAF8}
+\definecolor{mylenmafr}{HTML}{983b0f}
+\definecolor{mypropbg}{HTML}{f2fbfc}
+\definecolor{mypropfr}{HTML}{191971}
+\definecolor{myexamplebg}{HTML}{F2FBF8}
+\definecolor{myexamplefr}{HTML}{88D6D1}
+\definecolor{myexampleti}{HTML}{2A7F7F}
+\definecolor{mydefinitbg}{HTML}{E5E5FF}
+\definecolor{mydefinitfr}{HTML}{3F3FA3}
+\definecolor{notesgreen}{RGB}{0,162,0}
+\definecolor{myp}{RGB}{197, 92, 212}
+\definecolor{mygr}{HTML}{2C3338}
+\definecolor{myred}{RGB}{127,0,0}
+\definecolor{myyellow}{RGB}{169,121,69}
+\definecolor{myexercisebg}{HTML}{F2FBF8}
+\definecolor{myexercisefg}{HTML}{88D6D1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Box environments for theorems and problems
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\parindent}{1cm}
+%================================
+% Question BOX
+%================================
+\makeatletter
+\newtcbtheorem{question}{Opgave}{enhanced,
+	breakable,
+	colback=white,
+	colframe=myb!80!black,
+	attach boxed title to top left={yshift*=-\tcboxedtitleheight},
+	fonttitle=\bfseries,
+	title={#2},
+	boxed title size=title,
+	boxed title style={%
+			sharp corners,
+			rounded corners=northwest,
+			colback=tcbcolframe,
+			boxrule=0pt,
+		},
+	underlay boxed title={%
+			\path[fill=tcbcolframe] (title.south west)--(title.south east)
+			to[out=0, in=180] ([xshift=5mm]title.east)--
+			(title.center-|frame.east)
+			[rounded corners=\kvtcb@arc] |-
+			(frame.north) -| cycle;
+		},
+	#1
+}{def}
+\makeatother
+%================================
+% DEFINITION BOX
+%================================
+
+\newtcbtheorem[]{Definition}{Definition}{enhanced,
+	before skip=2mm,after skip=2mm, colback=red!5,colframe=red!80!black,boxrule=0.5mm,
+	attach boxed title to top left={xshift=1cm,yshift*=1mm-\tcboxedtitleheight}, varwidth boxed title*=-3cm,
+	boxed title style={frame code={
+					\path[fill=tcbcolback]
+					([yshift=-1mm,xshift=-1mm]frame.north west)
+					arc[start angle=0,end angle=180,radius=1mm]
+					([yshift=-1mm,xshift=1mm]frame.north east)
+					arc[start angle=180,end angle=0,radius=1mm];
+					\path[left color=tcbcolback!60!black,right color=tcbcolback!60!black,
+						middle color=tcbcolback!80!black]
+					([xshift=-2mm]frame.north west) -- ([xshift=2mm]frame.north east)
+					[rounded corners=1mm]-- ([xshift=1mm,yshift=-1mm]frame.north east)
+					-- (frame.south east) -- (frame.south west)
+					-- ([xshift=-1mm,yshift=-1mm]frame.north west)
+					[sharp corners]-- cycle;
+				},interior engine=empty,
+		},
+	fonttitle=\bfseries,
+	title={#2},#1}{def}
+\newtcbtheorem[]{definition}{Definition}{enhanced,
+	before skip=2mm,after skip=2mm, colback=red!5,colframe=red!80!black,boxrule=0.5mm,
+	attach boxed title to top left={xshift=1cm,yshift*=1mm-\tcboxedtitleheight}, varwidth boxed title*=-3cm,
+	boxed title style={frame code={
+					\path[fill=tcbcolback]
+					([yshift=-1mm,xshift=-1mm]frame.north west)
+					arc[start angle=0,end angle=180,radius=1mm]
+					([yshift=-1mm,xshift=1mm]frame.north east)
+					arc[start angle=180,end angle=0,radius=1mm];
+					\path[left color=tcbcolback!60!black,right color=tcbcolback!60!black,
+						middle color=tcbcolback!80!black]
+					([xshift=-2mm]frame.north west) -- ([xshift=2mm]frame.north east)
+					[rounded corners=1mm]-- ([xshift=1mm,yshift=-1mm]frame.north east)
+					-- (frame.south east) -- (frame.south west)
+					-- ([xshift=-1mm,yshift=-1mm]frame.north west)
+					[sharp corners]-- cycle;
+				},interior engine=empty,
+		},
+	fonttitle=\bfseries,
+	title={#2},#1}{def}
+
+\newtcbtheorem{theo}%
+    {Theorem}{}{theorem}
+\newtcolorbox{prob}[1]{colback=red!5!white,colframe=red!50!black,fonttitle=\bfseries,title={#1}}
+%================================
+% NOTE BOX
+%================================
+
+\usetikzlibrary{arrows,calc,shadows.blur}
+\tcbuselibrary{skins}
+\newtcolorbox{note}[1][]{%
+	enhanced jigsaw,
+	colback=gray!20!white,%
+	colframe=gray!80!black,
+	size=small,
+	boxrule=1pt,
+	title=\textbf{Note:},
+	halign title=flush center,
+	coltitle=black,
+	breakable,
+	drop shadow=black!50!white,
+	attach boxed title to top left={xshift=1cm,yshift=-\tcboxedtitleheight/2,yshifttext=-\tcboxedtitleheight/2},
+	minipage boxed title=1.5cm,
+	boxed title style={%
+			colback=white,
+			size=fbox,
+			boxrule=1pt,
+			boxsep=2pt,
+			underlay={%
+					\coordinate (dotA) at ($(interior.west) + (-0.5pt,0)$);
+					\coordinate (dotB) at ($(interior.east) + (0.5pt,0)$);
+					\begin{scope}
+						\clip (interior.north west) rectangle ([xshift=3ex]interior.east);
+						\filldraw [white, blur shadow={shadow opacity=60, shadow yshift=-.75ex}, rounded corners=2pt] (interior.north west) rectangle (interior.south east);
+					\end{scope}
+					\begin{scope}[gray!80!black]
+						\fill (dotA) circle (2pt);
+						\fill (dotB) circle (2pt);
+					\end{scope}
+				},
+		},
+	#1,
+}
+%================================
+% EXAMPLE BOX
+%================================
+\newtcbtheorem[number within=section]{Example}{Example}
+{%
+	colback = myexamplebg
+	,breakable
+	,colframe = myexamplefr
+	,coltitle = myexampleti
+	,boxrule = 1pt
+	,sharp corners
+	,detach title
+	,before upper=\tcbtitle\par\smallskip
+	,fonttitle = \bfseries
+	,description font = \mdseries
+	,separator sign none
+	,description delimiters parenthesis
+}
+{ex}
+%================================
+% THEOREM BOX
+%================================
+
+\tcbuselibrary{theorems,skins,hooks}
+\newtcbtheorem[number within=section]{Theorem}{Theorem}
+{%
+	enhanced,
+	breakable,
+	colback = mytheorembg,
+	frame hidden,
+	boxrule = 0sp,
+	borderline west = {2pt}{0pt}{mytheoremfr},
+	sharp corners,
+	detach title,
+	before upper = \tcbtitle\par\smallskip,
+	coltitle = mytheoremfr,
+	fonttitle = \bfseries\sffamily,
+	description font = \mdseries,
+	separator sign none,
+	segmentation style={solid, mytheoremfr},
+}
+{th}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SELF MADE COMMANDS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\sol}{\setlength{\parindent}{0cm}\textbf{\textit{Løsning:}}\setlength{\parindent}{1cm}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[tmargin=2cm,rmargin=1in,lmargin=1in,margin=0.85in,bmargin=2cm,footskip=.2in]{geometry}\pagestyle{fancy}
+\lhead{Minrui Kevin Zhou 3.b}
+\rhead{Opgavesæt 4}
+
+\title{Opgavesæt 4\\
+{\Large \textbf{3.b kemi A}}}
+\author{Kevin Zhou}
+\date{\today}
+
+\begin{document}
+\maketitle
+\begin{note}
+  Databog fysik kemi (2007) er benyttet ved beregningerne.
+\end{note}
+\section*{Brezel}
+\sol \\
+\textbf{a.}
+Reaktionsforholdet mellem \ce{Na2CO3.10H2O} og \ce{Na2CO3} er 1:1.
+Der gælder altså 
+\begin{equation*}
+\begin{split}
+  c(\ce{NaCO3} )&=\frac{n(\ce{NaCO3} )}{V}\\
+  &=\frac{m(\ce{NaCO3.10H2O} )}{V \cdot M(\ce{NaCO3.10H2O})}\\
+  &=\frac{54 \;\unit{g} }{1,0 \;\unit{L} \cdot 286,14 \;\unit{g/mol} }\\
+  &\approx 0,19 \;\unit{\textsc{m}} 
+\end{split}
+\end{equation*}
+I opløsningen er altså $c(\ce{NaCO3} )=0,19 \;\unit{\textsc{m}} $.\\[1ex]
+\textbf{b.}
+\ce{CO3^2-} er en middelstærk base med styrkekonstanten $K_b=2,09 \cdot 10^{-4} \;\unit{\textsc{m}} $.
+Siden $c(\ce{CO3^2-} )=c(\ce{NaCO3} )$ og $pH=14,00 + \log\left(\frac{\left[\ce{OH-} \right]}{\textsc{m}}\right) $ , så har vi 
+\begin{equation*}
+\begin{split}
+  K_b=\frac{\left[\ce{OH-} \right]^2}{c_b-[\ce{OH-} ]} &\implies pH=14,00 + \log\left(\frac{-K_b + \sqrt{K_b^2 - 4 \cdot \left(-K_b\right) \cdot c_b } }{2 \;\unit{\textsc{m}} }\right)\\
+  &\implies pH=14,00 + \log\left(\frac{-2,09 \cdot 10 ^{-4} \;\unit{\textsc{m}} +\sqrt{\left(2,09 \cdot 10 ^{-4}\;\unit{\textsc{m}} \right)^2-4 \cdot \left(-2,09 \cdot 10 ^{-4} \;\unit{\textsc{m}}\right) \cdot 0,1887 \;\unit{\textsc{m}} } }{2 \;\unit{\textsc{m}} }\right) \approx 12 \\
+\end{split}
+\end{equation*}
+I natriumcarbonatopløsningen er altså $pH=12$.\\[1ex]
+\textbf{c.}
+Titreringsreaktionen er 
+\[
+\ce{HCl(aq) + OH-(aq) -> Cl-(aq) + H2O(l)} 
+\] 
+Altså er reaktionsforholdet mellem syren og basen 1:1.
+Ved ækvivalenspunktet må $n(\ce{NaOH} )=n(\ce{HCl} )$.
+Det aflæses ved ækvivalenspunktet, at $V(\ce{HCl} )=33,0 \;\unit{mL} $.
+Altså må $n(\ce{NaOH} )$ være 
+\begin{equation*}
+\begin{split}
+  n(\ce{NaOH} )&=n(\ce{HCl} )\\
+  &=c(\ce{HCl} ) \cdot V(\ce{HCl} )\\
+  &=0,097 \;\unit{\textsc{m}} \cdot 33,0 \;\unit{mL} \\
+  &=3,201 \;\unit{mmol} 
+\end{split}
+\end{equation*}
+Stofmængdekoncentrationen af natriumhydroxid i bagerens opløsning må da være
+\begin{equation*}
+\begin{split}
+  c(\ce{NaOH} )&=\frac{n(\ce{NaOH} )}{V}\\
+  &=\frac{3,201 \;\unit{mmol}}{5,0 \;\unit{mL} }\\
+  &\approx 0,64 \;\unit{\textsc{m}}  < 1,0 \;\unit{\textsc{m}}  
+\end{split}
+\end{equation*}
+Altså overholder bagerens natriumhydroxidopløsning reglerne.
+
+\section*{Wolfram i elektroniske komponenter}
+\sol \\
+\textbf{a.}
+Reaktionsbrøken for reaktionen fra venstre mod højre må være
+\begin{equation*}
+\begin{split}
+  \frac{p(\ce{HF} )^6}{p(\ce{ H2})^3 \cdot p(\ce{WF6} )}
+\end{split}
+\end{equation*}
+Siden enheden for partialtrykkene er $\unit{bar}$, så må reaktionsbrøkens enhed være
+\[
+\frac{\unit{bar}^6}{\unit{bar}^3 \cdot \unit{bar}}=\unit{bar}^2
+\] 
+\textbf{b.}
+Vi beregner tilvæksten i molar standard entropi.
+\begin{equation*}
+\begin{split}
+  \Delta S \stst &=\left(S \stst \left(\ce{W(s)} \right) + 6 \cdot S \stst \left(\ce{HF(g)} \right) \right) - \left(S \stst \left(\ce{WF6(g)} \right) +3 \cdot S \stst \left(\ce{H2(g)} \right) \right) \\
+  &=\left(32,6 \;\unit{\frac{J}{mol \cdot K}} + 6 \cdot 173,8 \;\unit{\frac{J}{mol \cdot K}} \right) - \left(354 \;\unit{\frac{J}{mol \cdot K}} +3 \cdot 130,68 \;\unit{\frac{J}{mol \cdot K}} \right) \\
+  &\approx 329 \;\unit{\frac{J}{mol \cdot K}} >0
+\end{split}
+\end{equation*}
+Altså øges uordenen i reaktionen fra venstre mod højre.
+Det er i overensstemmelse med, at antallet af molekyler stiger i den retning, hvilket fremgår af reaktionsskemaet.\\[1ex]
+\textbf{c.}
+Vi beregner først den molare tilvækst i standardentalpi.
+\begin{equation*}
+\begin{split}
+  \Delta H \stst &=\left(H \stst \left(\ce{W(s)} \right) + 6 \cdot H \stst \left(\ce{HF(g)} \right) \right) - \left(H \stst \left(\ce{WF6(g)} \right) +3 \cdot H \stst \left(\ce{H2(g)} \right) \right) \\
+  &=\left(0+6 \cdot (-273,3 \;\unit{kJ/mol}) \right) -\left(-1721,5 \;\unit{kJ/mol} +0\right) \\
+  &=81,7 \;\unit{kJ/mol} 
+\end{split}
+\end{equation*}
+Fra van't Hoffs ligning har vi, at
+\begin{equation*}
+\begin{split}
+  K&=e^{-\frac{\Delta H \stst }{R \cdot T} + \frac{\Delta S \stst }{R}} \;\unit{bar^2} \\
+  &=e^{-\frac{81,7 \cdot 10^3 \;\unit{J/mol} }{8,314 \;\unit{J/(mol \cdot K)} \cdot 573 \;\unit{K} }+\frac{329,36 \;\unit{J/(mol \cdot K)} }{8,314 \;\unit{J/(mol \cdot K)} }} \;\unit{bar^2} \\
+  &\approx 5,71 \cdot 10^9 \;\unit{bar^2} 
+\end{split}
+\end{equation*}
+Ved $300 \;\unit{\celsius} $ er altså $K=5,71 \cdot 10^9 \;\unit{bar^2} $. \\[1ex]
+\textbf{d.}
+Vi udregner reaktionsbrøken.
+\begin{equation*}
+\begin{split}
+  \frac{p(\ce{HF} )^6}{p(\ce{ H2})^3 \cdot p(\ce{WF6} )}&=\frac{\left(0,0011 \;\unit{bar} \right)^6}{\left(0,0439 \;\unit{bar} \right)^3 \cdot 0,0018 \;\unit{bar} }\\
+  &\approx 1,2 \cdot 10 ^{-11} \;\unit{bar^2} <K 
+\end{split}
+\end{equation*}
+Altså er ligevægten forskudt mod venstre, hvilket betyder, at reaktionen mod højre må forløbe spontant i beholderen.
+
+\section*{Antimon – en miljøgift i det antikke Rom}
+\sol \\
+\textbf{a.}
+På venstre side har \ce{SB} oxidationstallet $0$, hvor det på højre side har oxidationstallet +III.
+Siden oxidationstallet stiger, sker der en oxidation.
+
+På venstre side har \ce{O} oxidationstallet $0$, hvor det på højre side har oxidationstallet -II. 
+Siden oxidationstallet falder, sker der en reduktion.
+Da reaktionen både indeholder en oxidation og en reduktion, så må reaktionen være en redoxreaktion.\\[1ex]
+\textbf{b.}
+Da reaktionsforholdet mellem \ce{K2Sb2(C4H2O6)2} og \ce{Sb} er 1:2 ved opløsningen, så må der gælde, at
+\begin{equation*}
+\begin{split}
+  c(\ce{Sb} )&=2 \cdot c(\ce{K2Sb2(C4H2O6)2})\\
+  &=2 \cdot \frac{m(\ce{K2Sb2(C4H2O6)2})}{M(\ce{K2Sb2(C4H2O6)2}) \cdot V}\\
+  &=2 \cdot \frac{15,4\;\unit{mg} }{613,83 \;\unit{g/mol} \cdot 500 \;\unit{mL} }\\
+  &\approx 1,00 \cdot 10 ^{-4} \;\unit{\textsc{m}} \\
+  &=0,100 \;\unit{m \textsc{m}} 
+\end{split}
+\end{equation*}
+hvilket var, hvad vi skulle vise.\\[1ex]
+\textbf{c.}
+Fra standardkurven har vi, at
+\begin{equation*}
+\begin{split}
+  A=73,671 \cdot \frac{c_{\text{tm}}(\ce{Sb} )}{\unit{m \textsc{m}}}+0,001 &\iff c_{\text{tm}}(\ce{Sb} )=\frac{A-0,001}{73,671} \;\unit{m \textsc{m}}\\
+  &\iff c_{\text{vand}}(\ce{Sb} )=\frac{10,0 \;\unit{mL} }{250 \;\unit{mL} } \cdot \frac{A-0,001}{73,671} \;\unit{m \textsc{m}}\\
+  &\iff c_{\text{vand}}(\ce{Sb} )=\frac{A-0,001}{25 \cdot 73,671} \;\unit{m \textsc{m}}
+\end{split}
+\end{equation*}
+hvor $c_{\text{tm} }(\ce{Sb} )$ er den formelle koncentration af antimon i trichlormethanfasen, og $c_{\text{vand}}(\ce{Sb} )$ er den formelle koncentration af antimon i vandprøven.
+Indholdet af antimon i vandprøven må da være
+\begin{equation*}
+\begin{split}
+  c_{\text{vand} }(\ce{Sb} ) \cdot M(\ce{Sb})&=\frac{0,573-0,001}{25 \cdot 73,671} \;\unit{m \textsc{m}} \cdot 121,76 \;\unit{g/mol} \\
+  &\approx 0,0378 \;\unit{mg/L} 
+\end{split}
+\end{equation*}
+Altså er indholdet af antimon i vandprøven $0,0378 \;\unit{mg/L} $.
+
+\end{document}

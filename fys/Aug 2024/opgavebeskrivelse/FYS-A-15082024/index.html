@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>stx242-FYS/A-15082024</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="./assets/css/bundled.css">
+    <script src="./assets/js/bundled.js"></script>
+    <script type="text/javascript">var subtitles = {};
+
+        function UndefinedToZero(value) {
+            if (typeof value === "undefined") {
+                return 0;
+            }
+            return value;
+        }
+
+        function _Time(frames, seconds, minutes, hours) {
+            frames = UndefinedToZero(frames) / 24;
+            seconds = UndefinedToZero(seconds);
+            minutes = UndefinedToZero(minutes) * 60;
+            hours = UndefinedToZero(hours) * 3600;
+            return hours + minutes + seconds + frames;
+        }
+
+        function TTime(value) {
+            if (typeof value === "undefined") {
+                value = "00:00:00:00";
+            }
+            var split = value.split(":");
+            var frames = (split[3] * 1) / 24;
+            var seconds = split[2] * 1;
+            var minutes = (split[1] * 1) * 60;
+            var hours = (split[0] * 1) * 3600;
+            var output = hours + minutes + seconds + frames;
+            return output;
+        }
+
+        function T(start, end, text, direction) {
+            if (typeof direction === "undefined") {
+                direction = "ltr";
+            }
+            return {
+                start: start,
+                end: end,
+                text: text,
+                direction: direction
+            }
+        }</script>
+
+</head>
+
+<body>
+    <style>
+        a:hover {
+            cursor: pointer;
+        }
+
+        .content-editable {
+            position: relative;
+        }
+
+        .draggable-reading-field {
+            display: inline-block;
+            position: absolute;
+            z-index: 9;
+            border: 1px solid gray;
+            padding: 2px;
+        }
+
+        .draggable-reading-field-invisible {
+            opacity: 0 !important;
+            border-style: none;
+        }
+
+        .line-numbers-container {
+            resize: none !important;
+            border: none !important;
+            padding: 0 !important;
+            counter-reset: line;
+        }
+
+        .line-numbers-container p.numbered-line {
+            margin-block-start: 0;
+            margin-block-end: 0;
+        }
+
+        .line-numbers-container .numbered-line:before {
+            content: counter(line);
+            counter-increment: line;
+            color: #888;
+            visibility: hidden;
+            display: inline-block;
+            width: auto;
+            min-width: 18px;
+            padding-left: 8px;
+            padding-right: 10px;
+            text-align: right;
+            font-weight: 100;
+            font-size: 1rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        .line-numbers-container .numbered-line:first-child:before,
+        .line-numbers-container .numbered-line:nth-child(5n of .numbered-line):before {
+            visibility: visible;
+        }
+    </style>
+    <div class="skabelon">
+        <header class="skabelon-header">
+            <div style="position: relative" class="skabelon-header-institution_logo">
+                <p style="position: absolute; color: transparent; top: 10%;">
+                    Studentereksamen
+                </p>
+            </div>
+            <img class="skabelon-header-stuk_logo" id="uvm_logo" src="assets/images/uvm_logo_stuk.png">
+        </header>
+        <div class="skabelon-wrapper">
+            <div class="skabelon-wrapper-menu" id="skabelon-wrapper-menu">
+                <ul>
+                    <ul>
+                        <li><a href="javascript:void(0)" class="web-document-link active parent-document"
+                                id="web-document-link-6749" data-document-id="6749"
+                                onclick="changeDocument(this);VideoPlayer.InitPlayers('.web-document-active .new-player');VideoPlayer.PauseAll();">Forside</a>
+                        </li>
+                        <li><a href="javascript:void(0)" class="web-document-link parent-document"
+                                id="web-document-link-8621" data-document-id="8621"
+                                onclick="changeDocument(this);VideoPlayer.InitPlayers('.web-document-active .new-player');VideoPlayer.PauseAll();">Opgaver</a>
+                        </li>
+                        <li><a href="javascript:void(0)" class="web-document-link parent-document"
+                                id="web-document-link-8622" data-document-id="8622"
+                                onclick="changeDocument(this);VideoPlayer.InitPlayers('.web-document-active .new-player');VideoPlayer.PauseAll();">Opgave
+                                1</a></li>
+                        <li><a href="javascript:void(0)" class="web-document-link parent-document"
+                                id="web-document-link-8623" data-document-id="8623"
+                                onclick="changeDocument(this);VideoPlayer.InitPlayers('.web-document-active .new-player');VideoPlayer.PauseAll();">Opgave
+                                2</a></li>
+                        <li><a href="javascript:void(0)" class="web-document-link parent-document"
+                                id="web-document-link-8624" data-document-id="8624"
+                                onclick="changeDocument(this);VideoPlayer.InitPlayers('.web-document-active .new-player');VideoPlayer.PauseAll();">Opgave
+                                3</a></li>
+                        <li><a href="javascript:void(0)" class="web-document-link parent-document"
+                                id="web-document-link-8625" data-document-id="8625"
+                                onclick="changeDocument(this);VideoPlayer.InitPlayers('.web-document-active .new-player');VideoPlayer.PauseAll();">Opgave
+                                4</a></li>
+                        <li><a href="javascript:void(0)" class="web-document-link parent-document"
+                                id="web-document-link-8626" data-document-id="8626"
+                                onclick="changeDocument(this);VideoPlayer.InitPlayers('.web-document-active .new-player');VideoPlayer.PauseAll();">Opgave
+                                5</a></li>
+                        <li><a href="javascript:void(0)" class="web-document-link parent-document"
+                                id="web-document-link-8627" data-document-id="8627"
+                                onclick="changeDocument(this);VideoPlayer.InitPlayers('.web-document-active .new-player');VideoPlayer.PauseAll();">Opgave
+                                6</a></li>
+                        <li><a href="javascript:void(0)" class="web-document-link parent-document"
+                                id="web-document-link-8628" data-document-id="8628"
+                                onclick="changeDocument(this);VideoPlayer.InitPlayers('.web-document-active .new-player');VideoPlayer.PauseAll();">Opgave
+                                7</a></li>
+                        <li><a href="javascript:void(0)" class="web-document-link parent-document"
+                                id="web-document-link-8629" data-document-id="8629"
+                                onclick="changeDocument(this);VideoPlayer.InitPlayers('.web-document-active .new-player');VideoPlayer.PauseAll();">Bilag</a>
+                        </li>
+                        <li><a href="javascript:void(0)" class="web-document-link parent-document"
+                                id="web-document-link-8630" data-document-id="8630"
+                                onclick="changeDocument(this);VideoPlayer.InitPlayers('.web-document-active .new-player');VideoPlayer.PauseAll();">Billedhenvisninger</a>
+                        </li>
+                        <li>
+                            <a style="font-size:14px;" href="javascript:void(0)"
+                                class="web-document-link parent-document" id="web-document-link-9999"
+                                data-document-id="9999"
+                                onclick="changeDocument(this);VideoPlayer.InitPlayers('.web-document-active .new-player');VideoPlayer.PauseAll();">Prøvesættet
+                                er underlagt ophavsret
+                            </a>
+                        </li>
+                    </ul>
+                </ul>
+                <a id="proeveforekomst">stx242-FYS/A-15082024</a>
+            </div>
+            <div class="skabelon-wrapper-content">
+                <div class="content-editable" id="content-editable">
+                    <style>
+                        .web-document {
+                            display: none;
+                        }
+
+                        .web-document-active {
+                            display: block;
+                        }
+                    </style>
+                    <div class="web-document " id="web-document-9999">
+                        <div class="ophavsret"
+                            style="border: solid black 1px; padding: 25px 25px 10px; font-style: italic; line-height: 1.4;">
+                            <h2 style="font-size: 17px; margin: 0;">Dette prøvesæt er omfattet af ophavsretten, jf.
+                                ophavsretslovens § 1.</h2>
+                            <p>
+                                Prøvesættet må alene anvendes til den på prøvesættet anførte prøve. <br><br>
+                                Al anden anvendelse af prøvesættet, herunder visning eller deling f.eks. via
+                                internettet, sociale medier, portaler og bøger, udgør en krænkelse af Børne- og
+                                Undervisningsministeriets og evt. tredjemands ophavsret og er ikke tilladt.<br><br>
+                                Overtrædelse af ophavsretten kan være erstatningspådragende og/eller strafbart.<br><br>
+                                Prøvesættet kan dog, efter at prøven er afsluttet, anvendes til undervisningsbrug på
+                                uddannelser m.v. omfattet af den lovgivning, som Styrelsen for Undervisning og Kvalitet
+                                administrerer.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="web-document " id="web-document-8630">
+                        <h2>Billedhenvisninger</h2>
+
+                        <p>Opgave 1:<br>Thomas Risgaard Laustsen</p>
+                        <p>Opgave 2:<br>Michael Lentfer Jensen og Nils Kruse</p>
+                        <p>Opgave 3:<br>Nils Kruse</p>
+                        <p>Opgave 4:<br>https://trafitec.dk/</p>
+                        <p>Opgave 5:<br>Michael Lentfer Jensen</p>
+                        <p>Opgave 7:<br>https://energyeducation.ca/encyclopedia/Thorium</p>
+                        <p><br></p>
+                        <p><br></p>
+                        <p><br></p>
+                        <p><br data-mce-bogus="1"></p>
+                    </div>
+                    <div class="web-document " id="web-document-8629">
+                        <h2>Bilag<br> </h2>
+                        <p>Bilag til opgave 4: <em><a pbyg-data-onclick-id="20629"
+                                    onclick="window.open('assets/Bremselaengde-20629.xlsx')"
+                                    class="inserted-documents">Bremselængde</a></em></p>
+                        <p>Bilag til opgave 5: <a href="assets/Hoptimist-20628.zip">Hoptimist.mp4</a></p>
+                        <br>
+                        <div class=" new-player mceNonEditable" contenteditable="false">
+                            <div class="new-player-video" style="width: 600px; height: 300px;"
+                                data-mce-style="width: 600px; height: 300px;"><video width="600" height="300"
+                                    src="assets/Hoptimist-20628.mp4" pbyg-data-src-id="20628"></video></div>
+                            <div class="subtitles new-player-subtitles" style="width: 600px;"
+                                data-mce-style="width: 600px;"><br></div>
+                            <div class="new-player-footer" style="width: 600px;" data-mce-style="width: 600px;">
+                                <div class="new-player-title">Hoptimist</div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="web-document " id="web-document-8628">
+                        <h2>Opgave 7   Isotopen <sup style="font-size: 15px;"
+                                data-mce-style="font-size: 15px;">229</sup>Th
+                        </h2><br>
+                        <figure class="image align-center" style="text-align: center;" contenteditable="false"
+                            data-mce-style="text-align: center;"><img pbyg-data-src-id="20625"
+                                src="assets/Thorium-20625.jpg" alt=""
+                                data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/L7zoNvUGzqpi6KBoN8jUEQ/document/Thorium.jpg">
+                            <p>Atomkernen <sup style="font-size: 12px;" data-mce-style="font-size: 12px;">229</sup>Th
+                                har en
+                                exciteret tilstand med meget lav energi. Energien er så lav, at kernen kan udnyttes
+                                i et ur, som er mere nøjagtigt end de bedste atomure.</p>
+                        </figure>
+                        <p style="line-height: 10px;" data-mce-style="line-height: 10px;"><br></p>
+                        <p>Atomkernen <sup style="font-size: 12px;" data-mce-style="font-size: 12px;">229</sup>Th har en
+                            exciteret tilstand <sup style="font-size: 12px;"
+                                data-mce-style="font-size: 12px;">229</sup>Th<sup
+                                style="font-size: 16px; vertical-align: top;"
+                                data-mce-style="font-size: 16px; vertical-align: top;">*</sup>. Kernen henfalder fra
+                            <sup style="font-size: 12px;" data-mce-style="font-size: 12px;">229</sup>Th<sup
+                                style="font-size: 16px; vertical-align: top;"
+                                data-mce-style="font-size: 16px; vertical-align: top;">*</sup> til grundtilstanden ved
+                            et gammahenfald. Ved henfaldet udsendes fotoner med bølgelængden <span
+                                style="white-space: nowrap;" data-mce-style="white-space: nowrap;">149,7 nm.</span>
+                        </p>
+                        <table style="width: 100%; height: 30px;" data-mce-style="width: 100%; height: 30px;"
+                            class="mce-item-table">
+                            <tbody>
+                                <tr style="height: 30px;" data-mce-style="height: 30px;">
+                                    <td style="vertical-align: text-top; height: 30px; width: 3%;"
+                                        data-mce-style="vertical-align: text-top; height: 30px; width: 3%;"></td>
+                                    <td style="vertical-align: text-top; height: 30px; width: 5%;"
+                                        data-mce-style="vertical-align: text-top; height: 30px; width: 5%;">a)</td>
+                                    <td style="vertical-align: text-top; height: 30px; width: 89%;"
+                                        data-mce-style="vertical-align: text-top; height: 30px; width: 89%;">
+                                        <p style="text-align: left;" data-mce-style="text-align: left;">Bestem
+                                            energiforskellen imellem <sup style="font-size: 12px;"
+                                                data-mce-style="font-size: 12px;">229</sup>Th<sup
+                                                style="font-size: 16px; vertical-align: top;"
+                                                data-mce-style="font-size: 16px; vertical-align: top;">*</sup> og
+                                            grundtilstanden.</p>
+                                    </td>
+                                    <td style="vertical-align: text-top; height: 30px; width: 3%;"
+                                        data-mce-style="vertical-align: text-top; height: 30px; width: 3%;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p>I et eksperiment dannes <sup style="font-size: 12px;"
+                                data-mce-style="font-size: 12px;">229</sup>Th<sup
+                                style="font-size: 16px; vertical-align: top;"
+                                data-mce-style="font-size: 16px; vertical-align: top;">*</sup> ved radioaktivt henfald
+                            af <sup style="font-size: 12px;" data-mce-style="font-size: 12px;">229</sup>Ac. Grafen viser
+                            aktiviteten <em>A</em> af <sup style="font-size: 12px;"
+                                data-mce-style="font-size: 12px;">229</sup>Th<sup
+                                style="font-size: 16px; vertical-align: top;"
+                                data-mce-style="font-size: 16px; vertical-align: top;">*</sup> som funktion af tiden
+                            <em>t</em> efter eksperimentet er begyndt. Ved eksperimentets start havde <sup
+                                style="font-size: 12px;" data-mce-style="font-size: 12px;">229</sup>Ac aktiviteten <span
+                                style="white-space: nowrap;" data-mce-style="white-space: nowrap;">7,5·10<sup
+                                    style="font-size: 12px;" data-mce-style="font-size: 12px;">5</sup> Bq.</span>
+                        </p><br>
+                        <figure class="image align-center" style="text-align: center;" contenteditable="false"
+                            data-mce-style="text-align: center;"><img pbyg-data-src-id="20619"
+                                src="assets/Graf_thorium-20619.png" alt="
+                                A/kBq
+                                t/h
+                                " width="446" height="269"
+                                data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/CKyjBlQNVgxGpuQgsJ7tyw/document/Graf_thorium.png">
+                        </figure>
+                        <table style="width: 100%; height: 30px;" data-mce-style="width: 100%; height: 30px;"
+                            class="mce-item-table">
+                            <tbody>
+                                <tr style="height: 30px;" data-mce-style="height: 30px;">
+                                    <td style="vertical-align: text-top; height: 30px; width: 3%;"
+                                        data-mce-style="vertical-align: text-top; height: 30px; width: 3%;"></td>
+                                    <td style="vertical-align: text-top; height: 30px; width: 5%;"
+                                        data-mce-style="vertical-align: text-top; height: 30px; width: 5%;">b)</td>
+                                    <td style="vertical-align: text-top; height: 30px; width: 89%;"
+                                        data-mce-style="vertical-align: text-top; height: 30px; width: 89%;">
+                                        <p style="text-align: left;" data-mce-style="text-align: left;">Benyt grafen til
+                                            at bestemme antallet af gammahenfald af <sup style="font-size: 12px;"
+                                                data-mce-style="font-size: 12px;">229</sup>Th<sup
+                                                style="font-size: 16px; vertical-align: top;"
+                                                data-mce-style="font-size: 16px; vertical-align: top;">*</sup> under
+                                            eksperimentet. <br>Beregn, hvor stor en procentdel af <sup
+                                                style="font-size: 12px;"
+                                                data-mce-style="font-size: 12px;">229</sup>Ac-kernerne, der henfalder
+                                            til den exciterede tilstand <sup style="font-size: 12px;"
+                                                data-mce-style="font-size: 12px;">229</sup>Th<sup
+                                                style="font-size: 16px; vertical-align: top;"
+                                                data-mce-style="font-size: 16px; vertical-align: top;">*</sup>.</p>
+                                    </td>
+                                    <td style="vertical-align: text-top; height: 30px; width: 3%;"
+                                        data-mce-style="vertical-align: text-top; height: 30px; width: 3%;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p><br></p>
+                        <p><br></p>
+                        <p><br></p>
+                    </div>
+                    <div class="web-document " id="web-document-8627">
+                        <h2>Opgave 6   Michibiki-satellitterne</h2>
+                        <br>
+                        <figure class="image align-center" style="text-align: center;" contenteditable="false"
+                            data-mce-style="text-align: center;"><img pbyg-data-src-id="20622"
+                                src="assets/Michibiki-20622.png" alt="" width="auto" height="290"
+                                data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/slhyOf_eTWorPQgE2YrLnQ/document/Michibiki.png">
+                            <p>Michibiki er et
+                                system af satellitter, som er sendt op for at forbedre GPS-systemet i området
+                                omkring Japan.</p>
+                        </figure>
+                        <p style="line-height: 10px;" data-mce-style="line-height: 10px;"><br></p>
+                        <p>Når Michibiki-satellitter kommunikerer med Jorden anvendes radiobølger med frekvensen <span
+                                style="white-space: nowrap;" data-mce-style="white-space: nowrap;">1575,42 MHz</span>.
+                        </p>
+                        <table style="width: 100%; height: 30px;" data-mce-style="width: 100%; height: 30px;"
+                            class="mce-item-table">
+                            <tbody>
+                                <tr style="height: 30px;" data-mce-style="height: 30px;">
+                                    <td style="vertical-align: text-top; height: 30px; width: 3%;"
+                                        data-mce-style="vertical-align: text-top; height: 30px; width: 3%;"></td>
+                                    <td style="vertical-align: text-top; height: 30px; width: 5%;"
+                                        data-mce-style="vertical-align: text-top; height: 30px; width: 5%;">a)</td>
+                                    <td style="vertical-align: text-top; height: 30px; width: 89%;"
+                                        data-mce-style="vertical-align: text-top; height: 30px; width: 89%;">
+                                        <p style="text-align: left;" data-mce-style="text-align: left;">Bestem
+                                            bølgelængden af elektromagnetisk stråling med frekvensen <span
+                                                style="white-space: nowrap;"
+                                                data-mce-style="white-space: nowrap;">1575,42
+                                                MHz.</span></p>
+                                    </td>
+                                    <td style="vertical-align: text-top; height: 30px; width: 3%;"
+                                        data-mce-style="vertical-align: text-top; height: 30px; width: 3%;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p>Michibiki-satellitterne bevæger sig om Jorden i en elliptisk bane, hvor de bevæger sig med
+                            den mindste fart, når de er over Japan. Satellitternes afstand til Jordens centrum varierer
+                            fra <span style="white-space: nowrap;" data-mce-style="white-space: nowrap;">3,90⋅10<sup
+                                    style="font-size: 12px;" data-mce-style="font-size: 12px;">7</sup> m</span> til
+                            <span style="white-space: nowrap;" data-mce-style="white-space: nowrap;">4,54⋅10<sup
+                                    style="font-size: 12px;" data-mce-style="font-size: 12px;">7</sup> m.</span>
+                        </p>
+                        <table style="width: 100%; height: 56px;" data-mce-style="width: 100%; height: 56px;"
+                            class="mce-item-table">
+                            <tbody>
+                                <tr style="height: 56px;" data-mce-style="height: 56px;">
+                                    <td style="vertical-align: text-top; height: 56px; width: 3%;"
+                                        data-mce-style="vertical-align: text-top; height: 56px; width: 3%;"></td>
+                                    <td style="vertical-align: text-top; height: 56px; width: 5%;"
+                                        data-mce-style="vertical-align: text-top; height: 56px; width: 5%;">b)</td>
+                                    <td style="vertical-align: text-top; height: 56px; width: 89%;"
+                                        data-mce-style="vertical-align: text-top; height: 56px; width: 89%;">
+                                        <p style="text-align: left;" data-mce-style="text-align: left;">Beregn
+                                            Michibiki-satellitternes laveste fart i deres bane.</p>
+                                    </td>
+                                    <td style="vertical-align: text-top; height: 56px; width: 3%;"
+                                        data-mce-style="vertical-align: text-top; height: 56px; width: 3%;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p>Michibiki-satellitterne blev opsendt med en raket af typen <span style="white-space: nowrap;"
+                                data-mce-style="white-space: nowrap;">H-IIA</span>. Ved opsendelsen bevægede raketten
+                            sig lodret i mere end <span style="white-space: nowrap;"
+                                data-mce-style="white-space: nowrap;">12 s</span> efter affyringen. Rakettens fart var
+                            <span style="white-space: nowrap;" data-mce-style="white-space: nowrap;">12 s</span> efter
+                            affyringen <span style="white-space: nowrap;" data-mce-style="white-space: nowrap;">99
+                                m/s</span>. <br>Under affyringen var rakettens udstødningsfart <span
+                                style="white-space: nowrap;" data-mce-style="white-space: nowrap;">2,78 km/s</span>.
+                            Rakettens masse inden affyringen var <span style="white-space: nowrap;"
+                                data-mce-style="white-space: nowrap;">2,89⋅10<sup style="font-size: 12px;"
+                                    data-mce-style="font-size: 12px;">5</sup> kg.</span>
+                        </p>
+                        <table style="width: 100%; height: 56px;" data-mce-style="width: 100%; height: 56px;"
+                            class="mce-item-table">
+                            <tbody>
+                                <tr style="height: 56px;" data-mce-style="height: 56px;">
+                                    <td style="vertical-align: text-top; height: 56px; width: 3%;"
+                                        data-mce-style="vertical-align: text-top; height: 56px; width: 3%;"></td>
+                                    <td style="vertical-align: text-top; height: 56px; width: 5%;"
+                                        data-mce-style="vertical-align: text-top; height: 56px; width: 5%;">c)</td>
+                                    <td style="vertical-align: text-top; height: 56px; width: 89%;"
+                                        data-mce-style="vertical-align: text-top; height: 56px; width: 89%;">
+                                        <p style="text-align: left;" data-mce-style="text-align: left;">Vurdér, hvor
+                                            meget brændstof raketten havde brugt <span style="white-space: nowrap;"
+                                                data-mce-style="white-space: nowrap;">12 s</span> efter affyringen.</p>
+                                    </td>
+                                    <td style="vertical-align: text-top; height: 56px; width: 3%;"
+                                        data-mce-style="vertical-align: text-top; height: 56px; width: 3%;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p><br></p>
+                        <p><br></p>
+                        <p><br></p>
+                    </div>
+                    <div class="web-document " id="web-document-8626">
+                        <h2>Opgave 5   Hoptimist</h2>
+                        <br>
+
+                        <figure class="image align-center" style="text-align: center;" contenteditable="false"
+                            data-mce-style="text-align: center;"><img pbyg-data-src-id="20620"
+                                src="assets/Hoptimist-20620.jpg" alt="" width="244" height="289"
+                                data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/xd6CYW-fDK0K9Y69yz9Ugg/document/Hoptimist.jpg">
+                            <p>En hoptimist er en
+                                lille figur, som mange bruger som pyntegenstand. Hoptimistens hoved sidder på en
+                                fjeder, så man med et tryk på hovedet, kan sætte det i svingninger.</p>
+
+                        </figure>
+                        <p style="line-height: 10px;" data-mce-style="line-height: 10px;"><br></p>
+                        <p>Hovedet på en hoptimist sættes i lodrette svingninger. Bevægelsen er vist i videoen i bilaget
+                            <em>Hoptimist</em>. Tallene på den viste lineal angiver afstande i cm.
+                        </p>
+                        <table style="width: 100%; height: 30px;" data-mce-style="width: 100%; height: 30px;"
+                            class="mce-item-table">
+                            <tbody>
+                                <tr style="height: 30px;" data-mce-style="height: 30px;">
+                                    <td style="vertical-align: text-top; height: 30px; width: 3%;"
+                                        data-mce-style="vertical-align: text-top; height: 30px; width: 3%;"></td>
+                                    <td style="vertical-align: text-top; height: 30px; width: 5%;"
+                                        data-mce-style="vertical-align: text-top; height: 30px; width: 5%;">a)</td>
+                                    <td style="vertical-align: text-top; height: 30px; width: 89%;"
+                                        data-mce-style="vertical-align: text-top; height: 30px; width: 89%;">
+                                        <p style="text-align: left;" data-mce-style="text-align: left;">Benyt bilaget
+                                            til at bestemme hovedets maksimale fart i lodret retning.</p>
+                                    </td>
+                                    <td style="vertical-align: text-top; height: 30px; width: 3%;"
+                                        data-mce-style="vertical-align: text-top; height: 30px; width: 3%;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p>Under svingningen er hovedet påvirket af en elastisk kraft. Massen af hovedet er <span
+                                style="white-space: nowrap;" data-mce-style="white-space: nowrap;">7,24 g</span>.</p>
+                        <table style="width: 100%; height: 56px;" data-mce-style="width: 100%; height: 56px;"
+                            class="mce-item-table">
+                            <tbody>
+                                <tr style="height: 56px;" data-mce-style="height: 56px;">
+                                    <td style="vertical-align: text-top; height: 56px; width: 3%;"
+                                        data-mce-style="vertical-align: text-top; height: 56px; width: 3%;"></td>
+                                    <td style="vertical-align: text-top; height: 56px; width: 5%;"
+                                        data-mce-style="vertical-align: text-top; height: 56px; width: 5%;">b)</td>
+                                    <td style="vertical-align: text-top; height: 56px; width: 89%;"
+                                        data-mce-style="vertical-align: text-top; height: 56px; width: 89%;">
+                                        <p style="text-align: left;" data-mce-style="text-align: left;">Bestem
+                                            fjederkonstanten for den elastiske kraft.</p>
+                                    </td>
+                                    <td style="vertical-align: text-top; height: 56px; width: 3%;"
+                                        data-mce-style="vertical-align: text-top; height: 56px; width: 3%;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p><br></p>
+                        <p><br></p>
+                        <p><br></p>
+                    </div>
+                    <div class="web-document " id="web-document-8625">
+                        <h2>Opgave 4   Bremselængde</h2><br>
+                        <figure class="image align-center" style="text-align: center;" contenteditable="false"
+                            data-mce-style="text-align: center;"><img pbyg-data-src-id="20617"
+                                src="assets/Bil-20617.png" style="width: 75%;" alt="" width="532" height="189"
+                                data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/5opL4k5UHB7DoWk5MJ1qEA/document/Bil.png"
+                                data-mce-style="width: 75%;">
+                            <p>Danske forskere har
+                                undersøgt nogle bilers bremselængde. Bilerne har alle et ABS-system, som sikrer mod
+                                blokering af hjulene og giver en konstant bremsekraft.</p>
+                        </figure>
+                        <p style="line-height: 10px;" data-mce-style="line-height: 10px;"><br></p>
+                        <p>En bil med massen <span style="white-space: nowrap;"
+                                data-mce-style="white-space: nowrap;">1275
+                                kg</span> kører med farten <span style="white-space: nowrap;"
+                                data-mce-style="white-space: nowrap;">25 m/s</span>.</p>
+                        <table style="width: 100%; height: 30px;" data-mce-style="width: 100%; height: 30px;"
+                            class="mce-item-table">
+                            <tbody>
+                                <tr style="height: 30px;" data-mce-style="height: 30px;">
+                                    <td style="vertical-align: text-top; height: 30px; width: 3%;"
+                                        data-mce-style="vertical-align: text-top; height: 30px; width: 3%;"></td>
+                                    <td style="vertical-align: text-top; height: 30px; width: 5%;"
+                                        data-mce-style="vertical-align: text-top; height: 30px; width: 5%;">a)</td>
+                                    <td style="vertical-align: text-top; height: 30px; width: 89%;"
+                                        data-mce-style="vertical-align: text-top; height: 30px; width: 89%;">
+                                        <p style="text-align: left;" data-mce-style="text-align: left;">Beregn bilens
+                                            kinetiske energi.</p>
+                                    </td>
+                                    <td style="vertical-align: text-top; height: 30px; width: 3%;"
+                                        data-mce-style="vertical-align: text-top; height: 30px; width: 3%;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p>Man undersøger, hvordan bilens bremselængde afhænger af farten på tør vej. Resultaterne af
+                            undersøgelsen ses i bilaget <em>Bremselængde</em>, som indeholder sammenhørende værdier for
+                            bilens fart <em>v</em> og bremselængde <em>s</em>.</p>
+                        <table style="width: 100%; height: 56px;" data-mce-style="width: 100%; height: 56px;"
+                            class="mce-item-table" data-mce-selected="1">
+                            <tbody>
+                                <tr style="height: 56px;" data-mce-style="height: 56px;">
+                                    <td style="vertical-align: text-top; height: 56px; width: 3%;"
+                                        data-mce-style="vertical-align: text-top; height: 56px; width: 3%;"></td>
+                                    <td style="vertical-align: text-top; height: 56px; width: 5%;"
+                                        data-mce-style="vertical-align: text-top; height: 56px; width: 5%;">b)</td>
+                                    <td style="vertical-align: text-top; height: 56px; width: 89%;"
+                                        data-mce-style="vertical-align: text-top; height: 56px; width: 89%;">
+                                        <p style="text-align: left;" data-mce-style="text-align: left;">Bestem ved hjælp
+                                            af bilaget størrelsen af bilens acceleration, når den bremser.</p>
+                                    </td>
+                                    <td style="vertical-align: text-top; height: 56px; width: 3%;"
+                                        data-mce-style="vertical-align: text-top; height: 56px; width: 3%;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p><br></p>
+                        <p><br></p>
+                        <p><br></p>
+
+                        <div id="mceResizeHandlenw" data-mce-bogus="all" class="mce-resizehandle" unselectable="true"
+                            data-mce-style="cursor: nw-resize; margin: 0px; padding: 0px; left: 11px; top: 579px;"
+                            style="cursor: nw-resize; margin: 0px; padding: 0px; left: 11px; top: 579px;"></div>
+                        <div id="mceResizeHandlene" data-mce-bogus="all" class="mce-resizehandle" unselectable="true"
+                            data-mce-style="cursor: ne-resize; margin: 0px; padding: 0px; left: 699px; top: 579px;"
+                            style="cursor: ne-resize; margin: 0px; padding: 0px; left: 699px; top: 579px;"></div>
+                        <div id="mceResizeHandlese" data-mce-bogus="all" class="mce-resizehandle" unselectable="true"
+                            data-mce-style="cursor: se-resize; margin: 0px; padding: 0px; left: 699px; top: 643.4px;"
+                            style="cursor: se-resize; margin: 0px; padding: 0px; left: 699px; top: 643.4px;"></div>
+                        <div id="mceResizeHandlesw" data-mce-bogus="all" class="mce-resizehandle" unselectable="true"
+                            data-mce-style="cursor: sw-resize; margin: 0px; padding: 0px; left: 11px; top: 643.4px;"
+                            style="cursor: sw-resize; margin: 0px; padding: 0px; left: 11px; top: 643.4px;"></div>
+                    </div>
+                    <div class="web-document " id="web-document-8624">
+                        <h2>Opgave 3   Lidar-sensor</h2>
+                        <br>
+
+                        <figure class="image align-center" style="text-align: center;" contenteditable="false"
+                            data-mce-style="text-align: center;"><img pbyg-data-src-id="20621"
+                                src="assets/Lysetsfart-20621.jpg" alt="
+                                Opstilling
+                                40,0 cm
+                                3,9 cm
+
+                                Måling med vand 
+                                DISTANCE
+                                APPROXIMATION
+                                41.9 cm
+                                Fix Point 
+                                " width="auto" height="310"
+                                data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/J0RkrK0o-xpjJfQho9_IaA/document/Lysetsfart.jpg">
+                            <p>Nogle mobiltelefoner
+                                har en Lidar-sensor, der kan måle afstande ved hjælp af infrarøde laserpulser.</p>
+
+                        </figure>
+                        <p style="line-height: 10px;" data-mce-style="line-height: 10px;"><br></p>
+                        <p>En mobiltelefon udsender laserlys med frekvensen <span style="white-space: nowrap;"
+                                data-mce-style="white-space: nowrap;">3,19⋅10<sup style="font-size: 12px;"
+                                    data-mce-style="font-size: 12px;">14</sup> Hz</span> i <span
+                                style="white-space: nowrap;" data-mce-style="white-space: nowrap;">500 ps</span>.</p>
+                        <table style="width: 100%; height: 56px;" data-mce-style="width: 100%; height: 56px;"
+                            class="mce-item-table">
+                            <tbody>
+                                <tr style="height: 56px;" data-mce-style="height: 56px;">
+                                    <td style="vertical-align: text-top; height: 56px; width: 3%;"
+                                        data-mce-style="vertical-align: text-top; height: 56px; width: 3%;"> </td>
+                                    <td style="vertical-align: text-top; height: 56px; width: 5%;"
+                                        data-mce-style="vertical-align: text-top; height: 56px; width: 5%;"> a)</td>
+                                    <td style="vertical-align: text-top; height: 56px; width: 89%;"
+                                        data-mce-style="vertical-align: text-top; height: 56px; width: 89%;">
+                                        <p style="text-align: left;" data-mce-style="text-align: left;">Bestem antal
+                                            svingninger i det udsendte laserlys.</p>
+                                    </td>
+                                    <td style="vertical-align: text-top; width: 3%; height: 56px;"
+                                        data-mce-style="vertical-align: text-top; width: 3%; height: 56px;">
+                                        <p class="numbered-line"><br></p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p>Det udsendte laserlys reflekteres af en genstand og registreres af en sensor i
+                            mobiltelefonen. Telefonen beregner så afstanden til genstanden ved brug af lysets fart i
+                            luft og tiden fra lysets udsendelse til det registreres i telefonen.</p>
+                        <p>Med henblik på at bestemme lysets fart i vand sender en mobiltelefon laserlys lodret ned i et
+                            bægerglas. Afstanden mellem telefonen og glassets bund er <span style="white-space: nowrap;"
+                                data-mce-style="white-space: nowrap;">40,0 cm</span>. Der er <span
+                                style="white-space: nowrap;" data-mce-style="white-space: nowrap;">3,9 cm</span> vand i
+                            bægerglasset. Telefonen måler afstanden <span style="white-space: nowrap;"
+                                data-mce-style="white-space: nowrap;">41,9 cm</span> til glassets bund på trods af, at
+                            afstanden til glassets bund er <span style="white-space: nowrap;"
+                                data-mce-style="white-space: nowrap;">40,0 cm</span>.</p>
+                        <table style="width: 100%; height: 56px;" data-mce-style="width: 100%; height: 56px;"
+                            class="mce-item-table">
+                            <tbody>
+                                <tr style="height: 56px;" data-mce-style="height: 56px;">
+                                    <td style="vertical-align: text-top; height: 56px; width: 3%;"
+                                        data-mce-style="vertical-align: text-top; height: 56px; width: 3%;"></td>
+                                    <td style="vertical-align: text-top; height: 56px; width: 5%;"
+                                        data-mce-style="vertical-align: text-top; height: 56px; width: 5%;">b)</td>
+                                    <td style="vertical-align: text-top; height: 56px; width: 89%;"
+                                        data-mce-style="vertical-align: text-top; height: 56px; width: 89%;">
+                                        <p style="text-align: left;" data-mce-style="text-align: left;">Bestem ved hjælp
+                                            af målingerne en værdi for lysets fart i vand.</p>
+                                    </td>
+                                    <td style="vertical-align: text-top; height: 56px; width: 3%;"
+                                        data-mce-style="vertical-align: text-top; height: 56px; width: 3%;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p><br></p>
+                        <p><br></p>
+                        <p><br></p>
+                    </div>
+                    <div class="web-document " id="web-document-8623">
+                        <h2>Opgave 2   Batteribeskyttelse</h2><br>
+                        <figure class="image align-center" style="text-align: center;" contenteditable="false"
+                            data-mce-style="text-align: center;"><img pbyg-data-src-id="21305"
+                                src="assets/Batteribeskyttelse-v2-21305.png" alt="" width="193" height="384"
+                                data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/q7MEE4Jso3TJt408nZUIRw/document/Batteribeskyttelse-v2.png">
+
+                            <p>I en smartphone er
+                                der risiko for, at batteriet bliver overophedet og går i stykker. Derfor sidder der
+                                på batteriet en NTC-resistor til at registrere temperaturen.</p>
+
+                        </figure>
+                        <p style="line-height: 10px;" data-mce-style="line-height: 10px;"><br></p>
+                        <p>Spændingsfaldet over en NTC-resistor i en telefon er <span style="white-space: nowrap;"
+                                data-mce-style="white-space: nowrap;">4,5 V</span>. Strømstyrken igennem NTC-resistoren
+                            må højst være <span style="white-space: nowrap;" data-mce-style="white-space: nowrap;">0,21
+                                mA</span>.</p>
+                        <table style="width: 100%; height: 56px;" data-mce-style="width: 100%; height: 56px;"
+                            class="mce-item-table">
+                            <tbody>
+                                <tr style="height: 56px;" data-mce-style="height: 56px;">
+                                    <td style="vertical-align: text-top; height: 56px; width: 3%;"
+                                        data-mce-style="vertical-align: text-top; height: 56px; width: 3%;"> </td>
+                                    <td style="vertical-align: text-top; height: 56px; width: 5%;"
+                                        data-mce-style="vertical-align: text-top; height: 56px; width: 5%;"> a)</td>
+                                    <td style="vertical-align: text-top; height: 56px; width: 89%;"
+                                        data-mce-style="vertical-align: text-top; height: 56px; width: 89%;">
+                                        <p style="text-align: left;" data-mce-style="text-align: left;">Beregn den
+                                            afsatte effekt i NTC-resistoren, når strømstyrken gennem den er <span
+                                                style="white-space: nowrap;" data-mce-style="white-space: nowrap;">0,21
+                                                mA</span>.</p>
+                                    </td>
+                                    <td style="vertical-align: text-top; width: 3%; height: 56px;"
+                                        data-mce-style="vertical-align: text-top; width: 3%; height: 56px;">
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p>Et batteri bør ikke oplades ved en temperatur højere end <span style="white-space: nowrap;"
+                                data-mce-style="white-space: nowrap;">45 °C</span>. En NTC-resistor bruges til at måle
+                            batteriets temperatur. NTC-resistoren sidder i det viste kredsløb, hvor amperemeteret måler
+                            strømstyrken igennem kredsløbet.</p><br>
+                        <figure class="image align-center" style="text-align: center;" contenteditable="false"
+                            data-mce-style="text-align: center;"><img pbyg-data-src-id="20616"
+                                src="assets/Batteribeskyttelse_v3-20616.jpg" alt="
+                                U = 5,0 V
+                                A
+                                25 k Omega
+                                22 k Omega
+                                RNTC
+                                " width="600" height="auto"
+                                data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/ZPr29p4wBmCTALB3S0s_kw/document/Batteribeskyttelse_v3.jpg">
+                        </figure>
+                        <p>Grafen viser NTC-resistorens resistans <em>R</em><sub style="font-size: 10px;"
+                                data-mce-style="font-size: 10px;">NTC</sub> som funktion af temperaturen <em>T</em>.</p>
+                        <br>
+                        <figure class="image align-center" contenteditable="false"><img pbyg-data-src-id="20618"
+                                src="assets/Graf_batteribeskyttelse-20618.png" alt="
+                                RNTC/k Omega
+                                T/°C" width="600" height="auto"
+                                data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/sisU__8d5iskyk5SM_4BiA/document/Graf_batteribeskyttelse.png">
+                        </figure>
+                        <p>Under en opladning af batteriet er strømstyrken i kredsløbet <span
+                                style="white-space: nowrap;" data-mce-style="white-space: nowrap;">0,152 mA</span>.</p>
+                        <br>
+                        <table style="width: 100%; height: 56px;" data-mce-style="width: 100%; height: 56px;"
+                            class="mce-item-table">
+                            <tbody>
+                                <tr style="height: 56px;" data-mce-style="height: 56px;">
+                                    <td style="vertical-align: text-top; height: 56px; width: 3%;"
+                                        data-mce-style="vertical-align: text-top; height: 56px; width: 3%;"></td>
+                                    <td style="vertical-align: text-top; height: 56px; width: 5%;"
+                                        data-mce-style="vertical-align: text-top; height: 56px; width: 5%;">b)</td>
+                                    <td style="vertical-align: text-top; height: 56px; width: 89%;"
+                                        data-mce-style="vertical-align: text-top; height: 56px; width: 89%;">
+                                        <p style="text-align: left;" data-mce-style="text-align: left;">Bestem
+                                            NTC-resistorens temperatur.</p>
+                                    </td>
+                                    <td style="vertical-align: text-top; height: 56px; width: 3%;"
+                                        data-mce-style="vertical-align: text-top; height: 56px; width: 3%;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p><br></p>
+                        <p><br></p>
+                        <p><br></p>
+                    </div>
+                    <div class="web-document " id="web-document-8622">
+                        <h2>Opgave 1   Minikøleskab</h2>
+                        <p><br></p>
+                        <figure class="image align-center" style="text-align: center;" contenteditable="false"
+                            data-mce-style="text-align: center;"><img pbyg-data-src-id="20623"
+                                src="assets/Minikoeleskab-20623.png" alt="" width="251" height="380"
+                                data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/8jk-9Hf0xcX2_p6PnXt80A/document/Minikoeleskab.png">
+                            <p>Et minikøleskab er
+                                billigt i anskaffelse, men det har et højt energiforbrug.</p>
+                        </figure>
+                        <p style="line-height: 10px;" data-mce-style="line-height: 10px;"><br></p>
+                        <p>Et minikøleskab står tændt i <span style="white-space: nowrap;"
+                                data-mce-style="white-space: nowrap;">365 dage</span>. Køleskabet omsætter elektrisk
+                            energi med effekten <span style="white-space: nowrap;"
+                                data-mce-style="white-space: nowrap;">47
+                                W</span>. </p>
+                        <table style="width: 100%; height: 53.2px;" data-mce-style="width: 100%; height: 53.2px;"
+                            class="mce-item-table">
+                            <tbody>
+                                <tr style="height: 53.2px;" data-mce-style="height: 53.2px;">
+                                    <td style="vertical-align: text-top; height: 53.2px; width: 3.36651%;"
+                                        data-mce-style="vertical-align: text-top; height: 53.2px; width: 3.36651%;"> 
+                                    </td>
+                                    <td style="vertical-align: text-top; height: 53.2px; width: 4.83021%;"
+                                        data-mce-style="vertical-align: text-top; height: 53.2px; width: 4.83021%;"> a)
+                                    </td>
+                                    <td style="vertical-align: text-top; height: 53.2px; width: 79.6253%;"
+                                        data-mce-style="vertical-align: text-top; height: 53.2px; width: 79.6253%;">
+                                        <p style="text-align: left;" data-mce-style="text-align: left;">Beregn den
+                                            elektriske energi, som minikøleskabet omsætter på <span
+                                                style="white-space: nowrap;" data-mce-style="white-space: nowrap;">365
+                                                dage.</span></p>
+                                    </td>
+                                    <td style="vertical-align: text-top; width: 11.5632%; height: 53.2px;"
+                                        data-mce-style="vertical-align: text-top; width: 11.5632%; height: 53.2px;">
+                                        <p style="text-align: left;" data-mce-style="text-align: left;"><br></p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p>Ved en test af et minikøleskab måles temperaturen af en fyldt sodavandsdåse som funktion af
+                            tiden efter anbringelse i køleskabet. På et <span
+                                style="text-wrap: nowrap;">tidspunkt</span> falder temperaturen med <span
+                                style="white-space: nowrap;" data-mce-style="white-space: nowrap;">0,46 °C pr.
+                                minut.</span> </p>
+                        <p>Den fyldte sodavandsdåse består af <span style="white-space: nowrap;"
+                                data-mce-style="white-space: nowrap;">345 g</span> sodavand og <span
+                                style="white-space: nowrap;" data-mce-style="white-space: nowrap;">14,3 g</span>
+                            aluminium. Den specifikke varmekapacitet for sodavand er <span style="white-space: nowrap;"
+                                data-mce-style="white-space: nowrap;">3,90 kJ/(kg⋅°C).</span></p>
+                        <table style="width: 100%; height: 71.2px;" data-mce-style="width: 100%; height: 71.2px;"
+                            class="mce-item-table">
+                            <tbody>
+                                <tr style="height: 71.2px;" data-mce-style="height: 71.2px;">
+                                    <td style="vertical-align: text-top; height: 71.2px; width: 3.36651%;"
+                                        data-mce-style="vertical-align: text-top; height: 71.2px; width: 3.36651%;"> 
+                                    </td>
+                                    <td style="vertical-align: text-top; height: 71.2px; width: 4.97658%;"
+                                        data-mce-style="vertical-align: text-top; height: 71.2px; width: 4.97658%;"> b)
+                                    </td>
+                                    <td style="vertical-align: text-top; height: 71.2px; width: 81.9672%;"
+                                        data-mce-style="vertical-align: text-top; height: 71.2px; width: 81.9672%;">
+                                        <p style="text-align: left;" data-mce-style="text-align: left;">Bestem den
+                                            effekt, hvormed der afgives energi fra den fyldte sodavandsdåse, når
+                                            temperaturen falder med 0,46 °C pr. minut.</p>
+                                    </td>
+                                    <td style="vertical-align: text-top; width: 8.92857%;"
+                                        data-mce-style="vertical-align: text-top; width: 8.92857%;">
+                                        <p style="text-align: left;" data-mce-style="text-align: left;"><br></p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p><br></p>
+                        <p><br></p>
+                        <p><br></p>
+                    </div>
+                    <div class="web-document " id="web-document-8621">
+                        <h2><strong>Opgaver</strong></h2>
+                        <p></p>
+                        <p>Opgavesættet består af 7 opgaver med tilsammen 15 spørgsmål.</p>
+                        <p>Svarene på de stillede spørgsmål indgår med samme vægt i vurderingen. </p>
+                        <p> </p>
+                        <p><strong>Opgaverne</strong></p>
+                        <p><br>Opgave 1              Minikøleskab</p>
+                        <p>Opgave 2              Batteribeskyttelse</p>
+                        <p>Opgave 3              Lidar-sensor</p>
+                        <p>Opgave 4              Bremselængde</p>
+                        <p>Opgave 5              Hoptimist</p>
+                        <p>Opgave 6              Michibiki-satellitterne</p>
+                        <p>Opgave 7              Isotopen <sup style="font-size: 12px;"
+                                data-mce-style="font-size: 12px;">229</sup>Th</p>
+                        <p><br></p>
+                        <p><strong>Bilag</strong><br> <br>Bilag til opgave 4: Bremselængde.xlsx</p>
+                        <p>Bilag til opgave 5: Hoptimist.mp4 </p>
+                        <p> </p>
+                        <p> </p>
+                        <p> </p>
+                        <p> </p>
+                        <p>Følgende hjælpemidler forudsættes:</p>
+                        <p>Databog fysik kemi (F&K Forlaget), 11. udgave (2007) eller senere udgave.</p>
+                        <p><br></p>
+                        <p><br></p>
+                        <p><br></p>
+                    </div>
+                    <div class="web-document frontpage-web-document web-document-active" id="web-document-6749">
+                        <div class="frontpage-fields">
+                            <h1 class="frontpage-proeve-title" contenteditable="false">Fysik A</h1>
+                            <p class="frontpage-proeve-proeveordning" contenteditable="false"></p>
+                            <p class="frontpage-dato-for-afholdelse" contenteditable="false">Torsdag den 15. august 2024
+                            </p>
+                            <p class="frontpage-proeve-start-slut-tidspunkt" contenteditable="false"></p>
+                        </div>
+                        <p class="optional-textfield-1">Kl. 9.00 - 14.00</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        (function resetWordCounters() {
+            var wordCounters = document.getElementsByClassName('word-counter')
+            Array.prototype.forEach.call(wordCounters, function (wordCounter) {
+                wordCounter.innerHTML = 0;
+            });
+        })();
+
+        function countWords(obj) {
+            let res = [];
+            let str = obj.value.replace(/[\t\n\r\.\?\!]/gm, ' ').split(' ');
+            str.map((s) => {
+                let trimStr = s.trim();
+                if (trimStr.length > 0) {
+                    res.push(trimStr);
+                }
+            });
+            obj.closest('.wordcount-textarea').getElementsByClassName('word-counter')[0].innerHTML = res.length;
+        }
+    </script>
+    <script>
+        function changeDocument(element) {
+            document.querySelectorAll(".web-document").forEach(element => {
+                if (element.classList.contains("web-document-active")) {
+                    element.classList.remove("web-document-active");
+                }
+            });
+            var webDocument = document.getElementById("web-document-" + element.getAttribute("data-document-id"));
+            if (!webDocument.classList.contains("web-document-active")) {
+                webDocument.classList.add("web-document-active");
+            }
+            this.changeActiveMenuLink(element.id);
+        }
+
+        function changeActiveMenuLink(elementId) {
+            document.querySelectorAll(".web-document-link").forEach(element => {
+                if (element.classList.contains("active")) {
+                    element.classList.remove("active");
+                }
+            });
+
+            var activeElement = document.getElementById(elementId);
+            if (!activeElement.classList.contains("active")) {
+                activeElement.classList.add("active");
+            }
+
+            var activeElementParentId = activeElement.getAttribute("data-document-id");
+            if (activeElement.hasAttribute("data-parent-document-id")) {
+                activeElementParentId = activeElement.getAttribute("data-parent-document-id");
+            }
+
+            document.querySelectorAll(".web-document-link").forEach(document => {
+                if (document.classList.contains("parent-document") || activeElementParentId == document.getAttribute("data-parent-document-id")) {
+                    document.classList.remove("noActiveRelation");
+                } else {
+                    document.classList.add("noActiveRelation");
+                }
+            });
+        }
+
+        VideoPlayer.InitPlayers('.web-document-active .new-player');
+        VideoPlayer.PauseAll();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,422 @@
+\documentclass{report}
+\usepackage{graphicx, tikz-cd, float, titlepic, booktabs} % Required for inserting images
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+\usepackage{amsmath, amssymb, amsthm, amsfonts, siunitx, physics, gensymb}
+\AtBeginDocument{\RenewCommandCopy\qty\SI}
+\usepackage[version=4]{mhchem}
+\usepackage[most,many,breakable]{tcolorbox}
+\usepackage{xcolor, fancyhdr, varwidth}
+\usepackage[Glenn]{fncychap}
+%Options: Sonny, Lenny, Glenn, Conny, Rejne, Bjarne, Bjornstrup
+\usepackage{hyperref, cleveref}
+\usepackage{icomma, enumitem} %comma as decimal and continue enumerate with [resume]
+\usepackage{plimsoll} %use standard state symbol with \stst
+\usepackage[danish]{babel}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SELF MADE COLORS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{myg}{RGB}{56, 140, 70}
+\definecolor{myb}{RGB}{45, 111, 177}
+\definecolor{myr}{RGB}{199, 68, 64}
+\definecolor{mytheorembg}{HTML}{F2F2F9}
+\definecolor{mytheoremfr}{HTML}{00007B}
+\definecolor{mylenmabg}{HTML}{FFFAF8}
+\definecolor{mylenmafr}{HTML}{983b0f}
+\definecolor{mypropbg}{HTML}{f2fbfc}
+\definecolor{mypropfr}{HTML}{191971}
+\definecolor{myexamplebg}{HTML}{F2FBF8}
+\definecolor{myexamplefr}{HTML}{88D6D1}
+\definecolor{myexampleti}{HTML}{2A7F7F}
+\definecolor{mydefinitbg}{HTML}{E5E5FF}
+\definecolor{mydefinitfr}{HTML}{3F3FA3}
+\definecolor{notesgreen}{RGB}{0,162,0}
+\definecolor{myp}{RGB}{197, 92, 212}
+\definecolor{mygr}{HTML}{2C3338}
+\definecolor{myred}{RGB}{127,0,0}
+\definecolor{myyellow}{RGB}{169,121,69}
+\definecolor{myexercisebg}{HTML}{F2FBF8}
+\definecolor{myexercisefg}{HTML}{88D6D1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Box environments for theorems and problems
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\parindent}{1cm}
+%================================
+% Question BOX
+%================================
+\makeatletter
+\newtcbtheorem{question}{Opgave}{enhanced,
+	breakable,
+	colback=white,
+	colframe=myb!80!black,
+	attach boxed title to top left={yshift*=-\tcboxedtitleheight},
+	fonttitle=\bfseries,
+	title={#2},
+	boxed title size=title,
+	boxed title style={%
+			sharp corners,
+			rounded corners=northwest,
+			colback=tcbcolframe,
+			boxrule=0pt,
+		},
+	underlay boxed title={%
+			\path[fill=tcbcolframe] (title.south west)--(title.south east)
+			to[out=0, in=180] ([xshift=5mm]title.east)--
+			(title.center-|frame.east)
+			[rounded corners=\kvtcb@arc] |-
+			(frame.north) -| cycle;
+		},
+	#1
+}{def}
+\makeatother
+%================================
+% DEFINITION BOX
+%================================
+
+\newtcbtheorem[]{Definition}{Definition}{enhanced,
+	before skip=2mm,after skip=2mm, colback=red!5,colframe=red!80!black,boxrule=0.5mm,
+	attach boxed title to top left={xshift=1cm,yshift*=1mm-\tcboxedtitleheight}, varwidth boxed title*=-3cm,
+	boxed title style={frame code={
+					\path[fill=tcbcolback]
+					([yshift=-1mm,xshift=-1mm]frame.north west)
+					arc[start angle=0,end angle=180,radius=1mm]
+					([yshift=-1mm,xshift=1mm]frame.north east)
+					arc[start angle=180,end angle=0,radius=1mm];
+					\path[left color=tcbcolback!60!black,right color=tcbcolback!60!black,
+						middle color=tcbcolback!80!black]
+					([xshift=-2mm]frame.north west) -- ([xshift=2mm]frame.north east)
+					[rounded corners=1mm]-- ([xshift=1mm,yshift=-1mm]frame.north east)
+					-- (frame.south east) -- (frame.south west)
+					-- ([xshift=-1mm,yshift=-1mm]frame.north west)
+					[sharp corners]-- cycle;
+				},interior engine=empty,
+		},
+	fonttitle=\bfseries,
+	title={#2},#1}{def}
+\newtcbtheorem[]{definition}{Definition}{enhanced,
+	before skip=2mm,after skip=2mm, colback=red!5,colframe=red!80!black,boxrule=0.5mm,
+	attach boxed title to top left={xshift=1cm,yshift*=1mm-\tcboxedtitleheight}, varwidth boxed title*=-3cm,
+	boxed title style={frame code={
+					\path[fill=tcbcolback]
+					([yshift=-1mm,xshift=-1mm]frame.north west)
+					arc[start angle=0,end angle=180,radius=1mm]
+					([yshift=-1mm,xshift=1mm]frame.north east)
+					arc[start angle=180,end angle=0,radius=1mm];
+					\path[left color=tcbcolback!60!black,right color=tcbcolback!60!black,
+						middle color=tcbcolback!80!black]
+					([xshift=-2mm]frame.north west) -- ([xshift=2mm]frame.north east)
+					[rounded corners=1mm]-- ([xshift=1mm,yshift=-1mm]frame.north east)
+					-- (frame.south east) -- (frame.south west)
+					-- ([xshift=-1mm,yshift=-1mm]frame.north west)
+					[sharp corners]-- cycle;
+				},interior engine=empty,
+		},
+	fonttitle=\bfseries,
+	title={#2},#1}{def}
+
+\newtcbtheorem{theo}%
+    {Theorem}{}{theorem}
+\newtcolorbox{prob}[1]{colback=red!5!white,colframe=red!50!black,fonttitle=\bfseries,title={#1}}
+%================================
+% NOTE BOX
+%================================
+
+\usetikzlibrary{arrows,calc,shadows.blur}
+\tcbuselibrary{skins}
+\newtcolorbox{note}[1][]{%
+	enhanced jigsaw,
+	colback=gray!20!white,%
+	colframe=gray!80!black,
+	size=small,
+	boxrule=1pt,
+	title=\textbf{Note:},
+	halign title=flush center,
+	coltitle=black,
+	breakable,
+	drop shadow=black!50!white,
+	attach boxed title to top left={xshift=1cm,yshift=-\tcboxedtitleheight/2,yshifttext=-\tcboxedtitleheight/2},
+	minipage boxed title=1.5cm,
+	boxed title style={%
+			colback=white,
+			size=fbox,
+			boxrule=1pt,
+			boxsep=2pt,
+			underlay={%
+					\coordinate (dotA) at ($(interior.west) + (-0.5pt,0)$);
+					\coordinate (dotB) at ($(interior.east) + (0.5pt,0)$);
+					\begin{scope}
+						\clip (interior.north west) rectangle ([xshift=3ex]interior.east);
+						\filldraw [white, blur shadow={shadow opacity=60, shadow yshift=-.75ex}, rounded corners=2pt] (interior.north west) rectangle (interior.south east);
+					\end{scope}
+					\begin{scope}[gray!80!black]
+						\fill (dotA) circle (2pt);
+						\fill (dotB) circle (2pt);
+					\end{scope}
+				},
+		},
+	#1,
+}
+%================================
+% EXAMPLE BOX
+%================================
+\newtcbtheorem[number within=section]{Example}{Example}
+{%
+	colback = myexamplebg
+	,breakable
+	,colframe = myexamplefr
+	,coltitle = myexampleti
+	,boxrule = 1pt
+	,sharp corners
+	,detach title
+	,before upper=\tcbtitle\par\smallskip
+	,fonttitle = \bfseries
+	,description font = \mdseries
+	,separator sign none
+	,description delimiters parenthesis
+}
+{ex}
+%================================
+% THEOREM BOX
+%================================
+
+\tcbuselibrary{theorems,skins,hooks}
+\newtcbtheorem[number within=section]{Theorem}{Theorem}
+{%
+	enhanced,
+	breakable,
+	colback = mytheorembg,
+	frame hidden,
+	boxrule = 0sp,
+	borderline west = {2pt}{0pt}{mytheoremfr},
+	sharp corners,
+	detach title,
+	before upper = \tcbtitle\par\smallskip,
+	coltitle = mytheoremfr,
+	fonttitle = \bfseries\sffamily,
+	description font = \mdseries,
+	separator sign none,
+	segmentation style={solid, mytheoremfr},
+}
+{th}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SELF MADE COMMANDS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\sol}{\setlength{\parindent}{0cm}\textbf{\textit{Løsning:}}\setlength{\parindent}{1cm}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[tmargin=2cm,rmargin=1in,lmargin=1in,margin=0.85in,bmargin=2cm,footskip=.2in]{geometry}\pagestyle{fancy}
+\lhead{Minrui Kevin Zhou 3.b}
+\rhead{H4: Mekanik}
+
+\title{H4: Mekanik – fjedre og bevægelsesmængde\\
+{\Large \textbf{3.b fysik A}}}
+\author{Minrui Kevin Zhou}
+\date{\today}
+
+\begin{document}
+\maketitle
+\begin{question}{Kortbane}{}
+Massen af løber B er $72 \;\unit{kg} $, og hans fart lige før skubbet er $13,6 \;\unit{m/s} $. 
+  Massen af løber A er $79 \;\unit{kg} $, og hans fart lige før skubbet er $12,3 \;\unit{m/s} $. 
+  Lige efter skubbet har løber B farten $8,9 \;\unit{m/s}$. 
+  Løberne bevæger sig i samme retning under skubbet.
+  \begin{itemize}
+    \item[a.] Beregn farten af løber A lige efter skubbet.
+  \end{itemize}
+\end{question}
+\sol \\
+\textbf{a.}
+Siden der er tale om kollision uden påvirkning af kræfter udefra, så er de to løberes bevægelsesmængde bevaret.
+Der gælder da 
+\begin{equation*}
+\begin{split}
+  p _{A (\text{før} )} + p _{B (\text{før} )}=p_{A (\text{efter} )} + p _{B (\text{efter} )} &\iff m _{A} \cdot v _{A (\text{før} )} + m _{B} \cdot v _{B (\text{før} )} = m _{A} \cdot v _{A (\text{efter} )} + m _{B} \cdot v _{B (\text{efter} )}\\
+  &\iff v _{A (\text{efter}) }=\frac{m _{A} \cdot v _{A (\text{før} )}+ m _{B} \cdot \left(v _{B (\text{før} )}- v _{B (\text{efter} )}\right) }{m _{A}}\\
+  &\iff v _{A (\text{efter}) }=v _{A (\text{før} )}+ \frac{m _{B} }{m _{A}} \cdot \left(v _{B (\text{før} )}- v _{B (\text{efter} )}\right) 
+\end{split}
+\end{equation*}
+Vi beregner nu farten af løber A efter skubbet
+\begin{equation*}
+\begin{split}
+  v _{A (\text{efter}) }&=v _{A (\text{før} )}+ \frac{m _{B}}{m _{A}} \cdot \left(v _{B (\text{før} )}- v _{B (\text{efter} )}\right) \\
+  &=12,3 \;\unit{m/s} + \frac{72 \;\unit{kg} }{79 \;\unit{kg} } \cdot \left(13,6 \;\unit{m/s} - 8,9 \;\unit{m/s} \right) \\
+  &\approx 17 \;\unit{m/s} 
+\end{split}
+\end{equation*}
+Altså er farten af løber A lige efter skubbet $17 \;\unit{m/s} $.
+
+\begin{question}{Sikkerhedsnet til klipper}{}
+I et eksperiment lader virksomheden en stor betonklods falde ned i et vandret udspændt sikkerhedsnet. Betonklodsen falder frit $39 \;\unit{ m}$, inden den rammer nettet. 
+\begin{itemize}
+  \item[a.] Hvor lang tid tager det betonklodsen at falde ned til sikkerhedsnettet?
+\end{itemize}
+Når betonklodsen rammer sikkerhedsnettet bremses den af en elastisk kraft, idet nettet udstrækkes $7,58 \;\unit{m} $. Betonklodsen har massen 22 ton.
+\begin{itemize}
+  \item[b.] Bestem fjederkonstanten for sikkerhedsnettet.
+\end{itemize}
+\end{question}
+\sol \\
+\textbf{a.}
+Når vi ser bort fra luftmodstand er der tale om en jævnt accelereret bevægelse.
+Derfor gælder der, at 
+\begin{equation*}
+\begin{split}
+  s=\frac{1}{2} \cdot g \cdot t^2 &\iff t^2=\frac{2s}{g}\\
+  &\iff t=\sqrt{\frac{2s}{g}} 
+\end{split}
+\end{equation*}
+hvor $s$ er strækningen, som klodsen falder, og vi lader $t$ være en positiv størrelse. 
+
+Vi beregner nu tiden $t$
+\begin{equation*}
+\begin{split}
+  t&=\sqrt{\frac{2s}{g}} \\
+  &=\sqrt{\frac{2 \cdot 39 \;\unit{m} }{9,8 \;\unit{m/s^2} }} \\
+  &\approx 2,8 \;\unit{s} 
+\end{split}
+\end{equation*}
+Altså tager det klodsen $2,8 \;\unit{s} $ at falde ned til sikkerhedsnettet.\\[1ex]
+\textbf{b.}
+Når nettet er helt udstrakt, er alt klodsens mekaniske energi i form af potentiel energi.
+Da klodsen ikke påvirkes af nogen ydre krafter, så er den mekaniske energi bevaret.
+Altså må der gælde, at 
+\begin{equation*}
+\begin{split}
+  m \cdot g \cdot h = \frac{1}{2} \cdot k \cdot x^2 \iff k = \frac{2 \cdot m \cdot g \cdot h}{x^2}
+\end{split}
+\end{equation*}
+Vi kan da beregne fjederkonstanten.
+\begin{equation*}
+\begin{split}
+  k &= \frac{2 \cdot m \cdot g \cdot h}{x^2}\\ 
+  &=\frac{2 \cdot 22 \cdot 10^3 \;\unit{kg} \cdot 9,82 \;\unit{m/s^2} \cdot \left(39 \;\unit{m} + 7,58 \;\unit{m} \right) }{\left(7,58 \;\unit{m} \right)^2}\\
+  &\approx 3,5 \cdot 10^5 \;\unit{N/m} 
+\end{split}
+\end{equation*}
+Fjederkonstanten for sikkerhedsnettet er altså $3,5 \cdot 10^5 \;\unit{N/m} $.
+
+\begin{question}{Amerikansk fodbold}{}
+En spiller accelererer fra hvile op til farten $8,1 \;\unit{ m/s}$ i løbet af $1,8 \;\unit{s} $.
+\begin{itemize}
+  \item[a.] Bestem størrelsen af spillerens acceleration.
+\end{itemize}
+
+Målet i amerikansk fodbold ser ud som vist på figuren. For at score point skal bolden sparkes over overliggeren i målet.
+
+I 40 meters afstand fra målet sparker en spiller til bolden. Herved sendes bolden af sted med farten $24 \;\unit{ m/s}$ og i en vinkel på $27 \degree $ med vandret. Man kan se bort fra luftmodstanden.
+\begin{itemize}
+  \item[b.] Beregn den tid, det tager bolden at tilbagelægge 40 m i vandret retning. 
+Bestem den højde over jorden, i hvilken bolden passerer målet.
+\end{itemize}
+
+En forsvarer kan eksempelvis stoppe en angriber ved at gribe fat i ham. En angriber med massen $82 \;\unit{ kg}$ løber frem ad banen med farten $7,6 \;\unit{ m/s}$.
+En forsvarer løber fra siden med farten $6,2 \;\unit{ m/s}$ lige ind i angriberen. Se figuren på næste side. Forsvareren har massen 95 kg.
+
+Efter sammenstødet falder begge spillere og glider hen over græsset med samme hastighed. Gnidningskoefficienten mellem spillerne og græsset er 0,70.
+\begin{itemize}
+  \item[c.] Vurdér, hvor langt de to spillere glider hen over græsset efter sammenstødet.
+\end{itemize}
+\end{question}
+\sol \\
+\textbf{a.}
+Størrelsen spillerens gennemsnitlige acceleration i tidsrummet må være 
+\begin{equation*}
+\begin{split}
+  a&=\frac{\Delta v}{\Delta t}\\
+  &=\frac{8,1 \;\unit{m/s} }{1,8 \;\unit{s} }\\
+  &=4,5 \;\unit{m/s^2} 
+\end{split}
+\end{equation*}
+Størrelsen af spillerens acceleration er altså $4,5 \;\unit{m/s^2} $.\\[1ex]
+\textbf{b.}
+Lad boldens begyndelsessted være $(x,y)=(0,0)$.
+Så har vi fra uafhængighedsprincippet, at
+\[
+x=v_0 \cdot \cos\left(\theta \right) \cdot t \iff t=\frac{x}{v_0 \cdot \cos\left(\theta \right) }
+\] 
+hvor $\theta $ er elevationsvinklen. 
+Vi beregner nu den tid, det tager bolden at tilbagelægge $40 \;\unit{m} $ i vandret retning. 
+\begin{equation*}
+\begin{split}
+  t&=\frac{x}{v_0 \cdot \cos\left(\theta \right) }\\
+  &=\frac{40 \;\unit{m} }{24 \;\unit{m/s} \cdot \cos\left(27 \degree \right) }\\
+  &\approx 1,9 \;\unit{s} 
+\end{split}
+\end{equation*}
+For at bestemme den højde over jorden, i hvilken bolden passerer målet, bruger vi igen uafhængighedsprincippet.
+\begin{equation*}
+\begin{split}
+  y&=-\frac{1}{2} \cdot g \cdot t^2 + v_0 \cdot \sin\left(\theta \right) \cdot t\\
+  &=-\frac{1}{2} \cdot 9,8 \;\unit{m/s^2} \cdot t^2 + 24 \;\unit{m/s} \cdot \sin\left(27 \degree \right) \cdot t \\
+  &\approx 3,2 \;\unit{m} 
+\end{split}
+\end{equation*}
+Altså tager det bolden $1,9 \;\unit{s} $ at nå til målet, hvor den passerer $3,2 \;\unit{m} $ over jorden. \\[1ex]
+\textbf{c.}
+Da spillerne følges ad med fælles hastighed efter, er der tale om et fuldstændigt uelastisk stød.
+Deres fart $v_0$ lige efter stødet må da være
+\begin{equation*}
+\begin{split}
+  v_0&=\frac{m_1 \cdot v_1 + m_2 \cdot v_2}{m_1+m_2}\\
+  &=\frac{98 \;\unit{kg} \cdot 5,9 \;\unit{m/s} + 79 \;\unit{kg} \cdot 8,1 \;\unit{m/s} }{98 \;\unit{kg} + 79 \;\unit{kg} }\\
+  &=\frac{1218,1}{177} \;\unit{m/s} 
+\end{split}
+\end{equation*}
+Gnidningskraften er modsatrettet hastigheden, hvis retning vi regner i, og siden der er vandret underlag, så må normalkraften være lig med tyngdekraften: $F_N=F_t$.
+Der gælder altså
+\begin{equation*}
+\begin{split}
+  F _{\text{res} }=-F _{\mu } &\iff m \cdot a = -\mu \cdot F_N\\
+  &\iff a=-\frac{\mu \cdot F_t}{m}\\
+  &\iff a=-\mu \cdot g
+\end{split}
+\end{equation*}
+Efter sammenstødet er der så tale om en konstant accelereret bevægelse, og når spillerne er nået så langt som muligt, så er $v_{\text{slut} }=0$, og vi har da 
+\begin{equation*}
+\begin{split}
+  \Delta s&=\frac{v _{slut}^2-v_0^2}{2 \cdot a}\\
+  &=\frac{v_0^2-0}{2 \cdot \mu \cdot g}\\
+  &=\frac{\left(\frac{1218,1}{177} \;\unit{m/s} \right)^2}{2 \cdot 0,70 \cdot 9,8 \;\unit{m/s^2} }\\
+  &\approx 3,5 \;\unit{m} 
+\end{split}
+\end{equation*}
+Altså glider spillerne $3,5 \;\unit{m} $ hen over græsset efter sammenstødet. 
+
+\begin{question}{Fiskevægt}{}
+Billedet viser en vægt til at veje fisk. Vægten består af en fjeder med en skala, hvor man kan aflæse fiskens masse i kg.
+\begin{itemize}
+  \item[a.] Tildel passende værdier til relevante fysiske størrelser, og vurdér fjederens fjederkonstant. 
+  Gør herunder rede for relevante antagelser.
+\end{itemize}
+\end{question}
+\sol \\
+\textbf{a.}
+Tykkelsen af min pegefinger er målt til at være $1,5 \;\unit{cm} $, hvilket vi antager, at pegefingeren på billedet også er.
+Ved ligevægtstillingen må den røde del af fjederen stå ved 0.
+Ved afmåling med lineal er afstanden mellem den røde streg og ligevægtsstillingen 1,5 gange tykkelsen af fingeren.
+Afstanden $x$ er altså 
+\[
+x=1,5 \cdot 1,5 \;\unit{cm} =2,25 \;\unit{cm} 
+\] 
+På billedet er fjederkraften og tyngdekraften lige store og modsatrettede.
+Der gælder altså
+\begin{equation*}
+\begin{split}
+  F_t=-F_{\text{fjeder} } &\iff m \cdot g = -(-k \cdot x) \\
+  &\iff k=\frac{m \cdot g}{x}
+\end{split}
+\end{equation*}
+Massen af fisken på billedet aflæses til at være $3,4 \;\unit{kg} $, og vi kan da regne fjederkonstanten ud.
+\begin{equation*}
+\begin{split}
+  k&=\frac{m \cdot g}{x}\\
+  &=\frac{3,4 \;\unit{kg} \cdot 9,8 \;\unit{m/s^2}}{2,25 \cdot 10^{-2}\;\unit{m} }\\
+  &\approx 1,5 \cdot 10^3 \;\unit{N/m} \\
+  &=1,5 \;\unit{kN/m} 
+\end{split}
+\end{equation*}
+Altså er fjederens fjederkonstant $1,5 \;\unit{kN/m} $.
+
+\end{document}

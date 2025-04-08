@@ -1,0 +1,863 @@
+\documentclass{article}
+\usepackage{graphicx, tikz-cd, float, titlepic, booktabs} % Required for inserting images
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+\usepackage{amsmath, amssymb, amsthm, amsfonts, siunitx, physics, gensymb}
+\AtBeginDocument{\RenewCommandCopy\qty\SI}
+\usepackage[version=4]{mhchem}
+\usepackage[most,many,breakable]{tcolorbox}
+\usepackage{xcolor, fancyhdr, varwidth}
+\usepackage[Glenn]{fncychap}
+%Options: Sonny, Lenny, Glenn, Conny, Rejne, Bjarne, Bjornstrup
+\usepackage{hyperref, cleveref}
+\usepackage{icomma, enumitem} %comma as decimal and continue enumerate with [resume]
+\usepackage[danish]{babel}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SELF MADE COLORS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{myg}{RGB}{56, 140, 70}
+\definecolor{myb}{RGB}{45, 111, 177}
+\definecolor{myr}{RGB}{199, 68, 64}
+\definecolor{mytheorembg}{HTML}{F2F2F9}
+\definecolor{mytheoremfr}{HTML}{00007B}
+\definecolor{mylenmabg}{HTML}{FFFAF8}
+\definecolor{mylenmafr}{HTML}{983b0f}
+\definecolor{mypropbg}{HTML}{f2fbfc}
+\definecolor{mypropfr}{HTML}{191971}
+\definecolor{myexamplebg}{HTML}{F2FBF8}
+\definecolor{myexamplefr}{HTML}{88D6D1}
+\definecolor{myexampleti}{HTML}{2A7F7F}
+\definecolor{mydefinitbg}{HTML}{E5E5FF}
+\definecolor{mydefinitfr}{HTML}{3F3FA3}
+\definecolor{notesgreen}{RGB}{0,162,0}
+\definecolor{myp}{RGB}{197, 92, 212}
+\definecolor{mygr}{HTML}{2C3338}
+\definecolor{myred}{RGB}{127,0,0}
+\definecolor{myyellow}{RGB}{169,121,69}
+\definecolor{myexercisebg}{HTML}{F2FBF8}
+\definecolor{myexercisefg}{HTML}{88D6D1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Box environments for theorems and problems
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\parindent}{1cm}
+%================================
+% Question BOX
+%================================
+\makeatletter
+\newtcbtheorem{question}{Opgave}{enhanced,
+	breakable,
+	colback=white,
+	colframe=myb!80!black,
+	attach boxed title to top left={yshift*=-\tcboxedtitleheight},
+	fonttitle=\bfseries,
+	title={#2},
+	boxed title size=title,
+	boxed title style={%
+			sharp corners,
+			rounded corners=northwest,
+			colback=tcbcolframe,
+			boxrule=0pt,
+		},
+	underlay boxed title={%
+			\path[fill=tcbcolframe] (title.south west)--(title.south east)
+			to[out=0, in=180] ([xshift=5mm]title.east)--
+			(title.center-|frame.east)
+			[rounded corners=\kvtcb@arc] |-
+			(frame.north) -| cycle;
+		},
+	#1
+}{def}
+\makeatother
+%================================
+% DEFINITION BOX
+%================================
+
+\newtcbtheorem[]{Definition}{Definition}{enhanced,
+	before skip=2mm,after skip=2mm, colback=red!5,colframe=red!80!black,boxrule=0.5mm,
+	attach boxed title to top left={xshift=1cm,yshift*=1mm-\tcboxedtitleheight}, varwidth boxed title*=-3cm,
+	boxed title style={frame code={
+					\path[fill=tcbcolback]
+					([yshift=-1mm,xshift=-1mm]frame.north west)
+					arc[start angle=0,end angle=180,radius=1mm]
+					([yshift=-1mm,xshift=1mm]frame.north east)
+					arc[start angle=180,end angle=0,radius=1mm];
+					\path[left color=tcbcolback!60!black,right color=tcbcolback!60!black,
+						middle color=tcbcolback!80!black]
+					([xshift=-2mm]frame.north west) -- ([xshift=2mm]frame.north east)
+					[rounded corners=1mm]-- ([xshift=1mm,yshift=-1mm]frame.north east)
+					-- (frame.south east) -- (frame.south west)
+					-- ([xshift=-1mm,yshift=-1mm]frame.north west)
+					[sharp corners]-- cycle;
+				},interior engine=empty,
+		},
+	fonttitle=\bfseries,
+	title={#2},#1}{def}
+\newtcbtheorem[]{definition}{Definition}{enhanced,
+	before skip=2mm,after skip=2mm, colback=red!5,colframe=red!80!black,boxrule=0.5mm,
+	attach boxed title to top left={xshift=1cm,yshift*=1mm-\tcboxedtitleheight}, varwidth boxed title*=-3cm,
+	boxed title style={frame code={
+					\path[fill=tcbcolback]
+					([yshift=-1mm,xshift=-1mm]frame.north west)
+					arc[start angle=0,end angle=180,radius=1mm]
+					([yshift=-1mm,xshift=1mm]frame.north east)
+					arc[start angle=180,end angle=0,radius=1mm];
+					\path[left color=tcbcolback!60!black,right color=tcbcolback!60!black,
+						middle color=tcbcolback!80!black]
+					([xshift=-2mm]frame.north west) -- ([xshift=2mm]frame.north east)
+					[rounded corners=1mm]-- ([xshift=1mm,yshift=-1mm]frame.north east)
+					-- (frame.south east) -- (frame.south west)
+					-- ([xshift=-1mm,yshift=-1mm]frame.north west)
+					[sharp corners]-- cycle;
+				},interior engine=empty,
+		},
+	fonttitle=\bfseries,
+	title={#2},#1}{def}
+
+\newtcbtheorem{theo}%
+    {Theorem}{}{theorem}
+\newtcolorbox{prob}[1]{colback=red!5!white,colframe=red!50!black,fonttitle=\bfseries,title={#1}}
+%================================
+% NOTE BOX
+%================================
+
+\usetikzlibrary{arrows,calc,shadows.blur}
+\tcbuselibrary{skins}
+\newtcolorbox{note}[1][]{%
+	enhanced jigsaw,
+	colback=gray!20!white,%
+	colframe=gray!80!black,
+	size=small,
+	boxrule=1pt,
+	title=\textbf{Note:},
+	halign title=flush center,
+	coltitle=black,
+	breakable,
+	drop shadow=black!50!white,
+	attach boxed title to top left={xshift=1cm,yshift=-\tcboxedtitleheight/2,yshifttext=-\tcboxedtitleheight/2},
+	minipage boxed title=1.5cm,
+	boxed title style={%
+			colback=white,
+			size=fbox,
+			boxrule=1pt,
+			boxsep=2pt,
+			underlay={%
+					\coordinate (dotA) at ($(interior.west) + (-0.5pt,0)$);
+					\coordinate (dotB) at ($(interior.east) + (0.5pt,0)$);
+					\begin{scope}
+						\clip (interior.north west) rectangle ([xshift=3ex]interior.east);
+						\filldraw [white, blur shadow={shadow opacity=60, shadow yshift=-.75ex}, rounded corners=2pt] (interior.north west) rectangle (interior.south east);
+					\end{scope}
+					\begin{scope}[gray!80!black]
+						\fill (dotA) circle (2pt);
+						\fill (dotB) circle (2pt);
+					\end{scope}
+				},
+		},
+	#1,
+}
+%================================
+% EXAMPLE BOX
+%================================
+\newtcbtheorem[number within=section]{Example}{Example}
+{%
+	colback = myexamplebg
+	,breakable
+	,colframe = myexamplefr
+	,coltitle = myexampleti
+	,boxrule = 1pt
+	,sharp corners
+	,detach title
+	,before upper=\tcbtitle\par\smallskip
+	,fonttitle = \bfseries
+	,description font = \mdseries
+	,separator sign none
+	,description delimiters parenthesis
+}
+{ex}
+%================================
+% THEOREM BOX
+%================================
+
+\tcbuselibrary{theorems,skins,hooks}
+\newtcbtheorem[number within=section]{Theorem}{Theorem}
+{%
+	enhanced,
+	breakable,
+	colback = mytheorembg,
+	frame hidden,
+	boxrule = 0sp,
+	borderline west = {2pt}{0pt}{mytheoremfr},
+	sharp corners,
+	detach title,
+	before upper = \tcbtitle\par\smallskip,
+	coltitle = mytheoremfr,
+	fonttitle = \bfseries\sffamily,
+	description font = \mdseries,
+	separator sign none,
+	segmentation style={solid, mytheoremfr},
+}
+{th}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SELF MADE COMMANDS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\sol}{\setlength{\parindent}{0cm}\textbf{\textit{Løsning:}}\setlength{\parindent}{1cm}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[tmargin=2cm,rmargin=1in,lmargin=1in,margin=0.85in,bmargin=2cm,footskip=.2in]{geometry}\pagestyle{fancy}
+\lhead{Minrui Kevin Zhou 3.b}
+\rhead{Aflevering 30}
+
+\title{Aflevering 30\\
+{\Large \textbf{3.b mat A}}}
+\author{Kevin Zhou}
+\date{\today}
+
+\begin{document}
+\maketitle
+\pagebreak
+\begin{question}{}{}
+  Bestem $\int(e^x + 6x^5 - 1)  \,dx $
+\end{question}
+\sol \\
+Vi benytter sumreglen.
+\begin{equation*}
+\begin{split}
+  \int (e^x + 6x^5 -1) \,dx &= e^x + 6 \cdot \frac{1}{6} x^6 - x +k \\ 
+  &=e^x + x^6 -x +k
+\end{split}
+\end{equation*}
+\begin{question}{}{}
+  En funktion $f: \mathbb{R}^+ \to \mathbb{R}$ er givet ved
+  \[
+  f(x)= \ln(x) -3x^2+10
+  \] 
+  Bestem den stamfunktion til $f$, hvis graf går gennem punktet $P(1,20)$. 
+\end{question}
+\sol \\
+Vi finder først et generelt udtryk for en stamfunktion for $f$.
+\begin{equation*}
+\begin{split}
+  F(x) &= \int f(x) \,dx \\ 
+  &=\int (\ln(x)-3x^2+10) \,dx \\ 
+  &=x \cdot \ln(x) -x -\frac{3}{3} x^3 +10x +k\\ 
+  &=(\ln(x)+9-x^2)x+k
+\end{split}
+\end{equation*}
+Grafen for stamfunktionen skal gå gennem $P(1,20)$.
+\begin{equation*}
+\begin{split}
+  F(1)=20 &\iff (\ln(1)+9-1^2)\cdot 1 + k =20\\ 
+  &\iff 0+9-1 + k = 20 \\ 
+  &\iff k=12
+\end{split}
+\end{equation*}
+Altså er stamfunktionen til $f$, hvis graf går gennem punktet $P(1,20)$ 
+\[
+F(x)=(\ln(x)+9-x^2)x+12
+\] 
+\begin{question}{}{}
+ En funktion $f:\mathbb{R}\to \mathbb{R}$ er givet ved
+  \[
+  f(x)= -3x^2 +12x-9
+  \] 
+  \begin{itemize}
+    \item[a.] Løs ligningen $f(x)=0$.
+  \end{itemize}
+  Grafen for $f$ afgrænser sammen med førsteaksen et område $M$, der har et areal. 
+  \begin{itemize}
+    \item[b.] Bestem arealet af $M$.
+  \end{itemize}
+\end{question}
+\sol \\
+\textbf{a.}
+Andengradsligningen løses med nulreglen.
+\begin{equation*}
+\begin{split}
+  f(x)=0 &\iff -3x^2+12x-9=0\\ 
+  &\iff -x^2 + 4x - 3=0\\ 
+  &\iff -(x-3)(x-1)=0\\ 
+  &\iff x-3=0 \lor x-1=0\\ 
+  &\iff x=3 \lor x=1
+\end{split}
+\end{equation*}
+\textbf{b.}
+Arealet af $M$ må være 
+\begin{equation*}
+\begin{split}
+  A(M)&=\int_{1}^{3} f(x) \,dx \\ 
+  &=\int_{1}^{3} (-3x^2+12x-9) \,dx \\ 
+  &=\left[-x^3+6x^2-9x\right]_1^3\\ 
+  &=-3^3+6 \cdot 3^2 - 9 \cdot 3 -(-1^3+6 \cdot 1^2 - 9 \cdot 1)\\ 
+  &=6 \cdot (3^2-1) - (2+3) \cdot 9 + 1\\ 
+  &=4
+\end{split}
+\end{equation*}
+Altså er arealet af $M$ 4. 
+\begin{question}{}{}
+  Funktionerne $f:\mathbb{R}\to \mathbb{R}$ og $g:\mathbb{R}\to \mathbb{R}$ er givet ved
+  \[
+  f(x)= x^2-1, \quad g(x)=x+1
+  \] 
+  \begin{itemize}
+    \item[a.] Bestem koordinatsættet til hvert af skæringspunkterne mellem grafen for $f$ og grafen for $g$. 
+  \end{itemize}
+  Graferne for de to funktioner afgrænser et område $M$, der har et areal.
+  \begin{itemize}
+    \item[b.] Bestem arealet af området $M$.
+  \end{itemize}
+\end{question}
+\sol \\
+\textbf{a.}
+Graferne skærer hinanden, når den samme $x$ giver den samme $y$ for begge funktioner. 
+\begin{equation*}
+\begin{split}
+  f(x)=g(x) &\iff x^2-1=x+1\\ 
+  &\iff x^2-x-2=0\\ 
+  &\iff (x-2)(x+1)=0\\ 
+  &\iff x=2 \lor x=-1
+\end{split}
+\end{equation*}
+For at finde $y$-værdien for skæringspunkterne, benytter vi $g(x)$. 
+\begin{equation*}
+\begin{split}
+  g(2)&=3\\ 
+  g(-1)&=0
+\end{split}
+\end{equation*}
+Altså er koordinatsættene til hvert af skæringspunkterne mellem grafen for $f$ og grafen for $g$ henholdsvis $(2,3)$ og $(-1,0)$. \\[1ex]
+\textbf{b.}
+Fra grafen ser vi, at $f(x)\leq g(x)$ for alle $x \in [-1,2]$.
+Altså har vi, at
+\begin{equation*}
+\begin{split}
+  A(M)&=\int_{-1}^{2} g(x)-f(x) \,dx \\ 
+  &=\int_{-1}^{2} x+1-(x^2-1) \,dx\\ 
+  &=\int_{-1}^{2} -x^2 +x+2\,dx \\ 
+  &=-\left[\frac{1}{3}x^3\right]_{-1}^2+\left[\frac{1}{2}x^2\right]_{-1}^2 + \left[2x\right]_{-1}^2\\ 
+  &=-3+\frac{3}{2}+6\\ 
+  &=\frac{9}{2}
+\end{split}
+\end{equation*}
+Arealet af området $M$ er altså $\frac{9}{2}$.
+\begin{question}{}{}
+  Bestem integralet
+  \[
+  \int x \cdot \cos(x^2+1) \,dx 
+  \] 
+\end{question}
+\sol \\
+Vi benytter integration ved substitution, hvor vi lader $t=x^2+1$.
+\begin{equation*}
+\begin{split}
+  \int x \cdot \cos(x^2+1) \,dx &= \frac{1}{2} \int 2x \cdot \cos(x^2+1) \,dx \\ 
+  &=\frac{1}{2} \int \cos(t) \,dt\\ 
+  &=\frac{1}{2} \sin(t)+k\\ 
+  &=\frac{1}{2} \sin(x^2+1)+k
+\end{split}
+\end{equation*}
+\begin{question}{}{}
+  En funktion $f:\mathbb{R}\to \mathbb{R}$ er givet ved
+  \[
+  f(x)= e^{0,25 \cdot x}+ e^{-0,50 \cdot x}
+  \] 
+  \begin{itemize}
+    \item[a.] Bestem minimum for $f$ ved brug af $f'(x)$. 
+  \end{itemize}
+  Grafen for $f$ afgrænser sammen med koordinatsystemets førsteakse og linjerne $x=-2$ og $x=3$ et område $M$. 
+  Når $M$ drejes $360 \degree $ omkring førsteaksen fremkommer der et omdrejningslegeme. 
+  \begin{itemize}
+    \item[b.] Bestem rumfanget af omdrejningslegemet.
+    \item[c.] Bestem kurvelængden af grafen for $f$ i intervallet $-2\leq x \leq 3$.
+  \end{itemize}
+\end{question}
+\sol \\
+\textbf{a.}
+Vi finder først den afledede funktion for $f$.
+\begin{equation*}
+\begin{split}
+  f'(x)&=\dv{x} \left(e^{0,25 \cdot x}+ e^{-0,50 \cdot x}\right) \\ 
+  &=0,25 \cdot e^{0,25 \cdot x}-0,50 \cdot e^{-0,50 \cdot x}
+\end{split}
+\end{equation*}
+Vi løser så ligningen $f'(x)=0$. 
+\begin{equation*}
+\begin{split}
+  f'(x)=0 &\iff 0,25 \cdot e^{0,25 \cdot x}-0,50 \cdot e^{-0,50 \cdot x}=0\\
+  &\iff e^{\frac{1}{4}x}-2e^{-\frac{1}{2}x}=0\\ 
+  &\iff \ln \left(e^{\frac{1}{4}x}\right) = \ln \left(2 \cdot e^{-\frac{1}{2}x}\right) \\
+  &\iff \left(\frac{1}{4}+\frac{1}{2}\right) \cdot x=\ln(2) \\
+  &\iff x=\frac{4}{3}\ln(2)
+\end{split}
+\end{equation*}
+I intervallerne $]-\infty;\frac{4}{3}\ln(2)[$ og $]\frac{4}{3}\ln(2);\infty[$ har $f'(x)$ konstant fortegn, siden funktionen er kontinuert. 
+For at bekræfte, at vores fundne $x$-værdi er et minimumssted vælger vi tilfældige $x$-værdier i hvert interval og udregner $f'(x)$. 
+\begin{equation*}
+\begin{split}
+  &f'(0)=0,25 \cdot e^{0,25 \cdot 0}-0,50 \cdot e^{-0,50 \cdot 0}=-0,25<0\\
+  &f'(1)=0,25 \cdot e^{0,25 \cdot 1}-0,50 \cdot e^{-0,50 \cdot 1}\approx 0,0177>0
+\end{split}
+\end{equation*}
+Altså må $\frac{4}{3}\ln(2)$ være et minimumssted, hvilket også kan ses i \cref{fig:graf}, og minimum for $f$ må da være
+\begin{equation*}
+\begin{split}
+  f\left(\frac{4}{3}\ln(2)\right) \approx 1,89
+\end{split}
+\end{equation*}
+Minimum for $f$ er altså $1,89$.
+\begin{figure}[H]
+\begin{center}
+\definecolor{qqwuqq}{rgb}{0.,0.39215686274509803,0.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\begin{axis}[
+x=1.0cm,y=1.0cm,
+axis lines=middle,
+ymajorgrids=true,
+xmajorgrids=true,
+xmin=-4.0,
+xmax=6.0,
+ymin=-1.0,
+ymax=9.0,
+xtick={-4.0,-3.0,...,6.0},
+ytick={-1.0,0.0,...,9.0},]
+\clip(-4.,-1.) rectangle (6.,9.);
+\draw[line width=2.pt,color=qqwuqq] (-4.0,7.756935540102091) -- (-4.0,7.756935540102091);
+\draw[line width=2.pt,color=qqwuqq] (-4.0,7.756935540102091) -- (-3.975,7.667453657724402);
+\draw[line width=2.pt,color=qqwuqq] (-3.975,7.667453657724402) -- (-3.95,7.57912644871548);
+\draw[line width=2.pt,color=qqwuqq] (-3.95,7.57912644871548) -- (-3.9250000000000003,7.491939839783492);
+\draw[line width=2.pt,color=qqwuqq] (-3.9250000000000003,7.491939839783492) -- (-3.9000000000000004,7.40587993415245);
+\draw[line width=2.pt,color=qqwuqq] (-3.9000000000000004,7.40587993415245) -- (-3.8750000000000004,7.320933009380126);
+\draw[line width=2.pt,color=qqwuqq] (-3.8750000000000004,7.320933009380126) -- (-3.8500000000000005,7.237085515203128);
+\draw[line width=2.pt,color=qqwuqq] (-3.8500000000000005,7.237085515203128) -- (-3.8250000000000006,7.154324071408828);
+\draw[line width=2.pt,color=qqwuqq] (-3.8250000000000006,7.154324071408828) -- (-3.8000000000000007,7.072635465733772);
+\draw[line width=2.pt,color=qqwuqq] (-3.8000000000000007,7.072635465733772) -- (-3.775000000000001,6.992006651788286);
+\draw[line width=2.pt,color=qqwuqq] (-3.775000000000001,6.992006651788286) -- (-3.750000000000001,6.912424747006914);
+\draw[line width=2.pt,color=qqwuqq] (-3.750000000000001,6.912424747006914) -- (-3.725000000000001,6.8338770306243894);
+\draw[line width=2.pt,color=qqwuqq] (-3.725000000000001,6.8338770306243894) -- (-3.700000000000001,6.7563509416768275);
+\draw[line width=2.pt,color=qqwuqq] (-3.700000000000001,6.7563509416768275) -- (-3.675000000000001,6.679834077027804);
+\draw[line width=2.pt,color=qqwuqq] (-3.675000000000001,6.679834077027804) -- (-3.6500000000000012,6.604314189419035);
+\draw[line width=2.pt,color=qqwuqq] (-3.6500000000000012,6.604314189419035) -- (-3.6250000000000013,6.529779185545331);
+\draw[line width=2.pt,color=qqwuqq] (-3.6250000000000013,6.529779185545331) -- (-3.6000000000000014,6.456217124153549);
+\draw[line width=2.pt,color=qqwuqq] (-3.6000000000000014,6.456217124153549) -- (-3.5750000000000015,6.383616214165215);
+\draw[line width=2.pt,color=qqwuqq] (-3.5750000000000015,6.383616214165215) -- (-3.5500000000000016,6.311964812822559);
+\draw[line width=2.pt,color=qqwuqq] (-3.5500000000000016,6.311964812822559) -- (-3.5250000000000017,6.241251423857628);
+\draw[line width=2.pt,color=qqwuqq] (-3.5250000000000017,6.241251423857628) -- (-3.5000000000000018,6.171464695684243);
+\draw[line width=2.pt,color=qqwuqq] (-3.5000000000000018,6.171464695684243) -- (-3.475000000000002,6.1025934196124645);
+\draw[line width=2.pt,color=qqwuqq] (-3.475000000000002,6.1025934196124645) -- (-3.450000000000002,6.034626528085327);
+\draw[line width=2.pt,color=qqwuqq] (-3.450000000000002,6.034626528085327) -- (-3.425000000000002,5.967553092937546);
+\draw[line width=2.pt,color=qqwuqq] (-3.425000000000002,5.967553092937546) -- (-3.400000000000002,5.901362323675932);
+\draw[line width=2.pt,color=qqwuqq] (-3.400000000000002,5.901362323675932) -- (-3.375000000000002,5.836043565781235);
+\draw[line width=2.pt,color=qqwuqq] (-3.375000000000002,5.836043565781235) -- (-3.3500000000000023,5.771586299031169);
+\draw[line width=2.pt,color=qqwuqq] (-3.3500000000000023,5.771586299031169) -- (-3.3250000000000024,5.707980135844337);
+\draw[line width=2.pt,color=qqwuqq] (-3.3250000000000024,5.707980135844337) -- (-3.3000000000000025,5.645214819644804);
+\draw[line width=2.pt,color=qqwuqq] (-3.3000000000000025,5.645214819644804) -- (-3.2750000000000026,5.583280223247068);
+\draw[line width=2.pt,color=qqwuqq] (-3.2750000000000026,5.583280223247068) -- (-3.2500000000000027,5.522166347261168);
+\draw[line width=2.pt,color=qqwuqq] (-3.2500000000000027,5.522166347261168) -- (-3.2250000000000028,5.461863318517675);
+\draw[line width=2.pt,color=qqwuqq] (-3.2250000000000028,5.461863318517675) -- (-3.200000000000003,5.402361388512342);
+\draw[line width=2.pt,color=qqwuqq] (-3.200000000000003,5.402361388512342) -- (-3.175000000000003,5.343650931870141);
+\draw[line width=2.pt,color=qqwuqq] (-3.175000000000003,5.343650931870141) -- (-3.150000000000003,5.285722444828458);
+\draw[line width=2.pt,color=qqwuqq] (-3.150000000000003,5.285722444828458) -- (-3.125000000000003,5.228566543739223);
+\draw[line width=2.pt,color=qqwuqq] (-3.125000000000003,5.228566543739223) -- (-3.100000000000003,5.172173963589714);
+\draw[line width=2.pt,color=qqwuqq] (-3.100000000000003,5.172173963589714) -- (-3.0750000000000033,5.116535556541821);
+\draw[line width=2.pt,color=qqwuqq] (-3.0750000000000033,5.116535556541821) -- (-3.0500000000000034,5.0616422904895435);
+\draw[line width=2.pt,color=qqwuqq] (-3.0500000000000034,5.0616422904895435) -- (-3.0250000000000035,5.007485247634477);
+\draw[line width=2.pt,color=qqwuqq] (-3.0250000000000035,5.007485247634477) -- (-3.0000000000000036,4.954055623079086);
+\draw[line width=2.pt,color=qqwuqq] (-3.0000000000000036,4.954055623079086) -- (-2.9750000000000036,4.901344723437536);
+\draw[line width=2.pt,color=qqwuqq] (-2.9750000000000036,4.901344723437536) -- (-2.9500000000000037,4.8493439654638495);
+\draw[line width=2.pt,color=qqwuqq] (-2.9500000000000037,4.8493439654638495) -- (-2.925000000000004,4.798044874697217);
+\draw[line width=2.pt,color=qqwuqq] (-2.925000000000004,4.798044874697217) -- (-2.900000000000004,4.747439084124188);
+\draw[line width=2.pt,color=qqwuqq] (-2.900000000000004,4.747439084124188) -- (-2.875000000000004,4.697518332857587);
+\draw[line width=2.pt,color=qqwuqq] (-2.875000000000004,4.697518332857587) -- (-2.850000000000004,4.648274464831921);
+\draw[line width=2.pt,color=qqwuqq] (-2.850000000000004,4.648274464831921) -- (-2.825000000000004,4.599699427515073);
+\draw[line width=2.pt,color=qqwuqq] (-2.825000000000004,4.599699427515073) -- (-2.8000000000000043,4.551785270636092);
+\draw[line width=2.pt,color=qqwuqq] (-2.8000000000000043,4.551785270636092) -- (-2.7750000000000044,4.504524144928872);
+\draw[line width=2.pt,color=qqwuqq] (-2.7750000000000044,4.504524144928872) -- (-2.7500000000000044,4.457908300891527);
+\draw[line width=2.pt,color=qqwuqq] (-2.7500000000000044,4.457908300891527) -- (-2.7250000000000045,4.411930087561255);
+\draw[line width=2.pt,color=qqwuqq] (-2.7250000000000045,4.411930087561255) -- (-2.7000000000000046,4.366581951304531);
+\draw[line width=2.pt,color=qqwuqq] (-2.7000000000000046,4.366581951304531) -- (-2.6750000000000047,4.321856434622395);
+\draw[line width=2.pt,color=qqwuqq] (-2.6750000000000047,4.321856434622395) -- (-2.650000000000005,4.277746174970683);
+\draw[line width=2.pt,color=qqwuqq] (-2.650000000000005,4.277746174970683) -- (-2.625000000000005,4.234243903595002);
+\draw[line width=2.pt,color=qqwuqq] (-2.625000000000005,4.234243903595002) -- (-2.600000000000005,4.191342444380268);
+\draw[line width=2.pt,color=qqwuqq] (-2.600000000000005,4.191342444380268) -- (-2.575000000000005,4.149034712714629);
+\draw[line width=2.pt,color=qqwuqq] (-2.575000000000005,4.149034712714629) -- (-2.550000000000005,4.107313714367585);
+\draw[line width=2.pt,color=qqwuqq] (-2.550000000000005,4.107313714367585) -- (-2.5250000000000052,4.0661725443821455);
+\draw[line width=2.pt,color=qqwuqq] (-2.5250000000000052,4.0661725443821455) -- (-2.5000000000000053,4.02560438598084);
+\draw[line width=2.pt,color=qqwuqq] (-2.5000000000000053,4.02560438598084) -- (-2.4750000000000054,3.9856025094854095);
+\draw[line width=2.pt,color=qqwuqq] (-2.4750000000000054,3.9856025094854095) -- (-2.4500000000000055,3.9461602712500143);
+\draw[line width=2.pt,color=qqwuqq] (-2.4500000000000055,3.9461602712500143) -- (-2.4250000000000056,3.9072711126077904);
+\draw[line width=2.pt,color=qqwuqq] (-2.4250000000000056,3.9072711126077904) -- (-2.4000000000000057,3.868928558830582);
+\draw[line width=2.pt,color=qqwuqq] (-2.4000000000000057,3.868928558830582) -- (-2.3750000000000058,3.8311262181017023);
+\draw[line width=2.pt,color=qqwuqq] (-2.3750000000000058,3.8311262181017023) -- (-2.350000000000006,3.7938577805015403);
+\draw[line width=2.pt,color=qqwuqq] (-2.350000000000006,3.7938577805015403) -- (-2.325000000000006,3.7571170170058763);
+\draw[line width=2.pt,color=qqwuqq] (-2.325000000000006,3.7571170170058763) -- (-2.300000000000006,3.720897778496732);
+\draw[line width=2.pt,color=qqwuqq] (-2.300000000000006,3.720897778496732) -- (-2.275000000000006,3.685193994785609);
+\draw[line width=2.pt,color=qqwuqq] (-2.275000000000006,3.685193994785609) -- (-2.250000000000006,3.649999673648963);
+\draw[line width=2.pt,color=qqwuqq] (-2.250000000000006,3.649999673648963) -- (-2.2250000000000063,3.6153088998757528);
+\draw[line width=2.pt,color=qqwuqq] (-2.2250000000000063,3.6153088998757528) -- (-2.2000000000000064,3.5811158343269285);
+\draw[line width=2.pt,color=qqwuqq] (-2.2000000000000064,3.5811158343269285) -- (-2.1750000000000065,3.5474147130067);
+\draw[line width=2.pt,color=qqwuqq] (-2.1750000000000065,3.5474147130067) -- (-2.1500000000000066,3.514199846145446);
+\draw[line width=2.pt,color=qqwuqq] (-2.1500000000000066,3.514199846145446) -- (-2.1250000000000067,3.481465617294116);
+\draw[line width=2.pt,color=qqwuqq] (-2.1250000000000067,3.481465617294116) -- (-2.1000000000000068,3.4492064824299873);
+\draw[line width=2.pt,color=qqwuqq] (-2.1000000000000068,3.4492064824299873) -- (-2.075000000000007,3.417416969073633);
+\draw[line width=2.pt,color=qqwuqq] (-2.075000000000007,3.417416969073633) -- (-2.050000000000007,3.3860916754169645);
+\draw[line width=2.pt,color=qqwuqq] (-2.050000000000007,3.3860916754169645) -- (-2.025000000000007,3.355225269462208);
+\draw[line width=2.pt,color=qqwuqq] (-2.025000000000007,3.355225269462208) -- (-2.000000000000007,3.324812488171687);
+\draw[line width=2.pt,color=qqwuqq] (-2.000000000000007,3.324812488171687) -- (-1.9750000000000072,3.2948481366282696);
+\draw[line width=2.pt,color=qqwuqq] (-1.9750000000000072,3.2948481366282696) -- (-1.9500000000000073,3.265327087206353);
+\draw[line width=2.pt,color=qqwuqq] (-1.9500000000000073,3.265327087206353) -- (-1.9250000000000074,3.236244278753253);
+\draw[line width=2.pt,color=qqwuqq] (-1.9250000000000074,3.236244278753253) -- (-1.9000000000000075,3.207594715780875);
+\draw[line width=2.pt,color=qqwuqq] (-1.9000000000000075,3.207594715780875) -- (-1.8750000000000075,3.1793734676675265);
+\draw[line width=2.pt,color=qqwuqq] (-1.8750000000000075,3.1793734676675265) -- (-1.8500000000000076,3.1515756678697664);
+\draw[line width=2.pt,color=qqwuqq] (-1.8500000000000076,3.1515756678697664) -- (-1.8250000000000077,3.1241965131441454);
+\draw[line width=2.pt,color=qqwuqq] (-1.8250000000000077,3.1241965131441454) -- (-1.8000000000000078,3.097231262778731);
+\draw[line width=2.pt,color=qqwuqq] (-1.8000000000000078,3.097231262778731) -- (-1.775000000000008,3.070675237834288);
+\draw[line width=2.pt,color=qqwuqq] (-1.775000000000008,3.070675237834288) -- (-1.750000000000008,3.044523820394998);
+\draw[line width=2.pt,color=qqwuqq] (-1.750000000000008,3.044523820394998) -- (-1.725000000000008,3.0187724528286024);
+\draw[line width=2.pt,color=qqwuqq] (-1.725000000000008,3.0187724528286024) -- (-1.7000000000000082,2.9934166370558466);
+\draw[line width=2.pt,color=qqwuqq] (-1.7000000000000082,2.9934166370558466) -- (-1.6750000000000083,2.9684519338291153);
+\draw[line width=2.pt,color=qqwuqq] (-1.6750000000000083,2.9684519338291153) -- (-1.6500000000000083,2.9438739620201457);
+\draw[line width=2.pt,color=qqwuqq] (-1.6500000000000083,2.9438739620201457) -- (-1.6250000000000084,2.9196783979167042);
+\draw[line width=2.pt,color=qqwuqq] (-1.6250000000000084,2.9196783979167042) -- (-1.6000000000000085,2.895860974528115);
+\draw[line width=2.pt,color=qqwuqq] (-1.6000000000000085,2.895860974528115) -- (-1.5750000000000086,2.8724174808995344);
+\draw[line width=2.pt,color=qqwuqq] (-1.5750000000000086,2.8724174808995344) -- (-1.5500000000000087,2.8493437614348647);
+\draw[line width=2.pt,color=qqwuqq] (-1.5500000000000087,2.8493437614348647) -- (-1.5250000000000088,2.8266357152281922);
+\draw[line width=2.pt,color=qqwuqq] (-1.5250000000000088,2.8266357152281922) -- (-1.5000000000000089,2.8042892954036547);
+\draw[line width=2.pt,color=qqwuqq] (-1.5000000000000089,2.8042892954036547) -- (-1.475000000000009,2.782300508463629);
+\draw[line width=2.pt,color=qqwuqq] (-1.475000000000009,2.782300508463629) -- (-1.450000000000009,2.7606654136451363);
+\draw[line width=2.pt,color=qqwuqq] (-1.450000000000009,2.7606654136451363) -- (-1.4250000000000091,2.739380122284362);
+\draw[line width=2.pt,color=qqwuqq] (-1.4250000000000091,2.739380122284362) -- (-1.4000000000000092,2.7184407971891975);
+\draw[line width=2.pt,color=qqwuqq] (-1.4000000000000092,2.7184407971891975) -- (-1.3750000000000093,2.6978436520196976);
+\draw[line width=2.pt,color=qqwuqq] (-1.3750000000000093,2.6978436520196976) -- (-1.3500000000000094,2.677584950676357);
+\draw[line width=2.pt,color=qqwuqq] (-1.3500000000000094,2.677584950676357) -- (-1.3250000000000095,2.657661006696113);
+\draw[line width=2.pt,color=qqwuqq] (-1.3250000000000095,2.657661006696113) -- (-1.3000000000000096,2.6380681826559753);
+\draw[line width=2.pt,color=qqwuqq] (-1.3000000000000096,2.6380681826559753) -- (-1.2750000000000097,2.6188028895841957);
+\draw[line width=2.pt,color=qqwuqq] (-1.2750000000000097,2.6188028895841957) -- (-1.2500000000000098,2.5998615863788714);
+\draw[line width=2.pt,color=qqwuqq] (-1.2500000000000098,2.5998615863788714) -- (-1.2250000000000099,2.5812407792339074);
+\draw[line width=2.pt,color=qqwuqq] (-1.2250000000000099,2.5812407792339074) -- (-1.20000000000001,2.562937021072234);
+\draw[line width=2.pt,color=qqwuqq] (-1.20000000000001,2.562937021072234) -- (-1.17500000000001,2.5449469109861966);
+\draw[line width=2.pt,color=qqwuqq] (-1.17500000000001,2.5449469109861966) -- (-1.1500000000000101,2.5272670936850274);
+\draw[line width=2.pt,color=qqwuqq] (-1.1500000000000101,2.5272670936850274) -- (-1.1250000000000102,2.5098942589493127);
+\draw[line width=2.pt,color=qqwuqq] (-1.1250000000000102,2.5098942589493127) -- (-1.1000000000000103,2.4928251410923705);
+\draw[line width=2.pt,color=qqwuqq] (-1.1000000000000103,2.4928251410923705) -- (-1.0750000000000104,2.476056518428449);
+\draw[line width=2.pt,color=qqwuqq] (-1.0750000000000104,2.476056518428449) -- (-1.0500000000000105,2.4595852127476685);
+\draw[line width=2.pt,color=qqwuqq] (-1.0500000000000105,2.4595852127476685) -- (-1.0250000000000106,2.4434080887976206);
+\draw[line width=2.pt,color=qqwuqq] (-1.0250000000000106,2.4434080887976206) -- (-1.0000000000000107,2.42752205377154);
+\draw[line width=2.pt,color=qqwuqq] (-1.0000000000000107,2.42752205377154) -- (-0.9750000000000106,2.411924056802974);
+\draw[line width=2.pt,color=qqwuqq] (-0.9750000000000106,2.411924056802974) -- (-0.9500000000000106,2.396611088466866);
+\draw[line width=2.pt,color=qqwuqq] (-0.9500000000000106,2.396611088466866) -- (-0.9250000000000106,2.381580180286975);
+\draw[line width=2.pt,color=qqwuqq] (-0.9250000000000106,2.381580180286975) -- (-0.9000000000000106,2.366828404249552);
+\draw[line width=2.pt,color=qqwuqq] (-0.9000000000000106,2.366828404249552) -- (-0.8750000000000105,2.3523528723231997);
+\draw[line width=2.pt,color=qqwuqq] (-0.8750000000000105,2.3523528723231997) -- (-0.8500000000000105,2.3381507359848372);
+\draw[line width=2.pt,color=qqwuqq] (-0.8500000000000105,2.3381507359848372) -- (-0.8250000000000105,2.3242191857516925);
+\draw[line width=2.pt,color=qqwuqq] (-0.8250000000000105,2.3242191857516925) -- (-0.8000000000000105,2.310555450719258);
+\draw[line width=2.pt,color=qqwuqq] (-0.8000000000000105,2.310555450719258) -- (-0.7750000000000105,2.2971567981051195);
+\draw[line width=2.pt,color=qqwuqq] (-0.7750000000000105,2.2971567981051195) -- (-0.7500000000000104,2.284020532798607);
+\draw[line width=2.pt,color=qqwuqq] (-0.7500000000000104,2.284020532798607) -- (-0.7250000000000104,2.2711439969161775);
+\draw[line width=2.pt,color=qqwuqq] (-0.7250000000000104,2.2711439969161775) -- (-0.7000000000000104,2.2585245693624696);
+\draw[line width=2.pt,color=qqwuqq] (-0.7000000000000104,2.2585245693624696) -- (-0.6750000000000104,2.246159665396962);
+\draw[line width=2.pt,color=qqwuqq] (-0.6750000000000104,2.246159665396962) -- (-0.6500000000000103,2.2340467362061545);
+\draw[line width=2.pt,color=qqwuqq] (-0.6500000000000103,2.2340467362061545) -- (-0.6250000000000103,2.2221832684812237);
+\draw[line width=2.pt,color=qqwuqq] (-0.6250000000000103,2.2221832684812237) -- (-0.6000000000000103,2.210566784001066);
+\draw[line width=2.pt,color=qqwuqq] (-0.6000000000000103,2.210566784001066) -- (-0.5750000000000103,2.199194839220674);
+\draw[line width=2.pt,color=qqwuqq] (-0.5750000000000103,2.199194839220674) -- (-0.5500000000000103,2.188065024864784);
+\draw[line width=2.pt,color=qqwuqq] (-0.5500000000000103,2.188065024864784) -- (-0.5250000000000102,2.1771749655267127);
+\draw[line width=2.pt,color=qqwuqq] (-0.5250000000000102,2.1771749655267127) -- (-0.5000000000000102,2.166522319272341);
+\draw[line width=2.pt,color=qqwuqq] (-0.5000000000000102,2.166522319272341) -- (-0.4750000000000102,2.15610477724917);
+\draw[line width=2.pt,color=qqwuqq] (-0.4750000000000102,2.15610477724917) -- (-0.45000000000001017,2.145920063300384);
+\draw[line width=2.pt,color=qqwuqq] (-0.45000000000001017,2.145920063300384) -- (-0.42500000000001015,2.135965933583872);
+\draw[line width=2.pt,color=qqwuqq] (-0.42500000000001015,2.135965933583872) -- (-0.4000000000000101,2.1262401761961334);
+\draw[line width=2.pt,color=qqwuqq] (-0.4000000000000101,2.1262401761961334) -- (-0.3750000000000101,2.1167406108010187);
+\draw[line width=2.pt,color=qqwuqq] (-0.3750000000000101,2.1167406108010187) -- (-0.3500000000000101,2.1074650882632393);
+\draw[line width=2.pt,color=qqwuqq] (-0.3500000000000101,2.1074650882632393) -- (-0.32500000000001006,2.0984114902865927);
+\draw[line width=2.pt,color=qqwuqq] (-0.32500000000001006,2.0984114902865927) -- (-0.30000000000001004,2.089577729056839);
+\draw[line width=2.pt,color=qqwuqq] (-0.30000000000001004,2.089577729056839) -- (-0.27500000000001,2.080961746889187);
+\draw[line width=2.pt,color=qqwuqq] (-0.27500000000001,2.080961746889187) -- (-0.25000000000001,2.0725615158803055);
+\draw[line width=2.pt,color=qqwuqq] (-0.25000000000001,2.0725615158803055) -- (-0.22500000000001,2.0643750375648433);
+\draw[line width=2.pt,color=qqwuqq] (-0.22500000000001,2.0643750375648433) -- (-0.20000000000001,2.0564003425763646);
+\draw[line width=2.pt,color=qqwuqq] (-0.20000000000001,2.0564003425763646) -- (-0.17500000000001,2.048635490312673);
+\draw[line width=2.pt,color=qqwuqq] (-0.17500000000001,2.048635490312673) -- (-0.15000000000001001,2.0410785686054562);
+\draw[line width=2.pt,color=qqwuqq] (-0.15000000000001001,2.0410785686054562) -- (-0.12500000000001002,2.0337276933942063);
+\draw[line width=2.pt,color=qqwuqq] (-0.12500000000001002,2.0337276933942063) -- (-0.10000000000001003,2.026581008404359);
+\draw[line width=2.pt,color=qqwuqq] (-0.10000000000001003,2.026581008404359) -- (-0.07500000000001003,2.019636684829605);
+\draw[line width=2.pt,color=qqwuqq] (-0.07500000000001003,2.019636684829605) -- (-0.05000000000001003,2.012892921018313);
+\draw[line width=2.pt,color=qqwuqq] (-0.05000000000001003,2.012892921018313) -- (-0.025000000000010028,2.006347942164032);
+\draw[line width=2.pt,color=qqwuqq] (-0.025000000000010028,2.006347942164032) -- (0.0,2.0000000000000027);
+\draw[line width=2.pt,color=qqwuqq] (0.0,2.0000000000000027) -- (0.024999999999989975,1.9938473724976458);
+\draw[line width=2.pt,color=qqwuqq] (0.024999999999989975,1.9938473724976458) -- (0.049999999999989976,1.9878883635689695);
+\draw[line width=2.pt,color=qqwuqq] (0.049999999999989976,1.9878883635689695) -- (0.07499999999998998,1.9821213027728501);
+\draw[line width=2.pt,color=qqwuqq] (0.07499999999998998,1.9821213027728501) -- (0.09999999999998999,1.976544545025145);
+\draw[line width=2.pt,color=qqwuqq] (0.09999999999998999,1.976544545025145) -- (0.12499999999998998,1.9711564703125806);
+\draw[line width=2.pt,color=qqwuqq] (0.12499999999998998,1.9711564703125806) -- (0.14999999999998997,1.9659554834103798);
+\draw[line width=2.pt,color=qqwuqq] (0.14999999999998997,1.9659554834103798) -- (0.17499999999998997,1.9609400136035786);
+\draw[line width=2.pt,color=qqwuqq] (0.17499999999998997,1.9609400136035786) -- (0.19999999999998996,1.9561085144119854);
+\draw[line width=2.pt,color=qqwuqq] (0.19999999999998996,1.9561085144119854) -- (0.22499999999998996,1.9514594633187448);
+\draw[line width=2.pt,color=qqwuqq] (0.22499999999998996,1.9514594633187448) -- (0.24999999999998995,1.9469913615024566);
+\draw[line width=2.pt,color=qqwuqq] (0.24999999999998995,1.9469913615024566) -- (0.27499999999999,1.9427027335728102);
+\draw[line width=2.pt,color=qqwuqq] (0.27499999999999,1.9427027335728102) -- (0.29999999999999,1.938592127309691);
+\draw[line width=2.pt,color=qqwuqq] (0.29999999999999,1.938592127309691) -- (0.32499999999999,1.9346581134057164);
+\draw[line width=2.pt,color=qqwuqq] (0.32499999999999,1.9346581134057164) -- (0.34999999999999004,1.9308992852121605);
+\draw[line width=2.pt,color=qqwuqq] (0.34999999999999004,1.9308992852121605) -- (0.37499999999999006,1.9273142584882277);
+\draw[line width=2.pt,color=qqwuqq] (0.37499999999999006,1.9273142584882277) -- (0.3999999999999901,1.9239016711536308);
+\draw[line width=2.pt,color=qqwuqq] (0.3999999999999901,1.9239016711536308) -- (0.4249999999999901,1.9206601830444405);
+\draw[line width=2.pt,color=qqwuqq] (0.4249999999999901,1.9206601830444405) -- (0.44999999999999013,1.9175884756721588);
+\draw[line width=2.pt,color=qqwuqq] (0.44999999999999013,1.9175884756721588) -- (0.47499999999999015,1.9146852519859854);
+\draw[line width=2.pt,color=qqwuqq] (0.47499999999999015,1.9146852519859854) -- (0.4999999999999902,1.911949236138232);
+\draw[line width=2.pt,color=qqwuqq] (0.4999999999999902,1.911949236138232) -- (0.5249999999999901,1.909379173252852);
+\draw[line width=2.pt,color=qqwuqq] (0.5249999999999901,1.909379173252852) -- (0.5499999999999902,1.9069738291970415);
+\draw[line width=2.pt,color=qqwuqq] (0.5499999999999902,1.9069738291970415) -- (0.5749999999999902,1.9047319903558861);
+\draw[line width=2.pt,color=qqwuqq] (0.5749999999999902,1.9047319903558861) -- (0.5999999999999902,1.9026524634100017);
+\draw[line width=2.pt,color=qqwuqq] (0.5999999999999902,1.9026524634100017) -- (0.6249999999999902,1.9007340751161468);
+\draw[line width=2.pt,color=qqwuqq] (0.6249999999999902,1.9007340751161468) -- (0.6499999999999903,1.8989756720907633);
+\draw[line width=2.pt,color=qqwuqq] (0.6499999999999903,1.8989756720907633) -- (0.6749999999999903,1.8973761205964124);
+\draw[line width=2.pt,color=qqwuqq] (0.6749999999999903,1.8973761205964124) -- (0.6999999999999903,1.895934306331072);
+\draw[line width=2.pt,color=qqwuqq] (0.6999999999999903,1.895934306331072) -- (0.7249999999999903,1.8946491342202607);
+\draw[line width=2.pt,color=qqwuqq] (0.7249999999999903,1.8946491342202607) -- (0.7499999999999903,1.8935195282119532);
+\draw[line width=2.pt,color=qqwuqq] (0.7499999999999903,1.8935195282119532) -- (0.7749999999999904,1.892544431074256);
+\draw[line width=2.pt,color=qqwuqq] (0.7749999999999904,1.892544431074256) -- (0.7999999999999904,1.8917228041958096);
+\draw[line width=2.pt,color=qqwuqq] (0.7999999999999904,1.8917228041958096) -- (0.8249999999999904,1.8910536273888827);
+\draw[line width=2.pt,color=qqwuqq] (0.8249999999999904,1.8910536273888827) -- (0.8499999999999904,1.890535898695132);
+\draw[line width=2.pt,color=qqwuqq] (0.8499999999999904,1.890535898695132) -- (0.8749999999999905,1.8901686341939872);
+\draw[line width=2.pt,color=qqwuqq] (0.8749999999999905,1.8901686341939872) -- (0.8999999999999905,1.8899508678136376);
+\draw[line width=2.pt,color=qqwuqq] (0.8999999999999905,1.8899508678136376) -- (0.9249999999999905,1.8898816511445862);
+\draw[line width=2.pt,color=qqwuqq] (0.9249999999999905,1.8898816511445862) -- (0.9499999999999905,1.8899600532557392);
+\draw[line width=2.pt,color=qqwuqq] (0.9499999999999905,1.8899600532557392) -- (0.9749999999999905,1.8901851605130067);
+\draw[line width=2.pt,color=qqwuqq] (0.9749999999999905,1.8901851605130067) -- (0.9999999999999906,1.8905560764003748);
+\draw[line width=2.pt,color=qqwuqq] (0.9999999999999906,1.8905560764003748) -- (1.0249999999999906,1.891071921343431);
+\draw[line width=2.pt,color=qqwuqq] (1.0249999999999906,1.891071921343431) -- (1.0499999999999905,1.8917318325353059);
+\draw[line width=2.pt,color=qqwuqq] (1.0499999999999905,1.8917318325353059) -- (1.0749999999999904,1.892534963765006);
+\draw[line width=2.pt,color=qqwuqq] (1.0749999999999904,1.892534963765006) -- (1.0999999999999903,1.893480485248108);
+\draw[line width=2.pt,color=qqwuqq] (1.0999999999999903,1.893480485248108) -- (1.1249999999999902,1.8945675834597882);
+\draw[line width=2.pt,color=qqwuqq] (1.1249999999999902,1.8945675834597882) -- (1.1499999999999901,1.895795460970158);
+\draw[line width=2.pt,color=qqwuqq] (1.1499999999999901,1.895795460970158) -- (1.17499999999999,1.8971633362818785);
+\draw[line width=2.pt,color=qqwuqq] (1.17499999999999,1.8971633362818785) -- (1.19999999999999,1.8986704436700288);
+\draw[line width=2.pt,color=qqwuqq] (1.19999999999999,1.8986704436700288) -- (1.2249999999999899,1.9003160330241997);
+\draw[line width=2.pt,color=qqwuqq] (1.2249999999999899,1.9003160330241997) -- (1.2499999999999898,1.9020993696927857);
+\draw[line width=2.pt,color=qqwuqq] (1.2499999999999898,1.9020993696927857) -- (1.2749999999999897,1.9040197343294558);
+\draw[line width=2.pt,color=qqwuqq] (1.2749999999999897,1.9040197343294558) -- (1.2999999999999896,1.9060764227417666);
+\draw[line width=2.pt,color=qqwuqq] (1.2999999999999896,1.9060764227417666) -- (1.3249999999999895,1.9082687457419039);
+\draw[line width=2.pt,color=qqwuqq] (1.3249999999999895,1.9082687457419039) -- (1.3499999999999894,1.9105960289995214);
+\draw[line width=2.pt,color=qqwuqq] (1.3499999999999894,1.9105960289995214) -- (1.3749999999999893,1.9130576128966506);
+\draw[line width=2.pt,color=qqwuqq] (1.3749999999999893,1.9130576128966506) -- (1.3999999999999893,1.9156528523846656);
+\draw[line width=2.pt,color=qqwuqq] (1.3999999999999893,1.9156528523846656) -- (1.4249999999999892,1.9183811168432696);
+\draw[line width=2.pt,color=qqwuqq] (1.4249999999999892,1.9183811168432696) -- (1.449999999999989,1.9212417899414853);
+\draw[line width=2.pt,color=qqwuqq] (1.449999999999989,1.9212417899414853) -- (1.474999999999989,1.9242342695006251);
+\draw[line width=2.pt,color=qqwuqq] (1.474999999999989,1.9242342695006251) -- (1.499999999999989,1.9273579673592147);
+\draw[line width=2.pt,color=qqwuqq] (1.499999999999989,1.9273579673592147) -- (1.5249999999999888,1.9306123092398524);
+\draw[line width=2.pt,color=qqwuqq] (1.5249999999999888,1.9306123092398524) -- (1.5499999999999887,1.9339967346179798);
+\draw[line width=2.pt,color=qqwuqq] (1.5499999999999887,1.9339967346179798) -- (1.5749999999999886,1.9375106965925368);
+\draw[line width=2.pt,color=qqwuqq] (1.5749999999999886,1.9375106965925368) -- (1.5999999999999885,1.9411536617584901);
+\draw[line width=2.pt,color=qqwuqq] (1.5999999999999885,1.9411536617584901) -- (1.6249999999999885,1.9449251100812008);
+\draw[line width=2.pt,color=qqwuqq] (1.6249999999999885,1.9449251100812008) -- (1.6499999999999884,1.9488245347726199);
+\draw[line width=2.pt,color=qqwuqq] (1.6499999999999884,1.9488245347726199) -- (1.6749999999999883,1.952851442169286);
+\draw[line width=2.pt,color=qqwuqq] (1.6749999999999883,1.952851442169286) -- (1.6999999999999882,1.9570053516121033);
+\draw[line width=2.pt,color=qqwuqq] (1.6999999999999882,1.9570053516121033) -- (1.724999999999988,1.9612857953278864);
+\draw[line width=2.pt,color=qqwuqq] (1.724999999999988,1.9612857953278864) -- (1.749999999999988,1.9656923183126394);
+\draw[line width=2.pt,color=qqwuqq] (1.749999999999988,1.9656923183126394) -- (1.774999999999988,1.9702244782165643);
+\draw[line width=2.pt,color=qqwuqq] (1.774999999999988,1.9702244782165643) -- (1.7999999999999878,1.9748818452307657);
+\draw[line width=2.pt,color=qqwuqq] (1.7999999999999878,1.9748818452307657) -- (1.8249999999999877,1.979664001975641);
+\draw[line width=2.pt,color=qqwuqq] (1.8249999999999877,1.979664001975641) -- (1.8499999999999877,1.9845705433909338);
+\draw[line width=2.pt,color=qqwuqq] (1.8499999999999877,1.9845705433909338) -- (1.8749999999999876,1.9896010766274297);
+\draw[line width=2.pt,color=qqwuqq] (1.8749999999999876,1.9896010766274297) -- (1.8999999999999875,1.9947552209402815);
+\draw[line width=2.pt,color=qqwuqq] (1.8999999999999875,1.9947552209402815) -- (1.9249999999999874,2.000032607583938);
+\draw[line width=2.pt,color=qqwuqq] (1.9249999999999874,2.000032607583938) -- (1.9499999999999873,2.005432879708664);
+\draw[line width=2.pt,color=qqwuqq] (1.9499999999999873,2.005432879708664) -- (1.9749999999999872,2.0109556922586327);
+\draw[line width=2.pt,color=qqwuqq] (1.9749999999999872,2.0109556922586327) -- (1.9999999999999871,2.0166007118715674);
+\draw[line width=2.pt,color=qqwuqq] (1.9999999999999871,2.0166007118715674) -- (2.024999999999987,2.022367616779925);
+\draw[line width=2.pt,color=qqwuqq] (2.024999999999987,2.022367616779925) -- (2.049999999999987,2.028256096713591);
+\draw[line width=2.pt,color=qqwuqq] (2.049999999999987,2.028256096713591) -- (2.074999999999987,2.0342658528040856);
+\draw[line width=2.pt,color=qqwuqq] (2.074999999999987,2.0342658528040856) -- (2.0999999999999868,2.0403965974902434);
+\draw[line width=2.pt,color=qqwuqq] (2.0999999999999868,2.0403965974902434) -- (2.1249999999999867,2.046648054425372);
+\draw[line width=2.pt,color=qqwuqq] (2.1249999999999867,2.046648054425372) -- (2.1499999999999866,2.0530199583858546);
+\draw[line width=2.pt,color=qqwuqq] (2.1499999999999866,2.0530199583858546) -- (2.1749999999999865,2.0595120551811936);
+\draw[line width=2.pt,color=qqwuqq] (2.1749999999999865,2.0595120551811936) -- (2.1999999999999864,2.066124101565471);
+\draw[line width=2.pt,color=qqwuqq] (2.1999999999999864,2.066124101565471) -- (2.2249999999999863,2.072855865150213);
+\draw[line width=2.pt,color=qqwuqq] (2.2249999999999863,2.072855865150213) -- (2.2499999999999862,2.0797071243186442);
+\draw[line width=2.pt,color=qqwuqq] (2.2499999999999862,2.0797071243186442) -- (2.274999999999986,2.0866776681413155);
+\draw[line width=2.pt,color=qqwuqq] (2.274999999999986,2.0866776681413155) -- (2.299999999999986,2.0937672962930876);
+\draw[line width=2.pt,color=qqwuqq] (2.299999999999986,2.0937672962930876) -- (2.324999999999986,2.100975818971459);
+\draw[line width=2.pt,color=qqwuqq] (2.324999999999986,2.100975818971459) -- (2.349999999999986,2.108303056816224);
+\draw[line width=2.pt,color=qqwuqq] (2.349999999999986,2.108303056816224) -- (2.374999999999986,2.115748840830442);
+\draw[line width=2.pt,color=qqwuqq] (2.374999999999986,2.115748840830442) -- (2.3999999999999857,2.123313012302707);
+\draw[line width=2.pt,color=qqwuqq] (2.3999999999999857,2.123313012302707) -- (2.4249999999999856,2.1309954227307015);
+\draw[line width=2.pt,color=qqwuqq] (2.4249999999999856,2.1309954227307015) -- (2.4499999999999855,2.138795933746028);
+\draw[line width=2.pt,color=qqwuqq] (2.4499999999999855,2.138795933746028) -- (2.4749999999999854,2.146714417040287);
+\draw[line width=2.pt,color=qqwuqq] (2.4749999999999854,2.146714417040287) -- (2.4999999999999853,2.1547507542924076);
+\draw[line width=2.pt,color=qqwuqq] (2.4999999999999853,2.1547507542924076) -- (2.5249999999999853,2.162904837097209);
+\draw[line width=2.pt,color=qqwuqq] (2.5249999999999853,2.162904837097209) -- (2.549999999999985,2.171176566895172);
+\draw[line width=2.pt,color=qqwuqq] (2.549999999999985,2.171176566895172) -- (2.574999999999985,2.179565854903423);
+\draw[line width=2.pt,color=qqwuqq] (2.574999999999985,2.179565854903423) -- (2.599999999999985,2.1880726220479034);
+\draw[line width=2.pt,color=qqwuqq] (2.599999999999985,2.1880726220479034) -- (2.624999999999985,2.196696798896723);
+\draw[line width=2.pt,color=qqwuqq] (2.624999999999985,2.196696798896723) -- (2.649999999999985,2.2054383255946752);
+\draw[line width=2.pt,color=qqwuqq] (2.649999999999985,2.2054383255946752) -- (2.6749999999999847,2.214297151798907);
+\draw[line width=2.pt,color=qqwuqq] (2.6749999999999847,2.214297151798907) -- (2.6999999999999846,2.223273236615733);
+\draw[line width=2.pt,color=qqwuqq] (2.6999999999999846,2.223273236615733) -- (2.7249999999999845,2.2323665485385775);
+\draw[line width=2.pt,color=qqwuqq] (2.7249999999999845,2.2323665485385775) -- (2.7499999999999845,2.241577065387032);
+\draw[line width=2.pt,color=qqwuqq] (2.7499999999999845,2.241577065387032) -- (2.7749999999999844,2.250904774247025);
+\draw[line width=2.pt,color=qqwuqq] (2.7749999999999844,2.250904774247025) -- (2.7999999999999843,2.260349671412077);
+\draw[line width=2.pt,color=qqwuqq] (2.7999999999999843,2.260349671412077) -- (2.824999999999984,2.269911762325648);
+\draw[line width=2.pt,color=qqwuqq] (2.824999999999984,2.269911762325648) -- (2.849999999999984,2.2795910615245507);
+\draw[line width=2.pt,color=qqwuqq] (2.849999999999984,2.2795910615245507) -- (2.874999999999984,2.2893875925834286);
+\draw[line width=2.pt,color=qqwuqq] (2.874999999999984,2.2893875925834286) -- (2.899999999999984,2.299301388060278);
+\draw[line width=2.pt,color=qqwuqq] (2.899999999999984,2.299301388060278) -- (2.924999999999984,2.3093324894430154);
+\draw[line width=2.pt,color=qqwuqq] (2.924999999999984,2.3093324894430154) -- (2.9499999999999837,2.3194809470970714);
+\draw[line width=2.pt,color=qqwuqq] (2.9499999999999837,2.3194809470970714) -- (2.9749999999999837,2.329746820214);
+\draw[line width=2.pt,color=qqwuqq] (2.9749999999999837,2.329746820214) -- (2.9999999999999836,2.3401301767610976);
+\draw[line width=2.pt,color=qqwuqq] (2.9999999999999836,2.3401301767610976) -- (3.0249999999999835,2.3506310934320203);
+\draw[line width=2.pt,color=qqwuqq] (3.0249999999999835,2.3506310934320203) -- (3.0499999999999834,2.361249655598385);
+\draw[line width=2.pt,color=qqwuqq] (3.0499999999999834,2.361249655598385) -- (3.0749999999999833,2.371985957262354);
+\draw[line width=2.pt,color=qqwuqq] (3.0749999999999833,2.371985957262354) -- (3.099999999999983,2.382840101010178);
+\draw[line width=2.pt,color=qqwuqq] (3.099999999999983,2.382840101010178) -- (3.124999999999983,2.3938121979667084);
+\draw[line width=2.pt,color=qqwuqq] (3.124999999999983,2.3938121979667084) -- (3.149999999999983,2.404902367750847);
+\draw[line width=2.pt,color=qqwuqq] (3.149999999999983,2.404902367750847) -- (3.174999999999983,2.4161107384319425);
+\draw[line width=2.pt,color=qqwuqq] (3.174999999999983,2.4161107384319425) -- (3.199999999999983,2.427437446487115);
+\draw[line width=2.pt,color=qqwuqq] (3.199999999999983,2.427437446487115) -- (3.2249999999999828,2.4388826367594976);
+\draw[line width=2.pt,color=qqwuqq] (3.2249999999999828,2.4388826367594976) -- (3.2499999999999827,2.4504464624173945);
+\draw[line width=2.pt,color=qqwuqq] (3.2499999999999827,2.4504464624173945) -- (3.2749999999999826,2.462129084914339);
+\draw[line width=2.pt,color=qqwuqq] (3.2749999999999826,2.462129084914339) -- (3.2999999999999825,2.4739306739500493);
+\draw[line width=2.pt,color=qqwuqq] (3.2999999999999825,2.4739306739500493) -- (3.3249999999999824,2.485851407432262);
+\draw[line width=2.pt,color=qqwuqq] (3.3249999999999824,2.485851407432262) -- (3.3499999999999823,2.4978914714394524);
+\draw[line width=2.pt,color=qqwuqq] (3.3499999999999823,2.4978914714394524) -- (3.3749999999999822,2.510051060184417);
+\draw[line width=2.pt,color=qqwuqq] (3.3749999999999822,2.510051060184417) -- (3.399999999999982,2.522330375978717);
+\draw[line width=2.pt,color=qqwuqq] (3.399999999999982,2.522330375978717) -- (3.424999999999982,2.5347296291979777);
+\draw[line width=2.pt,color=qqwuqq] (3.424999999999982,2.5347296291979777) -- (3.449999999999982,2.547249038248029);
+\draw[line width=2.pt,color=qqwuqq] (3.449999999999982,2.547249038248029) -- (3.474999999999982,2.5598888295318813);
+\draw[line width=2.pt,color=qqwuqq] (3.474999999999982,2.5598888295318813) -- (3.499999999999982,2.572649237417534);
+\draw[line width=2.pt,color=qqwuqq] (3.499999999999982,2.572649237417534) -- (3.5249999999999817,2.5855305042065995);
+\draw[line width=2.pt,color=qqwuqq] (3.5249999999999817,2.5855305042065995) -- (3.5499999999999816,2.598532880103748);
+\draw[line width=2.pt,color=qqwuqq] (3.5499999999999816,2.598532880103748) -- (3.5749999999999815,2.611656623186952);
+\draw[line width=2.pt,color=qqwuqq] (3.5749999999999815,2.611656623186952) -- (3.5999999999999814,2.6249019993785265);
+\draw[line width=2.pt,color=qqwuqq] (3.5999999999999814,2.6249019993785265) -- (3.6249999999999813,2.6382692824169736);
+\draw[line width=2.pt,color=qqwuqq] (3.6249999999999813,2.6382692824169736) -- (3.6499999999999813,2.651758753829597);
+\draw[line width=2.pt,color=qqwuqq] (3.6499999999999813,2.651758753829597) -- (3.674999999999981,2.665370702905903);
+\draw[line width=2.pt,color=qqwuqq] (3.674999999999981,2.665370702905903) -- (3.699999999999981,2.679105426671765);
+\draw[line width=2.pt,color=qqwuqq] (3.699999999999981,2.679105426671765) -- (3.724999999999981,2.6929632298643575);
+\draw[line width=2.pt,color=qqwuqq] (3.724999999999981,2.6929632298643575) -- (3.749999999999981,2.7069444249078445);
+\draw[line width=2.pt,color=qqwuqq] (3.749999999999981,2.7069444249078445) -- (3.774999999999981,2.7210493318898155);
+\draw[line width=2.pt,color=qqwuqq] (3.774999999999981,2.7210493318898155) -- (3.7999999999999807,2.73527827853847);
+\draw[line width=2.pt,color=qqwuqq] (3.7999999999999807,2.73527827853847) -- (3.8249999999999806,2.7496316002005354);
+\draw[line width=2.pt,color=qqwuqq] (3.8249999999999806,2.7496316002005354) -- (3.8499999999999805,2.764109639819917);
+\draw[line width=2.pt,color=qqwuqq] (3.8499999999999805,2.764109639819917) -- (3.8749999999999805,2.778712747917073);
+\draw[line width=2.pt,color=qqwuqq] (3.8749999999999805,2.778712747917073) -- (3.8999999999999804,2.7934412825691086);
+\draw[line width=2.pt,color=qqwuqq] (3.8999999999999804,2.7934412825691086) -- (3.9249999999999803,2.8082956093905813);
+\draw[line width=2.pt,color=qqwuqq] (3.9249999999999803,2.8082956093905813) -- (3.94999999999998,2.823276101515013);
+\draw[line width=2.pt,color=qqwuqq] (3.94999999999998,2.823276101515013) -- (3.97499999999998,2.8383831395771058);
+\draw[line width=2.pt,color=qqwuqq] (3.97499999999998,2.8383831395771058) -- (3.99999999999998,2.8536171116956455);
+\draw[line width=2.pt,color=qqwuqq] (3.99999999999998,2.8536171116956455) -- (4.02499999999998,2.8689784134571052);
+\draw[line width=2.pt,color=qqwuqq] (4.02499999999998,2.8689784134571052) -- (4.04999999999998,2.8844674478999224);
+\draw[line width=2.pt,color=qqwuqq] (4.04999999999998,2.8844674478999224) -- (4.074999999999981,2.9000846254994608);
+\draw[line width=2.pt,color=qqwuqq] (4.074999999999981,2.9000846254994608) -- (4.099999999999981,2.915830364153643);
+\draw[line width=2.pt,color=qqwuqq] (4.099999999999981,2.915830364153643) -- (4.124999999999981,2.93170508916925);
+\draw[line width=2.pt,color=qqwuqq] (4.124999999999981,2.93170508916925) -- (4.149999999999982,2.9477092332488857);
+\draw[line width=2.pt,color=qqwuqq] (4.149999999999982,2.9477092332488857) -- (4.174999999999982,2.9638432364785943);
+\draw[line width=2.pt,color=qqwuqq] (4.174999999999982,2.9638432364785943) -- (4.199999999999982,2.980107546316134);
+\draw[line width=2.pt,color=qqwuqq] (4.199999999999982,2.980107546316134) -- (4.224999999999983,2.996502617579897);
+\draw[line width=2.pt,color=qqwuqq] (4.224999999999983,2.996502617579897) -- (4.249999999999983,3.0130289124384695);
+\draw[line width=2.pt,color=qqwuqq] (4.249999999999983,3.0130289124384695) -- (4.2749999999999835,3.0296869004008307);
+\draw[line width=2.pt,color=qqwuqq] (4.2749999999999835,3.0296869004008307) -- (4.299999999999984,3.046477058307188);
+\draw[line width=2.pt,color=qqwuqq] (4.299999999999984,3.046477058307188) -- (4.324999999999984,3.063399870320431);
+\draw[line width=2.pt,color=qqwuqq] (4.324999999999984,3.063399870320431) -- (4.3499999999999845,3.080455827918221);
+\draw[line width=2.pt,color=qqwuqq] (4.3499999999999845,3.080455827918221) -- (4.374999999999985,3.097645429885689);
+\draw[line width=2.pt,color=qqwuqq] (4.374999999999985,3.097645429885689) -- (4.399999999999985,3.1149691823087564);
+\draw[line width=2.pt,color=qqwuqq] (4.399999999999985,3.1149691823087564) -- (4.424999999999986,3.1324275985680594);
+\draw[line width=2.pt,color=qqwuqq] (4.424999999999986,3.1324275985680594) -- (4.449999999999986,3.150021199333483);
+\draw[line width=2.pt,color=qqwuqq] (4.449999999999986,3.150021199333483) -- (4.474999999999986,3.167750512559296);
+\draw[line width=2.pt,color=qqwuqq] (4.474999999999986,3.167750512559296) -- (4.499999999999987,3.1856160734798857);
+\draw[line width=2.pt,color=qqwuqq] (4.499999999999987,3.1856160734798857) -- (4.524999999999987,3.203618424606081);
+\draw[line width=2.pt,color=qqwuqq] (4.524999999999987,3.203618424606081) -- (4.549999999999987,3.221758115722069);
+\draw[line width=2.pt,color=qqwuqq] (4.549999999999987,3.221758115722069) -- (4.574999999999988,3.240035703882899);
+\draw[line width=2.pt,color=qqwuqq] (4.574999999999988,3.240035703882899) -- (4.599999999999988,3.258451753412562);
+\draw[line width=2.pt,color=qqwuqq] (4.599999999999988,3.258451753412562) -- (4.6249999999999885,3.277006835902656);
+\draw[line width=2.pt,color=qqwuqq] (4.6249999999999885,3.277006835902656) -- (4.649999999999989,3.295701530211617);
+\draw[line width=2.pt,color=qqwuqq] (4.649999999999989,3.295701530211617) -- (4.674999999999989,3.3145364224645304);
+\draw[line width=2.pt,color=qqwuqq] (4.674999999999989,3.3145364224645304) -- (4.6999999999999895,3.3335121060535022);
+\draw[line width=2.pt,color=qqwuqq] (4.6999999999999895,3.3335121060535022) -- (4.72499999999999,3.352629181638595);
+\draw[line width=2.pt,color=qqwuqq] (4.72499999999999,3.352629181638595) -- (4.74999999999999,3.3718882571493296);
+\draw[line width=2.pt,color=qqwuqq] (4.74999999999999,3.3718882571493296) -- (4.774999999999991,3.391289947786733);
+\draw[line width=2.pt,color=qqwuqq] (4.774999999999991,3.391289947786733) -- (4.799999999999991,3.4108348760259526);
+\draw[line width=2.pt,color=qqwuqq] (4.799999999999991,3.4108348760259526) -- (4.824999999999991,3.4305236716194103);
+\draw[line width=2.pt,color=qqwuqq] (4.824999999999991,3.4305236716194103) -- (4.849999999999992,3.4503569716005096);
+\draw[line width=2.pt,color=qqwuqq] (4.849999999999992,3.4503569716005096) -- (4.874999999999992,3.470335420287883);
+\draw[line width=2.pt,color=qqwuqq] (4.874999999999992,3.470335420287883) -- (4.899999999999992,3.4904596692901833);
+\draw[line width=2.pt,color=qqwuqq] (4.899999999999992,3.4904596692901833) -- (4.924999999999993,3.510730377511411);
+\draw[line width=2.pt,color=qqwuqq] (4.924999999999993,3.510730377511411) -- (4.949999999999993,3.531148211156779);
+\draw[line width=2.pt,color=qqwuqq] (4.949999999999993,3.531148211156779) -- (4.974999999999993,3.551713843739104);
+\draw[line width=2.pt,color=qqwuqq] (4.974999999999993,3.551713843739104) -- (4.999999999999994,3.572427956085735);
+\draw[line width=2.pt,color=qqwuqq] (4.999999999999994,3.572427956085735) -- (5.024999999999994,3.593291236346);
+\draw[line width=2.pt,color=qqwuqq] (5.024999999999994,3.593291236346) -- (5.0499999999999945,3.614304379999185);
+\draw[line width=2.pt,color=qqwuqq] (5.0499999999999945,3.614304379999185) -- (5.074999999999995,3.635468089863027);
+\draw[line width=2.pt,color=qqwuqq] (5.074999999999995,3.635468089863027) -- (5.099999999999995,3.656783076102728);
+\draw[line width=2.pt,color=qqwuqq] (5.099999999999995,3.656783076102728) -- (5.124999999999996,3.6782500562404885);
+\draw[line width=2.pt,color=qqwuqq] (5.124999999999996,3.6782500562404885) -- (5.149999999999996,3.699869755165549);
+\draw[line width=2.pt,color=qqwuqq] (5.149999999999996,3.699869755165549) -- (5.174999999999996,3.721642905144745);
+\draw[line width=2.pt,color=qqwuqq] (5.174999999999996,3.721642905144745) -- (5.199999999999997,3.743570245833575);
+\draw[line width=2.pt,color=qqwuqq] (5.199999999999997,3.743570245833575) -- (5.224999999999997,3.7656525242877663);
+\draw[line width=2.pt,color=qqwuqq] (5.224999999999997,3.7656525242877663) -- (5.249999999999997,3.7878904949753527);
+\draw[line width=2.pt,color=qqwuqq] (5.249999999999997,3.7878904949753527) -- (5.274999999999998,3.810284919789251);
+\draw[line width=2.pt,color=qqwuqq] (5.274999999999998,3.810284919789251) -- (5.299999999999998,3.832836568060338);
+\draw[line width=2.pt,color=qqwuqq] (5.299999999999998,3.832836568060338) -- (5.324999999999998,3.8555462165710233);
+\draw[line width=2.pt,color=qqwuqq] (5.324999999999998,3.8555462165710233) -- (5.349999999999999,3.8784146495693226);
+\draw[line width=2.pt,color=qqwuqq] (5.349999999999999,3.8784146495693226) -- (5.374999999999999,3.9014426587834192);
+\draw[line width=2.pt,color=qqwuqq] (5.374999999999999,3.9014426587834192) -- (5.3999999999999995,3.9246310434367233);
+\draw[line width=2.pt,color=qqwuqq] (5.3999999999999995,3.9246310434367233) -- (5.425,3.9479806102634143);
+\draw[line width=2.pt,color=qqwuqq] (5.425,3.9479806102634143) -- (5.45,3.9714921735244766);
+\draw[line width=2.pt,color=qqwuqq] (5.45,3.9714921735244766) -- (5.4750000000000005,3.99516655502422);
+\draw[line width=2.pt,color=qqwuqq] (5.4750000000000005,3.99516655502422) -- (5.500000000000001,4.019004584127285);
+\draw[line width=2.pt,color=qqwuqq] (5.500000000000001,4.019004584127285) -- (5.525000000000001,4.0430070977761305);
+\draw[line width=2.pt,color=qqwuqq] (5.525000000000001,4.0430070977761305) -- (5.550000000000002,4.067174940509);
+\draw[line width=2.pt,color=qqwuqq] (5.550000000000002,4.067174940509) -- (5.575000000000002,4.091508964478373);
+\draw[line width=2.pt,color=qqwuqq] (5.575000000000002,4.091508964478373) -- (5.600000000000002,4.116010029469894);
+\draw[line width=2.pt,color=qqwuqq] (5.600000000000002,4.116010029469894) -- (5.625000000000003,4.140679002921771);
+\draw[line width=2.pt,color=qqwuqq] (5.625000000000003,4.140679002921771) -- (5.650000000000003,4.165516759944654);
+\draw[line width=2.pt,color=qqwuqq] (5.650000000000003,4.165516759944654) -- (5.675000000000003,4.19052418334199);
+\draw[line width=2.pt,color=qqwuqq] (5.675000000000003,4.19052418334199) -- (5.700000000000004,4.215702163630849);
+\draw[line width=2.pt,color=qqwuqq] (5.700000000000004,4.215702163630849) -- (5.725000000000004,4.241051599063212);
+\draw[line width=2.pt,color=qqwuqq] (5.725000000000004,4.241051599063212) -- (5.750000000000004,4.266573395647741);
+\draw[line width=2.pt,color=qqwuqq] (5.750000000000004,4.266573395647741) -- (5.775000000000005,4.2922684671720175);
+\draw[line width=2.pt,color=qqwuqq] (5.775000000000005,4.2922684671720175) -- (5.800000000000005,4.318137735225229);
+\draw[line width=2.pt,color=qqwuqq] (5.800000000000005,4.318137735225229) -- (5.8250000000000055,4.3441821292213545);
+\draw[line width=2.pt,color=qqwuqq] (5.8250000000000055,4.3441821292213545) -- (5.850000000000006,4.370402586422779);
+\draw[line width=2.pt,color=qqwuqq] (5.850000000000006,4.370402586422779) -- (5.875000000000006,4.396800051964404);
+\draw[line width=2.pt,color=qqwuqq] (5.875000000000006,4.396800051964404) -- (5.900000000000007,4.423375478878197);
+\draw[line width=2.pt,color=qqwuqq] (5.900000000000007,4.423375478878197) -- (5.925000000000007,4.450129828118217);
+\draw[line width=2.pt,color=qqwuqq] (5.925000000000007,4.450129828118217) -- (5.950000000000007,4.477064068586096);
+\draw[line width=2.pt,color=qqwuqq] (5.950000000000007,4.477064068586096) -- (5.975000000000008,4.504179177156981);
+\draw (0.7529271964290262,4.120815985179362) node[anchor=north west] {$f\left(x \right)\, = \,\textit{e}^{0.25 \; x} + \textit{e}^{-0.5 \; x}$};
+\begin{scriptsize}
+\draw[color=qqwuqq] (-5.152682845237995,13.461321663326181) node {$f$};
+\end{scriptsize}
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\caption{Grafen for $f$ tegnet med TikZ}
+\label{fig:graf}
+\end{figure}
+\textbf{b.}
+Rumfanget af omdrejningslegemet må da være 
+\begin{equation*}
+\begin{split}
+  V&=\pi \int_{-2}^{3} f(x)^2 \,dx \\ 
+  &=\pi \int_{-2}^{3}  e^{\frac{1}{2}x}+e^{-x} +2 \cdot e^{-\frac{1}{4}x} \,dx \\
+  &= \pi \left(2\left[ e^{\frac{1}{2}x} \right]_{-2}^3 -\left[e^{-x} \right]_{-2}^3-8\left[ e^{-\frac{1}{4}x} \right]_{-2}^3\right) \\ 
+  &\approx 78,47
+\end{split}
+\end{equation*}
+Altså er rumfanget af omdrejningslegemet 78,47. \\[1ex]
+\textbf{c.}
+Kurvelængden for grafen for $f$ i intervallet $-2 \leq x \leq 3$ regnes med CAS og må være
+\begin{equation*}
+\begin{split}
+  \int_{-2}^{3} \sqrt{1+f'(x)^2}  \,dx &=\int_{-2}^{3} \sqrt{1+\left(\frac{1}{4}e^{\frac{1}{4}x} -\frac{1}{2} e^{-\frac{1}{2}x} \right)^2 }  \,dx \\
+  &\approx 5,51231 
+\end{split}
+\end{equation*}
+Kurvelængden for grafen for $f$ i intervallet $-2 \leq x \leq 3$ er altså $5,51231$. 
+\begin{figure}[H]
+\begin{center}
+  \includegraphics[scale=0.7]{CAS.png}
+\end{center}
+\caption{Kurvelængden regnet med CAS}
+\label{fig:CAS}
+\end{figure}
+
+\end{document}

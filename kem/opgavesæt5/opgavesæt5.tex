@@ -1,0 +1,401 @@
+\documentclass{report}
+\usepackage{graphicx, tikz-cd, float, titlepic, booktabs} % Required for inserting images
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+\usepackage{amsmath, amssymb, amsthm, amsfonts, siunitx, physics, gensymb}
+\AtBeginDocument{\RenewCommandCopy\qty\SI}
+\usepackage[version=4]{mhchem}
+\usepackage[most,many,breakable]{tcolorbox}
+\usepackage{xcolor, fancyhdr, varwidth}
+\usepackage[Glenn]{fncychap}
+%Options: Sonny, Lenny, Glenn, Conny, Rejne, Bjarne, Bjornstrup
+\usepackage{hyperref, cleveref}
+\usepackage{icomma, enumitem} %comma as decimal and continue enumerate with [resume]
+\usepackage[danish]{babel}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SELF MADE COLORS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{myg}{RGB}{56, 140, 70}
+\definecolor{myb}{RGB}{45, 111, 177}
+\definecolor{myr}{RGB}{199, 68, 64}
+\definecolor{mytheorembg}{HTML}{F2F2F9}
+\definecolor{mytheoremfr}{HTML}{00007B}
+\definecolor{mylenmabg}{HTML}{FFFAF8}
+\definecolor{mylenmafr}{HTML}{983b0f}
+\definecolor{mypropbg}{HTML}{f2fbfc}
+\definecolor{mypropfr}{HTML}{191971}
+\definecolor{myexamplebg}{HTML}{F2FBF8}
+\definecolor{myexamplefr}{HTML}{88D6D1}
+\definecolor{myexampleti}{HTML}{2A7F7F}
+\definecolor{mydefinitbg}{HTML}{E5E5FF}
+\definecolor{mydefinitfr}{HTML}{3F3FA3}
+\definecolor{notesgreen}{RGB}{0,162,0}
+\definecolor{myp}{RGB}{197, 92, 212}
+\definecolor{mygr}{HTML}{2C3338}
+\definecolor{myred}{RGB}{127,0,0}
+\definecolor{myyellow}{RGB}{169,121,69}
+\definecolor{myexercisebg}{HTML}{F2FBF8}
+\definecolor{myexercisefg}{HTML}{88D6D1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Box environments for theorems and problems
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\parindent}{1cm}
+%================================
+% Question BOX
+%================================
+\makeatletter
+\newtcbtheorem{question}{Opgave}{enhanced,
+	breakable,
+	colback=white,
+	colframe=myb!80!black,
+	attach boxed title to top left={yshift*=-\tcboxedtitleheight},
+	fonttitle=\bfseries,
+	title={#2},
+	boxed title size=title,
+	boxed title style={%
+			sharp corners,
+			rounded corners=northwest,
+			colback=tcbcolframe,
+			boxrule=0pt,
+		},
+	underlay boxed title={%
+			\path[fill=tcbcolframe] (title.south west)--(title.south east)
+			to[out=0, in=180] ([xshift=5mm]title.east)--
+			(title.center-|frame.east)
+			[rounded corners=\kvtcb@arc] |-
+			(frame.north) -| cycle;
+		},
+	#1
+}{def}
+\makeatother
+%================================
+% DEFINITION BOX
+%================================
+
+\newtcbtheorem[]{Definition}{Definition}{enhanced,
+	before skip=2mm,after skip=2mm, colback=red!5,colframe=red!80!black,boxrule=0.5mm,
+	attach boxed title to top left={xshift=1cm,yshift*=1mm-\tcboxedtitleheight}, varwidth boxed title*=-3cm,
+	boxed title style={frame code={
+					\path[fill=tcbcolback]
+					([yshift=-1mm,xshift=-1mm]frame.north west)
+					arc[start angle=0,end angle=180,radius=1mm]
+					([yshift=-1mm,xshift=1mm]frame.north east)
+					arc[start angle=180,end angle=0,radius=1mm];
+					\path[left color=tcbcolback!60!black,right color=tcbcolback!60!black,
+						middle color=tcbcolback!80!black]
+					([xshift=-2mm]frame.north west) -- ([xshift=2mm]frame.north east)
+					[rounded corners=1mm]-- ([xshift=1mm,yshift=-1mm]frame.north east)
+					-- (frame.south east) -- (frame.south west)
+					-- ([xshift=-1mm,yshift=-1mm]frame.north west)
+					[sharp corners]-- cycle;
+				},interior engine=empty,
+		},
+	fonttitle=\bfseries,
+	title={#2},#1}{def}
+\newtcbtheorem[]{definition}{Definition}{enhanced,
+	before skip=2mm,after skip=2mm, colback=red!5,colframe=red!80!black,boxrule=0.5mm,
+	attach boxed title to top left={xshift=1cm,yshift*=1mm-\tcboxedtitleheight}, varwidth boxed title*=-3cm,
+	boxed title style={frame code={
+					\path[fill=tcbcolback]
+					([yshift=-1mm,xshift=-1mm]frame.north west)
+					arc[start angle=0,end angle=180,radius=1mm]
+					([yshift=-1mm,xshift=1mm]frame.north east)
+					arc[start angle=180,end angle=0,radius=1mm];
+					\path[left color=tcbcolback!60!black,right color=tcbcolback!60!black,
+						middle color=tcbcolback!80!black]
+					([xshift=-2mm]frame.north west) -- ([xshift=2mm]frame.north east)
+					[rounded corners=1mm]-- ([xshift=1mm,yshift=-1mm]frame.north east)
+					-- (frame.south east) -- (frame.south west)
+					-- ([xshift=-1mm,yshift=-1mm]frame.north west)
+					[sharp corners]-- cycle;
+				},interior engine=empty,
+		},
+	fonttitle=\bfseries,
+	title={#2},#1}{def}
+
+\newtcbtheorem{theo}%
+    {Theorem}{}{theorem}
+\newtcolorbox{prob}[1]{colback=red!5!white,colframe=red!50!black,fonttitle=\bfseries,title={#1}}
+%================================
+% NOTE BOX
+%================================
+
+\usetikzlibrary{arrows,calc,shadows.blur}
+\tcbuselibrary{skins}
+\newtcolorbox{note}[1][]{%
+	enhanced jigsaw,
+	colback=gray!20!white,%
+	colframe=gray!80!black,
+	size=small,
+	boxrule=1pt,
+	title=\textbf{Note:},
+	halign title=flush center,
+	coltitle=black,
+	breakable,
+	drop shadow=black!50!white,
+	attach boxed title to top left={xshift=1cm,yshift=-\tcboxedtitleheight/2,yshifttext=-\tcboxedtitleheight/2},
+	minipage boxed title=1.5cm,
+	boxed title style={%
+			colback=white,
+			size=fbox,
+			boxrule=1pt,
+			boxsep=2pt,
+			underlay={%
+					\coordinate (dotA) at ($(interior.west) + (-0.5pt,0)$);
+					\coordinate (dotB) at ($(interior.east) + (0.5pt,0)$);
+					\begin{scope}
+						\clip (interior.north west) rectangle ([xshift=3ex]interior.east);
+						\filldraw [white, blur shadow={shadow opacity=60, shadow yshift=-.75ex}, rounded corners=2pt] (interior.north west) rectangle (interior.south east);
+					\end{scope}
+					\begin{scope}[gray!80!black]
+						\fill (dotA) circle (2pt);
+						\fill (dotB) circle (2pt);
+					\end{scope}
+				},
+		},
+	#1,
+}
+%================================
+% EXAMPLE BOX
+%================================
+\newtcbtheorem[number within=section]{Example}{Example}
+{%
+	colback = myexamplebg
+	,breakable
+	,colframe = myexamplefr
+	,coltitle = myexampleti
+	,boxrule = 1pt
+	,sharp corners
+	,detach title
+	,before upper=\tcbtitle\par\smallskip
+	,fonttitle = \bfseries
+	,description font = \mdseries
+	,separator sign none
+	,description delimiters parenthesis
+}
+{ex}
+%================================
+% THEOREM BOX
+%================================
+
+\tcbuselibrary{theorems,skins,hooks}
+\newtcbtheorem[number within=section]{Theorem}{Theorem}
+{%
+	enhanced,
+	breakable,
+	colback = mytheorembg,
+	frame hidden,
+	boxrule = 0sp,
+	borderline west = {2pt}{0pt}{mytheoremfr},
+	sharp corners,
+	detach title,
+	before upper = \tcbtitle\par\smallskip,
+	coltitle = mytheoremfr,
+	fonttitle = \bfseries\sffamily,
+	description font = \mdseries,
+	separator sign none,
+	segmentation style={solid, mytheoremfr},
+}
+{th}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SELF MADE COMMANDS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\sol}{\setlength{\parindent}{0cm}\textbf{\textit{Løsning:}}\setlength{\parindent}{1cm}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[tmargin=2cm,rmargin=1in,lmargin=1in,margin=0.85in,bmargin=2cm,footskip=.2in]{geometry}\pagestyle{fancy}
+\lhead{Minrui Kevin Zhou 2.b}
+\rhead{Opgavesæt 5}
+
+\title{Opgavesæt 5\\
+{\Large \textbf{2.b kemi A}}}
+\author{Kevin Zhou}
+\date{\today}
+
+\begin{document}
+\maketitle
+\section*{Opgave 3.2}
+\sol \\
+\textbf{a.}
+Da opløsningsmidlet indgår i reaktionsbrøken med stofmængdebrøken, der tilnærmelsesvist er $1$, så vil reaktionsbrøken for reaktionen være
+\[
+\frac{[\ce{F-} ] \cdot [\ce{H3O+} ]}{[\ce{HF} ]}
+\] 
+\textbf{b.}
+Ved ligevægt må reaktionsbrøken være lig med ligevægtskonstanten. 
+Altså har vi 
+\begin{equation*}
+\begin{split}
+  K&=\frac{[\ce{F-} ] \cdot [\ce{H3O+} ]}{[\ce{HF} ]}\\ 
+  &=\frac{0,0063 \;\unit{\textsc{m}} \cdot 0,0063 \;\unit{\textsc{m}} }{0,114 \;\unit{\textsc{m}} }\\ 
+  &\approx 3,5 \cdot 10^{-4} \;\unit{\textsc{m}} 
+\end{split}
+\end{equation*}
+Værdien for ligevægtskonstanten ved $25 \;\unit{\celsius} $ er altså $3,5 \cdot 10^{-4} \;\unit{\textsc{m}} $. \\[1ex]
+\textbf{c.}
+Antag, at opløsningen fortyndes sådan, at volumenet bliver $x$ gange det forhenværende volumen, hvor $x \in  ]1;\infty)$.
+Reaktionsbrøkens tæller bliver derved $x \cdot x=x^2$ gange mindre, mens nævneren kun bliver $x$ gange mindre. 
+Fortyndingen af opløsningen har altså gjort reaktionsbrøken $x$ gange mindre.
+Imidlertid ser vi, at siden $x>1$, så må reaktionsbrøken være mindre end $K$ og der sker en forskydning mod højre: 
+\[
+\frac{[\ce{F-} ] \cdot [\ce{H3O+} ]}{[\ce{HF} ]}<K \quad \ce{->} 
+\] 
+\section*{Opgave 3.5 B}
+\sol \\
+\textbf{a.}
+Reaktionsbrøken ved stuetemperatur må da være
+\begin{equation*}
+\begin{split}
+  \frac{[\ce{CO} ] \cdot [\ce{H2O} ]}{[\ce{H2} ] \cdot [\ce{CO2}]}&=\frac{0,0256 \;\unit{\textsc{m}} \cdot 0,0181 \;\unit{\textsc{m}} }{0,0065 \;\unit{\textsc{m}} \cdot 0,0130 \;\unit{\textsc{m}} }\\ 
+  &\approx 5,5
+\end{split}
+\end{equation*}
+Altså er reaktionsbrøken ved stuetemperatur $5,5$.\\[1ex]
+\textbf{b.}
+Reaktionsbrøken ved stuetemperatur er da større end ligevægtskonstanten ved $720 \;\unit{\celsius} $, og der sker derfor en forskydning mod venstre:
+\[
+\frac{[\ce{CO} ] \cdot [\ce{H2O} ]}{[\ce{H2} ] \cdot [\ce{CO2}]}>K \quad \ce{<-} 
+\] 
+Altså forløber nettoreaktionen mod venstre, når beholderen opvarmes til $720 \;\unit{\celsius} $, hvor ligevægten indstiller sig.\\[1ex]
+\textbf{c.}
+Siden reaktionen mod højre er endoterm, så er reaktionen mod venstre exoterm.
+Der gælder generelt, at hvis temperaturen sænkes, sker der en forskydning i den exoterme reaktions retning.
+Altså vil ligevægtens forskydes mod venstre.
+\section*{Opgave 3.20}
+\sol \\
+\textbf{a.}
+Vi finder først stofmængden af \ce{Ba(OH)2.8H2O}.
+\begin{equation*}
+\begin{split}
+  n(\ce{Ba(OH)2.8H2O})&=\frac{m(\ce{Ba(OH)2.8H2O}) }{M(\ce{Ba(OH)2.8H2O}) }\\ 
+  &=\frac{5,10 \;\unit{g} }{315,46 \;\unit{g/mol} }\\ 
+  &=0,0161669 \;\unit{mol} 
+\end{split}
+\end{equation*}
+Reaktionsskemaet for opløsningen af \ce{Ba(OH)2.8H2O} i vand ses nedenfor.
+\[
+\ce{Ba(OH)2.8H2O(s) -> Ba^2+(aq) + 2OH-(aq) + 8H2O(l)} 
+\] 
+Vi ser, at reaktionsforholdet mellem \ce{Ba(OH)2.8H2O} og \ce{Ba^2+} er 1:1, hvor reaktionsforholdet mellem \ce{Ba(OH)2.8H2O} og \ce{OH-} er 1:2.
+Stofmængderne må være tilsvarende.
+\begin{equation*}
+\begin{split}
+  [\ce{Ba^2+}]&=\frac{n(\ce{Ba^2+} )}{V}\\ 
+  &=\frac{n(\ce{Ba(OH)2.8H2O})}{0,250 \;\unit{L} }\\ 
+  &\approx 0,0647\;\unit{\textsc{m}} 
+\end{split}
+\end{equation*}
+Siden $n(\ce{OH-} )=2 \cdot n(\ce{Ba^2+}) $, så må der gælde, at 
+\begin{equation*}
+\begin{split}
+  [\ce{OH-} ]&=2 \cdot [\ce{ Ba^2+}]\\ 
+  &\approx 0,129 \;\unit{\textsc{m}} 
+\end{split}
+\end{equation*}
+Altså har vi beregnet $[\ce{Ba^2+} ]$ til at være $0,0647 \;\unit{\textsc{m}} $ og $[\ce{OH-} ]$ til at være $0,129 \;\unit{\textsc{m}} $.\\[1ex]
+\textbf{b.}
+\ce{HNO3} er en stærk syre.
+Der må da gælde for stofmængden af \ce{H3O+} i opløsningen af \ce{HNO3}, at 
+\begin{equation*}
+\begin{split}
+  n_{\text{før}}(\ce{H3O+} )&=c(\ce{HNO3} ) \cdot V\\ 
+  &= 0,350 \;\unit{\textsc{m}} \cdot 150 \;\unit{mL} 
+\end{split}
+\end{equation*}
+Siden vi blander en opløsning af en stærk syre med en opløsning af en stærk base sker en neutralisationsreaktion, der ses nedenfor.
+\[
+\ce{H3O+(aq) + OH-(aq) -> 2H2O(l)} 
+\] 
+Imidlertid ser vi også, at stofmængden af \ce{H3O+} i opløsningen af \ce{HNO3} er større end stofmængden af \ce{OH-} i opløsningen af \ce{Ba(OH)2.8H2O}:
+\begin{equation*}
+\begin{split}
+  0,350 \;\unit{\textsc{m}} \cdot 150 \;\unit{mL} > 0,129335 \;\unit{\textsc{m}} \cdot 250 \;\unit{mL} \iff n_{\text{før} }(\ce{H3O+})>n_{\text{før} }(\ce{OH-} )
+\end{split}
+\end{equation*}
+Vi kan nu regne pH for den færdige blanding (hvis volumen vi antager er $400 \;\unit{mL} $) ud fra den aktuelle stofmængdekoncentration af den overskydende \ce{H3O+}. 
+\begin{equation*}
+\begin{split}
+  pH&=-\log \left(\frac{[\ce{H3O+} ]}{\unit{\textsc{m}}}\right) \\ 
+  &=-\log \left(\frac{n_{\text{efter} }(\ce{H3O+} )}{V_{\text{efter} } \cdot \textsc{m}}\right) \\
+  &= -\log \left(\frac{n_{\text{før}}(\ce{H3O+} )-n_{\text{før} }(\ce{OH-}) }{400 \;\unit{mL \cdot \textsc{m}} }\right) \\ 
+  &=-\log \left(\frac{0,350 \;\unit{\textsc{m}} \cdot 150 \;\unit{mL}-0,129335 \;\unit{\textsc{m}} \cdot 250 \;\unit{mL}}{400 \;\unit{mL \cdot \textsc{m}} }\right) \\ 
+  &\approx 1,30
+\end{split}
+\end{equation*}
+Altså vil pH for den færdige blanding være $1,30$.\\[1ex]
+\textbf{c.}
+Både $n(\ce{Ba^2+} )$ og $n(\ce{NO3-}) $ forbliver den samme som før opblandingen.
+Vi antager igen, at blandingens volumen er $400 \;\unit{mL} $.
+\begin{equation*}
+\begin{split}
+  [\ce{Ba^2+} ]&=\frac{0,06466746 \;\unit{\textsc{m}}  \cdot 250 \;\unit{mL} }{400 \;\unit{mL} } \approx 0,0404 \;\unit{\textsc{m}} \\ 
+  [\ce{NO3-} ]&=\frac{0,350 \;\unit{\textsc{m}} \cdot 150 \;\unit{mL} }{400 \;\unit{mL} } \approx 0,131 \;\unit{\textsc{m}} 
+\end{split}
+\end{equation*}
+Siden der generelt gælder, at $[\ce{H3O+} ] \cdot [\ce{OH-} ]=K_v$, så har vi
+\begin{equation*}
+\begin{split}
+  [\ce{OH-} ]&= \frac{K_v}{[\ce{H3O+} ]}\\ 
+  &=\frac{1,0 \cdot 10^{-14} \;\unit{\textsc{m}^2} }{\frac{0,350 \;\unit{\textsc{m}} \cdot 150 \;\unit{mL}-0,129335 \;\unit{\textsc{m}} \cdot 250 \;\unit{mL}}{400 \;\unit{mL}}}\\ 
+  &\approx 1,98 \cdot 10^{-13} \;\unit{\textsc{m}} 
+\end{split}
+\end{equation*}
+I blandingen har vi altså beregnet $[\ce{Ba^2+} ]$ til at være $0,0404 \;\unit{\textsc{m}} $, $[\ce{NO3-} ]$ til at være $0,131 \;\unit{\textsc{m}} $ og $[\ce{ OH-}]$ til at være $1,98 \cdot 10^{-13} \;\unit{\textsc{m}} $.
+\section*{Opgave 3.24}
+\sol \\
+\textbf{a.}
+Ved opslag i databogen får vi $pK_s=1,35$.
+Derfor har vi 
+\begin{equation*}
+\begin{split}
+K_s&=10^{-pK_s} \;\unit{\textsc{m}} \\ 
+&=10^{-1,35} \;\unit{\textsc{m}} \\ 
+&\approx 0,0447 \;\unit{\textsc{m}} 
+\end{split}
+\end{equation*}
+\\[1ex]
+\textbf{b.}
+Reaktionsskemaet for hydronolyse af dichlorethansyre i vand ses nedenfor.
+\[
+\ce{CHCl2COOH(aq) + H2O(l) <=> CHCl2COO-(aq) + H3O+(aq)} 
+\] 
+\textbf{c.}
+Dichlorethansyre er altså ikke en stærk syre.
+Siden der gælder, at 
+\begin{equation*}
+\begin{split}
+  K_s=\frac{[\ce{H3O+} ]^2}{c_s-[\ce{H3O+} ]} \implies 10^{-1,35} \;\unit{\textsc{m}} =\frac{[\ce{H3O+} ]^2}{0,100 \;\unit{\textsc{m}} - [\ce{H3O+} ]}
+\end{split}
+\end{equation*}
+Vi løser andengradsligningen med hensyn til den positive løsning, da koncentrationen kun kan være positiv.
+\begin{equation*}
+\begin{split}
+  [\ce{ H3O+}] &= \frac{-10^{-1,35} \;\unit{\textsc{m}} + \sqrt{(10^{-1,35}\;\unit{\textsc{m}} )^2-4 \cdot 1 \cdot (-0,100 \;\unit{\textsc{m}} \cdot 10^{-1,35} \;\unit{\textsc{m}} )} }{2 \cdot 1}\\ 
+  &=0,048133199 \;\unit{\textsc{m}} \\ 
+  &\approx 0,0481 \;\unit{\textsc{m}} 
+\end{split}
+\end{equation*}
+Vi regner nu pH ud for opløsningen.
+\begin{equation*}
+\begin{split}
+  pH&=-\log \left(\frac{[\ce{ H3O+}]}{\textsc{m}}\right) \\ 
+  &=-\log \left(\frac{0,048133199 \;\unit{\textsc{m}} }{\textsc{m}}\right) \\ 
+  &\approx 1,32
+\end{split}
+\end{equation*}
+Altså har vi for en $0,100 \;\unit{\textsc{m}} $ opløsning af dichlorethansyre beregnet $[\ce{H3O+} ]$ til at være $0,0481 \;\unit{\textsc{m}} $ og pH til at være $1,03$.\\[1ex]
+\textbf{d.}
+Fra reaktionsskeamet for hydronolyse af dichlorethansyre i vand ses det, at $[\ce{CH3COO-} ]=[\ce{H3O+} ]$ når ligevægten har indfundet sig, da $[\ce{H3O+} ]\approx 0$ ved start. 
+Altså har vi
+\begin{equation*}
+\begin{split}
+  \alpha&=\frac{[\ce{CHCl2COO-} ]}{c_s}\\ 
+  &= \frac{[\ce{H3O+} ]}{0,100 \;\unit{\textsc{m}} } \\
+  &=\frac{0,048133199 \;\unit{\textsc{m}} }{0,100 \;\unit{\textsc{m}} }\\ 
+  &\approx 0,481
+\end{split}
+\end{equation*}
+Altså er hydronolysegraden for reaktionen $0,481$ og $48,1 \%$ af det oprindelige antal dichlorethansyremolekyler er omdannet til dichlorethanoat. 
+\end{document}

@@ -1,0 +1,49 @@
+This is BibTeX, Version 0.99d (TeX Live 2023)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: SRO.aux
+A level-1 auxiliary file: title.aux
+The style file: apa-good.bst
+Database file #1: Zotero.bib
+Warning--can't use both author and editor fields in Brydensholt2021
+You've used 7 entries,
+            2804 wiz_defined-function locations,
+            628 strings with 5572 characters,
+and the built_in function-call counts, 3039 in all, are:
+= -- 254
+> -- 104
+< -- 5
++ -- 42
+- -- 33
+* -- 201
+:= -- 526
+add.period$ -- 21
+call.type$ -- 7
+change.case$ -- 46
+chr.to.int$ -- 5
+cite$ -- 8
+duplicate$ -- 218
+empty$ -- 230
+format.name$ -- 44
+if$ -- 581
+int.to.chr$ -- 3
+int.to.str$ -- 1
+missing$ -- 44
+newline$ -- 42
+num.names$ -- 28
+pop$ -- 82
+preamble$ -- 1
+purify$ -- 39
+quote$ -- 0
+skip$ -- 90
+stack$ -- 0
+substring$ -- 108
+swap$ -- 102
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 57
+warning$ -- 1
+while$ -- 23
+width$ -- 0
+write$ -- 93
+(There was 1 warning)

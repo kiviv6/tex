@@ -1,0 +1,17 @@
+latexmlpost (LaTeXML version 0.8.7) paginating /Users/kevinzhou/Documents/tex/kem/opgavesÃ¦t3/opgavesÃ¦t3.xml
+Error:malformed:document Document fails RelaxNG validation (LaTeXML)
+	Validation reports: /Users/kevinzhou/Documents/tex/kem/opgaves%C3%A6t3/opgaves%C3%A6t3.xml:0: Relax-NG validity error : Element document has extra content: resource
+	(Jing may provide a more precise report; https://relaxng.org/jclark/jing.html)
+	In Post::Document[opgavesÃ¦t3.html] /Users/kevinzhou/Documents/tex/kem/opgavesÃ¦t3/opgavesÃ¦t3.xml
+(post-processing...
+(Scan opgavesÃ¦t3.html processing...
+Scan: DBStatus: 235/0 objects
+ 0.04 sec)
+(CrossRef opgavesÃ¦t3.html processing... 0.03 sec)
+(Graphics opgavesÃ¦t3.html 4 to process... 0.03 sec)
+(MathML::Presentation opgavesÃ¦t3.html 22 to process...
+converted 22 Maths
+ 0.20 sec)
+(XSLT[using LaTeXML-html5.xsl] opgavesÃ¦t3.html processing... 0.03 sec)
+(Writer opgavesÃ¦t3.html processing... 0.00 sec) 0.33 sec)
+Postprocessing complete 1 error (See /Users/kevinzhou/Documents/tex/kem/opgavesÃ¦t3/opgavesÃ¦t3.latexmlpost.log) (reqd. 0.54s)

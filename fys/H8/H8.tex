@@ -1,0 +1,255 @@
+\documentclass{report}
+\usepackage{graphicx, tikz-cd, float, titlepic, booktabs} % Required for inserting images
+\usepackage{amsmath, amssymb, amsthm, amsfonts, siunitx, physics, gensymb}
+\AtBeginDocument{\RenewCommandCopy\qty\SI}
+\usepackage[version=4]{mhchem}
+\usepackage[most,many,breakable]{tcolorbox}
+\usepackage{xcolor, fancyhdr, varwidth}
+\usepackage[Glenn]{fncychap}
+%Options: Sonny, Lenny, Glenn, Conny, Rejne, Bjarne, Bjornstrup
+\usepackage{hyperref, cleveref}
+\usepackage{icomma, enumitem} %comma as decimal and continue enumerate with [resume]
+\usepackage[danish]{babel}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SELF MADE COLORS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{myg}{RGB}{56, 140, 70}
+\definecolor{myb}{RGB}{45, 111, 177}
+\definecolor{myr}{RGB}{199, 68, 64}
+\definecolor{mytheorembg}{HTML}{F2F2F9}
+\definecolor{mytheoremfr}{HTML}{00007B}
+\definecolor{mylenmabg}{HTML}{FFFAF8}
+\definecolor{mylenmafr}{HTML}{983b0f}
+\definecolor{mypropbg}{HTML}{f2fbfc}
+\definecolor{mypropfr}{HTML}{191971}
+\definecolor{myexamplebg}{HTML}{F2FBF8}
+\definecolor{myexamplefr}{HTML}{88D6D1}
+\definecolor{myexampleti}{HTML}{2A7F7F}
+\definecolor{mydefinitbg}{HTML}{E5E5FF}
+\definecolor{mydefinitfr}{HTML}{3F3FA3}
+\definecolor{notesgreen}{RGB}{0,162,0}
+\definecolor{myp}{RGB}{197, 92, 212}
+\definecolor{mygr}{HTML}{2C3338}
+\definecolor{myred}{RGB}{127,0,0}
+\definecolor{myyellow}{RGB}{169,121,69}
+\definecolor{myexercisebg}{HTML}{F2FBF8}
+\definecolor{myexercisefg}{HTML}{88D6D1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Box environments for theorems and problems
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\parindent}{1cm}
+%================================
+% Question BOX
+%================================
+\makeatletter
+\newtcbtheorem{question}{Opgave}{enhanced,
+	breakable,
+	colback=white,
+	colframe=myb!80!black,
+	attach boxed title to top left={yshift*=-\tcboxedtitleheight},
+	fonttitle=\bfseries,
+	title={#2},
+	boxed title size=title,
+	boxed title style={%
+			sharp corners,
+			rounded corners=northwest,
+			colback=tcbcolframe,
+			boxrule=0pt,
+		},
+	underlay boxed title={%
+			\path[fill=tcbcolframe] (title.south west)--(title.south east)
+			to[out=0, in=180] ([xshift=5mm]title.east)--
+			(title.center-|frame.east)
+			[rounded corners=\kvtcb@arc] |-
+			(frame.north) -| cycle;
+		},
+	#1
+}{def}
+\makeatother
+%================================
+% DEFINITION BOX
+%================================
+
+\newtcbtheorem[]{Definition}{Definition}{enhanced,
+	before skip=2mm,after skip=2mm, colback=red!5,colframe=red!80!black,boxrule=0.5mm,
+	attach boxed title to top left={xshift=1cm,yshift*=1mm-\tcboxedtitleheight}, varwidth boxed title*=-3cm,
+	boxed title style={frame code={
+					\path[fill=tcbcolback]
+					([yshift=-1mm,xshift=-1mm]frame.north west)
+					arc[start angle=0,end angle=180,radius=1mm]
+					([yshift=-1mm,xshift=1mm]frame.north east)
+					arc[start angle=180,end angle=0,radius=1mm];
+					\path[left color=tcbcolback!60!black,right color=tcbcolback!60!black,
+						middle color=tcbcolback!80!black]
+					([xshift=-2mm]frame.north west) -- ([xshift=2mm]frame.north east)
+					[rounded corners=1mm]-- ([xshift=1mm,yshift=-1mm]frame.north east)
+					-- (frame.south east) -- (frame.south west)
+					-- ([xshift=-1mm,yshift=-1mm]frame.north west)
+					[sharp corners]-- cycle;
+				},interior engine=empty,
+		},
+	fonttitle=\bfseries,
+	title={#2},#1}{def}
+\newtcbtheorem[]{definition}{Definition}{enhanced,
+	before skip=2mm,after skip=2mm, colback=red!5,colframe=red!80!black,boxrule=0.5mm,
+	attach boxed title to top left={xshift=1cm,yshift*=1mm-\tcboxedtitleheight}, varwidth boxed title*=-3cm,
+	boxed title style={frame code={
+					\path[fill=tcbcolback]
+					([yshift=-1mm,xshift=-1mm]frame.north west)
+					arc[start angle=0,end angle=180,radius=1mm]
+					([yshift=-1mm,xshift=1mm]frame.north east)
+					arc[start angle=180,end angle=0,radius=1mm];
+					\path[left color=tcbcolback!60!black,right color=tcbcolback!60!black,
+						middle color=tcbcolback!80!black]
+					([xshift=-2mm]frame.north west) -- ([xshift=2mm]frame.north east)
+					[rounded corners=1mm]-- ([xshift=1mm,yshift=-1mm]frame.north east)
+					-- (frame.south east) -- (frame.south west)
+					-- ([xshift=-1mm,yshift=-1mm]frame.north west)
+					[sharp corners]-- cycle;
+				},interior engine=empty,
+		},
+	fonttitle=\bfseries,
+	title={#2},#1}{def}
+
+\newtcbtheorem{theo}%
+    {Theorem}{}{theorem}
+\newtcolorbox{prob}[1]{colback=red!5!white,colframe=red!50!black,fonttitle=\bfseries,title={#1}}
+%================================
+% NOTE BOX
+%================================
+
+\usetikzlibrary{arrows,calc,shadows.blur}
+\tcbuselibrary{skins}
+\newtcolorbox{note}[1][]{%
+	enhanced jigsaw,
+	colback=gray!20!white,%
+	colframe=gray!80!black,
+	size=small,
+	boxrule=1pt,
+	title=\textbf{Note:},
+	halign title=flush center,
+	coltitle=black,
+	breakable,
+	drop shadow=black!50!white,
+	attach boxed title to top left={xshift=1cm,yshift=-\tcboxedtitleheight/2,yshifttext=-\tcboxedtitleheight/2},
+	minipage boxed title=1.5cm,
+	boxed title style={%
+			colback=white,
+			size=fbox,
+			boxrule=1pt,
+			boxsep=2pt,
+			underlay={%
+					\coordinate (dotA) at ($(interior.west) + (-0.5pt,0)$);
+					\coordinate (dotB) at ($(interior.east) + (0.5pt,0)$);
+					\begin{scope}
+						\clip (interior.north west) rectangle ([xshift=3ex]interior.east);
+						\filldraw [white, blur shadow={shadow opacity=60, shadow yshift=-.75ex}, rounded corners=2pt] (interior.north west) rectangle (interior.south east);
+					\end{scope}
+					\begin{scope}[gray!80!black]
+						\fill (dotA) circle (2pt);
+						\fill (dotB) circle (2pt);
+					\end{scope}
+				},
+		},
+	#1,
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SELF MADE COMMANDS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\sol}{\setlength{\parindent}{0cm}\textbf{\textit{Løsning:}}\setlength{\parindent}{1cm}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[tmargin=2cm,rmargin=1in,lmargin=1in,margin=0.85in,bmargin=2cm,footskip=.2in]{geometry}\pagestyle{fancy}
+\lhead{Minrui Kevin Zhou 2.b}
+\rhead{H8: Skråplan}
+
+\title{H8: Skråplan\\
+{\Large \textbf{2.b fys B}}}
+\author{Kevin Zhou}
+\date{December 2023}
+\begin{document}
+\maketitle
+\begin{question}{Bremsesvigt}{}
+  En lastbil kører med farten $79 \;\unit{km/h} $ på en $6,2 \;\unit{km} $ lang strækning.
+  \begin{itemize}
+    \item[a.] Hvor lang tid tager det for lastbilen at køre denne strækning?
+  \end{itemize}
+  På toppen af en $400 \;\unit{m} $ høj bakke har lastbilen farten $10 \;\unit{ km/h}$. Da lastbilen er kommet ned i højden $200 \;\unit{m}$, er farten steget til $110 \;\unit{km/h}$. Lastbilen har massen 64 ton.
+  \begin{itemize}
+    \item[b.] Beregn lastbilens tab i mekanisk energi fra toppen af bakken til højden $200 \;\unit{m}$.
+  \end{itemize}
+  Pludseligt svigter lastbilens bremser, og chaufføren kører derfor ind på et opadgående nødspor som vist på figuren. Ved indkørslen på nødsporet er lastbilens fart $110 \;\unit{km/h}$. 
+  På vej op ad nødsporet er lastbilen påvirket af en gnidningskraft, der har størrelsen $120 \;\unit{kN} $.
+  \begin{itemize}
+    \item[c.] Hvor langt kører lastbilen op ad nødsporet, inden den holder stille?
+  \end{itemize}
+\end{question}
+\sol \\ 
+\textbf{a.} Vi finder tiden ved at bruge definitionen af fart.
+\[
+t=\frac{s}{\text{fart}}=\frac{6,2 \;\unit{km} }{79 \;\unit{km/h} }\approx 7,8\cdot 10^{-2}\;\unit{h}\approx 2,8\cdot 10^2 \;\unit{s} 
+\] 
+Det tager altså lastbilen $7,8\cdot 10^{-2}\;\unit{h}$ at køre strækningen. \\[1ex]
+\textbf{b.} Vi finder forskellen på den mekaniske energi på toppen af bakken og ved $200 \;\unit{m} $.
+\begin{equation*}
+\begin{split}
+  E^{\text{før} }_{mek}-E^{\text{efter} }_{mek}&=m\cdot g \cdot \left(h_{\text{før} }- h_{\text{efter} }\right)  + \frac{m}{2} \cdot \left(v_{\text{før} }^2-v_{\text{efter}}^2 \right) \\ 
+  &=64000 \;\unit{kg} \cdot 9,8 \;\unit{m/s^2} \cdot (400-200)\;\unit{m} + 32000 \;\unit{kg}\cdot \left(\left(\frac{10}{3,6} \;\unit{m/s} \right)^2-\left(\frac{110}{3,6} \;\unit{m/s} \right)^2\right) \\ 
+  &\approx 96 \;\unit{MJ} 
+\end{split}
+\end{equation*}
+Altså er lastbilens tab i mekanisk energi $96 \;\unit{MJ} $. \\[1ex]
+\textbf{c.} Vi antager, at lastbilens acceleration er konstant.
+Vi finder først accelerationen af lastbilen ned ad nødsporet mens bilen kører opad med Newtons 2. lov.
+\begin{equation*}
+\begin{split}
+  a&= \frac{F_{res}}{m} \\ 
+  &=\frac{64000 \;\unit{kg} \cdot g \cdot \sin(11\degree)+120 \;\unit{kN} }{64000 \;\unit{kg} } \\ 
+  &\approx 3,7449 \;\unit{m/s^2} 
+\end{split}
+\end{equation*}
+Vi finder nu forskellen på den kørte strækning fra indkørslen på nødsporet og når $v=0$, hvor $a$ er accelerationen ned ad nødsporet regnet ovenfor. 
+\begin{equation*}
+\begin{split}
+  \Delta s &= \frac{\left(\frac{110}{3.6}\;\unit{m/s}\right)^2  }{2\cdot a} \\ 
+  &\approx 1,2 \cdot 10^2 \;\unit{m} = 0,12 \;\unit{km}  
+\end{split}
+\end{equation*}
+Altså kører lastbilen $0,12 \;\unit{km} $ op ad nødsporet, inden den holder stille. 
+\begin{question}{Container}{}
+  Billedet viser en container, der er ved at blive trukket op ad ladet på en lastvogn. Ved hjælp af en stålwire trækker en elmotor containeren med den konstante fart $0,25 \;\unit{m/s} $.
+  Trækkraften $F_s$ fra stålwiren har størrelsen $78,4 \;\unit{kN} $.  
+  \begin{itemize}
+    \item[a.] Beregn den effekt, hvormed trækkraften fra stålwiren udfører arbejde på containeren.
+  \end{itemize}
+Ladet hælder $28\degree$ med vandret. Massen af containeren er $9,2$ ton. 
+\begin{itemize}
+  \item[c.] Beregn gnidningskoefficienten mellem lad og container under bevægelsen.
+\end{itemize}
+\end{question}
+\sol \\ 
+\textbf{a.} Siden kræften $F_s$ og vejen er ensrettede, så må $F_s$ udføre følgende arbejde på containeren når den flyttes en vejlængde på $0,25 \;\unit{m} $. 
+\begin{equation*}
+\begin{split}
+  A&=F\cdot s \cdot \cos(\theta) \\ 
+  &=78,4 \;\unit{kN} \cdot 0,25 \;\unit{m} \\ 
+  &= 19,6 \;\unit{kJ} 
+\end{split}
+\end{equation*}
+Siden containeren netop trækkes op med $0,25 \;\unit{m/s} $, så udføres ovenstående arbejde over $1 \;\unit{s} $.
+Altså må effekten, hvormed trækkraften fra stålwiren udfører arbejde på containeren være
+\[
+P=\frac{A}{t}= \frac{19,6 \;\unit{kJ}}{1 \;\unit{s} }\approx20 \;\unit{kW} 
+\] 
+Altså er effekten, hvormed trækkraften fra stålwiren udfører arbejde på containeren $20 \;\unit{kW} $. \\[1ex]
+\textbf{c.} Siden accelerationen af containeren er $0$, så må summen af gnidningskraftens størrelse og tyngdekraftens komposant med retning parallelt med ladets størrelse være lig med trækkraftens størrelse.
+Altså vil det sige, at
+\begin{equation*}
+\begin{split}
+  F_{\mu} + F_{t,\parallel}=78,4 \;\unit{kN}&\implies F_t \cdot \sin(28\degree) + \mu \cdot F_t \cdot \cos(28 \degree )=78,4 \;\unit{kN} \\ 
+  &\implies \mu=\frac{\frac{78,4 \;\unit{kN} }{F_t}-\sin(28 \degree )}{\cos(28 \degree )} \\ 
+  &\implies \mu=\frac{\frac{78,4 \;\unit{kN} }{9,2\cdot 10^3 \;\unit{kg} \cdot 9,8 \;\unit{m/s^2} }-\sin(28 \degree )}{\cos(28 \degree )} \approx 0,45
+\end{split}
+\end{equation*}
+Altså er gnidningskoefficienten mellem lad og container under bevægelsen $0,45$.
+\end{document}

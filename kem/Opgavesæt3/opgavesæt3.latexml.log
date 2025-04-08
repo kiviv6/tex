@@ -1,0 +1,332 @@
+latexml (LaTeXML version 0.8.7) processing opgavesÃ¦t3.tex
+(Digesting TeX opgavesÃ¦t3...
+(Loading /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/TeX.pool.ltxml...
+(Loading /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/eTeX.pool.ltxml... 0.00 sec)
+(Loading /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/pdfTeX.pool.ltxml... 0.01 sec) 0.11 sec)
+(Processing content /Users/kevinzhou/Documents/tex/kem/opgavesÃ¦t3/opgavesÃ¦t3.tex...
+(Loading /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/LaTeX.pool.ltxml...
+(Loading /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/textcomp.sty.ltxml... 0.01 sec) 0.17 sec)
+(Loading /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/report.cls.ltxml... 0.01 sec)
+(Loading /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/graphicx.sty.ltxml...
+(Loading /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/graphics.sty.ltxml... 0.01 sec) 0.02 sec)
+Warning:missing_file:tikz-cd Can't find binding for package tikz-cd
+	at opgavesÃ¦t3.tex; line 3 col 11 - line 3 col 11
+	Anticipate undefined macros or environments
+	search paths are /Users/kevinzhou/Documents/tex/kem/opgavesÃ¦t3
+	In Core::Definition::Constructor[\usepac... /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/LaTeX.pool.ltxml; line 863
+(Loading /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/float.sty.ltxml... 0.00 sec)
+Warning:missing_file:titlepic Can't find binding for package titlepic
+	at opgavesÃ¦t3.tex; line 3 col 11 - line 3 col 11
+	Anticipate undefined macros or environments
+	In Core::Definition::Constructor[\usepac... /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/LaTeX.pool.ltxml; line 863
+(Loading /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/booktabs.sty.ltxml... 0.01 sec)
+(Loading /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/amsmath.sty.ltxml...
+(Loading /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/amsbsy.sty.ltxml...
+(Loading /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/amsgen.sty.ltxml... 0.00 sec) 0.01 sec)
+(Loading /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/amstext.sty.ltxml... 0.00 sec)
+(Loading /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/amsopn.sty.ltxml... 0.01 sec) 0.04 sec)
+(Loading /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/amssymb.sty.ltxml...
+(Loading /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/amsfonts.sty.ltxml... 0.00 sec) 0.01 sec)
+(Loading /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/amsthm.sty.ltxml... 0.00 sec)
+(Loading /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/siunitx.sty.ltxml...
+(Loading /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/expl3.sty.ltxml...
+(Loading /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/expl3.pool.ltxml...
+Info:missing_file:expl3.ltx Recent versions of LaTeX expect expl3.ltx to be available, consider installing texlive.
+	at expl3.pool.ltxml; line 104
+ 0.00 sec)
+Warning:missing_file:expl3 Can't find package expl3
+	at expl3.sty.ltxml; line 19
+	Anticipate undefined macros or environments
+	In Core::Gullet[@0x7fe4bbe5f950] /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/expl3.sty.ltxml; line 19
+ 0.00 sec)
+(Loading /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/xcolor.sty.ltxml...
+(Loading /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/color.sty.ltxml... 0.01 sec) 0.04 sec)
+(Loading /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/array.sty.ltxml... 0.00 sec) 0.13 sec)
+(Loading /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/physics.sty.ltxml... 0.01 sec)
+(Loading /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/gensymb.sty.ltxml... 0.00 sec)
+Warning:missing_file:mhchem Can't find binding for package mhchem
+	at opgavesÃ¦t3.tex; line 6 col 11 - line 6 col 11
+	Anticipate undefined macros or environments
+	In Core::Definition::Constructor[\usepac... /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/LaTeX.pool.ltxml; line 863
+(Loading /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/tcolorbox.sty.ltxml...
+(Loading /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/xparse.sty.ltxml...
+Warning:missing_file:xparse Can't find package xparse
+	at xparse.sty.ltxml; line 24
+	Anticipate undefined macros or environments
+	In Core::Gullet[@0x7fe4bbe5f950] /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/xparse.sty.ltxml; line 24
+ 0.00 sec)
+Warning:missing_file:tcolorbox Can't find package tcolorbox
+	at tcolorbox.sty.ltxml; line 24
+	Anticipate undefined macros or environments
+	In Core::Gullet[@0x7fe4bbe5f950] /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/tcolorbox.sty.ltxml; line 24
+ 0.01 sec)
+(Loading /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/fancyhdr.sty.ltxml... 0.00 sec)
+(Loading /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/varwidth.sty.ltxml... 0.00 sec)
+Warning:missing_file:fncychap Can't find binding for package fncychap
+	at opgavesÃ¦t3.tex; line 10 col 11 - line 10 col 11
+	Anticipate undefined macros or environments
+	In Core::Definition::Constructor[\usepac... /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/LaTeX.pool.ltxml; line 863
+(Loading /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/hyperref.sty.ltxml...
+(Loading /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/ltxcmds.sty.ltxml...
+Warning:missing_file:ltxcmds Can't find package ltxcmds
+	at ltxcmds.sty.ltxml; line 20
+	Anticipate undefined macros or environments
+	In Core::Gullet[@0x7fe4bbe5f950] /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/ltxcmds.sty.ltxml; line 20
+ 0.00 sec)
+(Loading /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/keyval.sty.ltxml...
+Warning:missing_file:keyval Can't find package keyval
+	at keyval.sty.ltxml; line 19
+	Anticipate undefined macros or environments
+	In Core::Gullet[@0x7fe4bbe5f950] /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/keyval.sty.ltxml; line 19
+ 0.00 sec)
+(Loading /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/kvsetkeys.sty.ltxml...
+Warning:missing_file:kvsetkeys Can't find package kvsetkeys
+	at kvsetkeys.sty.ltxml; line 20
+	Anticipate undefined macros or environments
+	In Core::Gullet[@0x7fe4bbe5f950] /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/kvsetkeys.sty.ltxml; line 20
+ 0.00 sec)
+(Loading /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/kvdefinekeys.sty.ltxml...
+Warning:missing_file:kvdefinekeys Can't find package kvdefinekeys
+	at kvdefinekeys.sty.ltxml; line 20
+	Anticipate undefined macros or environments
+	In Core::Gullet[@0x7fe4bbe5f950] /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/kvdefinekeys.sty.ltxml; line 20
+ 0.00 sec)
+(Loading /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/kvoptions.sty.ltxml...
+Warning:missing_file:kvoptions Can't find package kvoptions
+	at kvoptions.sty.ltxml; line 20
+	Anticipate undefined macros or environments
+	In Core::Gullet[@0x7fe4bbe5f950] /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/kvoptions.sty.ltxml; line 20
+ 0.00 sec)
+(Loading /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/nameref.sty.ltxml...
+(Loading /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/refcount.sty.ltxml...
+Warning:missing_file:refcount Can't find package refcount
+	at refcount.sty.ltxml; line 20
+	Anticipate undefined macros or environments
+	In Core::Gullet[@0x7fe4bbe5f950] /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/refcount.sty.ltxml; line 20
+ 0.00 sec)
+(Loading /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/gettitlestring.sty.ltxml...
+Warning:missing_file:gettitlestring Can't find package gettitlestring
+	at gettitlestring.sty.ltxml; line 20
+	Anticipate undefined macros or environments
+	In Core::Gullet[@0x7fe4bbe5f950] /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/gettitlestring.sty.ltxml; line 20
+ 0.00 sec) 0.02 sec)
+(Loading /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/url.sty.ltxml... 0.00 sec)
+(Loading /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/bitset.sty.ltxml...
+Warning:missing_file:bitset Can't find package bitset
+	at bitset.sty.ltxml; line 20
+	Anticipate undefined macros or environments
+	In Core::Gullet[@0x7fe4bbe5f950] /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/bitset.sty.ltxml; line 20
+ 0.00 sec) 0.09 sec)
+(Loading /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/cleveref.sty.ltxml...
+Warning:missing_file:cleveref Can't find package cleveref
+	at cleveref.sty.ltxml; line 26
+	Anticipate undefined macros or environments
+	In Core::Gullet[@0x7fe4bbe5f950] /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/cleveref.sty.ltxml; line 26
+ 0.00 sec)
+Warning:missing_file:icomma Can't find binding for package icomma
+	at opgavesÃ¦t3.tex; line 12 col 11 - line 12 col 11
+	Anticipate undefined macros or environments
+	In Core::Definition::Constructor[\usepac... /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/LaTeX.pool.ltxml; line 863
+(Loading /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/enumitem.sty.ltxml... 0.01 sec)
+(Loading /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/babel.sty.ltxml...
+Warning:missing_file:babel Can't find package babel
+	at babel.sty.ltxml; line 26
+	Anticipate undefined macros or environments
+	In Core::Gullet[@0x7fe4bbe5f950] /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/babel.sty.ltxml; line 26
+ 0.00 sec)
+Error:undefined:\newtcbtheorem The token T_CS[\newtcbtheorem] is not defined.
+	at opgavesÃ¦t3.tex; line 45 col 14 - line 45 col 14
+	Defining it now as <ltx:ERROR/>
+	Next token is T_BEGIN[{] ( == T_BEGIN[{])
+	In Core::Gullet[@0x7fe4bbe5f950] /Users/kevinzhou/Documents/tex/kem/opgavesÃ¦t3/opgavesÃ¦t3.tex; from line 45 col 15 to line 45 col 15
+	 <= Core::Stomach[@0x7fe4bbe5f0c8] <= ...
+Error:undefined:\tcboxedtitleheight The token T_CS[\tcboxedtitleheight] is not defined.
+	at opgavesÃ¦t3.tex; line 49 col 61 - line 49 col 61
+	Defining it now as <ltx:ERROR/>
+	Next token is T_END[}] ( == T_END[}])
+	In Core::Gullet[@0x7fe4bbe5f950] /Users/kevinzhou/Documents/tex/kem/opgavesÃ¦t3/opgavesÃ¦t3.tex; from line 49 col 62 to line 49 col 62
+	 <= Core::Stomach[@0x7fe4bbe5f0c8] <= Core::Definition::Primitive[Begin] <= Core::Stomach[@0x7fe4bbe5f0c8] <= ...
+Error:misdefined:# The token T_PARAM[#] should never reach Stomach!
+	at opgavesÃ¦t3.tex; line 51 col 9 - line 51 col 9
+	In Core::Stomach[@0x7fe4bbe5f0c8] /Users/kevinzhou/Documents/tex/kem/opgavesÃ¦t3/opgavesÃ¦t3.tex; from line 51 col 9 to line 51 col 9
+	 <= Core::Definition::Primitive[Begin] <= Core::Stomach[@0x7fe4bbe5f0c8] <= Core::Definition::Primitive[Begin] <= ...
+Error:undefined:\kvtcb@arc The token T_CS[\kvtcb@arc] is not defined.
+	at opgavesÃ¦t3.tex; line 63 col 30 - line 63 col 30
+	Defining it now as <ltx:ERROR/>
+	Next token is T_OTHER[]] ( == T_OTHER[]])
+	In Core::Gullet[@0x7fe4bbe5f950] /Users/kevinzhou/Documents/tex/kem/opgavesÃ¦t3/opgavesÃ¦t3.tex; from line 63 col 31 to line 63 col 31
+	 <= Core::Stomach[@0x7fe4bbe5f0c8] <= Core::Definition::Primitive[Begin] <= Core::Stomach[@0x7fe4bbe5f0c8] <= ...
+Error:misdefined:# The token T_PARAM[#] should never reach Stomach!
+	at opgavesÃ¦t3.tex; line 66 col 2 - line 66 col 2
+	In Core::Stomach[@0x7fe4bbe5f0c8] /Users/kevinzhou/Documents/tex/kem/opgavesÃ¦t3/opgavesÃ¦t3.tex; from line 66 col 2 to line 66 col 2
+	 <= Core::Definition::Primitive[Begin] <= Core::Stomach[@0x7fe4bbe5f0c8] <= ...
+Error:misdefined:# The token T_PARAM[#] should never reach Stomach!
+	at opgavesÃ¦t3.tex; line 92 col 9 - line 92 col 9
+	In Core::Stomach[@0x7fe4bbe5f0c8] /Users/kevinzhou/Documents/tex/kem/opgavesÃ¦t3/opgavesÃ¦t3.tex; from line 92 col 9 to line 92 col 9
+	 <= Core::Definition::Primitive[Begin] <= Core::Stomach[@0x7fe4bbe5f0c8] <= Core::Definition::Primitive[Begin] <= ...
+Error:misdefined:# The token T_PARAM[#] should never reach Stomach!
+	at opgavesÃ¦t3.tex; line 92 col 13 - line 92 col 13
+	In Core::Stomach[@0x7fe4bbe5f0c8] /Users/kevinzhou/Documents/tex/kem/opgavesÃ¦t3/opgavesÃ¦t3.tex; from line 92 col 13 to line 92 col 13
+	 <= Core::Definition::Primitive[Begin] <= Core::Stomach[@0x7fe4bbe5f0c8] <= ...
+Error:misdefined:# The token T_PARAM[#] should never reach Stomach!
+	at opgavesÃ¦t3.tex; line 112 col 9 - line 112 col 9
+	In Core::Stomach[@0x7fe4bbe5f0c8] /Users/kevinzhou/Documents/tex/kem/opgavesÃ¦t3/opgavesÃ¦t3.tex; from line 112 col 9 to line 112 col 9
+	 <= Core::Definition::Primitive[Begin] <= Core::Stomach[@0x7fe4bbe5f0c8] <= Core::Definition::Primitive[Begin] <= ...
+Error:misdefined:# The token T_PARAM[#] should never reach Stomach!
+	at opgavesÃ¦t3.tex; line 112 col 13 - line 112 col 13
+	In Core::Stomach[@0x7fe4bbe5f0c8] /Users/kevinzhou/Documents/tex/kem/opgavesÃ¦t3/opgavesÃ¦t3.tex; from line 112 col 13 to line 112 col 13
+	 <= Core::Definition::Primitive[Begin] <= Core::Stomach[@0x7fe4bbe5f0c8] <= ...
+Error:undefined:\newtcolorbox The token T_CS[\newtcolorbox] is not defined.
+	at opgavesÃ¦t3.tex; line 116 col 13 - line 116 col 13
+	Defining it now as <ltx:ERROR/>
+	Next token is T_BEGIN[{] ( == T_BEGIN[{])
+	In Core::Gullet[@0x7fe4bbe5f950] /Users/kevinzhou/Documents/tex/kem/opgavesÃ¦t3/opgavesÃ¦t3.tex; from line 116 col 14 to line 116 col 14
+	 <= Core::Stomach[@0x7fe4bbe5f0c8] <= ...
+Error:misdefined:# The token T_PARAM[#] should never reach Stomach!
+	at opgavesÃ¦t3.tex; line 116 col 93 - line 116 col 93
+	In Core::Stomach[@0x7fe4bbe5f0c8] /Users/kevinzhou/Documents/tex/kem/opgavesÃ¦t3/opgavesÃ¦t3.tex; from line 116 col 93 to line 116 col 93
+	 <= Core::Definition::Primitive[Begin] <= Core::Stomach[@0x7fe4bbe5f0c8] <= Core::Definition::Primitive[Begin] <= ...
+Error:undefined:\usetikzlibrary The token T_CS[\usetikzlibrary] is not defined.
+	at opgavesÃ¦t3.tex; line 121 col 15 - line 121 col 15
+	Defining it now as <ltx:ERROR/>
+	Next token is T_BEGIN[{] ( == T_BEGIN[{])
+	In Core::Gullet[@0x7fe4bbe5f950] /Users/kevinzhou/Documents/tex/kem/opgavesÃ¦t3/opgavesÃ¦t3.tex; from line 121 col 16 to line 121 col 16
+	 <= Core::Stomach[@0x7fe4bbe5f0c8] <= ...
+Error:undefined:\tcbuselibrary The token T_CS[\tcbuselibrary] is not defined.
+	at opgavesÃ¦t3.tex; line 122 col 14 - line 122 col 14
+	Defining it now as <ltx:ERROR/>
+	Next token is T_BEGIN[{] ( == T_BEGIN[{])
+	In Core::Gullet[@0x7fe4bbe5f950] /Users/kevinzhou/Documents/tex/kem/opgavesÃ¦t3/opgavesÃ¦t3.tex; from line 122 col 15 to line 122 col 15
+	 <= Core::Stomach[@0x7fe4bbe5f0c8] <= ...
+Error:undefined:\coordinate The token T_CS[\coordinate] is not defined.
+	at opgavesÃ¦t3.tex; line 142 col 16 - line 142 col 16
+	Defining it now as <ltx:ERROR/>
+	Next token is T_OTHER[(] ( == T_OTHER[(])
+	In Core::Gullet[@0x7fe4bbe5f950] /Users/kevinzhou/Documents/tex/kem/opgavesÃ¦t3/opgavesÃ¦t3.tex; from line 142 col 18 to line 142 col 18
+	 <= Core::Stomach[@0x7fe4bbe5f0c8] <= Core::Definition::Primitive[Begin] <= Core::Stomach[@0x7fe4bbe5f0c8] <= ...
+Error:undefined:{scope} The environment {scope} is not defined.
+	at opgavesÃ¦t3.tex; line 144 col 0 - line 144 col 18
+	Next token is T_SPACE[U+000a/LF] ( == T_SPACE[U+000a/LF])
+	In Core::Definition::Expandable[\begin {}] /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/LaTeX.pool.ltxml; line 181
+	 <= Core::Gullet[@0x7fe4bbe5f950] <= Core::Stomach[@0x7fe4bbe5f0c8] <= Core::Definition::Primitive[Begin] <= ...
+Error:undefined:\clip The token T_CS[\clip] is not defined.
+	at opgavesÃ¦t3.tex; line 145 col 11 - line 145 col 11
+	Defining it now as <ltx:ERROR/>
+	Next token is T_OTHER[(] ( == T_OTHER[(])
+	In Core::Gullet[@0x7fe4bbe5f950] /Users/kevinzhou/Documents/tex/kem/opgavesÃ¦t3/opgavesÃ¦t3.tex; from line 145 col 13 to line 145 col 13
+	 <= Core::Stomach[@0x7fe4bbe5f0c8] <= Core::Definition::Primitive[Begin] <= Core::Stomach[@0x7fe4bbe5f0c8] <= ...
+Error:undefined:\filldraw The token T_CS[\filldraw] is not defined.
+	at opgavesÃ¦t3.tex; line 146 col 15 - line 146 col 15
+	Defining it now as <ltx:ERROR/>
+	Next token is T_OTHER[[] ( == T_OTHER[[])
+	In Core::Gullet[@0x7fe4bbe5f950] /Users/kevinzhou/Documents/tex/kem/opgavesÃ¦t3/opgavesÃ¦t3.tex; from line 146 col 17 to line 146 col 17
+	 <= Core::Stomach[@0x7fe4bbe5f0c8] <= Core::Definition::Primitive[Begin] <= Core::Stomach[@0x7fe4bbe5f0c8] <= ...
+Warning:expected:<number> Missing number (Dimension), treated as zero.
+	at opgavesÃ¦t3.tex; line 149 col 13 - line 149 col 13
+	while processing \fill
+	Next token is T_OTHER[(] ( == T_OTHER[(])
+	In Core::Gullet[@0x7fe4bbe5f950] /Users/kevinzhou/Documents/tex/kem/opgavesÃ¦t3/opgavesÃ¦t3.tex; from line 149 col 13 to line 149 col 13
+Warning:expected:<number> Missing number (Dimension), treated as zero.
+	at opgavesÃ¦t3.tex; line 150 col 13 - line 150 col 13
+	while processing \fill
+	Next token is T_OTHER[(] ( == T_OTHER[(])
+	In Core::Gullet[@0x7fe4bbe5f950] /Users/kevinzhou/Documents/tex/kem/opgavesÃ¦t3/opgavesÃ¦t3.tex; from line 150 col 13 to line 150 col 13
+Error:misdefined:# The token T_PARAM[#] should never reach Stomach!
+	at opgavesÃ¦t3.tex; line 154 col 2 - line 154 col 2
+	In Core::Stomach[@0x7fe4bbe5f0c8] /Users/kevinzhou/Documents/tex/kem/opgavesÃ¦t3/opgavesÃ¦t3.tex; from line 154 col 2 to line 154 col 2
+	 <= Core::Definition::Primitive[Begin] <= Core::Stomach[@0x7fe4bbe5f0c8] <= ...
+(Loading /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/geometry.sty.ltxml...
+(Loading /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/ifpdf.sty.ltxml... 0.00 sec)
+(Loading /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/ifvtex.sty.ltxml...
+(Loading /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/iftex.sty.ltxml... 0.00 sec) 0.01 sec)
+(Loading /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/ifxetex.sty.ltxml... 0.00 sec) 0.03 sec)
+Warning:missing_file:siunitx-abbreviations Can't find configuration siunitx-abbreviations
+	at opgavesÃ¦t3.tex; line 171 col 0 - line 171 col 16
+	Anticipate undefined macros or environments
+	In Core::Definition::Primitive[\lx@six@i... /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/siunitx.sty.ltxml; line 128
+Warning:missing_file:siunitx-binary Can't find configuration siunitx-binary
+	at opgavesÃ¦t3.tex; line 171 col 0 - line 171 col 16
+	Anticipate undefined macros or environments
+	In Core::Definition::Primitive[\lx@six@i... /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/siunitx.sty.ltxml; line 128
+Error:undefined:\RenewCommandCopy The token T_CS[\RenewCommandCopy] is not defined.
+	at opgavesÃ¦t3.tex; line 171 col 0 - line 171 col 16
+	Defining it now as <ltx:ERROR/>
+	Next token is T_CS[\qty] ( == Core::Definition::Expandable[\quantity]) more: \SICODE(0x7fe4be3c13b8)
+	In Core::Gullet[@0x7fe4bbe5f950] /Users/kevinzhou/Documents/tex/kem/opgavesÃ¦t3/opgavesÃ¦t3.tex; from line 171 col 0 to line 171 col 16
+	 <= Core::Stomach[@0x7fe4bbe5f0c8] <= Core::Definition::Constructor[\begin{... <= Core::Stomach[@0x7fe4bbe5f0c8] <= ...
+Error:unexpected:\SI Expected an open delimiter
+	at opgavesÃ¦t3.tex; line 171 col 0 - line 171 col 16
+	Got T_CS[\SI]
+	Next token is T_CS[\SI] ( == Core::Definition::Expandable[\SI OptionalKeyVals:SIX{}{}]) more: CODE(0x7fe4be3c13b8)
+	In Core::Definition::Expandable[\quantity] /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/physics.sty.ltxml; line 145
+	 <= Core::Gullet[@0x7fe4bbe5f950] <= Core::Stomach[@0x7fe4bbe5f0c8] <= Core::Definition::Constructor[\begin{... <= ...
+Error:expected:{} Missing argument {} for Core::Definition::Expandable[\SI OptionalKeyVals:SIX{}{}]
+	at opgavesÃ¦t3.tex; line 171 col 0 - line 171 col 16
+	Ended at opgavesÃ¦t3.tex; line 171 col 0 - line 171 col 16
+	Input is empty
+	In Core::Definition::Expandable[\SI Opti... /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/siunitx.sty.ltxml; line 1158
+	 <= Core::Gullet[@0x7fe4bbe5f950] <= Core::Stomach[@0x7fe4bbe5f0c8] <= Core::Definition::Constructor[\begin{... <= ...
+Error:undefined:\ce The token T_CS[\ce] is not defined.
+	at opgavesÃ¦t3.tex; line 184 col 22 - line 184 col 22
+	Defining it now as <ltx:ERROR/>
+	Next token is T_BEGIN[{] ( == T_BEGIN[{])
+	In Core::Gullet[@0x7fe4bbe5f950] /Users/kevinzhou/Documents/tex/kem/opgavesÃ¦t3/opgavesÃ¦t3.tex; from line 184 col 23 to line 184 col 23
+	 <= Core::Stomach[@0x7fe4bbe5f0c8] <= ...
+Error:unexpected:^ Script ^ can only appear in math mode
+	at opgavesÃ¦t3.tex; line 193 col 67 - line 193 col 67
+	In Core::Definition::Primitive[Superscript] /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/TeX.pool.ltxml; line 4414
+	 <= Core::Stomach[@0x7fe4bbe5f0c8] <= Core::Definition::Primitive[Begin] <= Core::Stomach[@0x7fe4bbe5f0c8] <= ...
+Error:undefined:\unit The token T_CS[\unit] is not defined.
+	at opgavesÃ¦t3.tex; line 195 col 46 - line 195 col 46
+	Defining it now as <ltx:ERROR/>
+	Next token is T_BEGIN[{] ( == T_BEGIN[{])
+	In Core::Gullet[@0x7fe4bbe5f950] /Users/kevinzhou/Documents/tex/kem/opgavesÃ¦t3/opgavesÃ¦t3.tex; from line 195 col 47 to line 195 col 47
+	 <= Core::Stomach[@0x7fe4bbe5f0c8] <= Core::Definition::Constructor[$$] <= Core::Stomach[@0x7fe4bbe5f0c8] <= ...
+Error:unexpected:^ Script ^ can only appear in math mode
+	at opgavesÃ¦t3.tex; line 272 col 81 - line 272 col 81
+	In Core::Definition::Primitive[Superscript] /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/TeX.pool.ltxml; line 4414
+	 <= Core::Stomach[@0x7fe4bbe5f0c8] <= Core::Definition::Primitive[Begin] <= Core::Stomach[@0x7fe4bbe5f0c8] <= ...
+Error:unexpected:^ Script ^ can only appear in math mode
+	at opgavesÃ¦t3.tex; line 280 col 170 - line 280 col 170
+	In Core::Definition::Primitive[Superscript] /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/TeX.pool.ltxml; line 4414
+	 <= Core::Stomach[@0x7fe4bbe5f0c8] <= Core::Definition::Primitive[Begin] <= Core::Stomach[@0x7fe4bbe5f0c8] <= ...
+Error:unexpected:^ Script ^ can only appear in math mode
+	at opgavesÃ¦t3.tex; line 288 col 108 - line 288 col 108
+	In Core::Definition::Primitive[Superscript] /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/Package/TeX.pool.ltxml; line 4414
+	 <= Core::Stomach[@0x7fe4bbe5f0c8] <= Core::Definition::Primitive[Begin] <= Core::Stomach[@0x7fe4bbe5f0c8] <= ...
+ 1.11 sec) 1.22 sec)
+(Building...
+(Loading compiled schema /usr/local/Cellar/latexml/0.8.7_1/libexec/lib/perl5/LaTeXML/resources/RelaxNG/LaTeXML.model... 0.01 sec)
+Error:malformed:ltx:XMDual <ltx:XMDual> isn't allowed in <ltx:p>
+	at opgavesÃ¦t3.tex; line 45 col 16 - line 45 col 16
+	Currently in XMLDocument[105553133361408]<ltx:document _autoopened="1" _box="LaTeXML::Core::List=HASH(0x7fe..." _font="Font[serif,medium,upright,10,b..." class="ltx_authors_1line" _ID_counter_p_="1" xmlns="http://dlmf.nist.gov/LaTeXML">...<ltx:para _autoopened="1" _box="LaTeXML::Core::List=HASH(0x7fe..." _font="Font[serif,medium,upright,10,b..." xml:id="p1" _ID_counter_m_="2">...<ltx:p _autoopened="1" _box="LaTeXML::Core::List=HASH(0x7fe..." _font="Font[serif,medium,upright,10,b...">...
+	In Core::Document[@0x7fe4bcdfb178] /Users/kevinzhou/Documents/tex/kem/opgavesÃ¦t3/opgavesÃ¦t3.tex; from line 45 col 16 to line 45 col 16
+	 <= Core::Definition::Constructor[\lx@dua... <= Whatsit[\lx@dual,Core::KeyVals[@0x7fe... <= Core::Document[@0x7fe4bcdfb178] <= ...
+ 0.67 sec)
+(Rewriting... 0.02 sec)
+(Math Parsing 22 formulae ......
+Warning:not_parsed:UNKNOWN.UNKNOWN.CLOSE>ADDOP MathParser failed to match rule 'Anything'
+	at opgavesÃ¦t3.tex; line 142 col 30 - line 142 col 58
+	In "$(interior.west)+(-0.5pt,0)$"
+	([[OPEN]] i[[UNKNOWN]] n[[UNKNOWN]] t[[UNKNOWN]] e[[UNKNOWN]] r[[UNKNOWN]] i[[UNKNOWN]] o[[UNKNOWN]] r[[UNKNOWN]] .[[PERIOD]] w[[UNKNOWN]] e[[UNKNOWN]] s[[UNKNOWN]] t[[UNKNOWN]] )[[CLOSE]]
+	        > +[[ADDOP]] ([[OPEN]] -[[ADDOP]] 0.5[[NUMBER]] p[[UNKNOWN]] t[[UNKNOWN]] ,[[PUNCT]] 0[[NUMBER]] )[[CLOSE]]
+Warning:not_parsed:UNKNOWN.UNKNOWN.CLOSE>ADDOP MathParser failed to match rule 'Anything'
+	at opgavesÃ¦t3.tex; line 143 col 30 - line 143 col 57
+	In "$(interior.east)+(0.5pt,0)$"
+	([[OPEN]] i[[UNKNOWN]] n[[UNKNOWN]] t[[UNKNOWN]] e[[UNKNOWN]] r[[UNKNOWN]] i[[UNKNOWN]] o[[UNKNOWN]] r[[UNKNOWN]] .[[PERIOD]] e[[UNKNOWN]] a[[UNKNOWN]] s[[UNKNOWN]] t[[UNKNOWN]] )[[CLOSE]]
+	        > +[[ADDOP]] ([[OPEN]] 0.5[[NUMBER]] p[[UNKNOWN]] t[[UNKNOWN]] ,[[PUNCT]] 0[[NUMBER]] )[[CLOSE]]
+Warning:not_parsed:UNKNOWN.POSTSUPERSCRIPT.ADDOP>ADDOP MathParser failed to match rule 'Anything'
+	at opgavesÃ¦t3.tex; line 277 col 0 - line 279 col 2
+	In "$$\ce{Cu^{2}++4NH3->Cu(NH3)4^{2}+}$$"
+	\ce[[UNKNOWN]] C[[UNKNOWN]] u[[UNKNOWN]] ^{2}[[POSTSUPERSCRIPT]] +[[ADDOP]]
+	        > +[[ADDOP]] 4[[NUMBER]] N[[UNKNOWN]] H[[UNKNOWN]] 3[[NUMBER]] -[[ADDOP]] >[[RELOP]] C[[UNKNOWN]] u[[UNKNOWN]] ([[OPEN]] N[[UNKNOWN]] H[[UNKNOWN]] 3[[NUMBER]] )[[CLOSE]] 4[[NUMBER]] ^{2}[[POSTSUPERSCRIPT]] +[[ADDOP]]
+ 0.87 sec)
+Math parsing succeeded:
+   ltx:XMArg: 42/42
+   ltx:XMWrap: 3/3
+   ltx:XMath: 19/22
+Symbols assumed as simple identifiers (with # of occurences):
+   'A{italic}' (1), 'C{italic}' (16), 'Delta' (1), 'E{italic}' (1), 'H{italic}' (8), 'K{italic}' (3), 'L{italic}' (9), 'M{italic}' (9), 'N{italic}' (10), 'O{italic}' (18), 'S{italic}' (4), 'V{italic}' (4), 'a{italic}' (7), 'c{italic}' (5), 'e{italic}' (8), 'g{italic}' (5), 'i{italic}' (8), 'lambda' (1), 'l{italic}' (15), 'm{italic}' (30), 'n{italic}' (18), 'o{italic}' (15), 'p{italic}' (4), 'q{italic}' (2), 'r{italic}' (8), 's{italic}' (7), 't{italic}' (14), 'u{italic}' (10), 'varepsilon' (4), 'w{italic}' (2)
+Set MATHPARSER_SPECULATE to speculate on possible notations.
+(Finalizing... 0.11 sec)
+Conversion complete 25 warnings; 28 errors; 13 undefined macros[\clip, \filldraw, \usetikzlibrary, \coordinate, \RenewCommandCopy, {scope}, \newtcbtheorem, \unit, \newtcolorbox, \tcboxedtitleheight, \tcbuselibrary, \ce, \kvtcb@arc]; 20 missing files[siunitx-abbreviations.cfg, tcolorbox.sty, gettitlestring.sty, cleveref.sty, fncychap.sty, titlepic.sty, siunitx-binary.cfg, expl3.sty, mhchem.sty, kvdefinekeys.sty, xparse.sty, icomma.sty, keyval.sty, babel.sty, refcount.sty, kvoptions.sty, bitset.sty, ltxcmds.sty, tikz-cd.sty, kvsetkeys.sty] (See /Users/kevinzhou/Documents/tex/kem/opgavesÃ¦t3/opgavesÃ¦t3.latexml.log) (reqd. 3.07s)

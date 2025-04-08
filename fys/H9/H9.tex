@@ -1,0 +1,296 @@
+\documentclass{report}
+\usepackage{graphicx, tikz-cd, float, titlepic, booktabs} % Required for inserting images
+\usepackage{amsmath, amssymb, amsthm, amsfonts, siunitx, physics, gensymb}
+\AtBeginDocument{\RenewCommandCopy\qty\SI}
+\usepackage[version=4]{mhchem}
+\usepackage[most,many,breakable]{tcolorbox}
+\usepackage{xcolor, fancyhdr, varwidth}
+\usepackage[Glenn]{fncychap}
+%Options: Sonny, Lenny, Glenn, Conny, Rejne, Bjarne, Bjornstrup
+\usepackage{hyperref, cleveref}
+\usepackage{icomma, enumitem} %comma as decimal and continue enumerate with [resume]
+\usepackage[danish]{babel}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SELF MADE COLORS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{myg}{RGB}{56, 140, 70}
+\definecolor{myb}{RGB}{45, 111, 177}
+\definecolor{myr}{RGB}{199, 68, 64}
+\definecolor{mytheorembg}{HTML}{F2F2F9}
+\definecolor{mytheoremfr}{HTML}{00007B}
+\definecolor{mylenmabg}{HTML}{FFFAF8}
+\definecolor{mylenmafr}{HTML}{983b0f}
+\definecolor{mypropbg}{HTML}{f2fbfc}
+\definecolor{mypropfr}{HTML}{191971}
+\definecolor{myexamplebg}{HTML}{F2FBF8}
+\definecolor{myexamplefr}{HTML}{88D6D1}
+\definecolor{myexampleti}{HTML}{2A7F7F}
+\definecolor{mydefinitbg}{HTML}{E5E5FF}
+\definecolor{mydefinitfr}{HTML}{3F3FA3}
+\definecolor{notesgreen}{RGB}{0,162,0}
+\definecolor{myp}{RGB}{197, 92, 212}
+\definecolor{mygr}{HTML}{2C3338}
+\definecolor{myred}{RGB}{127,0,0}
+\definecolor{myyellow}{RGB}{169,121,69}
+\definecolor{myexercisebg}{HTML}{F2FBF8}
+\definecolor{myexercisefg}{HTML}{88D6D1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Box environments for theorems and problems
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\parindent}{1cm}
+%================================
+% Question BOX
+%================================
+\makeatletter
+\newtcbtheorem{question}{Opgave}{enhanced,
+	breakable,
+	colback=white,
+	colframe=myb!80!black,
+	attach boxed title to top left={yshift*=-\tcboxedtitleheight},
+	fonttitle=\bfseries,
+	title={#2},
+	boxed title size=title,
+	boxed title style={%
+			sharp corners,
+			rounded corners=northwest,
+			colback=tcbcolframe,
+			boxrule=0pt,
+		},
+	underlay boxed title={%
+			\path[fill=tcbcolframe] (title.south west)--(title.south east)
+			to[out=0, in=180] ([xshift=5mm]title.east)--
+			(title.center-|frame.east)
+			[rounded corners=\kvtcb@arc] |-
+			(frame.north) -| cycle;
+		},
+	#1
+}{def}
+\makeatother
+%================================
+% DEFINITION BOX
+%================================
+
+\newtcbtheorem[]{Definition}{Definition}{enhanced,
+	before skip=2mm,after skip=2mm, colback=red!5,colframe=red!80!black,boxrule=0.5mm,
+	attach boxed title to top left={xshift=1cm,yshift*=1mm-\tcboxedtitleheight}, varwidth boxed title*=-3cm,
+	boxed title style={frame code={
+					\path[fill=tcbcolback]
+					([yshift=-1mm,xshift=-1mm]frame.north west)
+					arc[start angle=0,end angle=180,radius=1mm]
+					([yshift=-1mm,xshift=1mm]frame.north east)
+					arc[start angle=180,end angle=0,radius=1mm];
+					\path[left color=tcbcolback!60!black,right color=tcbcolback!60!black,
+						middle color=tcbcolback!80!black]
+					([xshift=-2mm]frame.north west) -- ([xshift=2mm]frame.north east)
+					[rounded corners=1mm]-- ([xshift=1mm,yshift=-1mm]frame.north east)
+					-- (frame.south east) -- (frame.south west)
+					-- ([xshift=-1mm,yshift=-1mm]frame.north west)
+					[sharp corners]-- cycle;
+				},interior engine=empty,
+		},
+	fonttitle=\bfseries,
+	title={#2},#1}{def}
+\newtcbtheorem[]{definition}{Definition}{enhanced,
+	before skip=2mm,after skip=2mm, colback=red!5,colframe=red!80!black,boxrule=0.5mm,
+	attach boxed title to top left={xshift=1cm,yshift*=1mm-\tcboxedtitleheight}, varwidth boxed title*=-3cm,
+	boxed title style={frame code={
+					\path[fill=tcbcolback]
+					([yshift=-1mm,xshift=-1mm]frame.north west)
+					arc[start angle=0,end angle=180,radius=1mm]
+					([yshift=-1mm,xshift=1mm]frame.north east)
+					arc[start angle=180,end angle=0,radius=1mm];
+					\path[left color=tcbcolback!60!black,right color=tcbcolback!60!black,
+						middle color=tcbcolback!80!black]
+					([xshift=-2mm]frame.north west) -- ([xshift=2mm]frame.north east)
+					[rounded corners=1mm]-- ([xshift=1mm,yshift=-1mm]frame.north east)
+					-- (frame.south east) -- (frame.south west)
+					-- ([xshift=-1mm,yshift=-1mm]frame.north west)
+					[sharp corners]-- cycle;
+				},interior engine=empty,
+		},
+	fonttitle=\bfseries,
+	title={#2},#1}{def}
+
+\newtcbtheorem{theo}%
+    {Theorem}{}{theorem}
+\newtcolorbox{prob}[1]{colback=red!5!white,colframe=red!50!black,fonttitle=\bfseries,title={#1}}
+%================================
+% NOTE BOX
+%================================
+
+\usetikzlibrary{arrows,calc,shadows.blur}
+\tcbuselibrary{skins}
+\newtcolorbox{note}[1][]{%
+	enhanced jigsaw,
+	colback=gray!20!white,%
+	colframe=gray!80!black,
+	size=small,
+	boxrule=1pt,
+	title=\textbf{Note:},
+	halign title=flush center,
+	coltitle=black,
+	breakable,
+	drop shadow=black!50!white,
+	attach boxed title to top left={xshift=1cm,yshift=-\tcboxedtitleheight/2,yshifttext=-\tcboxedtitleheight/2},
+	minipage boxed title=1.5cm,
+	boxed title style={%
+			colback=white,
+			size=fbox,
+			boxrule=1pt,
+			boxsep=2pt,
+			underlay={%
+					\coordinate (dotA) at ($(interior.west) + (-0.5pt,0)$);
+					\coordinate (dotB) at ($(interior.east) + (0.5pt,0)$);
+					\begin{scope}
+						\clip (interior.north west) rectangle ([xshift=3ex]interior.east);
+						\filldraw [white, blur shadow={shadow opacity=60, shadow yshift=-.75ex}, rounded corners=2pt] (interior.north west) rectangle (interior.south east);
+					\end{scope}
+					\begin{scope}[gray!80!black]
+						\fill (dotA) circle (2pt);
+						\fill (dotB) circle (2pt);
+					\end{scope}
+				},
+		},
+	#1,
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SELF MADE COMMANDS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\sol}{\setlength{\parindent}{0cm}\textbf{\textit{Løsning:}}\setlength{\parindent}{1cm}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[tmargin=2cm,rmargin=1in,lmargin=1in,margin=0.85in,bmargin=2cm,footskip=.2in]{geometry}\pagestyle{fancy}
+\lhead{Minrui Kevin Zhou 2.b}
+\rhead{H9}
+
+\title{H9\\
+{\Large \textbf{2.b fys A}}}
+\author{Kevin Zhou}
+\date{Januar 2024}
+
+\begin{document}
+\maketitle
+\begin{question}{Luftskib}{}
+  Et luftskib med rumfanget $1390 \;\unit{m^3} $ er fyldt med helium. 
+  Trykket både inden- og udenfor er $102,1 \;\unit{kPa}$, og temperaturen er $18,0 \;\unit{\celsius} $ 
+  \begin{itemize}
+    \item[a.] Hvad er stofmængden af helium i luftskibet?
+  \end{itemize}
+Heliums molare masse er $4,00 \;\unit{ g/mol}$.
+\begin{itemize}
+  \item[b.] Hvad er massen af helium i luftskibet?
+\end{itemize}
+Den molare masse af atmosfærisk luft er $28,9 \;\unit{ g/mol}$.
+\begin{itemize}
+  \item[c.] Hvor stor er opdriften på luftskibet?
+\end{itemize}
+Grafen i opgaven viser, hvordan densiteten af den atmosfæriske luft afhænger af højden over overfladen.
+Luftskibet stiger nu op til en vis højde, hvor det holder sig svævende. Luftskibets masse uden helium er $1280 \;\unit{ kg}$
+\begin{itemize}
+  \item[d.] Find svævehøjden.
+\end{itemize}
+\end{question}
+\sol \\ 
+\textbf{a.}
+Vi bruger idealgasloven.
+\begin{equation*}
+\begin{split}
+  n&=\frac{p\cdot V}{R\cdot T}\\ 
+  &=\frac{102,3\cdot 10^3 \;\unit{Pa} \cdot 1390 \;\unit{m^3} }{8,31 \;\unit{\frac{Pa \cdot m^3}{mol\cdot K}}\cdot 291 \;\unit{K} }\\ 
+  &\approx 58,8 \;\unit{kmol} 
+\end{split}
+\end{equation*}
+Altså er stofmængden af helium i luftskibet $58,8 \;\unit{kmol} $. \\[1ex]
+\textbf{b.}
+Vi bruger stofmængden af helium fra opgave \textbf{a.} til at udregne massen.
+\begin{equation*}
+\begin{split}
+  m_{\text{helium} }&=M_{\text{helium} }\cdot n_{\text{helium} }\\ 
+  &=4,00 \;\unit{g/mol} \cdot \frac{102,3\cdot 10^3  \cdot 1390 }{{8,31 }\cdot 291 }\;\unit{mol} \\ 
+  &\approx 235 \;\unit{kg} 
+\end{split}
+\end{equation*}
+Altså er massen af helium i luftskibet $235 \;\unit{kg} $.\\[1ex]
+\textbf{c.}
+Kraften fra luften på luftskibet er lige så stor som tyngdekraften på den fortrængte luft.
+\begin{equation*}
+\begin{split}
+  F_{op}&=m_{\text{luft} }\cdot g\\ 
+  &=\frac{102,3\cdot 10^3  \cdot 1390 }{{8,31 }\cdot 291 }\;\unit{mol} \cdot 0,0289 \;\unit{kg/mol} \cdot 9,82 \;\unit{m/s^2} \\ 
+  &\approx 16,7 \;\unit{kN}
+\end{split}
+\end{equation*}
+Altså er opdriften på luftskibet $16,7 \;\unit{kN} $.\\[1ex]
+\textbf{d.}
+Skibet svæver, når gennemsnitsdensiteten af luftskibet er lig med luftens densitet.
+Skibets densitet (med heliums masse fra \textbf{b}) er da
+\begin{equation*}
+\begin{split}
+  \rho_{\text{skib} }=\frac{1280 \;\unit{kg} +m_{\text{helium} }}{1390 \;\unit{m^3} } \approx 1,09 \;\unit{kg/m^3} 
+\end{split}
+\end{equation*}
+Vi aflæser på grafen, og får svævehøjden til at være $1,19\;\unit{km}$.
+\begin{question}{Dykkerflaske}{}
+ En dykker bruger dykkerflasker til sin luftforsyning under vandet.
+Hver dykkerflaske er en stålbeholder, som rummer $7,4 \;\unit{ L}$.
+Før brug pumpes atmosfærisk luft ind i flasken, så trykket i flasken er $20,6 \;\unit{ MPa}$ ved 21,0 °C.
+  Lufts molar masse er $29,0 \;\unit{ g/mol}$.  
+\begin{itemize}
+  \item[a.] Hvad er massen af luften i en dykkerflaske, når den er fyldt med luft og klar til brug?
+\end{itemize}
+Under dykningen forbruger dykkeren på et minut $33 \;\unit{ L}$ luft ved trykket $0,10 \;\unit{ MPa}$ og temperaturen $18,1 \;\unit{\celsius} $.
+\begin{itemize}
+  \item[b.] Hvor længe kan dykkeren opholde sig under vand, når hun er forsynet med to dykkerflasker?
+\end{itemize}
+Massen af en tom dykkerflaske er $7,6 \;\unit{ kg}$, og ståls densitet er $7,9 \;\unit{ kg/L}$. En dykker befinder sig helt nede i vandet.
+\begin{itemize}
+  \item[c.] Bestem størrelse og retning af den kraft, hvormed en dykkerflaske påvirker dykkeren, når flasken er tom.
+  \item[d.] Bestem størrelse og retning af den kraft, hvormed en dykkerflaske påvirker dykkeren, når flasken er fuld.
+\end{itemize}
+\end{question}
+\sol \\
+\textbf{a.}
+Vi finder stofmængden af luft i beholderen og ganger så med den molare masse for luft.
+\begin{equation*}
+\begin{split}
+  m&=\frac{p\cdot V}{R\cdot T} \cdot M \\ 
+  &=\frac{20,6 \cdot 10^6 \;\unit{Pa} \cdot 0,0074 \;\unit{m^3} }{8,31 \;\unit{\frac{Pa \cdot m^3}{mol \cdot K}} \cdot 294 \;\unit{K} } \cdot 29,0 \;\unit{g/mol} \\ 
+  &\approx 1,8 \;\unit{kg} 
+\end{split}
+\end{equation*}
+Altså er massen af luft i dykkerflasken $1,8 \;\unit{kg} $. \\[1ex]
+\textbf{b.}
+Vi finder da forholdet mellem stofmængden, der forbruges per minut og stofmængden af luften i to dykkerflasker.
+\begin{equation*}
+\begin{split}
+  n_{\text{per min} }&=\frac{0,10 \cdot 10^6 \;\unit{Pa} \cdot 0,033 \;\unit{m^3} }{8,31 \;\unit{\frac{Pa \cdot m^3}{mol \cdot K}} \cdot 291,1 \;\unit{K} }\\ 
+  & \frac{n_{ \text{flasker} }}{n_{\text{per min}}}=\frac{2 \cdot 20,6 \cdot 10^6 \cdot 0,0074}{8,31 \cdot 294}\cdot \frac{8,31 \cdot 291,1}{0,033 \cdot 10^5} \approx 91
+\end{split}
+\end{equation*}
+Altså kan dykkeren være under vand i $91$ minutter. \\[1ex]
+\textbf{c.}
+Volumenet af flaskens stål må være
+\[
+V_{\text{stål} }=\frac{m_{\text{tom flaske} }}{\rho_{\text{stål} }}= \frac{7,6 }{7,9\cdot 10^3} \;\unit{m^3} 
+\] 
+Vi bestemmer størrelsen af kræften nedad, der er længden af tyngdekraften minus længden af opdriften.
+\begin{equation*}
+\begin{split}
+  F_{\text{ned} }&=\left(m_{\text{flaske}}- \rho_{\text{vand} } \cdot V_{\text{flaske} }\right) \cdot g \\ 
+  &=\left(7,6 \;\unit{kg} - 1000 \;\unit{kg/m^3} \cdot \left(0,0074 \;\unit{m^3} +\frac{7,6}{7,9 \cdot 10^3} \;\unit{m^3} \right)\right) \cdot 9,82 \;\unit{m/s^2} \\ 
+  &\approx -7,5 \;\unit{N} 
+\end{split}
+\end{equation*}
+Altså er er størrelsen på kraften $7,5 \;\unit{N} $ og retningen er opad. \\[1ex]
+\textbf{d.}
+Vi bestemmer igen kræften nedad. 
+Vi bruger massen af luften fra \textbf{a.}
+\begin{equation*}
+\begin{split}
+  F_{\text{ned}} &=\left(m_{\text{flaske}}+m_{\text{luft} }- \rho_{\text{vand} } \cdot V_{\text{flaske} }\right) \cdot g \\ 
+  &= \left(7,6 \;\unit{kg} + m_{\text{luft} }- 1000 \;\unit{kg/m^3} \cdot \left(0,0074 \;\unit{m^3} +\frac{7,6}{7,9 \cdot 10^3} \;\unit{m^3} \right)\right) \cdot 9,82 \;\unit{m/s^2} \\ 
+  &\approx 10 \;\unit{N} 
+\end{split}
+\end{equation*}
+Altså er kraften $10 \;\unit{N} $ og retningen er nedad. 
+\end{document}

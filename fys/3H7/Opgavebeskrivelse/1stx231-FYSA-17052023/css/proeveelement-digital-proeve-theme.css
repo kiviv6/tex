@@ -1,0 +1,10 @@
+.skabelon-wrapper-menu {
+                              background-color: rgb(127, 37, 62); /* Dark red */
+                         max-width: 20%;
+              				min-width: 20%;
+}
+ 
+                        .skabelon-header-institution_logo:after {
+                            content: 'Studentereksamen';
+                          }
+table tr td { margin:60px; }
