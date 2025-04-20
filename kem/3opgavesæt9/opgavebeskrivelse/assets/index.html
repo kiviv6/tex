@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html>
+                
+<head>
+	<title>2stx241-KEM/A-04062024</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="./assets/css/bundled.css">
+    <script src="./assets/js/bundled.js"></script>
+    <script type="text/javascript">var subtitles = {
+			T_16574: {
+                  lang: "en",
+                  name: "English",
+                  tracks: [
+                  T(TTime("00:00:00.000:00"), TTime("00:00:02.200:00"), "Kun tekst, der er relevant for opgavebesvarelsen, er tekstet til talesyntese."),
+                  T(TTime("00:00:02.200:00"), TTime("00:00:10.766:00"), "NaOH 0,0891 M"),
+                  T(TTime("00:00:11.200:00"), TTime("00:00:23.333:00"), "Adipinsyre mættet opløsning vand demineraliseret")
+                  ]
+             }
+		};
+
+        function UndefinedToZero(value) {
+            if(typeof value === "undefined") {
+                return 0;
+            }
+            return value;
+        }
+
+        function _Time(frames, seconds, minutes, hours) {
+            frames = UndefinedToZero(frames) / 24;
+            seconds = UndefinedToZero(seconds);
+            minutes = UndefinedToZero(minutes) * 60;
+            hours = UndefinedToZero(hours) * 3600;
+            return hours + minutes + seconds + frames;
+        }
+
+        function TTime(value) {
+            if(typeof value === "undefined") {
+                value = "00:00:00:00";
+            }
+            var split = value.split(":");
+            var frames = (split[3]*1)/24;
+            var seconds = split[2]*1;
+            var minutes = (split[1]*1)*60;
+            var hours = (split[0]*1)*3600;
+            var output = hours + minutes + seconds + frames;
+            return output;
+        }
+
+        function T(start, end, text, direction) {
+            if(typeof direction === "undefined") {
+                direction = "ltr";
+            }
+            return {
+                start: start,
+                end: end,
+                text: text,
+                direction: direction
+            }
+        }</script>
+
+</head>
+<body>
+        <style>
+            a:hover {
+                cursor: pointer;
+            } 
+
+            .content-editable {
+                position: relative; 
+            }
+
+            .draggable-reading-field {
+                display: inline-block; 
+                position: absolute; 
+                z-index: 9; 
+                border: 1px solid gray;
+                padding: 2px;
+            }
+
+            .draggable-reading-field-invisible {
+                opacity: 0 !important;
+                border-style: none;
+            }
+
+            .line-numbers-container {
+                resize: none !important;
+                border: none !important;
+                padding: 0 !important;
+                counter-reset: line;
+            }
+
+            .line-numbers-container p.numbered-line {
+                margin-block-start: 0;
+                margin-block-end: 0;
+            }
+
+            .line-numbers-container .numbered-line:before {
+                content: counter(line);
+                counter-increment: line;
+                color: #888;
+                visibility: hidden;
+                display: inline-block;
+                width: auto;
+                min-width: 18px;
+                padding-left: 8px;
+                padding-right: 10px;
+                text-align: right;
+                font-weight: 100;
+                font-size: 1rem;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            }
+
+            .line-numbers-container .numbered-line:first-child:before, 
+            .line-numbers-container .numbered-line:nth-child(5n of .numbered-line):before {
+                visibility: visible;
+            }
+        </style>
+        <div class="skabelon">
+            <header class="skabelon-header">
+                <div class="skabelon-header-institution_logo" style="position:relative">
+                    <p style="position: absolute; color: transparent;">Studentereksamen</p>
+                </div>
+                <img alt="" class="skabelon-header-stuk_logo" id="uvm_logo" src="assets/images/uvm_logo_stuk.png">
+            </header>
+            <div class="skabelon-wrapper">
+                <div class="skabelon-wrapper-menu" id="skabelon-wrapper-menu">
+                    <ul>
+						<ul>
+                          <li><a href="javascript:void(0)" class="web-document-link active parent-document" id="web-document-link-5664" data-document-id="5664" onclick="changeDocument(this);VideoPlayer.InitPlayers('.web-document-active .new-player');VideoPlayer.PauseAll();">Forside</a></li>
+                          <li><a href="javascript:void(0)" class="web-document-link parent-document" id="web-document-link-7136" data-document-id="7136" onclick="changeDocument(this);VideoPlayer.InitPlayers('.web-document-active .new-player');VideoPlayer.PauseAll();">Vejledning</a></li>
+                          <li><a href="javascript:void(0)" class="web-document-link parent-document" id="web-document-link-6696" data-document-id="6696" onclick="changeDocument(this);VideoPlayer.InitPlayers('.web-document-active .new-player');VideoPlayer.PauseAll();">Opgave 1</a></li>
+                          <li><a href="javascript:void(0)" class="web-document-link parent-document" id="web-document-link-6699" data-document-id="6699" onclick="changeDocument(this);VideoPlayer.InitPlayers('.web-document-active .new-player');VideoPlayer.PauseAll();">Opgave 2</a></li>
+                          <li><a href="javascript:void(0)" class="web-document-link parent-document" id="web-document-link-6700" data-document-id="6700" onclick="changeDocument(this);VideoPlayer.InitPlayers('.web-document-active .new-player');VideoPlayer.PauseAll();">Opgave 3</a></li>
+                          <li><a href="javascript:void(0)" class="web-document-link parent-document" id="web-document-link-6701" data-document-id="6701" onclick="changeDocument(this);VideoPlayer.InitPlayers('.web-document-active .new-player');VideoPlayer.PauseAll();">Opgave 4</a></li>
+                          <li><a href="javascript:void(0)" class="web-document-link parent-document" id="web-document-link-7138" data-document-id="7138" onclick="changeDocument(this);VideoPlayer.InitPlayers('.web-document-active .new-player');VideoPlayer.PauseAll();">Kilder</a></li>
+                          </ul>
+						  <li><a style="font-size:14px;" href="javascript:void(0)" class="web-document-link parent-document" id="web-document-link-9999" data-document-id="9999" onclick="changeDocument(this);VideoPlayer.InitPlayers('.web-document-active .new-player');VideoPlayer.PauseAll();">Prøvesættet er underlagt ophavsret</a></li>
+					</ul>
+                    <a id="proeveforekomst">2stx241-KEM/A-04062024</a>
+                </div>
+                <div class="skabelon-wrapper-content">
+                    <div class="content-editable" id="content-editable"><style>.web-document { display: none; } .web-document-active { display: block; }</style>
+						<div class="web-document" id="web-document-9999">
+                            <div class="ophavsret" style="border: solid black 1px; padding: 25px 25px 10px; font-style: italic; line-height: 1.4;">
+                                <h2 style="font-size: 17px; margin: 0;">Dette prøvesæt er omfattet af ophavsretten, jf. ophavsretslovens § 1.</h2>
+                                <p>
+                                    Prøvesættet må alene anvendes til den på prøvesættet anførte prøve. <br><br>
+                                    Al anden anvendelse af prøvesættet, herunder visning eller deling f.eks. via internettet, sociale medier, portaler og bøger, udgør en krænkelse af Børne- og Undervisningsministeriets og evt. tredjemands ophavsret og er ikke tilladt.<br><br>
+                                    Overtrædelse af ophavsretten kan være erstatningspådragende og/eller strafbart.<br><br>
+                                    Prøvesættet kan dog, efter at prøven er afsluttet, anvendes til undervisningsbrug på uddannelser m.v. omfattet af den lovgivning, som Styrelsen for Undervisning og Kvalitet administrerer.                            
+                                </p>
+                            </div>
+							<p><br></p>
+							<p><br></p>
+							<p><br></p>
+                        </div>
+						<div class="web-document" id="web-document-7138">
+							<div style="padding-right: 10%; padding-left: 10%;"
+                            data-mce-style="padding-right: 10%; padding-left: 10%;">
+								<div style="color: #000099;" data-mce-style="color: #000099;">
+									<h2 style="line-height: 1.2em;" data-mce-style="line-height: 1.2em;">Kilder</h2>
+									<table style="width: 100%; border-color: #ffffff; height: 268.979px; border-spacing: 0;" data-mce-style="width: 100%; border-color: #ffffff; height: 268.979px; border-spacing: 0;" class="mce-item-table">
+										<tbody>
+											<tr style="height: 106.991px;" data-mce-style="height: 106.991px;">
+												<td style="vertical-align: top; width: 99.6234%; height: 106.991px;" colspan="2" data-mce-style="vertical-align: top; width: 99.6234%; height: 106.991px;">
+													<strong>Opgave 1</strong><br>
+                                                    Introduktionsbillede: Opgavekommissionen i kemi STX 2023/24<br>
+                                                    Figur 1.1: Opgavekommissionen i kemi STX 2023/24<br>
+                                                    Figur 1.2: Opgavekommissionen i kemi STX 2023/24<br>
+                                                    Figur 1.3: Opgavekommissionen i kemi STX 2023/24<br>
+                                                    Figur 1.4: Opgavekommissionen i kemi STX 2023/24<br>
+                                                    Film: Opgavekommissionen i kemi STX 2023/24<br><br>
+                                                    <strong>Opgave 2</strong><br>
+                                                    Introduktionsbillede: Colourbox<br>
+                                                    Figur 2.1: Opgavekommissionen i kemi STX 2023/24<br>
+                                                    Figur 2.2: Opgavekommissionen i kemi STX 2023/24<br>
+                                                    Figur 2.3: Opgavekommissionen i kemi STX 2023/24<br>
+                                                    Figur 2.4: Opgavekommissionen i kemi STX 2023/24<br><br>
+                                                    <strong>Opgave 3</strong>
+                                                    <br>Introduktionsbillede: https://creativecommons.org/licenses/by-sa/4.0/deed.en<br>
+                                                    https://commons.wikimedia.org/wiki/File: Carolyn_Bertozzi_by_Christopher_Michel_in_2022_4.jpg<br>
+                                                    Figur 3.1: Opgavekommissionen i kemi STX 2023/24<br>
+                                                    Figur 3.2: Opgavekommissionen i kemi STX 2023/24<br><br>
+                                                    <strong>Opgave 4</strong><br>
+                                                    Introduktionsbillede: Colourbox
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<p><br></p>
+							<p><br></p>
+							<p><br></p>
+						</div>
+						<div class="web-document" id="web-document-6701">
+							<div style="padding-right: 10%; padding-left: 10%;"
+                            data-mce-style="padding-right: 10%; padding-left: 10%;">
+								<div style="color: #000099;" data-mce-style="color: #000099;">
+									<h2 style="line-height: 1.2em; text-align: left;" data-mce-style="line-height: 1.2em; text-align: left;">Opgave 4:   Genindvinding af cobalt fra batterier</h2>
+									<table style="width: 100%; border-color: #ffffff; height: 293.208px; border-spacing: 0px;" data-mce-style="width: 100%; border-color: #ffffff; height: 293.208px; border-spacing: 0px;" class="mce-item-table">
+										<tbody>
+											<tr style="height: 229.208px;" data-mce-style="height: 229.208px;">
+												<td style="width: 42.9379%; vertical-align: top; height: 229.208px;" data-mce-style="width: 42.9379%; vertical-align: top; height: 229.208px;">Lithiumion-batterier anvendes fx i mobiltelefoner og elbiler. Disse batterier indeholder lithiumcobaltoxid. Da tilgængeligheden af især cobalt er begrænset, er genanvendelse af metaller fra batterier vigtig. En gruppe forskere har forsøgt at oprense lithium og cobalt fra et brugt lithiumion-batteri. </td>
+												<td style="width: 56.6855%; vertical-align: top; height: 229.208px;" data-mce-style="width: 56.6855%; vertical-align: top; height: 229.208px;"><img pbyg-data-src-id="15676" src="assets/figur_4_0_s-15676.jpg" alt="" width="278" height="185" style="float: right;" data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/iktqjgoM5BHJzI_OdaE4qg/document/figur_4_0_s.jpg" data-mce-style="float: right;"></td>
+											</tr>
+											<tr style="height: 64px;" data-mce-style="height: 64px;">
+												<td style="vertical-align: top; width: 99.6234%; height: 64px;" colspan="2" data-mce-style="vertical-align: top; width: 99.6234%; height: 64px;">Lithiumcobaltoxid fra batteriet behandles kemisk, og cobaltoxid, CoO, isoleres. Det dannede cobaltoxid reagerer med grafit ved reaktionen vist i figur 4.1.</td>
+											</tr>
+										</tbody>
+									</table>
+										<p style="text-align: center;" data-mce-style="text-align: center;">2 CoO(s) + C(s) → 2 Co(s) + CO₂(g)</p>
+										<p style="text-align: center;" data-mce-style="text-align: center;">Figur 4.1<br><br></p>
+									</div>
+								<div style="color: #000099;" data-mce-style="color: #000099;">
+									<div style="text-align: left;" data-mce-style="text-align: left;">
+										<div style="color: #000099;" data-mce-style="color: #000099;">
+											<table style="width: 100%;" data-mce-style="width: 100%;" class="mce-item-table">
+												<tbody>
+													<tr>
+														<td style="width: 6.96723%; vertical-align: text-top;" data-mce-style="width: 6.96723%; vertical-align: text-top;"></td>
+														<td style="width: 4.9504%; vertical-align: text-top;" data-mce-style="width: 4.9504%; vertical-align: text-top;">a)</td>
+														<td style="width: 87.2738%;" data-mce-style="width: 87.2738%;">Vis, at reaktionen i figur 4.1 er en redoxreaktion.<br><br></td>
+													</tr>
+												</tbody>
+											</table>
+											<p></p><p></p>
+										</div>
+										<div style="color: #000099;" data-mce-style="color: #000099;">
+											<div style="color: #000099;" data-mce-style="color: #000099;">
+												<table style="width: 100%;" data-mce-style="width: 100%;" class="mce-item-table">
+													<tbody>
+														<tr>
+															<td style="width: 7%; vertical-align: text-top;" data-mce-style="width: 7%; vertical-align: text-top;"> </td>
+															<td style="width: 5%; vertical-align: text-top;" data-mce-style="width: 5%; vertical-align: text-top;">b)</td>
+															<td>Beregn Δ<em>H</em>° og Δ<em>S</em>° for reaktionen i figur 4.1. <br>Kommenter resultaterne i forhold til reaktionsskemaet.<br><br></td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+											<div style="color: #000099;" data-mce-style="color: #000099;">
+												<p>For at undersøge reaktionen i figur 4.1 anbringes en portion cobaltoxid i en lufttom beholder, og der tilsættes grafit i overskud. Beholderen opvarmes til 250 °C, og temperaturen holdes konstant. Reaktionen forløber indtil ligevægt.</p>
+											</div>
+											<div style="color: #000099;" data-mce-style="color: #000099;"><br></div>
+											<div style="color: #000099;" data-mce-style="color: #000099;">
+												<div style="text-align: left;" data-mce-style="text-align: left;">
+													<div style="color: #000099;" data-mce-style="color: #000099;">
+														<table style="width: 100%;" data-mce-style="width: 100%;" class="mce-item-table">
+															<tbody>
+																<tr>
+																	<td style="width: 6.92883%; vertical-align: text-top;" data-mce-style="width: 6.92883%; vertical-align: text-top;"> </td>
+																	<td style="width: 5.03915%; vertical-align: text-top;" data-mce-style="width: 5.03915%; vertical-align: text-top;">c)</td>
+																	<td style="width: 87.3453%;" data-mce-style="width: 87.3453%;">Beregn partialtrykket af carbondioxid i beholderen, når ligevægten har indstillet sig.<br><br></td>
+																</tr>
+															</tbody>
+														</table>
+														<p>Et nyt eksperiment udføres ved 275 °C. Ved denne temperatur er ligevægtskonstanten 4,2 bar. I eksperimentet anbringes 9,0 g cobaltoxid i en 0,50 L lufttom beholder, og der tilsættes grafit i overskud. Der ses bort fra volumenet af cobaltoxid og grafit.</p><br>
+													</div>
+													<div style="color: #000099;" data-mce-style="color: #000099;">
+														<table style="width: 100%; height: 18.75px;" data-mce-style="width: 100%; height: 18.75px;" class="mce-item-table">
+															<tbody>
+																<tr style="height: 18.75px;" data-mce-style="height: 18.75px;">
+																	<td style="width: 6.92883%; vertical-align: text-top; height: 18.75px;" data-mce-style="width: 6.92883%; vertical-align: text-top; height: 18.75px;"> </td>
+																	<td style="width: 5.03915%; vertical-align: text-top; height: 18.75px;" data-mce-style="width: 5.03915%; vertical-align: text-top; height: 18.75px;">d)</td>
+																	<td style="width: 87.3453%; height: 18.75px;" data-mce-style="width: 87.3453%; height: 18.75px;">Beregn, hvor stor en procentdel af den tilførte mængde cobaltoxid der er omdannet, når ligevægten er indstillet ved 275 °C.</td>
+																</tr>
+															</tbody>
+														</table>
+														<br><br>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<p><br></p>
+							<p><br></p>
+							<p><br></p>
+						</div>
+						<div class="web-document" id="web-document-6700">
+							<div style="padding-right: 10%; padding-left: 10%;"
+                            data-mce-style="padding-right: 10%; padding-left: 10%;">
+								<div style="color: #000099;" data-mce-style="color: #000099;">
+									<h2 style="line-height: 1.2em;" data-mce-style="line-height: 1.2em;">Opgave 3:    Bio-ortogonal kemi</h2>
+									<table style="width: 100%; border-color: #ffffff; height: 268.979px; border-spacing: 0;" data-mce-style="width: 100%; border-color: #ffffff; height: 268.979px; border-spacing: 0;" class="mce-item-table">
+                                        <tbody>
+                                            <tr style="height: 161.988px;" data-mce-style="height: 161.988px;">
+                                                <td style="width: 53.9478%; vertical-align: top; height: 161.988px;" data-mce-style="width: 53.9478%; vertical-align: top; height: 161.988px;">Carolyn Bertozzi, Morten Meldal og Barry Sharpless delte i 2022 Nobelprisen i kemi for udviklingen af klik-kemi og bio-ortogonal kemi. Bertozzi har udviklet den bio-ortogonale kemi, hvor klik-kemi anvendes til at lave kemiske reaktioner i levende celler. <p>Bertozzi har fremstillet en gruppe af cykliske alkyner, som kan reagere med azider i klik-reaktioner uden katalysator.</p></td>
+                                                <td style="width: 46.1236%; vertical-align: top; height: 161.988px; text-align: center;" data-mce-style="width: 46.1236%; vertical-align: top; height: 161.988px; text-align: center;"><img pbyg-data-src-id="15634" src="assets/Carolyn_Bertozzi_by_Christopher_Michel_i-15634.jpg" alt="" width="200" height="257" style="display: block; margin-left: auto; margin-right: auto;" data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/ygNcweeUeZw3ml1cVxKhCA/document/Carolyn_Bertozzi_by_Christopher_Michel_i.jpg" data-mce-style="display: block; margin-left: auto; margin-right: auto;">Carolyn Bertozzi</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+									<div>
+										<p>Alkynen A, vist i figur 3.1, er et eksempel på en sådan cyklisk alkyn.</p>
+										<table border="0" style="border-collapse: collapse; width: 99.9235%; height: 335.107px;" data-mce-style="border-collapse: collapse; width: 99.9235%; height: 335.107px;" class="mce-item-table">
+											<tbody>
+												<tr style="height: 335.107px;" data-mce-style="height: 335.107px;">
+													<td style="width: 32.7783%; height: 335.107px;" data-mce-style="width: 32.7783%; height: 335.107px;"></td>
+													<td style="width: 32.7783%; height: 335.107px;" data-mce-style="width: 32.7783%; height: 335.107px;"><img pbyg-data-src-id="15099" src="assets/figur_3_1-15099.png" alt="" width="309" height="319" data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/sceQMKGSB2WwKcbwSIcykw/document/figur_3_1.png"></td>
+													<td style="width: 32.7835%; height: 335.107px;" data-mce-style="width: 32.7835%; height: 335.107px;"></td>
+												</tr>
+											</tbody>
+										</table>
+										<p style="text-align: center;" data-mce-style="text-align: center;">Figur 3.1<br><br></p>
+										<p>En stamopløsning af A fremstilles ved at opløse 19 mg af stoffet i et organisk opløsningsmiddel til et samlet volumen på 5,0 mL.<br><br></p>
+									</div>
+								</div>
+								<div style="color: #000099; text-align: center;" data-mce-style="color: #000099; text-align: center;">
+									<table style="width: 100%;" data-mce-style="width: 100%;" class="mce-item-table">
+										<tbody>
+											<tr>
+												<td style="width: 7%; vertical-align: text-top;" data-mce-style="width: 7%; vertical-align: text-top;"> </td>
+												<td style="width: 5%; vertical-align: text-top;" data-mce-style="width: 5%; vertical-align: text-top;">a)</td>
+												<td style="text-align: left;" data-mce-style="text-align: left;">Beregn den formelle stofmængdekoncentration af A i opløsningen.<br><br></td>
+											</tr>
+										</tbody>
+									</table>
+									<div style="width: 100%; text-align: center;" data-mce-style="width: 100%; text-align: center;">
+										<div class="fraction"><p style="text-align: left;" data-mce-style="text-align: left;">Et azid er en kemisk forbindelse, der indeholder den funktionelle gruppe ‑N₃. Den bio-ortogonale klik-reaktion mellem A og azidet B er vist i figur 3.2.</p><p></p></div>
+									</div>
+									<table border="0" style="border-collapse: collapse; width: 99.9226%;" data-mce-style="border-collapse: collapse; width: 99.9226%;" class="mce-item-table">
+										<tbody>
+											<tr>
+												<td style="width: 99.3853%;" data-mce-style="width: 99.3853%;"><img pbyg-data-src-id="15100" src="assets/figur_3_2-15100.png" alt="" width="545" height="237" data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/Jrn-nR90Q1_UVulAAP-WdQ/document/figur_3_2.png"></td>
+											</tr>
+										</tbody>
+									</table>
+									<div style="text-align: center;" data-mce-style="text-align: center;">Figur 3.2<br><br></div>
+									<div style="text-align: center;" data-mce-style="text-align: center;">
+										<p style="text-align: left;" data-mce-style="text-align: left;">Den bio-ortogonale klik-reaktions hastighedskonstant, <em>k</em>, er blevet bestemt ved forskellige temperaturer. Resultaterne er vist i excelfilen nedenfor.</p>
+										<p style="text-align: left;" data-mce-style="text-align: left;"><span style="text-align: left;" data-mce-style="text-align: left;"><a pbyg-data-onclick-id="15551" onclick="window.open('assets/kinetikdata-k-T-15551.xlsx')" class="inserted-documents">Excelfil kinetikdata<br><br></a></span></p>
+										<p><a pbyg-data-onclick-id="15551" onclick="window.open('assets/kinetikdata-k-T-15551.xlsx')" class="inserted-documents"></a></p>
+										<p></p>
+										<p><a pbyg-data-onclick-id="15551" onclick="window.open('assets/kinetikdata-k-T-15551.xlsx')" class="inserted-documents"></a></p>
+										<p></p>
+										<p><a pbyg-data-onclick-id="15551" onclick="window.open('assets/kinetikdata-k-T-15551.xlsx')" class="inserted-documents"></a></p>
+										<p></p>
+										<table style="width: 100%;" class="mce-item-table">
+											<tbody>
+												<tr>
+													<td style="width: 6.98008%; vertical-align: text-top;"> </td>
+													<td style="width: 4.95953%; vertical-align: text-top;">b)</td>
+													<td style="width: 87.251%; text-align: left;">Bestem aktiveringsenergien for reaktionen.<br><br></td>
+												</tr>
+											</tbody>
+										</table>
+										<p style="text-align: left;" data-mce-style="text-align: left;">Hastighedsudtrykket for reaktionen vist i figur 3.2 kan skrives som</p>
+									</div>
+									<div style="text-align: left;" data-mce-style="text-align: left;"><br></div>
+									<div style="text-align: center;" data-mce-style="text-align: center;">
+										<em>v</em> = <em>k </em>· [A]<em><sup>x</sup> · </em>[B]<em><em><sup>y<br><br></sup></em></em><p style="text-align: left;" data-mce-style="text-align: left;">Man har undersøgt hastighedsudtrykket ved at bestemme initialhastigheden, <em>v</em><span style="text-align: left; font-family: -apple-system, BlinkMacSystemFont,;" data-mce-style="text-align: left; font-family: -apple-system, BlinkMacSystemFont,;">₀, i en række deleksperimenter. Temperaturen er den samme i alle deleksperimenterne. Resultaterne er vist i tabel 3.1.</span></p>
+									</div>
+									<div style="text-align: center;" data-mce-style="text-align: center;"><p><span style="text-align: left;" data-mce-style="text-align: left;">Tabel 3.1</span></p></div>
+									<div style="text-align: center;" data-mce-style="text-align: center;">
+										<table style="border-collapse: collapse; width: 100%; color: #000099; height: 38px;" data-mce-style="border-collapse: collapse; width: 100%; color: #000099; height: 38px;" class="mce-item-table">
+											<tbody>
+												<tr style="height: 19px;" data-mce-style="height: 19px;">
+													<td style="color: #000099; width: 20.1996%;" data-mce-style="color: #000099; width: 20.1996%;"></td>
+													<td style="color: #000099; border-top: 1px solid #000099; width: 19.4716%; height: 23px;" data-mce-style="color: #000099; border-top: 1px solid #000099; width: 19.4716%; height: 23px;">[A]₀/ᴍ</td>
+													<td style="color: #000099; border-top: 1px solid #000099; width: 19.4716%; height: 23px; text-align: center;" data-mce-style="color: #000099; border-top: 1px solid #000099; width: 19.4716%; height: 23px; text-align: center;">[B]₀ /ᴍ</td>
+													<td style="color: #000099; border-top: 1px solid #000099; width: 19.8346%; height: 23px; text-align: center;" data-mce-style="color: #000099; border-top: 1px solid #000099; width: 19.8346%; height: 23px; text-align: center;"><em>v</em>₀ / 10⁻⁴ ᴍ·s⁻¹</td><td style="color: #000099; width: 21.1104%; text-align: center;" data-mce-style="color: #000099; width: 21.1104%; text-align: center;"><em> </em></td>
+												</tr>
+												<tr style="height: 19px;" data-mce-style="height: 19px;">
+													<td style="color: #000099; width: 20.1996%; text-align: center;" data-mce-style="color: #000099; width: 20.1996%; text-align: center;"></td>
+													<td style="color: #000099; border-top: 1px solid #000099; width: 19.4716%; height: 23px; text-align: center;" data-mce-style="color: #000099; border-top: 1px solid #000099; width: 19.4716%; height: 23px; text-align: center;">0,012</td>
+													<td style="color: #000099; border-top: 1px solid #000099; width: 19.4716%; height: 23px; text-align: center;" data-mce-style="color: #000099; border-top: 1px solid #000099; width: 19.4716%; height: 23px; text-align: center;">0,012</td>
+													<td style="color: #000099; border-top: 1px solid #000099; width: 19.8346%; height: 23px; text-align: center;" data-mce-style="color: #000099; border-top: 1px solid #000099; width: 19.8346%; height: 23px; text-align: center;">1,41</td>
+													<td style="color: #000099; width: 21.1104%; text-align: center;" data-mce-style="color: #000099; width: 21.1104%; text-align: center;"></td>
+												</tr>
+												<tr style="height: 19px;" data-mce-style="height: 19px;">
+													<td style="color: #000099; width: 20.1996%; text-align: center;" data-mce-style="color: #000099; width: 20.1996%; text-align: center;"></td>
+													<td style="color: #000099; width: 19.4716%; height: 23px; text-align: center;" data-mce-style="color: #000099; width: 19.4716%; height: 23px; text-align: center;">0,006</td>
+													<td style="color: #000099; width: 19.4716%; height: 23px; text-align: center;" data-mce-style="color: #000099; width: 19.4716%; height: 23px; text-align: center;">0,012</td>
+													<td style="color: #000099; width: 19.8346%; height: 23px; text-align: center;" data-mce-style="color: #000099; width: 19.8346%; height: 23px; text-align: center;">0,69</td>
+													<td style="color: #000099; width: 21.1104%; text-align: center;" data-mce-style="color: #000099; width: 21.1104%; text-align: center;"></td>
+												</tr>
+												<tr style="height: 19px;" data-mce-style="height: 19px;">
+													<td style="color: #000099; width: 20.1996%; text-align: center;" data-mce-style="color: #000099; width: 20.1996%; text-align: center;"></td>
+													<td style="color: #000099; width: 19.4716%; height: 23px; text-align: center;" data-mce-style="color: #000099; width: 19.4716%; height: 23px; text-align: center;">0,003</td>
+													<td style="color: #000099; width: 19.4716%; height: 23px; text-align: center;" data-mce-style="color: #000099; width: 19.4716%; height: 23px; text-align: center;">0,012</td>
+													<td style="color: #000099; width: 19.8346%; height: 23px; text-align: center;" data-mce-style="color: #000099; width: 19.8346%; height: 23px; text-align: center;">0,35</td>
+													<td style="color: #000099; width: 21.1104%; text-align: center;" data-mce-style="color: #000099; width: 21.1104%; text-align: center;"></td>
+												</tr>
+												<tr style="height: 19px;" data-mce-style="height: 19px;">
+													<td style="color: #000099; width: 20.1996%; text-align: center;" data-mce-style="color: #000099; width: 20.1996%; text-align: center;"></td>
+													<td style="color: #000099; width: 19.4716%; height: 23px; text-align: center;" data-mce-style="color: #000099; width: 19.4716%; height: 23px; text-align: center;">0,012</td>
+													<td style="color: #000099; width: 19.4716%; height: 23px; text-align: center;" data-mce-style="color: #000099; width: 19.4716%; height: 23px; text-align: center;">0,006</td>
+													<td style="color: #000099; width: 19.8346%; height: 23px; text-align: center;" data-mce-style="color: #000099; width: 19.8346%; height: 23px; text-align: center;">0,70</td>
+													<td style="color: #000099; width: 21.1104%; text-align: center;" data-mce-style="color: #000099; width: 21.1104%; text-align: center;"></td>
+												</tr>
+												<tr style="height: 19px;" data-mce-style="height: 19px;">
+													<td style="color: #000099; width: 20.1996%; text-align: center;" data-mce-style="color: #000099; width: 20.1996%; text-align: center;"></td>
+													<td style="color: #000099; border-bottom: 1px solid #000099; width: 19.4716%; height: 23px; text-align: center;" data-mce-style="color: #000099; border-bottom: 1px solid #000099; width: 19.4716%; height: 23px; text-align: center;">0,012</td>
+													<td style="color: #000099; border-bottom: 1px solid #000099; width: 19.4716%; height: 23px; text-align: center;" data-mce-style="color: #000099; border-bottom: 1px solid #000099; width: 19.4716%; height: 23px; text-align: center;">0,003</td>
+													<td style="color: #000099; border-bottom: 1px solid #000099; width: 19.8346%; height: 23px; text-align: center;" data-mce-style="color: #000099; border-bottom: 1px solid #000099; width: 19.8346%; height: 23px; text-align: center;">0,35</td>
+													<td style="color: #000099; width: 21.1104%; text-align: center;" data-mce-style="color: #000099; width: 21.1104%; text-align: center;"></td>
+												</tr>
+											</tbody>
+										</table>
+										<br><br>
+									</div>
+									<div style="text-align: left;" data-mce-style="text-align: left;"><br></div>
+								</div>
+								<div style="color: #000099;" data-mce-style="color: #000099;">
+									<table style="width: 100%; height: 21.3333px;" data-mce-style="width: 100%; height: 21.3333px;" class="mce-item-table">
+										<tbody>
+											<tr style="height: 21.3333px;" data-mce-style="height: 21.3333px;">
+												<td style="width: 7%; vertical-align: text-top; height: 21.3333px;" data-mce-style="width: 7%; vertical-align: text-top; height: 21.3333px;"> </td>
+												<td style="width: 5%; vertical-align: text-top; height: 21.3333px;" data-mce-style="width: 5%; vertical-align: text-top; height: 21.3333px;">c)</td>
+												<td style="height: 21.3333px;" data-mce-style="height: 21.3333px;">Bestem <em>x,</em> <em>y</em> og <em>k</em> i hastighedsudtrykket.</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<p><br></p>
+							<p><br></p>
+							<p><br></p>
+						</div>
+						<div class="web-document" id="web-document-6699">
+							<div style="padding-right: 10%; padding-left: 10%;"
+                            data-mce-style="padding-right: 10%; padding-left: 10%;">
+								<div style="color: #000099;" data-mce-style="color: #000099;">
+									<h2 style="line-height: 1.2em;" data-mce-style="line-height: 1.2em;">Opgave 2:    Avobenzon - et kemisk filter i solcreme</h2>
+									<table style="width: 100%; border-color: #ffffff; height: 216.777px; border-spacing: 0px;" data-mce-style="width: 100%; border-color: #ffffff; height: 216.777px; border-spacing: 0px;" class="mce-item-table">
+										<tbody>
+											<tr style="height: 216.777px;" data-mce-style="height: 216.777px;">
+												<td style="width: 42.9379%; vertical-align: top; height: 216.777px;" data-mce-style="width: 42.9379%; vertical-align: top; height: 216.777px;"><img pbyg-data-src-id="15675" src="assets/figur_2_0_s-15675.jpg" alt="" width="214" height="214" style="float: left;" data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/0_ynX4bPvCNRhcIVJmSkdw/document/figur_2_0_s.jpg" data-mce-style="float: left;"></td>
+												<td style="width: 56.6855%; vertical-align: top; height: 216.777px;" data-mce-style="width: 56.6855%; vertical-align: top; height: 216.777px;">Ved ophold i solen anbefales, at man benytter solcreme for at undgå solskoldning og på længere sigt hudkræft. Det er solens ultraviolette stråling, som udgør problemet. Der skelnes mellem kemiske og fysiske filtre i solcreme til beskyttelse. De kemiske filtre består af stoffer, der optager energirig ultraviolet stråling. Stoffet avobenzon er godkendt som kemisk filter i solcreme.</td>
+											</tr>
+										</tbody>
+									</table>
+									<p>Man inddeler ultraviolet stråling i 3 områder: UV-A, UV-B og UV-C som vist i tabel 2.1.</p>
+									<div style="text-align: center;" data-mce-style="text-align: center;">
+										<br>Tabel 2.1<br><br><br>
+									</div>
+										<div style="text-align: center; width: 40%; margin-left: 9%;" data-mce-style="text-align: center; width: 40%; margin-left: 9%;">
+											<table style="border-collapse: collapse; height: 54.7734px; width: 190.637%;" data-mce-style="border-collapse: collapse; height: 54.7734px; width: 190.637%;" class="mce-item-table">
+												<tbody>
+													<tr style="height: 25.3711px;" data-mce-style="height: 25.3711px;">
+														<td style="color: #000099; border-top: 1px solid #000099; width: 20.4401%; height: 25.3711px;" data-mce-style="color: #000099; border-top: 1px solid #000099; width: 20.4401%; height: 25.3711px;"><strong> </strong></td>
+														<td style="color: #000099; border-top: 1px solid #000099; width: 27.808%; height: 25.3711px;" data-mce-style="color: #000099; border-top: 1px solid #000099; width: 27.808%; height: 25.3711px;"><strong>UV-C</strong></td>
+														<td style="color: #000099; border-top: 1px solid #000099; width: 27.095%; height: 25.3711px;" data-mce-style="color: #000099; border-top: 1px solid #000099; width: 27.095%; height: 25.3711px;"><strong>UV-B</strong></td>
+														<td style="color: #000099; border-top: 1px solid #000099; width: 24.4805%; height: 25.3711px;" data-mce-style="color: #000099; border-top: 1px solid #000099; width: 24.4805%; height: 25.3711px;"><strong>UV-A</strong></td>
+													</tr>
+													<tr style="height: 29.4023px;" data-mce-style="height: 29.4023px;">
+														<td style="color: #000099; border-bottom: 1px solid #000099; width: 20.4401%; height: 29.4023px;" data-mce-style="color: #000099; border-bottom: 1px solid #000099; width: 20.4401%; height: 29.4023px;"><em>λ</em> / nm</td>
+														<td style="color: #000099; border-bottom: 1px solid #000099; width: 27.808%; height: 29.4023px;" data-mce-style="color: #000099; border-bottom: 1px solid #000099; width: 27.808%; height: 29.4023px;">200 - 280</td>
+														<td style="color: #000099; border-bottom: 1px solid #000099; width: 27.095%; height: 29.4023px;" data-mce-style="color: #000099; border-bottom: 1px solid #000099; width: 27.095%; height: 29.4023px;">280 - 320</td>
+														<td style="color: #000099; border-bottom: 1px solid #000099; width: 24.4805%; height: 29.4023px;" data-mce-style="color: #000099; border-bottom: 1px solid #000099; width: 24.4805%; height: 29.4023px;">320 - 400</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									<p></p>
+									<p><br></p>
+									<p>I figur 2.1 ses absorptionsspektret for avobenzon i UV-området. </p>
+									<div style="text-align: center;" data-mce-style="text-align: center;">
+										<table border="0" style="border-collapse: collapse; width: 98.6502%; background-color: #ffffff; border-color: #ffffff; border-style: outset; height: 350.973px;" data-mce-style="border-collapse: collapse; width: 98.6502%; background-color: #ffffff; border-color: #ffffff; border-style: outset; height: 350.973px;" class="mce-item-table">
+											<tbody>
+												<tr style="height: 350.973px;" data-mce-style="height: 350.973px;">
+													<td style="height: 350.973px; width: 100%;" data-mce-style="height: 350.973px; width: 100%;"><img pbyg-data-src-id="17896" src="assets/avob_spektrum_NY-17896.png" alt="" width="415" height="312" style="display: block; margin-left: auto; margin-right: auto;" data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/i14jofE4Qi7Irrbn-CvdKQ/document/avob_spektrum_NY.png" data-mce-style="display: block; margin-left: auto; margin-right: auto;"></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<div style="text-align: center;" data-mce-style="text-align: center;">Figur 2.1<br><br><br></div>
+									<div style="color: #000099;" data-mce-style="color: #000099;">
+										<table style="width: 100%;" data-mce-style="width: 100%;" class="mce-item-table">
+											<tbody>
+												<tr>
+													<td style="width: 7%; vertical-align: text-top;" data-mce-style="width: 7%; vertical-align: text-top;"> </td>
+													<td style="width: 5%; vertical-align: text-top;" data-mce-style="width: 5%; vertical-align: text-top;">a)</td>
+													<td>Afgør om avobenzon især beskytter mod ultraviolet stråling fra solen i form af UV-A, UV-B eller UV-C. Inddrag figur 2.1 og tabel 2.1.<br><br></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<p>Avobenzon kan findes i to former. I figur 2.2 ses strukturformler for avobenzons to former. Det er avobenzon B, der anvendes i solcremen.</p>
+									<div style="text-align: center;" data-mce-style="text-align: center;">
+										<table border="0" height="297" style="border-collapse: collapse; width: 109.553%; background-color: #ffffff; border-color: #ffffff; border-style: outset; height: 177.514px;" data-mce-style="border-collapse: collapse; width: 109.553%; background-color: #ffffff; border-color: #ffffff; border-style: outset; height: 177.514px;" class="mce-item-table">
+											<tbody>
+												<tr style="height: 177.514px;" data-mce-style="height: 177.514px;">
+													<td style="width: 100%; height: 177.514px;" data-mce-style="width: 100%; height: 177.514px;"><img pbyg-data-src-id="17413" src="assets/figur_2_2-to-former-17413.png" alt="avobenzon A, avobenzon B" width="580" height="164" data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/OQPHei8wovno25MfZn0Efg/document/figur_2_2-to-former.png"></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<div style="text-align: center;" data-mce-style="text-align: center;">Figur 2.2<br><br></div>
+									<div style="text-align: center;" data-mce-style="text-align: center;"><br></div>
+									<table style="width: 100%;" data-mce-style="width: 100%;" class="mce-item-table">
+										<tbody>
+											<tr>
+												<td style="width: 7%; vertical-align: text-top;" data-mce-style="width: 7%; vertical-align: text-top;"> </td>
+												<td style="width: 5%; vertical-align: text-top;" data-mce-style="width: 5%; vertical-align: text-top;">b)</td>
+												<td>Gør rede for, at avobenzon B kan udvise stereoisomeri, og forklar, at avobenzon B, vist i figur 2.2, er <em>Z</em>-formen.<br><br></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div style="color: #000099;" data-mce-style="color: #000099;">
+									<p>De sidste trin i en syntese af avobenzon er vist i figur 2.3.</p>
+									<table border="0" style="border-collapse: collapse; width: 99.9226%; height: 412.5px;" data-mce-style="border-collapse: collapse; width: 99.9226%; height: 412.5px;" class="mce-item-table">
+										<tbody>
+											<tr style="height: 412.5px;" data-mce-style="height: 412.5px;">
+												<td style="width: 99.3853%; height: 412.5px;" data-mce-style="width: 99.3853%; height: 412.5px;"><img pbyg-data-src-id="17408" src="assets/figur_2_3_reaktion1og2-17408.png" alt="avobenzon" width="601" height="397" data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/8d9V804yZ8kXKrSITEMfUA/document/figur_2_3_reaktion1og2.png"></td>
+											</tr>
+										</tbody>
+									</table>
+									<p style="text-align: center;" data-mce-style="text-align: center;">Figur 2.3<br><br></p>
+								</div>
+								<p ><a pbyg-data-href-id="17409" href="assets/figur_2_3_reaktion2-17409_mrv.zip" target="_blank" rel="noopener" data-mce-href="https://xn--prvebyggeren-wjb.dk/webdav/z3HAp7R-hHjhjGaHXjXX9w/document/figur_2_3_reaktion2_mrv.zip">MarvinSketchfil reaktion (2) Figur 2.3</a>             </p>
+								<p>
+									<a pbyg-data-href-id="17410" href="assets/figur_2_3_reaktion2-17410_sk2.zip" target="_blank" rel="noopener" data-mce-href="https://xn--prvebyggeren-wjb.dk/webdav/xMcFOhETltw9I2tqmsVqpw/document/figur_2_3_reaktion2_sk2.zip">ChemSketchfil_reaktion (2) Figur_2.3</a>
+								</p>
+								<div style="color: #000099;" data-mce-style="color: #000099;">
+									<table style="width: 100%;" data-mce-style="width: 100%;" class="mce-item-table">
+										<tbody>
+											<tr>
+												<td style="width: 6.96723%; vertical-align: text-top;" data-mce-style="width: 6.96723%; vertical-align: text-top;"> </td>
+												<td style="width: 4.9504%; vertical-align: text-top;" data-mce-style="width: 4.9504%; vertical-align: text-top;"><br>c)</td>
+												<td style="width: 87.4571%;" data-mce-style="width: 87.4571%;"><br>Gør rede for reaktionstyperne for reaktion (1) og for reaktion (2) vist i figur 2.3.<br>Færdiggør reaktionsskemaet for reaktion (2).</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div style="color: #000099;" data-mce-style="color: #000099;">
+									<p><br>For at de kemiske solfiltre ikke skylles af, når man bader, skal stofferne være upolære, så de trænger ind i huden.<br><br>Fordelingsforholdet, <em>D</em>, for avobenzon er givet ved<br><br></p>
+								</div>
+								<div style="text-align: center;" data-mce-style="text-align: center;">
+									<table border="0" style="border-collapse: collapse; width: 100.061%; background-color: #ffffff; border-color: #ffffff; border-style: outset; height: 10px;" data-mce-style="border-collapse: collapse; width: 100.061%; background-color: #ffffff; border-color: #ffffff; border-style: outset; height: 10px;" class="mce-item-table">
+										<tbody>
+											<tr style="height: 10px;" data-mce-style="height: 10px;">
+												<td style="width: 32.6592%; height: 10px;" data-mce-style="width: 32.6592%; height: 10px;"></td>
+												<td style="width: 32.6592%; height: 10px;" data-mce-style="width: 32.6592%; height: 10px;"><img pbyg-data-src-id="15145" src="assets/avobenzon-D_formel-15145.png" alt="" width="187" height="46" data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/5Ld2o14h7aAmLe2oHAI10w/document/avobenzon-D_formel.png"></td>
+												<td style="width: 32.6592%; height: 10px;" data-mce-style="width: 32.6592%; height: 10px;"></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div style="color: #000099;" data-mce-style="color: #000099;">
+									<p><br>Da avobenzon er en syre, se figur 2.4, afhænger fordelingsforholdet af pH. Avobenzons syreegenskab skyldes OH-gruppen.<br><br></p>
+									<table border="0" style="border-collapse: collapse; width: 99.9226%;" data-mce-style="border-collapse: collapse; width: 99.9226%;" class="mce-item-table">
+										<tbody>
+											<tr>
+												<td style="width: 32.7764%;" data-mce-style="width: 32.7764%;"></td>
+												<td style="width: 32.7764%;" data-mce-style="width: 32.7764%;"><img pbyg-data-src-id="15682" src="assets/figur_2_4-15682.png" alt="" width="366" height="192" data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/4-yXfH-FudlLbfFqipTAzQ/document/figur_2_4.png"></td>
+												<td style="width: 32.7789%;" data-mce-style="width: 32.7789%;"></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div style="color: #000099;" data-mce-style="color: #000099;">
+									<div style="text-align: center;" data-mce-style="text-align: center;">Figur 2.4<br><br></div>
+									<div style="text-align: left;" data-mce-style="text-align: left;"><br></div>
+									<div style="text-align: left;" data-mce-style="text-align: left;">Fordelingsforholdet <em>D</em> er beregnet ved forskellige pH-værdier, og to værdier er givet i tabel 2.2 nedenfor.</div>
+								</div>
+								<div style="color: #000099;" data-mce-style="color: #000099;">
+									<div style="text-align: center;" data-mce-style="text-align: center;"><br></div>
+									<div style="text-align: center; width: 40%; margin-left: 30%;" data-mce-style="text-align: center; width: 40%; margin-left: 30%;">
+										<div style="text-align: center;" data-mce-style="text-align: center;">Tabel 2.2<br><br></div>
+										<table style="border-collapse: collapse; width: 99.929%; color: #000099; height: 56.7188px;" data-mce-style="border-collapse: collapse; width: 99.929%; color: #000099; height: 56.7188px;" class="mce-item-table">
+											<tbody>
+												<tr style="height: 18.9844px;" data-mce-style="height: 18.9844px;">
+													<td style="color: #000099; border-top: 1px solid #000099; width: 53.4475%; height: 23px;" data-mce-style="color: #000099; border-top: 1px solid #000099; width: 53.4475%; height: 23px;"><strong>pH</strong></td>
+													<td style="color: #000099; border-top: 1px solid #000099; width: 46.5953%; height: 23px;" data-mce-style="color: #000099; border-top: 1px solid #000099; width: 46.5953%; height: 23px;"><em><strong>D</strong></em></td>
+												</tr>
+												<tr style="height: 18.75px;" data-mce-style="height: 18.75px;">
+													<td style="color: #000099; border-top: 1px solid #000099; width: 53.4475%; height: 23px;" data-mce-style="color: #000099; border-top: 1px solid #000099; width: 53.4475%; height: 23px;">4</td>
+													<td style="color: #000099; border-top: 1px solid #000099; width: 46.5953%; height: 23px;" data-mce-style="color: #000099; border-top: 1px solid #000099; width: 46.5953%; height: 23px;">3,3·10⁴</td>
+												</tr>
+												<tr style="height: 18.9844px;" data-mce-style="height: 18.9844px;">
+													<td style="color: #000099; border-bottom: 1px solid #000099; width: 53.4475%; height: 23px;" data-mce-style="color: #000099; border-bottom: 1px solid #000099; width: 53.4475%; height: 23px;">12</td>
+													<td style="color: #000099; border-bottom: 1px solid #000099; width: 46.5953%; height: 23px;" data-mce-style="color: #000099; border-bottom: 1px solid #000099; width: 46.5953%; height: 23px;">10</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<div style="text-align: center;" data-mce-style="text-align: center;"><br><br></div>
+									<table style="width: 100%; height: 40.4844px;" data-mce-style="width: 100%; height: 40.4844px;" class="mce-item-table">
+										<tbody>
+											<tr style="height: 40.4844px;" data-mce-style="height: 40.4844px;">
+												<td style="width: 6.96698%; vertical-align: text-top; height: 40.4844px;" data-mce-style="width: 6.96698%; vertical-align: text-top; height: 40.4844px;"> </td>
+												<td style="width: 4.95023%; vertical-align: text-top; height: 40.4844px;" data-mce-style="width: 4.95023%; vertical-align: text-top; height: 40.4844px;">d)</td>
+												<td style="height: 40.4844px; width: 87.6373%;" data-mce-style="height: 40.4844px; width: 87.6373%;">Forklar ændringerne i <em>D</em>, når pH stiger fra 4 til 12. Inddrag avobenzons syre-baseegenskaber.</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<p><br></p>
+							<p><br></p>
+							<p><br></p>
+						</div>
+						<div class="web-document" id="web-document-6696">
+							<div style="padding-right: 10%; padding-left: 10%;" data-mce-style="padding-right: 10%; padding-left: 10%;">
+								<div style="color: rgba(0, 0, 153, 1);" data-mce-style="color: rgba(0, 0, 153, 1);">
+									<h2 style="line-height: 1.2em;" data-mce-style="line-height: 1.2em;">Opgave 1:    Adipinsyre</h2>
+                                    <table style="width: 100%; border-color: #ffffff; height: 202.056px; border-spacing: 0px;" data-mce-style="width: 100%; border-color: #ffffff; height: 202.056px; border-spacing: 0px;" class="mce-item-table">
+                                      <tbody>
+                                          <tr style="height: 202.056px;" data-mce-style="height: 202.056px;">
+                                              <td style="width: 55.5893%; vertical-align: top; height: 202.056px;" data-mce-style="width: 55.5893%; vertical-align: top; height: 202.056px;">Adipinsyre er et vigtigt råstof i den kemiske industri, hvor det især anvendes til fremstilling af nylon. Stoffet har dog også mange andre anvendelser, fx i lægemidler og som smagsstof og surhedsregulerende middel i fødevarer. Som surhedsregulerende middel bruges det blandt til geleprodukter, fx det amerikanske Jell-O®.</td>
+                                              <td style="width: 44.4822%; vertical-align: top; height: 202.056px;" data-mce-style="width: 44.4822%; vertical-align: top; height: 202.056px;"><img pbyg-data-src-id="15121" src="assets/jello-15121.jpg" alt="black cherry, Jell-O" width="240" height="196" data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/DYm5sTkYesla2JboXRhtOQ/document/jello.jpg"></td>
+                                          </tr>
+                                      </tbody>
+                                    </table>
+									<p>En mættet vandig opløsning af adipinsyre anvendes på nogle affaldsforbrændingsanlæg sammen med kalk til at rense røggasserne for miljøskadelige svovlforbindelser. </p>
+									<div style="text-align: center;" data-mce-style="text-align: center;">
+										<table border="0" style="border-collapse: collapse; width: 100.061%; background-color: rgba(255, 255, 255, 1); border-color: rgba(255, 255, 255, 1); border-style: outset;" data-mce-style="border-collapse: collapse; width: 100.061%; background-color: rgba(255, 255, 255, 1); border-color: rgba(255, 255, 255, 1); border-style: outset;" class="mce-item-table">
+											<tbody>
+												<tr>
+													<td style="width: 32.6592%;" data-mce-style="width: 32.6592%;"></td>
+													<td style="width: 32.6592%;" data-mce-style="width: 32.6592%;"><img pbyg-data-src-id="15127" src="assets/figur_1_1-15127.png" alt="adipinsyre" width="306" height="214" data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/wcva1F4zuq6OkNsYIaRbjA/document/figur_1_1.png"></td>
+													<td style="width: 32.6592%;" data-mce-style="width: 32.6592%;"></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<div style="text-align: center;" data-mce-style="text-align: center;">Figur 1.1<br><br></div>
+									<div style="text-align: left;" data-mce-style="text-align: left;"><br></div>
+								</div>
+								<div style="color: rgba(0, 0, 153, 1);" data-mce-style="color: rgba(0, 0, 153, 1);">
+									<table style="width: 100%;" data-mce-style="width: 100%;" class="mce-item-table">
+										<tbody>
+											<tr>
+												<td style="width: 7%; vertical-align: text-top;" data-mce-style="width: 7%; vertical-align: text-top;"> </td>
+												<td style="width: 5%; vertical-align: text-top;" data-mce-style="width: 5%; vertical-align: text-top;">a)</td>
+												<td>Gør rede for, at det systematiske navn for adipinsyre er hexandisyre.<br><br></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div style="color: rgba(0, 0, 153, 1);" data-mce-style="color: rgba(0, 0, 153, 1);">
+									<p>En elev ønsker at bestemme den formelle stofmængdekoncentration af adipinsyre i en mættet opløsning. Titreringen er vist i filmen nedenfor.</p>
+								</div>
+								<div class="new-player mceNonEditable" contenteditable="false"><div class="new-player-video" style="width: 550px; height: 300px;" data-mce-style="width: 550px; height: 300px;">
+									<video width="550" height="300" src="assets/adipinsyre_video-16574.mp4" pbyg-data-src-id="16574" data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/9IkexMi5xeK8XsMYdDjaVw/document/adipinsyre_video.mp4"></video>
+								</div>
+									<div class="subtitles new-player-subtitles" style="width: 550px;" data-mce-style="width: 550px;"><br></div>
+									<div class="new-player-footer" style="width: 550px;" data-mce-style="width: 550px;">
+										<div class="new-player-title">Titrering af adipinsyre</div>
+									</div>
+								</div>
+								<div style="color: rgba(0, 0, 153, 1);" data-mce-style="color: rgba(0, 0, 153, 1);">
+									<p><br>I figur 1.2 er titrerkurven vist.<br><br></p>
+								</div>
+								<table border="0" style="border-collapse: collapse; width: 100.061%; background-color: rgba(255, 255, 255, 1); border-color: rgba(255, 255, 255, 1); border-style: outset;" data-mce-style="border-collapse: collapse; width: 100.061%; background-color: rgba(255, 255, 255, 1); border-color: rgba(255, 255, 255, 1); border-style: outset;" class="mce-item-table">
+									<tbody>
+										<tr>
+											<td style="width: 32.6592%;" data-mce-style="width: 32.6592%;"></td>
+											<td style="width: 32.6592%;" data-mce-style="width: 32.6592%;"><img pbyg-data-src-id="16573" src="assets/figur_1_2-16573.png" width="554" height="334" data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/GOsfW-lXjveNVCws2oA9Qw/document/figur_1_2.png"></td>
+											<td style="width: 32.6592%;" data-mce-style="width: 32.6592%;"></td>
+										</tr>
+									</tbody>
+								</table>
+								<div style="color: rgba(0, 0, 153, 1);" data-mce-style="color: rgba(0, 0, 153, 1);">
+									<div style="text-align: center;" data-mce-style="text-align: center;">Figur 1.2<br><br></div>
+									<div style="text-align: left;" data-mce-style="text-align: left;"><br></div>
+									<div style="text-align: left;" data-mce-style="text-align: left;">
+										<a pbyg-data-href-id="18684" href="assets/titrerkurve-figur-1_2-18684.pdf" target="_blank" rel="noopener" data-mce-href="https://xn--prvebyggeren-wjb.dk/webdav/fLJwTVOQB8k6NvsxetqoAQ/document/titrerkurve-figur-1_2.pdf">Se forstørrelse af titrerkurven i figur 1.2</a></div>
+								</div>
+								<div style="text-align: left;" data-mce-style="text-align: left;"><br></div>
+								<div style="text-align: left;" data-mce-style="text-align: left;"><br><div style="color: rgba(0, 0, 153, 1);" data-mce-style="color: rgba(0, 0, 153, 1);">
+									<table style="width: 100%;" data-mce-style="width: 100%;" class="mce-item-table">
+										<tbody>
+											<tr>
+												<td style="width: 7%; vertical-align: text-top;" data-mce-style="width: 7%; vertical-align: text-top;"> </td>
+												<td style="width: 5%; vertical-align: text-top;" data-mce-style="width: 5%; vertical-align: text-top;">b)</td>
+												<td>Bestem stofmængdekoncentrationen af adipinsyre i den mættede opløsning.<br><br></td>
+											</tr>
+										</tbody>
+									</table>
+									</div>
+									<div style="color: rgba(0, 0, 153, 1);" data-mce-style="color: rgba(0, 0, 153, 1);"><p>En række estere af adipinsyre bruges som tilsætningsstoffer til plast og i kosmetiske produkter. En af disse estere har formlen vist i figur 1.3.</p></div>
+									<div style="color: rgba(0, 0, 153, 1);" data-mce-style="color: rgba(0, 0, 153, 1);">
+										<div style="text-align: center;" data-mce-style="text-align: center;">
+											<table border="0" style="border-collapse: collapse; width: 100.061%; background-color: rgba(255, 255, 255, 1); border-color: rgba(255, 255, 255, 1); border-style: outset;" data-mce-style="border-collapse: collapse; width: 100.061%; background-color: rgba(255, 255, 255, 1); border-color: rgba(255, 255, 255, 1); border-style: outset;" class="mce-item-table">
+												<tbody>
+													<tr>
+														<td style="width: 28.7354%;" data-mce-style="width: 28.7354%;"></td>
+														<td style="width: 39.8547%;" data-mce-style="width: 39.8547%;"><img pbyg-data-src-id="15129" src="assets/figur_1_3-15129.png" width="289" height="120" data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/JBxPRXCdkqi_1fUegnchdQ/document/figur_1_3.png"></td>
+														<td style="width: 31.4383%;" data-mce-style="width: 31.4383%;"></td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+										<div style="text-align: center;" data-mce-style="text-align: center;">Figur 1.3<br><br></div>
+									</div>
+									<div style="color: rgba(0, 0, 153, 1);" data-mce-style="color: rgba(0, 0, 153, 1);">
+										<div style="text-align: left;" data-mce-style="text-align: left;"><br>R betegner en alkylgruppe. </div>
+										<div style="text-align: left;" data-mce-style="text-align: left;"><p>En elementaranalyse af esteren giver molekylets sammensætning angivet i masseprocenter, som vist i tabel 1.1.<br><br></p>
+											<div style="text-align: center;" data-mce-style="text-align: center;">Tabel 1.1<br><br></div>
+											<table style="border-collapse: collapse; width: 70.3112%; height: 65px; border-style: none; margin-left: auto; margin-right: auto;" data-mce-style="border-collapse: collapse; width: 70.3112%; height: 65px; border-style: none; margin-left: auto; margin-right: auto;" class="mce-item-table">
+												<tbody>
+													<tr style="height: 28px; text-align: center;" data-mce-style="height: 28px; text-align: center;">
+														<td style="color: rgba(0, 0, 153, 1); border-top: 1px solid rgba(0, 0, 153, 1); width: 35.9761%; height: 28px; text-align: center;" data-mce-style="color: rgba(0, 0, 153, 1); border-top: 1px solid rgba(0, 0, 153, 1); width: 35.9761%; height: 28px; text-align: center;"><strong>C</strong></td>
+														<td style="color: rgba(0, 0, 153, 1); border-top: 1px solid rgba(0, 0, 153, 1); width: 33.9056%; height: 28px; text-align: center;" data-mce-style="color: rgba(0, 0, 153, 1); border-top: 1px solid rgba(0, 0, 153, 1); width: 33.9056%; height: 28px; text-align: center;"><strong>H</strong></td>
+														<td style="color: rgba(0, 0, 153, 1); border-top: 1px solid rgba(0, 0, 153, 1); width: 30.2821%; height: 28px; text-align: center;" data-mce-style="color: rgba(0, 0, 153, 1); border-top: 1px solid rgba(0, 0, 153, 1); width: 30.2821%; height: 28px; text-align: center;"><strong>O</strong></td>
+													</tr>
+													<tr style="height: 37px;" data-mce-style="height: 37px;">
+														<td style="color: #000099; border-bottom: 1px solid #000099; width: 35.9761%; height: 37px; text-align: center;" data-mce-style="color: #000099; border-bottom: 1px solid #000099; width: 35.9761%; height: 37px; text-align: center;"><p>65,09%</p></td>
+														<td style="color: #000099; border-bottom: 1px solid #000099; width: 33.9056%; height: 37px; text-align: center;" data-mce-style="color: #000099; border-bottom: 1px solid #000099; width: 33.9056%; height: 37px; text-align: center;"><p>10,14%</p></td>
+														<td style="color: #000099; border-bottom: 1px solid #000099; width: 30.2821%; height: 37px; text-align: center;" data-mce-style="color: #000099; border-bottom: 1px solid #000099; width: 30.2821%; height: 37px; text-align: center;">24,77%</td>
+													</tr>
+												</tbody>
+											</table>
+											<p><br></p>
+										</div>
+									</div>
+									<div style="color: rgba(0, 0, 153, 1);" data-mce-style="color: rgba(0, 0, 153, 1);">
+										<table style="width: 100%;" data-mce-style="width: 100%;" class="mce-item-table">
+											<tbody>
+												<tr>
+													<td style="width: 6.97141%; vertical-align: text-top;" data-mce-style="width: 6.97141%; vertical-align: text-top;"> </td>
+													<td style="width: 4.95337%; vertical-align: text-top;" data-mce-style="width: 4.95337%; vertical-align: text-top;">c)</td>
+													<td style="width: 87.5096%;" data-mce-style="width: 87.5096%;">Bestem molekylformlen for esteren i figur 1.3.</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<p> <br><span style="color: rgba(0, 0, 153, 1);" data-mce-style="color: rgba(0, 0, 153, 1);">Ved hydrolyse af esteren dannes alkoholen R-OH. I figur 1.4 er vist ¹H-NMR-spektret for alkoholen. Spektrometerfrekvensen er 500</span><span style="color: rgba(0, 0, 153, 1);" data-mce-style="color: rgba(0, 0, 153, 1);"> MHz.</span><br><br></p>
+									<div style="text-align: left;" data-mce-style="text-align: left;">
+										<div style="text-align: center;" data-mce-style="text-align: center;">
+											<table border="0" style="border-collapse: collapse; width: 99.9262%;" data-mce-style="border-collapse: collapse; width: 99.9262%;" class="mce-item-table">
+												<tbody>
+													<tr>
+														<td style="width: 99.3465%;" data-mce-style="width: 99.3465%;"><img pbyg-data-src-id="15026" src="assets/figur_1_4-15026.png" width="515" height="282" data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/NJqBTL3QrHC9boJoV3JMsA/document/figur_1_4.png"></td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+										<div style="text-align: center; color: rgba(0, 0, 153, 1);" data-mce-style="text-align: center; color: rgba(0, 0, 153, 1);">Figur 1.4<br><br></div> <br><a href="https://xn--prvebyggeren-wjb.dk/webdav/hfSEww1go5afFrgSrmGZzQ/document/spektrum-figur-1.4-NMR.pdf" target="_blank" rel="noopener" data-mce-href="https://xn--prvebyggeren-wjb.dk/webdav/hfSEww1go5afFrgSrmGZzQ/document/spektrum-figur-1.4-NMR.pdf"></a>
+									</div>
+									<div style="text-align: left;" data-mce-style="text-align: left;">
+										<a pbyg-data-href-id="16626" href="assets/spektrum-figur-1_4-NMR-16626.pdf" target="_blank" rel="noopener" data-mce-href="https://xn--prvebyggeren-wjb.dk/webdav/fgIl268XFJyMB0x6t5UEbg/document/spektrum-figur-1_4-NMR.pdf">Se forstørrelse af spektret i figur 1.4.</a>
+									</div>
+									<div style="text-align: left;" data-mce-style="text-align: left;"><br><br></div>
+									<div style="color: rgba(0, 0, 153, 1);" data-mce-style="color: rgba(0, 0, 153, 1);">
+										<table style="width: 100%;" data-mce-style="width: 100%;" class="mce-item-table">
+											<tbody>
+												<tr>
+													<td style="width: 7%; vertical-align: text-top;" data-mce-style="width: 7%; vertical-align: text-top;"> </td>
+													<td style="width: 5%; vertical-align: text-top;" data-mce-style="width: 5%; vertical-align: text-top;">d)</td>
+													<td>Bestem strukturen for alkoholen. <br>Inddrag integralkurver, kemiske skift og koblingsmønstre, idet signaler i spektret tilordnes stoffets strukturformel.</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+							<p><br></p>
+							<p><br></p>
+							<p><br></p>
+						</div>
+						<div class="web-document" id="web-document-7136">
+							<div style="padding-right: 10%; padding-left: 10%;"
+                            data-mce-style="padding-right: 10%; padding-left: 10%;">
+								<div style="color: #000099;" data-mce-style="color: #000099;">
+									<h2 style="line-height: 1.2em;" data-mce-style="line-height: 1.2em;">Vejledning</h2>
+									<table style="width: 108.646%; border-color: #ffffff; height: 268.979px; border-spacing: 0px;" data-mce-style="width: 108.646%; border-color: #ffffff; height: 268.979px; border-spacing: 0px;" class="mce-item-table">
+										<tbody>
+											<tr style="height: 106.991px;" data-mce-style="height: 106.991px;">
+												<td style="vertical-align: top; width: 99.9504%; height: 106.991px;" colspan="2" data-mce-style="vertical-align: top; width: 99.9504%; height: 106.991px;"><strong>Prøven</strong>
+													<br>Opgavesættet består af 4 opgaver med i alt 15 delopgaver.<br><br>
+													Følgende hjælpemidler forudsættes:<br>
+													DATABOG fysik kemi (F&K Forlaget), 11. udgave (2007) eller senere udgave.<br><br><br>
+													<strong>Opgavebesvarelsen</strong>
+													<br>Din opgavebesvarelse skal afleveres i et samlet dokument, gemt i pdf-format.<br><br><br>
+													<strong>Bedømmelse</strong>
+													<br>Ved den skriftlige prøve lægges der vægt på din evne til at:<br>
+													<table class="mce-item-table">
+														<tbody>
+															<tr>
+																<td></td>
+																<td>-</td>
+																<td>anvende fagets viden og metoder til behandling af kemiske problemstillinger</td>
+															</tr>
+															<tr>
+																<td></td>
+																<td>-</td>
+																<td>gøre iagttagelser og analysere eksperimentelt arbejde, samt efterbehandle og vurdere resultater herfra</td>
+															</tr>
+															<tr>
+																<td></td>
+																<td>-</td>
+																<td>gennemføre og præsentere relevante beregninger med korrekt brug af fagsprog</td>
+															</tr>
+															<tr>
+																<td></td>
+																<td>-</td>
+																<td>benytte relevante matematiske modeller, metoder og repræsentationsformer</td>
+															</tr>
+															<tr>
+																<td></td>
+																<td>-</td>
+																<td>benytte fagspecifikke digitale værktøjer hensigtsmæssigt</td>
+															</tr>
+															<tr>
+																<td></td>
+																<td>-</td>
+																<td>dokumentere anvendte informationer fra forskellige kilder</td>
+															</tr>
+															<tr>
+																<td></td>
+																<td>-</td>
+																<td>udtrykke sig skriftligt, således at tankegangen fremstår struktureret og tydelig.</td>
+															</tr>
+														</tbody>
+													</table>
+													<p><span>Der gives en karakter på baggrund af en helhedsvurdering.</span></p>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+									<p><br></p>
+								</div>
+							</div>
+							<p><br></p>
+							<p><br></p>
+							<p><br></p>
+						</div>
+						<div class="web-document frontpage-web-document web-document-active" id="web-document-5664">
+                            <div class="frontpage-fields">
+                                <h1 class="frontpage-proeve-title" contenteditable="false">Kemi A</h1>
+                                <p class="frontpage-proeve-proeveordning" contenteditable="false"></p>
+                                <p class="frontpage-dato-for-afholdelse" contenteditable="false">Tirsdag den 4. juni 2024</p>
+                                <p class="frontpage-proeve-start-slut-tidspunkt" contenteditable="false"></p>
+							</div>
+							<p class="optional-textfield-1">Kl. 9.00-14.00</p>
+							<p><br></p>
+							<p><br></p>
+						</div>
+					</div>
+                </div>
+            </div>
+        </div>
+        <script>
+            (function resetWordCounters() {
+                var wordCounters = document.getElementsByClassName('word-counter')
+                Array.prototype.forEach.call(wordCounters, function(wordCounter) {
+                    wordCounter.innerHTML = 0;
+                });
+            })();
+
+            function countWords(obj) {
+                let res = [];
+                let str = obj.value.replace(/[\t\n\r\.\?\!]/gm, ' ').split(' ');
+                str.map((s) => {
+                    let trimStr = s.trim();
+                    if (trimStr.length > 0)
+                    {
+                      res.push(trimStr);
+                    }
+                });
+                obj.closest('.wordcount-textarea').getElementsByClassName('word-counter')[0].innerHTML = res.length;
+            }
+        </script>
+        <script>
+        function changeDocument(element) {
+            document.querySelectorAll(".web-document").forEach(element => {
+                if(element.classList.contains("web-document-active")) {
+                    element.classList.remove("web-document-active");
+                }
+            });
+            var webDocument = document.getElementById("web-document-" + element.getAttribute("data-document-id"));
+            if (!webDocument.classList.contains("web-document-active")) {
+                webDocument.classList.add("web-document-active");
+            }
+            this.changeActiveMenuLink(element.id);
+        }
+
+        function changeActiveMenuLink(elementId) {
+            document.querySelectorAll(".web-document-link").forEach(element => {
+                if(element.classList.contains("active")) {
+                    element.classList.remove("active");
+                }
+            });
+
+            var activeElement = document.getElementById(elementId);
+            if (!activeElement.classList.contains("active")) {
+                activeElement.classList.add("active");
+            }
+
+            var activeElementParentId = activeElement.getAttribute("data-document-id");
+            if (activeElement.hasAttribute("data-parent-document-id")) {
+                activeElementParentId = activeElement.getAttribute("data-parent-document-id");
+            }
+
+            document.querySelectorAll(".web-document-link").forEach(document => {
+                if(document.classList.contains("parent-document") || activeElementParentId == document.getAttribute("data-parent-document-id")) {
+                    document.classList.remove("noActiveRelation");
+                } else {
+                    document.classList.add("noActiveRelation");
+                }
+            });
+        }
+
+        VideoPlayer.InitPlayers('.web-document-active .new-player');
+        VideoPlayer.PauseAll();
+        </script>
+	</body>
+</html>
