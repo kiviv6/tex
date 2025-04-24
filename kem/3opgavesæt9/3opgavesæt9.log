@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.13)  16 APR 2025 20:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.13)  24 APR 2025 11:03
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1056,8 +1056,34 @@ File: esterstruk.png Graphic file (type png)
 Package pdftex.def Info: esterstruk.png  used on input line 318.
 (pdftex.def)             Requested size: 344.00308pt x 105.1176pt.
 
+Overfull \hbox (13.66328pt too wide) in paragraph at lines 329--340
+ [][] 
+ []
 
-[2 <./esterstruk.png>] (./3opgavesæt9.aux)
+
+
+[2 <./esterstruk.png>]
+<HNMRalk.png, id=87, 748.7975pt x 311.1625pt>
+File: HNMRalk.png Graphic file (type png)
+<use HNMRalk.png>
+Package pdftex.def Info: HNMRalk.png  used on input line 356.
+(pdftex.def)             Requested size: 393.1496pt x 163.37225pt.
+<absorption.png, id=89, 748.7975pt x 442.65375pt>
+File: absorption.png Graphic file (type png)
+<use absorption.png>
+Package pdftex.def Info: absorption.png  used on input line 369.
+(pdftex.def)             Requested size: 393.1496pt x 232.41019pt.
+
+
+[3 <./HNMRalk.png>]
+<stereo.png, id=100, 652.4375pt x 335.2525pt>
+File: stereo.png Graphic file (type png)
+<use stereo.png>
+Package pdftex.def Info: stereo.png  used on input line 383.
+(pdftex.def)             Requested size: 393.1496pt x 202.02269pt.
+
+
+[4 <./absorption.png> <./stereo.png>] (./3opgavesæt9.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -1066,18 +1092,18 @@ Package rerunfilecheck Info: File `3opgavesæt9.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 48405 strings out of 473190
- 1162565 string characters out of 5715800
- 1675270 words of memory out of 5000000
- 70943 multiletter control sequences out of 15000+600000
- 568812 words of font info for 88 fonts, out of 8000000 for 9000
+ 48449 strings out of 473190
+ 1163252 string characters out of 5715800
+ 1680270 words of memory out of 5000000
+ 70978 multiletter control sequences out of 15000+600000
+ 569431 words of font info for 90 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 98i,25n,105p,729b,1788s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 98i,31n,105p,729b,1788s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on 3opgavesæt9.pdf (3 pages, 531512 bytes).
+Output written on 3opgavesæt9.pdf (5 pages, 699157 bytes).
 PDF statistics:
- 134 PDF objects out of 1000 (max. 8388607)
- 74 compressed objects within 1 object stream
- 7 named destinations out of 1000 (max. 500000)
- 184 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 159 PDF objects out of 1000 (max. 8388607)
+ 91 compressed objects within 1 object stream
+ 14 named destinations out of 1000 (max. 500000)
+ 199 words of extra memory for PDF output out of 10000 (max. 10000000)
 

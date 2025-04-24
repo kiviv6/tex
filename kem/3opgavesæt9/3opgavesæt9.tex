@@ -310,7 +310,7 @@ Vi beregner nu stofmængdeforholdene.
 \end{split}
 \end{equation*}
 Forholdet mellem stofmængderne af C, H og O er altså med stor nøjagtighed 7:13:2.
-Stoffet B's empiriske formel må da være \ce{C7H13O2}.
+Esterens empiriske formel må da være \ce{C7H13O2}.
 Imidlertid har vi fra esterens strukturformel (se \cref{fig:esterstruk}), at esteren netop indeholder fire O-atomer (for R betegner alkylgrupper).
 Vi ganger da den empiriske formel op med 2, og får, at molekylformlen for esteren må være \ce{C14H26O4}.
 \begin{figure}[H]
@@ -321,5 +321,72 @@ Vi ganger da den empiriske formel op med 2, og får, at molekylformlen for ester
 \label{fig:esterstruk}
 \end{figure}
 \noindent \textbf{d.}
+Vi betragter \ce{^1H}-NMR-spektret for alkoholen.
+En opsummerende tabel ses i tabel \ref{tab:HNMR}.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}lllllll@{}}
+\toprule
+  \makecell{Signal\\nr.} & \makecell{Kemisk skift\\(aflæst)\\$\delta$/ppm}& \makecell{Integral/areal\\(relativt antal ækvi-\\valente \ce{^1H}-atomer)}  & Opsplitning & \makecell{Antal nabo-\\\ce{^1H}'er}  & Tilordning & \makecell{Kemisk skift\\(tabel)\\$\delta$/ppm} \\
+\midrule
+  1 & 0,93 & 3 & Triplet & 2 & \ce{C\textbf{H}3-CH2} & 0,9\\
+  2 & 1,39 & 2 & Sekstet & 5 & \ce{-CH2-C\textbf{H}2-CH3} & 1,3\\
+  3 & 1,53 & 2 & Kvintet & 4 & \ce{-CH2-C\textbf{H}2-CH2-OH} & 1,5 \\
+  4 & 2,24 & 1 & Singlet & 0 & \ce{-OH} & 0,5-5 \\
+  5 & 3,62 & 2 & Triplet & 2 & \ce{-CH2-C\textbf{H}2-OH} & 3,5 \\
+\bottomrule
+\end{tabular}
+\caption{Tilordning af absorptionsbånd i \ce{^1H}-NMR-spektret}
+\label{tab:HNMR}
+\end{table}
+
+Der er fem signaler i spektret, hvilket betyder, at der er fem forskellige grupper af ækvivalente \ce{^1H}-kerner.
+Siden R er en alkylgruppe, så fremgår det klart fra arealerne af signal nr. 1, 2, 3 og 5, at alkoholen indeholder én \ce{CH3}-gruppe og tre \ce{CH2}-grupper.
+Signal nr. 4 kan tilordnes \ce{OH}-gruppen.
+
+Fra opsplitningerne har vi så, at \ce{^1H}-kernerne hørende til signal 1 må koble til de to \ce{^1H}-kerner hørende til signal 2.
+Derudover fremgår det også fra opsplitningerne samt kemiske skift, at \ce{^1H}-kernerne hørende til signal nr. 5 må koble til \ce{^1H}-kernen hørende til hydroxy-gruppen i signal nr. 4 samt \ce{^1H}-kernerne hørende til signal nr. 3.
+Til sidst må \ce{^1H}-kernerne hørende til signal 3 både koble til \ce{^1H}-kernerne hørende til signal nr. 5 og dem, der hører til signal nr. 2.
+
+Altså vil det sige, at vi har \ce{CH3}-gruppen bundet til en \ce{CH2}-gruppe, der er bundet til en \ce{CH2}-gruppe, der er bundet til endnu en \ce{CH2}-gruppe, der er bundet til \ce{OH}-gruppen. 
+Strukturformlen for alkoholen ses i \cref{fig:HNMRalk}, hvor \ce{^1H}-kernerne, der svarer til hvert signal er numereret.
+\begin{figure}[H]
+\begin{center}
+  \includegraphics[width=0.8\textwidth]{HNMRalk.png}
+\end{center}
+\caption{Strukturen for \ce{R-OH} }
+\label{fig:HNMRalk}
+\end{figure}
+
+\section*{Opgave 2:    Avobenzon - et kemisk filter i solcreme}
+\sol \\
+\textbf{a.}
+Vi ser fra absorptionsspektret (\cref{fig:absorption}), at absorptionen er størst i området $330 \;\unit{nm} $ til $380 \;\unit{nm} $, hvilket ligger indenfor området af UV-A. 
+Altså beskytter avobenzon især mod ultraviolet stråling fra solen i form af UV-A.
+\begin{figure}[H]
+\begin{center}
+  \includegraphics[width=0.8\textwidth]{absorption.png}
+\end{center}
+\caption{Absorptionsspektrum}
+\label{fig:absorption}
+\end{figure}
+\noindent \textbf{b.}
+Avobenzon B kan udvise stereoisomeri, da der ikke er omdrejningsfrihed ved dobbeltbindingen (se \cref{fig:stereo}), og der sidder fire distinkte grupper på de to C-atomer, hvorimellem dobbeltbindingen sidder.
+
+Vi ser nu på prioriteringerne af substituenterne på C-atomerne, hvorimellem dobbeltbindingen sidder.
+Grupperne med højst prioritet er markeret med 1 i \cref{fig:stereo}, og de laveste med 2.
+Det ses, at grupperne med højst prioritet sidder på samme side af dobbeltbindingen, hvilket vil sige, at der er tale om Z-formen.
+
+\begin{figure}[H]
+\begin{center}
+  \includegraphics[width=0.8\textwidth]{stereo.png}
+\end{center}
+\caption{Avobenzon B kan udvise stereoisomeri}
+\label{fig:stereo}
+\end{figure}
+\noindent \textbf{c.}
+
+
 
 \end{document}
