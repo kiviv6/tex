@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.13)  24 APR 2025 11:03
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.13)  24 APR 2025 13:11
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1081,9 +1081,26 @@ File: stereo.png Graphic file (type png)
 <use stereo.png>
 Package pdftex.def Info: stereo.png  used on input line 383.
 (pdftex.def)             Requested size: 393.1496pt x 202.02269pt.
+<reak2.png, id=102, 1356.06625pt x 335.2525pt>
+File: reak2.png Graphic file (type png)
+<use reak2.png>
+Package pdftex.def Info: reak2.png  used on input line 394.
+(pdftex.def)             Requested size: 393.1496pt x 97.19514pt.
 
 
-[4 <./absorption.png> <./stereo.png>] (./3opgavesæt9.aux)
+[4 <./absorption.png> <./stereo.png>]
+<Arrhenius.png, id=112, 1417.295pt x 784.9325pt>
+File: Arrhenius.png Graphic file (type png)
+<use Arrhenius.png>
+Package pdftex.def Info: Arrhenius.png  used on input line 427.
+(pdftex.def)             Requested size: 442.28862pt x 244.94347pt.
+
+
+[5 <./reak2.png>]
+
+[6 <./Arrhenius.png>]
+
+[7] (./3opgavesæt9.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -1092,18 +1109,18 @@ Package rerunfilecheck Info: File `3opgavesæt9.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 48449 strings out of 473190
- 1163252 string characters out of 5715800
+ 48473 strings out of 473190
+ 1163612 string characters out of 5715800
  1680270 words of memory out of 5000000
- 70978 multiletter control sequences out of 15000+600000
+ 70996 multiletter control sequences out of 15000+600000
  569431 words of font info for 90 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  98i,31n,105p,729b,1788s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on 3opgavesæt9.pdf (5 pages, 699157 bytes).
+</usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
+Output written on 3opgavesæt9.pdf (8 pages, 1225738 bytes).
 PDF statistics:
- 159 PDF objects out of 1000 (max. 8388607)
- 91 compressed objects within 1 object stream
- 14 named destinations out of 1000 (max. 500000)
- 199 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 199 PDF objects out of 1000 (max. 8388607)
+ 117 compressed objects within 2 object streams
+ 20 named destinations out of 1000 (max. 500000)
+ 209 words of extra memory for PDF output out of 10000 (max. 10000000)
 

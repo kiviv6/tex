@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1745485427.14476 "3opgavesæt9.tex" "3opgavesæt9.pdf" "3opgavesæt9" 1745485433.70497 0
+["pdflatex"] 1745493098.08908 "3opgavesæt9.tex" "3opgavesæt9.pdf" "3opgavesæt9" 1745493105.25589 0
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -35,7 +35,10 @@
   "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb" 1248133631 32080 340ef9bf63678554ee606688e7b5339d ""
   "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb" 1248133631 36554 b67dc2cfa451409e100b3fcf5f506509 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb" 1248133631 32001 6aeea3afe875097b1eb0da29acd61e28 ""
+  "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb" 1248133631 30251 6afa5cb1d0204815a708a080681d4674 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1248133631 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
+  "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb" 1248133631 37912 77d683123f92148345f3fc36a38d9ab1 ""
+  "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb" 1248133631 36281 c355509802a035cadc5f15869451dcee ""
   "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1248133631 35752 024fb6c41858982481f6968b5fc26508 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb" 1248133631 32722 d7379af29a190c3f453aba36302ff5a9 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb" 1248133631 32362 179c33bbf43f19adbb3825bb4e36e57a ""
@@ -278,13 +281,15 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1741885528 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1741885431 3345738 17f033cf893371d9bc234ba9517e9a8b ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "3opgavesæt9.aux" 1745485433.46066 2322 c775bd59099fce202a7b2a882fe3bba9 "pdflatex"
-  "3opgavesæt9.out" 1745485430.04307 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "3opgavesæt9.tex" 1745485426.52186 15280 70237cb2fe755f976e5935145703036a ""
+  "3opgavesæt9.aux" 1745493104.98576 2900 91a6e86381730b89b8afbc18baef582d "pdflatex"
+  "3opgavesæt9.out" 1745493100.78622 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "3opgavesæt9.tex" 1745493096.09368 19501 bfbd2065644989ff1f9861e87d721636 ""
+  "Arrhenius.png" 1745490615.12114 1314141 c2df42828088c298b8f5b80bcb294a86 ""
   "HNMRalk.png" 1745478086.92199 74320 87ffcf9ea6248f197ebffd2ab3d8b0c1 ""
   "absorption.png" 1745478870.6571 61640 4fa26d0bc1e412e6877af324744f1737 ""
   "adipinsyre.png" 1744656788.69957 13214 c16ca6b5a039f2987a2ab7e759cf7e44 ""
   "esterstruk.png" 1744829366.40521 171715 8cfbcd8fac9098cfae98c48a153ebaf0 ""
+  "reak2.png" 1745488609.7654 135834 cf5ca8102d92400dfd8a5881a25c29c8 ""
   "stereo.png" 1745485228.94553 98401 3d0a1c2d4d2b72908e2b3d144de86483 ""
   "titrer.png" 1744827001.12616 204513 7bb08520c3f8c7489b4961856308bc06 ""
   (generated)

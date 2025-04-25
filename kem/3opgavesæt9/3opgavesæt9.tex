@@ -386,7 +386,102 @@ Det ses, at grupperne med højst prioritet sidder på samme side af dobbeltbindi
 \label{fig:stereo}
 \end{figure}
 \noindent \textbf{c.}
+Det er klart, at reaktion (1) er en eliminationsreaktion, da der dannes en tripelbinding mellem to C-atomer under fraspaltning af et mindre molekyle.
+Tilsvarende må reaktion (2) være en additionsreaktion, idet en binding i en tripelbinding brydes, og der lægges et molekyle til.
+Det færdiggjorte reaktionsskema for (2) ses i \cref{fig:reak2}.
+\begin{figure}[H]
+\begin{center}
+  \includegraphics[width=0.8\textwidth]{reak2.png}
+\end{center}
+  \caption{Reaktionsskema for reaktion (2)}
+\label{fig:reak2}
+\end{figure}
+\noindent \textbf{d.}
+Der gælder, at fasen med octan-1-ol er upolær, hvor fasen med vand er polær.
+Ved $pH=4$ har avobenzon ikke afgivet en hydron, og er overvejende upolær grundet de mange \ce{C-H}-bindinger.
+Derfor kan den bedre opløses i octan-1-ol, som også er upolær.
 
+Ved $pH=12$ har avobenzon afgivet en hydron og bliver da til en ion. 
+Den får derfor en stærk polær karakter, og kan bedre opløses i vandfasen end ved $pH=4$.
+Det følger så direkte fra definitionen for D, at D aftager fra $pH=4$ til $pH=12$. 
+Dette er i overensstemmelse med, at $D=3,3 \cdot 10^4$ ved $pH=4$ og $D=10$ ved $pH=12$. 
 
+\section*{Opgave 3: Bio-ortogonal kemi}
+\sol \\
+\textbf{a.}
+Vi beregner den formelle stofmængdekoncentration af A i opløsningen.
+\begin{equation*}
+\begin{split}
+  c(\ce{A} )&=\frac{n(\ce{A} )}{V}\\
+  &=\frac{m(\ce{A} )}{V \cdot M(\ce{A})}\\
+  &=\frac{19 \;\unit{mg} }{5,0 \;\unit{mL} \cdot 408,5 \;\unit{g/mol} }\\
+  &\approx 0,0093 \;\unit{\textsc{m}} 
+\end{split}
+\end{equation*}
+Den formelle stofmængdekoncentration af A i opløsningen er altså $c(\ce{A})=0,0093 \;\unit{\textsc{m}} $.\\[1ex]
+\textbf{b.}
+Vi undersøger først, om reaktionen følger Arrhenius-ligningen ved at lave et Arrhenius-plot, hvilket ses i \cref{fig:Arrhenius} og så lave lineær regression.
+Det ses, at punkterne på $(\frac{1}{T}, \ln\left(k\right))$-grafen tilnærmelsesvist ligger på en ret linje, hvilket vil sige, at reaktionen følger Arrhenius-ligningen.
+\begin{figure}[H]
+\begin{center}
+  \includegraphics[width=0.9\textwidth]{Arrhenius.png}
+\end{center}
+\caption{Arrheniusplot lavet med Logger Pro}
+\label{fig:Arrhenius}
+\end{figure}
+Fra Arrhenius-ligningen
+\[
+\ln\left(k\right) = - \frac{E_a}{R} \cdot \frac{1}{T}+ \ln\left(k_0\right)
+\] 
+har vi så, at linjens hældningskoefficient må være $\alpha = -\frac{E_a}{R}$.
+Vi kan da udregne aktiveringsenergien ud fra hældningskoefficienten:
+\begin{equation*}
+\begin{split}
+  E_a&=-\alpha \cdot R \\
+  &=-(-4121 \;\unit{K}) \cdot 8,314 \;\unit{\frac{J}{mol \cdot K}} \\
+  &\approx 3,43 \cdot 10 ^{4}\;\unit{J/mol} \\
+  &=34,3 \;\unit{kJ/mol}
+\end{split}
+\end{equation*}
+Aktiveringsenergien for reaktionen er altså $E_a=34,3 \;\unit{kJ/mol}$.\\[1ex]
+\textbf{c.}
+Vi starter med at sammenligne forsøg nr. 1 og 2.
+Her er $[B]_0$ ens, hvor $[A]_0$ er dobbelt så stor i forsøg nr. 1 som i nr. 2.
+Siden vi har
+\begin{equation*}
+\begin{split}
+  2 \cdot v_0(\text{forsøg 2})&= 2 \cdot 0,69 \cdot 10 ^{-4} \;\unit{\textsc{m}^{-1}\cdot s ^{-1}} \\
+&=1,38\cdot 10 ^{-4} \;\unit{\textsc{m}^{-1}\cdot s ^{-1}}\\
+  &\approx v_0(\text{forsøg 1}),
+\end{split}
+\end{equation*}
+så må $x=1$.
+
+Vi sammenligner nu forsøg nr. 4 og nr. 5.
+Her er $[A]_0$ ens, hvor $[B]_0$ er dobbelt så stor i forsøg nr. 4 som i nr. 5.
+Siden vi har
+\begin{equation*}
+\begin{split}
+  2 \cdot v_0(\text{forsøg 5})&= 2 \cdot 0,35 \cdot 10 ^{-4} \;\unit{\textsc{m}^{-1}\cdot s ^{-1}} \\
+  &=0,70\cdot 10 ^{-4} \;\unit{\textsc{m}^{-1}\cdot s ^{-1}}\\
+  &= v_0(\text{forsøg 4}),
+\end{split}
+\end{equation*}
+så må vi også have $y=1$.
+
+Vi kan nu finde et udtryk for hastighedskonstanten ud fra hastighedsudtrykket.
+\begin{equation*}
+\begin{split}
+  v=k \cdot [A] \cdot [B] \iff k=\frac{v}{[A]\cdot [B]}
+\end{split}
+\end{equation*}
+Vi beregner det aritmetiske gennemsnit af hver $k$ tilhørende hvert delforsøg, som udregnes med det ovenstående udtryk. 
+\begin{equation*}
+\begin{split}
+  k&=\frac{1}{5} \sum_{k=1}^{5} \frac{v_0(\text{forsøg }k)}{[A]_0(\text{forsøg }k) \cdot [B]_0(\text{forsøg }k)} \\
+  &\approx 0,97\;\unit{\textsc{m}^{-1}\cdot s ^{-1}}
+\end{split}
+\end{equation*}
+Vi har altså fået $x=1$, $y=1$ og $k=0,97 \;\unit{\textsc{m}^{-1}\cdot s ^{-1}}$. 
 
 \end{document}
