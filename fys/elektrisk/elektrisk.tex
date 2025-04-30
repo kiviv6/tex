@@ -278,8 +278,37 @@ Siden effekten $P$ er konstant under opladningen, så må ændringen i ladningst
 \begin{equation*}
 \begin{split}
   \Delta SoC&=\frac{P \cdot \Delta t}{E _{\text{max} }}\\
-  &=\frac{10,5 \cdot 10^6 \;\unit{W} \cdot 7,5 \cdot 60 \;\unit{s} }{4160 \cdot 10^3 \;\unit{Wh}}
+  &=\frac{10,5 \cdot 10^6 \;\unit{W} \cdot 7,5 \;\unit{min} }{4160 \cdot 10^3 \;\unit{W} \cdot 60 \;\unit{min} }\\
+  &\approx 0,32\\
+  &=32 \%.
 \end{split}
 \end{equation*}
+Ændringen i batteriets ladningstilstand under opladningen må da være 32 \%.\\[1ex]
+\textbf{b.}
+Siden strengene af seriekoblede elementer er parallelkoblede, så må der gælde, at den samlede hvilespænding må være
+\begin{equation*}
+\begin{split}
+  U_0&=U_0(\text{streng 1}) = U_0(\text{streng 2}) = \cdots =U_0(\text{streng } n)\\
+  &=192 \cdot 3,9 \;\unit{V},
+\end{split}
+\end{equation*}
+fordi hver streng består af 192 seriekoblede elementer, der hver har hvilespænding på 3,9 V.
+
+Imidlertid har vi, at
+\begin{equation*}
+\begin{split}
+  \eta =1-\frac{R_i \cdot I}{U_0} \iff R_i =\frac{(1-\eta) \cdot U_0}{I}.
+\end{split}
+\end{equation*}
+Vi indsætter da de kendte værdier og får
+\begin{equation*}
+\begin{split}
+  R_i &=\frac{(1-\eta) \cdot U_0}{I}\\
+  &=\frac{(1-0,98)\cdot 192 \cdot 3,9 \;\unit{V} }{112 \;\unit{A} }\\
+  &\approx 0,13 \;\unit{\ohm}. 
+\end{split}
+\end{equation*}
+Den indre resistans i færgens batteri er altså $0,13 \;\unit{\ohm}$.
+
 
 \end{document}
