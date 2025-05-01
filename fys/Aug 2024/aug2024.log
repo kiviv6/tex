@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.13)  8 APR 2025 09:12
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.13)  1 MAY 2025 12:52
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -874,6 +874,29 @@ Package babel Info: Making " an active character on input line 82.
 )) (/usr/local/texlive/2025/texmf-dist/tex/generic/babel/locale/da/babel-danish.tex
 Package babel Info: Importing font and identification data for danish
 (babel)             from babel-da.ini. Reported on input line 11.
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/halloweenmath/halloweenmath.sty
+Package: halloweenmath 2019/11/01 v0.11 (development)
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/pict2e/pict2e.sty
+Package: pict2e 2020/09/30 v0.4b Improved picture commands (HjG,RN,JT)
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/pict2e/pict2e.cfg
+File: pict2e.cfg 2016/02/05 v0.1u pict2e configuration for teTeX/TeXLive
+)
+Package pict2e Info: Driver file: pdftex.def on input line 112.
+Package pict2e Info: Driver file for pict2e: p2e-pdftex.def on input line 114.
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/pict2e/p2e-pdftex.def
+File: p2e-pdftex.def 2016/02/05 v0.1u Driver-dependant file (RN,HjG,JT)
+)
+\pIIe@GRAPH=\toks57
+\@arclen=\dimen330
+\@arcrad=\dimen331
+\pIIe@tempdima=\dimen332
+\pIIe@tempdimb=\dimen333
+\pIIe@tempdimc=\dimen334
+\pIIe@tempdimd=\dimen335
+\pIIe@tempdime=\dimen336
+\pIIe@tempdimf=\dimen337
+)
+\@HwM@arrowfill@skip=\skip98
 )
 \c@tcb@cnt@question=\count383
 \c@tcb@cnt@Question=\count384
@@ -894,49 +917,49 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 \Gm@cnth=\count389
 \Gm@cntv=\count390
 \c@Gm@tempcnt=\count391
-\Gm@bindingoffset=\dimen330
-\Gm@wd@mp=\dimen331
-\Gm@odd@mp=\dimen332
-\Gm@even@mp=\dimen333
-\Gm@layoutwidth=\dimen334
-\Gm@layoutheight=\dimen335
-\Gm@layouthoffset=\dimen336
-\Gm@layoutvoffset=\dimen337
-\Gm@dimlist=\toks57
+\Gm@bindingoffset=\dimen338
+\Gm@wd@mp=\dimen339
+\Gm@odd@mp=\dimen340
+\Gm@even@mp=\dimen341
+\Gm@layoutwidth=\dimen342
+\Gm@layoutheight=\dimen343
+\Gm@layouthoffset=\dimen344
+\Gm@layoutvoffset=\dimen345
+\Gm@dimlist=\toks58
 ) (./aug2024.aux)
 \openout1 = `aug2024.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 247.
-LaTeX Font Info:    ... okay on input line 247.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 247.
-LaTeX Font Info:    ... okay on input line 247.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 247.
-LaTeX Font Info:    ... okay on input line 247.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 247.
-LaTeX Font Info:    ... okay on input line 247.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 247.
-LaTeX Font Info:    ... okay on input line 247.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 247.
-LaTeX Font Info:    ... okay on input line 247.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 247.
-LaTeX Font Info:    ... okay on input line 247.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 247.
-LaTeX Font Info:    ... okay on input line 247.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 247.
-LaTeX Font Info:    ... okay on input line 247.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 252.
+LaTeX Font Info:    ... okay on input line 252.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 252.
+LaTeX Font Info:    ... okay on input line 252.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 252.
+LaTeX Font Info:    ... okay on input line 252.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 252.
+LaTeX Font Info:    ... okay on input line 252.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 252.
+LaTeX Font Info:    ... okay on input line 252.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 252.
+LaTeX Font Info:    ... okay on input line 252.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 252.
+LaTeX Font Info:    ... okay on input line 252.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 252.
+LaTeX Font Info:    ... okay on input line 252.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 252.
+LaTeX Font Info:    ... okay on input line 252.
  (/usr/local/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count392
-\scratchdimen=\dimen338
+\scratchdimen=\dimen346
 \scratchbox=\box142
 \nofMPsegments=\count393
 \nofMParguments=\count394
-\everyMPshowfont=\toks58
+\everyMPshowfont=\toks59
 \MPscratchCnt=\count395
-\MPscratchDim=\dimen339
+\MPscratchDim=\dimen347
 \MPnumerator=\count396
 \makeMPintoPDFobject=\count397
-\everyMPtoPDFconversion=\toks59
+\everyMPtoPDFconversion=\toks60
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
@@ -956,27 +979,27 @@ Package siunitx Warning: Detected the "physics" package:
 (siunitx)                
 (siunitx)                to your preamble.
 
-Package translations Info: no dictionary file `translations-basic-dictionary-danish.trsl' found. on input line 247.
-LaTeX Info: Redefining \celsius on input line 247.
-Package gensymb Info: Faking symbols for \degree and \celsius on input line 247.
+Package translations Info: no dictionary file `translations-basic-dictionary-danish.trsl' found. on input line 252.
+LaTeX Info: Redefining \celsius on input line 252.
+Package gensymb Info: Faking symbols for \degree and \celsius on input line 252.
 
 Package gensymb Warning: Not defining \perthousand.
 
-LaTeX Info: Redefining \ohm on input line 247.
-Package gensymb Info: Using \Omega for \ohm on input line 247.
+LaTeX Info: Redefining \ohm on input line 252.
+Package gensymb Info: Using \Omega for \ohm on input line 252.
 
 Package gensymb Warning: Not defining \micro.
 
 
-Package chemgreek Info: Activating mapping `default' on line 247.
+Package chemgreek Info: Activating mapping `default' on line 252.
 
 \c@lstlisting=\count398
 (/usr/local/texlive/2025/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2024/02/08 v1.3d Input encoding file
-\inpenc@prehook=\toks60
-\inpenc@posthook=\toks61
+\inpenc@prehook=\toks61
+\inpenc@posthook=\toks62
 )
-Package hyperref Info: Link coloring OFF on input line 247.
+Package hyperref Info: Link coloring OFF on input line 252.
  (./aug2024.out) (./aug2024.out)
 \@outlinefile=\write4
 \openout4 = `aug2024.out'.
@@ -1016,15 +1039,15 @@ Package hyperref Info: Link coloring OFF on input line 247.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 249.
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 254.
 (/usr/local/texlive/2025/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 249.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 254.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 249.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 254.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
@@ -1037,32 +1060,30 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.309 \sol
+l.314 \sol
            \\ [1{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
 <TR.png, id=68, 781.92125pt x 334.24875pt>
 File: TR.png Graphic file (type png)
 <use TR.png>
-Package pdftex.def Info: TR.png  used on input line 345.
+Package pdftex.def Info: TR.png  used on input line 350.
 (pdftex.def)             Requested size: 393.1496pt x 168.0624pt.
 
 
 [2]
 
-./aug2024.tex:352: LaTeX Error: Unicode character ⋅ (U+22C5)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.352 ... udsender laserlys med frekvensen 3,19⋅
-                                                  1014 Hz i 500 ps.
-You may provide a definition with
-\DeclareUnicodeCharacter 
+[3 <./TR.png>]
+<bremse.png, id=85, 1887.05pt x 919.435pt>
+File: bremse.png Graphic file (type png)
+<use bremse.png>
+Package pdftex.def Info: bremse.png  used on input line 440.
+(pdftex.def)             Requested size: 491.43513pt x 239.44028pt.
 
 
+[4]
 
-[3 <./TR.png>] (./aug2024.aux)
+[5 <./bremse.png>]
+
+[6] (./aug2024.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -1071,18 +1092,18 @@ Package rerunfilecheck Info: File `aug2024.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 48283 strings out of 473190
- 1160049 string characters out of 5715800
- 1681270 words of memory out of 5000000
- 70819 multiletter control sequences out of 15000+600000
- 568244 words of font info for 86 fonts, out of 8000000 for 9000
+ 48904 strings out of 473190
+ 1171982 string characters out of 5715800
+ 1704077 words of memory out of 5000000
+ 71416 multiletter control sequences out of 15000+600000
+ 570303 words of font info for 96 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 98i,20n,105p,724b,1462s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on aug2024.pdf (4 pages, 259740 bytes).
+ 98i,20n,105p,724b,2432s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
+Output written on aug2024.pdf (7 pages, 389410 bytes).
 PDF statistics:
- 151 PDF objects out of 1000 (max. 8388607)
- 87 compressed objects within 1 object stream
- 8 named destinations out of 1000 (max. 500000)
- 168 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 186 PDF objects out of 1000 (max. 8388607)
+ 112 compressed objects within 2 object streams
+ 17 named destinations out of 1000 (max. 500000)
+ 185 words of extra memory for PDF output out of 10000 (max. 10000000)
 

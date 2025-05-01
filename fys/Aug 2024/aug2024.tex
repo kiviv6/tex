@@ -20,6 +20,7 @@
 \renewcommand{\cellalign}{cl}
 \renewcommand{\theadalign}{cl}
 \renewcommand\theadfont{\bfseries}
+\usepackage{halloweenmath}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % SELF MADE COLORS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -236,10 +237,14 @@
 \newcommand{\sol}{\setlength{\parindent}{0cm}\textbf{\textit{Løsning:}}\setlength{\parindent}{1cm}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage[tmargin=2cm,rmargin=1in,lmargin=1in,margin=0.85in,bmargin=2cm,footskip=.2in]{geometry}\pagestyle{fancy}
-\lhead{Minrui Kevin Zhou 3.b}
-\rhead{Eksamen august 2024}
+\lhead{Minrui Kevin Zhou 3.b $\bigpumpkin$}
+\rhead{Eksamen august 2024 $\mathbat$}
 
-\title{Eksamen august 2024\\
+\title{
+\[
+\mathwitch*
+\]
+Eksamen august 2024\\
 {\Large \textbf{3.b fysik A}}}
 \author{Kevin Zhou}
 \date{\today}
@@ -349,7 +354,7 @@ Vi aflæser så på den givne $(T, R _{\text{NTC} })$-graf (se \cref{fig:TR} ), 
 \end{figure}
 
 \begin{question}{Lidar-sensor}{}
-  En mobiltelefon udsender laserlys med frekvensen 3,19⋅1014 Hz i 500 ps.
+  En mobiltelefon udsender laserlys med frekvensen $3,19 \cdot 10^{14}$ Hz i 500 ps.
 \begin{itemize}
   \item[a.] Bestem antal svingninger i det udsendte laserlys.
 \end{itemize}
@@ -358,6 +363,130 @@ Det udsendte laserlys reflekteres af en genstand og registreres af en sensor i m
 Med henblik på at bestemme lysets fart i vand sender en mobiltelefon laserlys lodret ned i et bægerglas. Afstanden mellem telefonen og glassets bund er 40,0 cm. Der er 3,9 cm vand i bægerglasset. Telefonen måler afstanden 41,9 cm til glassets bund på trods af, at afstanden til glassets bund er 40,0 cm.
 \begin{itemize}
   \item[b.] Bestem ved hjælp af målingerne en værdi for lysets fart i vand.
+\end{itemize}
+\end{question}
+\sol \\
+\textbf{a.}
+Siden frekvensen er antal svingninger per tid, så er det klart, at antallet af svingninger må være
+\begin{equation*}
+\begin{split}
+  n&=f \cdot t \\
+  &=3,19 \cdot 10 ^{14} \;\unit{Hz}  \cdot 500 \cdot 10 ^{-12} \;\unit{s} \\
+  &\approx 1,60 \cdot 10 ^{5}.
+\end{split}
+\end{equation*}
+Antallet af svinginger i det udsendte laserlys er altså $1,60 \cdot 10^5$.\\[1ex]
+\textbf{b.}
+Lad $t _{\text{total} }$ betegne den samlede tid fra lysets udsendelse til dets registrering, og lad $s _{\text{målt} }$ betegne afstanden, som telefonen måler til glassets bund. 
+Bemærk, at telefonen allerede har taget hensyn til, at lyset både skal bevæge sig frem og så tilbage.
+Så har vi
+\[
+t _{\text{total} }=\frac{s _{\text{målt} }}{c}.
+\] 
+Tiden $t _{\text{vand} }$, som det tager lyset at bevæge gennem vandet, må være
+\begin{equation*}
+\begin{split}
+  t _{\text{vand} } &= t _{\text{total} }-t _{\text{luft} }\\
+  &=\frac{s _{\text{målt} }-s _{\text{luft} }}{c}.
+\end{split}
+\end{equation*}
+Det er da klart, at lysets fart i vand må være
+\begin{equation*}
+\begin{split}
+  v _{\text{vand} }&=\frac{s _{\text{vand} }}{t _{\text{vand} }}\\
+  &=\frac{s _{\text{vand} } \cdot c}{s _{\text{målt} } - s _{\text{luft} }}\\
+  &=\frac{3,9 \cdot 10 ^{-2} \;\unit{m} \cdot 3,00 \cdot 10 ^{8} \;\unit{m/s} }{ \left(41,9 - (40,0-3,9)\right) \cdot 10 ^{-2}\;\unit{m} }\\
+  &\approx 2,0 \cdot 10 ^{8} \;\unit{m/s}.
+\end{split}
+\end{equation*}
+Ifølge målingerne er en værdi for lysets fart i vand altså $2,0 \cdot 10 ^{8} \;\unit{m/s} $.
+
+\begin{question}{Bremselængde}{}
+En bil med massen 1275 kg kører med farten 25 m/s.
+\begin{itemize}
+  \item[a.] Beregn bilens kinetiske energi.
+\end{itemize}
+Man undersøger, hvordan bilens bremselængde afhænger af farten på tør vej. Resultaterne af undersøgelsen ses i bilaget Bremselængde, som indeholder sammenhørende værdier for bilens fart $v$ og bremselængde $s$.
+\begin{itemize}
+  \item[b.] Bestem ved hjælp af bilaget størrelsen af bilens acceleration, når den bremser.
+\end{itemize}
+\end{question}
+\sol \\
+\textbf{a.}
+Bilens kinetiske energi må være
+\begin{equation*}
+\begin{split}
+  E _{\text{kin} }&= \frac{m \cdot v^2}{2}\\
+  &=\frac{1275 \;\unit{kg} \cdot \left(25 \;\unit{m/s} \right) ^2}{2}\\
+  &\approx 4,0 \cdot 10^5 \;\unit{J} \\
+  &=4,0 \cdot 10^2 \;\unit{kJ}.
+\end{split}
+\end{equation*}
+Bilens kinetiske energi er altså $4,0 \cdot 10^2 \;\unit{kJ} $.\\[1ex]
+\textbf{b.}
+Vi antager, at der ved bremsningerne er tale om jævnt accelererede bevægelser.
+Lad $\Delta s$ betegne bremselængden og lad $v_0$ betegne bilens fart lige inden bremsningen.
+Så gælder der fra bremseformlen, at
+\begin{equation}
+  \label{eq:brems}
+\begin{split}
+  -v_0^2=2 \cdot a \cdot \Delta s \iff -\frac{v_0^2}{2}=a \cdot \Delta s,
+\end{split}
+\end{equation}
+hvilket vil sige, at punkterne på $\left(\Delta s, -\frac{v_0^2}{2}\right) $-grafen må være en ret linje gennem $(0,0)$.
+Vi indsætter da de givne data i Logger Pro og laver en ny beregnet kolonne med $-\frac{v_0^2}{2}$, hvorefter en ligefrem proportional regression laves på $\left(\Delta s, -\frac{v_0^2}{2}\right) $-grafen, hvilket ses i \cref{fig:bremse}. 
+\begin{figure}[H]
+\begin{center}
+  \includegraphics[width=\textwidth]{bremse.png}
+\end{center}
+\caption{Ligefrem proportional regression på $\left(\Delta s, -\frac{v_0^2}{2}\right) $-grafen}
+\label{fig:bremse}
+\end{figure}
+Det ses, at punkterne ligger næsten perfekt på en ret linje gennem (0,0).
+Fra den ligefrem proportionale regression, har vi, at
+\[
+-\frac{v_0^2}{2}=-8,89 \;\unit{m/s^2} \cdot \Delta s.
+\] 
+Sammenligner vi dette udtryk med ligning (\ref{eq:brems}), er det klart, at størrelsen af bilens acceleration når den bremser må være $-8,89 \;\unit{m/s^2}$.
+\begin{question}{Hoptimist}{}
+  Denne opgave har vi allerede løst i timen.
+\end{question}
+\sol \\
+Løsningen udelades her, da vi allerede har løst opgaven på skolen.
+\begin{question}{Michibiki-satellitterne}{}
+  Når Michibiki-satellitter kommunikerer med Jorden anvendes radiobølger med frekvensen 1575,42 MHz.
+\begin{itemize}
+  \item[a.] Bestem bølgelængden af elektromagnetisk stråling med frekvensen 1575,42 MHz.
+\end{itemize}
+\begin{note}
+  Bemærk venligst, at vi ikke skulle løse delopgaverne (b) og (c).
+\end{note}
+\end{question}
+\sol \\
+\textbf{a.}
+Siden elektromagnetisk stråling udbreder sig i vakuum med lysets fart $c$, så må bølgelængden være
+\begin{equation*}
+\begin{split}
+  \lambda &=\frac{c}{f}\\
+  &=\frac{2,99792 \cdot 10 ^{8} \;\unit{m/s} }{1575,42 \cdot 10^6 \;\unit{Hz}}\\
+  &\approx 0,190293 \;\unit{m} \\
+  &=19,0293 \;\unit{cm}.
+\end{split}
+\end{equation*}
+Bølgelængden af elektromagnetisk stråling med frekvensen 1575,42 MHz er altså $19,0293 \;\unit{cm} $.
+
+\begin{question}{Isotopen \ce{^229Th}}{}
+Atomkernen \ce{^229Th} har en exciteret tilstand \ce{^229Th^*}. 
+Kernen henfalder fra \ce{^229Th^*} til grundtilstanden ved et gammahenfald. Ved henfaldet udsendes fotoner med bølgelængden 149,7 nm.
+\begin{itemize}
+  \item[a.] Bestem energiforskellen imellem \ce{^229Th^*} og grundtilstanden.
+\end{itemize}
+I et eksperiment dannes \ce{^229Th^*} ved radioaktivt henfald af \ce{^229Ac}.
+Grafen viser aktiviteten $A$ af \ce{^229Th^*} som funktion af tiden $t$ efter eksperimentet er begyndt.
+Ved eksperimentets start havde \ce{^229Ac} aktiviteten $7,5 \cdot 105 \;\unit{Bq}$.
+\begin{itemize}
+  \item[b.] Benyt grafen til at bestemme antallet af gammahenfald af \ce{^229Th^*} under eksperimentet.
+  Beregn, hvor stor en procentdel af \ce{^229Ac}-kernerne, der henfalder til den exciterede tilstand \ce{^229Th^*}.
 \end{itemize}
 \end{question}
 \sol \\
