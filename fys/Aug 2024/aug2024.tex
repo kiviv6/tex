@@ -491,6 +491,70 @@ Ved eksperimentets start havde \ce{^229Ac} aktiviteten $7,5 \cdot 105 \;\unit{Bq
 \end{question}
 \sol \\
 \textbf{a.}
+Energiforskellen imellem \ce{^229Th^*} og grundtilstanden må netop være energien på den udsendte foton, som må være
+\begin{equation*}
+\begin{split}
+  E _{\gamma }&=\frac{h \cdot c}{\lambda }\\
+  &=\frac{6,6261 \cdot 10 ^{-34} \;\unit{J \cdot s} \cdot 2,998 \cdot 10^8 \;\unit{m/s} }{149,7 \cdot 10 ^{-9}\;\unit{m} }\\
+  &\approx 1,327 \cdot 10 ^{-18} \;\unit{J}\\
+  &\approx 8,282 \;\unit{eV}.
+\end{split}
+\end{equation*}
+Energiforskellen imellem \ce{^229Th^*} og grundtilstanden er altså $1,327 \cdot 10 ^{-18} \;\unit{J}$, hvilket svarer til $8,282 \;\unit{eV}$.\\[1ex]
+\textbf{b.}
+Lad $n$ være antallet af \ce{^229Th^*}-kerner, der henfalder.
+Så gælder der, at 
+\[
+n=\int_{t _{\text{start} }}^{t _{\text{slut} }} A \,dt. 
+\] 
+Dette svarer netop til arealet under $(A,t)$-grafen for \ce{^229Th^*}.
+Vi tæller da antallet af tern under $(A,t)$-grafen for \ce{^229Th^*}, hvilket gøres med Logger Pro (se \cref{fig:ternAt}).
+\begin{figure}[H]
+\begin{center}
+  \includegraphics[width=0.8\textwidth]{ternAt.png}
+\end{center}
+  \caption{Tælning af tern under $(A,t)$-grafen for \ce{^229Th^*}}
+\label{fig:ternAt}
+\end{figure}
+Med Logger Pro tælles $68,02$ tern under grafen. 
+Imidlertid svarer hvert tern til
+\[
+1 \;\unit{h} \cdot 2 \;\unit{kBq} = 3600 \;\unit{s} \cdot 2 \cdot 10^3 \;\unit{s ^{-1}} = 7,2 \cdot 10 ^{6}.
+\] 
+Antallet af gammahenfald af \ce{^229Th^*} under eksperimentet må da være
+\begin{equation*}
+\begin{split}
+  n&=\int_{t _{\text{start} }}^{t _{\text{slut} }} A \,dt\\
+  &=68,02 \cdot 7,2 \cdot 10^6\\
+  &\approx 4,90 \cdot 10^8.
+\end{split}
+\end{equation*}
+Vi vil nu beregne, hvor stor en procentdel af \ce{^229Ac}-kernerne, der henfalder til den exciterede tilstand \ce{^229Th^*}.
+Siden $\gamma $-henfald er relativt hurtige, kan vi uden fejl antage, at antallet \ce{^229Ac}-kernerne, der henfalder til \ce{^229Th^*} netop er antallet af gammahenfald af \ce{^229Th^*} (som vi hidtil har betegnet $n$).
+
+Et udtryk for antallet af \ce{^229Ac}-kerner til start må da være
+\begin{equation*}
+\begin{split}
+  N_0&= \frac{A_0}{k} \\
+  &=\frac{A_0 \cdot T _{\frac{1}{2}}}{\ln\left(2\right) },
+\end{split}
+\end{equation*}
+hvor $k$ er henfaldskonstanten.
+
+Ved opslag har vi, at \ce{^229Ac} har halveringstiden 
+\[
+T _{\frac{1}{2}}=63 \;\unit{min} =3780 \;\unit{s}.\footnote{Databog, s. 209}
+\] 
+Da vi også kender aktiviteten til start $A_0$ af \ce{^229Ac}, kan vi nu udregne procentdelen af \ce{^229Ac}-kernerne, der henfalder til den exciterede tilstand \ce{^229Th^*}, som må være
+\begin{equation*}
+\begin{split}
+  \frac{n}{N_0}&=\frac{n \cdot \ln\left(2\right) }{A_0 \cdot T _{\frac{1}{2}}}\\
+  &=\frac{4,89744 \cdot 10^8 \cdot \ln\left(2\right) }{7,5 \cdot 10^5 \;\unit{Bq} \cdot 3780 \;\unit{s}}\\
+  &\approx 0,12\\
+  &=12 \%
+\end{split}
+\end{equation*}
+Antallet af gammahenfald af \ce{^229Th^*} under eksperimentet er altså $4,90 \cdot 10^8$, og procentdelen af \ce{^229Ac}-kernerne, der henfalder til den exciterede tilstand \ce{^229Th^*}, er altså 12 \%.
 
 
 \end{document}
