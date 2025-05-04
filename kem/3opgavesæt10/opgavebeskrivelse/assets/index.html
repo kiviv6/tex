@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html>
+                
+<head>
+	<title>1stx241-KEM/A-28052024</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="./assets/css/bundled.css">
+    <script src="./assets/js/bundled.js"></script>
+    <script type="text/javascript">var subtitles = {
+			T_16625: {
+                lang: "en",
+                name: "English",
+                tracks: [
+                T(TTime("00:00:00.000:00"), TTime("00:00:03.003:00"), "Kun tekst, der er relevant for opgavebesvarelsen, er tekstet til talesyntese."),
+                T(TTime("00:00:03.003:00"), TTime("00:00:26.192:00"), "Bromvand Br₂(aq)"),
+                T(TTime("00:00:30.230:00"), TTime("00:00:57.357:00"), "2,4-dinitrophenylhydrazin"),
+                T(TTime("00:01:00.827:00"), TTime("00:01:33.526:00"), "Fehling I Fehling II")
+                ]
+                }, T_18513: {
+                lang: "en",
+                name: "English",
+                tracks: [
+                T(TTime("00:00:00.000:00"), TTime("00:00:02.469:00"), "Kun tekst, der er relevant for opgavebesvarelsen, er tekstet til talesyntese."),
+                T(TTime("00:00:02.469:00"), TTime("00:00:19.052:00"), "propan-2-ol"),
+                T(TTime("00:00:22.088:00"), TTime("00:00:48.114:00"), "H₂O")
+                ]
+            }
+		};
+
+        function UndefinedToZero(value) {
+            if(typeof value === "undefined") {
+                return 0;
+            }
+            return value;
+        }
+
+        function _Time(frames, seconds, minutes, hours) {
+            frames = UndefinedToZero(frames) / 24;
+            seconds = UndefinedToZero(seconds);
+            minutes = UndefinedToZero(minutes) * 60;
+            hours = UndefinedToZero(hours) * 3600;
+            return hours + minutes + seconds + frames;
+        }
+
+        function TTime(value) {
+            if(typeof value === "undefined") {
+                value = "00:00:00:00";
+            }
+            var split = value.split(":");
+            var frames = (split[3]*1)/24;
+            var seconds = split[2]*1;
+            var minutes = (split[1]*1)*60;
+            var hours = (split[0]*1)*3600;
+            var output = hours + minutes + seconds + frames;
+            return output;
+        }
+
+        function T(start, end, text, direction) {
+            if(typeof direction === "undefined") {
+                direction = "ltr";
+            }
+            return {
+                start: start,
+                end: end,
+                text: text,
+                direction: direction
+            }
+        }</script>
+
+</head>
+<body>
+        <style>
+            a:hover {
+                cursor: pointer;
+            } 
+
+            .content-editable {
+                position: relative; 
+            }
+
+            .draggable-reading-field {
+                display: inline-block; 
+                position: absolute; 
+                z-index: 9; 
+                border: 1px solid gray;
+                padding: 2px;
+            }
+
+            .draggable-reading-field-invisible {
+                opacity: 0 !important;
+                border-style: none;
+            }
+
+            .line-numbers-container {
+                resize: none !important;
+                border: none !important;
+                padding: 0 !important;
+                counter-reset: line;
+            }
+
+            .line-numbers-container p.numbered-line {
+                margin-block-start: 0;
+                margin-block-end: 0;
+            }
+
+            .line-numbers-container .numbered-line:before {
+                content: counter(line);
+                counter-increment: line;
+                color: #888;
+                visibility: hidden;
+                display: inline-block;
+                width: auto;
+                min-width: 18px;
+                padding-left: 8px;
+                padding-right: 10px;
+                text-align: right;
+                font-weight: 100;
+                font-size: 1rem;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            }
+
+            .line-numbers-container .numbered-line:first-child:before, 
+            .line-numbers-container .numbered-line:nth-child(5n of .numbered-line):before {
+                visibility: visible;
+            }
+        </style>
+        <div class="skabelon">
+            <header class="skabelon-header">
+                <div class="skabelon-header-institution_logo" style="position:relative">
+                    <p style="position: absolute; color: transparent;">Studentereksamen</p>
+                </div>
+                <img alt="" class="skabelon-header-stuk_logo" id="uvm_logo" src="assets/images/uvm_logo_stuk.png">
+            </header>
+            <div class="skabelon-wrapper">
+                <div class="skabelon-wrapper-menu" id="skabelon-wrapper-menu">
+                    <ul><ul>
+                          <li><a href="javascript:void(0)" class="web-document-link active parent-document" id="web-document-link-5363" data-document-id="5363" onclick="changeDocument(this);VideoPlayer.InitPlayers('.web-document-active .new-player');VideoPlayer.PauseAll();">Forside</a></li>
+                          <li><a href="javascript:void(0)" class="web-document-link parent-document" id="web-document-link-7134" data-document-id="7134" onclick="changeDocument(this);VideoPlayer.InitPlayers('.web-document-active .new-player');VideoPlayer.PauseAll();">Vejledning</a></li>
+                          <li><a href="javascript:void(0)" class="web-document-link parent-document" id="web-document-link-6695" data-document-id="6695" onclick="changeDocument(this);VideoPlayer.InitPlayers('.web-document-active .new-player');VideoPlayer.PauseAll();">Opgave 1</a></li>
+                          <li><a href="javascript:void(0)" class="web-document-link parent-document" id="web-document-link-6694" data-document-id="6694" onclick="changeDocument(this);VideoPlayer.InitPlayers('.web-document-active .new-player');VideoPlayer.PauseAll();">Opgave 2</a></li>
+                          <li><a href="javascript:void(0)" class="web-document-link parent-document" id="web-document-link-6697" data-document-id="6697" onclick="changeDocument(this);VideoPlayer.InitPlayers('.web-document-active .new-player');VideoPlayer.PauseAll();">Opgave 3</a></li>
+                          <li><a href="javascript:void(0)" class="web-document-link parent-document" id="web-document-link-6698" data-document-id="6698" onclick="changeDocument(this);VideoPlayer.InitPlayers('.web-document-active .new-player');VideoPlayer.PauseAll();">Opgave 4</a></li>
+                          <li><a href="javascript:void(0)" class="web-document-link parent-document" id="web-document-link-7133" data-document-id="7133" onclick="changeDocument(this);VideoPlayer.InitPlayers('.web-document-active .new-player');VideoPlayer.PauseAll();">Kilder</a></li>
+						  <li><a style="font-size:14px;" href="javascript:void(0)" class="web-document-link parent-document" id="web-document-link-9999" data-document-id="9999" onclick="changeDocument(this);VideoPlayer.InitPlayers('.web-document-active .new-player');VideoPlayer.PauseAll();">Prøvesættet er underlagt ophavsret</a></li>
+                          </ul>
+					</ul>
+                    <a id="proeveforekomst">1stx241-KEM/A-28052024</a>
+                </div>
+                <div class="skabelon-wrapper-content">
+                    <div class="content-editable" id="content-editable"><style>.web-document { display: none; } .web-document-active { display: block; }</style>
+						 <div class="web-document " id="web-document-9999">
+                            <div class="ophavsret" style="border: solid black 1px; padding: 25px 25px 10px; font-style: italic; line-height: 1.4;">
+                                <h2 style="font-size: 17px; margin: 0;">Dette prøvesæt er omfattet af ophavsretten, jf. ophavsretslovens § 1.</h2>
+                                <p>
+                                    Prøvesættet må alene anvendes til den på prøvesættet anførte prøve. <br><br>
+                                    Al anden anvendelse af prøvesættet, herunder visning eller deling f.eks. via internettet, sociale medier, portaler og bøger, udgør en krænkelse af Børne- og Undervisningsministeriets og evt. tredjemands ophavsret og er ikke tilladt.<br><br>
+                                    Overtrædelse af ophavsretten kan være erstatningspådragende og/eller strafbart.<br><br>
+                                    Prøvesættet kan dog, efter at prøven er afsluttet, anvendes til undervisningsbrug på uddannelser m.v. omfattet af den lovgivning, som Styrelsen for Undervisning og Kvalitet administrerer.                            
+                                </p>
+                            </div>
+							 <p><br></p>
+							 <p><br></p>
+							 <p><br></p>
+                        </div>
+						<div class="web-document" id="web-document-7133">
+							<div style="padding-right: 10%; padding-left: 10%;" data-mce-style="padding-right: 10%; padding-left: 10%;">
+                               <div style="color: #000099;" data-mce-style="color: #000099;">
+                            		<h2 style="line-height: 1.2em;" data-mce-style="line-height: 1.2em;">Kilder</h2>
+									<strong>Opgave 1</strong>
+									<br>Introduktionsbillede: Colourbox
+									<br>Figur 1.1: Opgavekommissionen i kemi STX 2023/24
+									<br>Figur 1.2: Opgavekommissionen i kemi STX 2023/24
+									<br>Figur 1.3: Opgavekommissionen i kemi STX 2023/24
+									<br>Figur 1.4: SDBSWeb : https://sdbs.db.aist.go.jp (National Institute of Advanced Industrial Science and Technology, 21. September 2023) &
+									<br>Opgavekommissionen i kemi STX 2023/24
+									<br>Figur 1.5: Opgavekommissionen i kemi STX 2023/24
+									<br>Film: Opgavekommissionen i kemi STX 2023/24
+									<br><br>
+									<strong>Opgave 2</strong>
+									<br>Introduktionsbillede: Opgavekommissionen i kemi STX 2023/24
+									<br>Figur 2.1: Opgavekommissionen i kemi STX 2023/24
+									<br>Figur 2.2: Opgavekommissionen i kemi STX 2023/24
+									<br>Film: Opgavekommissionen i kemi STX 2023/24
+									<br><br>
+									<strong>Opgave 3</strong>
+									<br>Introduktionsbillede: Opgavekommissionen i kemi STX 2023/24
+									<br>Figur 3.1: Opgavekommissionen i kemi STX 2023/24
+									<br>Figur 3.2: Opgavekommissionen i kemi STX 2023/24
+									<br>Figur 3.3: Opgavekommissionen i kemi STX 2023/24
+									<br>
+									Figur 3.4: Opgavekommissionen i kemi STX 2023/24
+									<br><br>
+									<strong>Opgave 4</strong>
+									<br>Introduktionsbillede: Colourbox
+								 </div>
+							 </div>
+							<p><br></p>
+							<p><br></p>
+							<p><br></p>
+						</div>
+						<div class="web-document" id="web-document-6698">
+							<div style="padding-right: 10%; padding-left: 10%;" data-mce-style="padding-right: 10%; padding-left: 10%;">
+								<div style="color: #000099;" data-mce-style="color: #000099;">
+									<h2 style="line-height: 1.2em;" data-mce-style="line-height: 1.2em;">Opgave 4:    Nanopartikler til vandrensning</h2>
+									<table style="width: 100%; border-color: rgb(255, 255, 255); height: 259.055px; border-spacing: 0px;" class="mce-item-table">
+										<tbody>
+											<tr style="height: 259.055px;">
+												<td style="width: 67.2066%; vertical-align: top; height: 259.055px;">Nanopartikler af magnesiumoxid er lette at fremstille og har egenskaber, der gør dem anvendelige, fx i elektroniske komponenter, i optiske fibre og i brandhæmmende materialer. Egenskaberne afhænger blandt andet af partiklernes størrelse og form.<p></p><p></p><p>For nylig har en gruppe forskere fremstillet nanostænger af magnesiumoxid, som kan bruges til at fjerne giftige tungmetaller fra spildevand.</p></td>
+												<td style="width: 32.8017%; vertical-align: top; height: 259.055px;"><img pbyg-data-src-id="15673" src="assets/figur_4_0_s-15673.jpg" alt="" width="154" height="233" data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/DneDtD_TYP3rfV7Q4FJL-A/document/figur_4_0_s.jpg" data-mce-style="float: right;" style="float: right;">  </td>
+											</tr>
+										</tbody>
+									</table>
+									<div style="margin-left: -3px;" data-mce-style="margin-left: -3px;">
+										<div>Nanostængerne af magnesiumoxid fremstilles ud fra små krystaller af magnesiumhydroxid, som udfældes ved at tilsætte natriumhydroxid til en opløsning af magnesiumnitrat.<br></div>
+										<p></p><p></p><p></p>
+											<table style="width: 100%;" data-mce-style="width: 100%;" class="mce-item-table">
+												<tbody>
+													<tr>
+														<td style="width: 7%; vertical-align: text-top;" data-mce-style="width: 7%; vertical-align: text-top;"> </td>
+														<td style="width: 5%; vertical-align: text-top;" data-mce-style="width: 5%; vertical-align: text-top;"><p>a)</p></td>
+														<td><p>Opskriv den kemiske formel for magnesiumnitrat.<br></p></td>
+													</tr>
+												</tbody>
+											</table>
+											<p></p>
+											<p></p>
+											<p>Fældningen af magnesiumhydroxid kan beskrives ved ligevægten i figur 4.1.</p>
+											<p></p>
+											<p></p>
+											<p></p>
+											<div style="text-align: center;" data-mce-style="text-align: center;"><br data-mce-bogus="1"></div>
+											<div style="text-align: center;" data-mce-style="text-align: center;">Mg²⁺(aq)  +  2 OH⁻(aq)  ⇌  Mg(OH)₂(s)<p></p><p></p><p>Figur 4.1</p><p></p><p></p><p></p></div>
+											<div style="color: #000099;" data-mce-style="color: #000099;">
+												<table style="width: 100%;" data-mce-style="width: 100%;" class="mce-item-table">
+													<tbody>
+														<tr>
+															<td style="width: 7%; vertical-align: text-top;" data-mce-style="width: 7%; vertical-align: text-top;"> </td>
+															<td style="width: 5%; vertical-align: text-top;" data-mce-style="width: 5%; vertical-align: text-top;"><br>b)</td>
+															<td><br>Gør rede for, i hvilken retning ligevægten i figur 4.1 forskydes, hvis pH sænkes.<br><br></td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+											<div><p></p><p></p><p>Det udfældede magnesiumhydroxid opvarmes til 750 &deg;C, hvorved nanopartiklerne af magnesiumoxid dannes. Ligevægten i figur 4.2 indstiller sig.</p></div>
+											<p></p>
+											<p></p>
+											<div style="text-align: center;" data-mce-style="text-align: center;">Mg(OH)₂(s)  ⇌  MgO(s)  +  H₂O(g)<p></p><p></p><p>Figur 4.2</p></div>
+											<table style="width: 100%;" class="mce-item-table">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="width: 6.92915%; vertical-align: text-top;"> </td>
+                                                        <td style="width: 5.10569%; vertical-align: text-top;"><br>c)</td>
+                                                        <td style="width: 87.3437%;"><br>Beregn Δ<em>H</em>&deg; og Δ<em>S</em>&deg; for reaktionen vist i figur 4.2. <br>Kommenter resultaterne i forhold til reaktionsskemaet.</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+											<p><br>Reaktionen gennemføres ved 750 &deg;C, hvor reaktionen er næsten fuldstændig. <br><br>For at spare på energien, vil man undersøge, om reaktionen kan gennemføres ved en lavere temperatur. Reaktionen gennemføres ved et konstant partialtryk af vand på 0,030 bar.<em><br><br></em></p>
+									</div>
+									<div style="text-align: left;" data-mce-style="text-align: left;">
+                                        <table style="width: 100%;" data-mce-style="width: 100%;" class="mce-item-table">
+                                            <tbody>
+                                                <tr>
+                                                    <td style="width: 6.92883%; vertical-align: text-top;" data-mce-style="width: 6.92883%; vertical-align: text-top;"> </td>
+                                                    <td style="width: 5.03915%; vertical-align: text-top;" data-mce-style="width: 5.03915%; vertical-align: text-top;">d)</td>
+                                                    <td style="width: 87.3453%;" data-mce-style="width: 87.3453%;">Beregn den laveste temperatur, hvor reaktionen i figur 4.2 kan forløbe spontant, når partialtrykket af vand er 0,030 bar.</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+									</div>
+								</div>
+							</div>
+							<p><br></p>
+							<p><br></p>
+							<p><br></p>
+						</div>
+						<div class="web-document" id="web-document-6697">
+							<div style="padding-right: 10%; padding-left: 10%;" data-mce-style="padding-right: 10%; padding-left: 10%;">
+								<div style="color: #000099;" data-mce-style="color: #000099;">
+									<h2 style="line-height: 1.2em;" data-mce-style="line-height: 1.2em;">Opgave 3:    Vortioxetin - et lægemiddel dannet ved klik-kemi</h2>
+									<table style="width: 100%; border-color: #ffffff; height: 202.387px; border-spacing: 0px;" data-mce-style="width: 100%; border-color: #ffffff; height: 202.387px; border-spacing: 0px;" class="mce-item-table">
+											<tbody>
+												<tr style="height: 154.114px;" data-mce-style="height: 154.114px;">
+													<td style="width: 69.9808%; vertical-align: top; height: 154.114px;" data-mce-style="width: 69.9808%; vertical-align: top; height: 154.114px;">I 2022 fik den danske kemiker Morten Meldal Nobelprisen i kemi sammen med to amerikanske forskere for deres opdagelse af klik-kemi.<p>Klik-kemi benyttes blandt andet til fremstilling af lægemidler fx det antidepressive middel vortioxetin. </p><p>I 2020 blev der i USA udskrevet mere end 1 million recepter på lægemidlet. I Danmark sælges vortioxetin af Lundbeck under navnet Brintellix®.</p><p>I figur 3.1 ses strukturformlen for vortioxetin.</p></td>
+													<td style="width: 30.1679%; vertical-align: top; height: 154.114px; text-align: center;" data-mce-style="width: 30.1679%; vertical-align: top; height: 154.114px; text-align: center;"><img pbyg-data-src-id="18352" src="assets/opgave3-titel-18352.jpg" alt="" data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/ww_LJwh5cLhAsUcpL7IZ7Q/document/opgave3-titel.jpg" width="168" height="268"><p></p><p>Morten Meldal</p></td>
+												</tr>
+											</tbody>
+										</table>
+										<p></p>
+										<p></p>
+									<div style="text-align: center;" data-mce-style="text-align: center;">
+										<table border="0" style="border-collapse: collapse; width: 100.0%; background-color: #ffffff; border-color: #ffffff; border-style: outset;" data-mce-style="border-collapse: collapse; width: 100.0%; background-color: #ffffff; border-color: #ffffff; border-style: outset;" class="mce-item-table">
+											<tbody>
+												<tr>
+													<td style="width: 32.6592%;" data-mce-style="width: 32.6592%;"></td>
+													<td style="width: 32.6592%;" data-mce-style="width: 32.6592%;"><img pbyg-data-src-id="15658" src="assets/figur_3_1-15658.png" alt="vortioxetin" width="212" height="262" data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/SOazUVkgn56kQCBrJdCn7w/document/figur_3_1.png"></td>
+													<td style="width: 32.6592%;" data-mce-style="width: 32.6592%;"></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<div style="color: #000099; text-align: center;" data-mce-style="color: #000099; text-align: center;">Figur 3.1<br><br></div>
+								<div style="color: #000099;" data-mce-style="color: #000099;"><br>
+									<div style="color: #000099;" data-mce-style="color: #000099;">
+										<table style="width: 100%; height: 98px;" class="mce-item-table" data-mce-selected="1">
+											<tbody>
+												<tr>
+													<td style="width: 6.98008%; vertical-align: text-top;"> </td>
+													<td style="width: 4.95953%; vertical-align: text-top;">a)</td>
+													<td style="width: 87.4347%; vertical-align: text-top;">Marker aminogrupperne i vortioxetin, og angiv for hver gruppe, om den er primær, sekundær eller tertiær.</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<div>
+										<p>I 2017 fandt Jacobsen, Meldal og Diness fra Københavns Universitet ud af, at vortioxetin kan fremstilles i en to-trinsreaktion, der kan betragtes som en klik-reaktion. Reaktionsskemaerne for de to trin er vist i figur 3.2.</p>
+										<p><br></p>
+									</div>
+									<div>
+										<table style="width: 100%; border-color: #ffffff; height: 107.977px; border-spacing: 0px;" data-mce-style="width: 100%; border-color: #ffffff; height: 107.977px; border-spacing: 0px;" class="mce-item-table">
+											<tbody>
+												<tr style="height: 107.977px;" data-mce-style="height: 107.977px;">
+													<td style="vertical-align: top; width: 99.9332%; height: 107.977px; text-align: center;" colspan="2" data-mce-style="vertical-align: top; width: 99.9332%; height: 107.977px; text-align: center;"><img pbyg-data-src-id="15664" src="assets/figur_3_2-15664.png" alt="vortioxetin" width="557" height="386" data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/GzXVqFEYG0ypCECqLr6S9g/document/figur_3_2.png"></td>
+												</tr>
+											</tbody>
+										</table>
+										<div style="text-align: center;" data-mce-style="text-align: center;"><p>Figur 3.2</p></div>
+										<p><br>I et laboratorium fremstilles vortioxetin ud fra 228 mg A og 138 mg B. Stof D er tilsat i overskud. Der fremstilles 136 mg vortioxetin.<br></p>
+									</div>
+									<div>
+										<table style="width: 100%;" data-mce-style="width: 100%;" class="mce-item-table">
+											<tbody>
+												<tr>
+													<td style="width: 7%; vertical-align: text-top;" data-mce-style="width: 7%; vertical-align: text-top;"> </td>
+													<td style="width: 5%; vertical-align: text-top;" data-mce-style="width: 5%; vertical-align: text-top;"><br>b)</td>
+													<td><br>Beregn udbyttet af vortioxetin i procent af det teoretisk mulige.<br></td>
+												</tr>
+											</tbody>
+										</table>
+										<div style="width: 100%; text-align: center;" data-mce-style="width: 100%; text-align: center;"><i></i>
+											<div><p style="text-align: left;" data-mce-style="text-align: left;"></p>
+												<p style="text-align: left;" data-mce-style="text-align: left;"><br>Nedbrydningen af vortioxetin blev undersøgt ved at give 18 raske, japanske mænd hver 1 tablet med 10 mg vortioxetin. I tiden efter indtagelsen af tabletten blev koncentrationen af vortioxetin målt i blodet. Resultaterne fremgår af excelfilen nedenfor.</p>
+											</div>
+										</div>
+										<br><a pbyg-data-onclick-id="15072" onclick="window.open('assets/Excelfil_votioxetin-15072.xlsx')" class="inserted-documents">Excelfil kinetikdata vortioxetin</a><br><div><br></div>
+										<div>
+										<table style="width: 100%; height: 18.75px;" data-mce-style="width: 100%; height: 18.75px;" class="mce-item-table">
+											<tbody>
+												<tr style="height: 18.75px;" data-mce-style="height: 18.75px;">
+													<td style="width: 7%; vertical-align: text-top; height: 18.75px;" data-mce-style="width: 7%; vertical-align: text-top; height: 18.75px;"> </td>
+													<td style="width: 5%; vertical-align: text-top; height: 18.75px;" data-mce-style="width: 5%; vertical-align: text-top; height: 18.75px;"><p>c)</p></td>
+													<td style="height: 18.75px;" data-mce-style="height: 18.75px;"><p>Vis, at nedbrydningen af vortioxetin er af 1. orden med hensyn til vortioxetin, efter den maksimale koncentration af vortioxetin er opnået.<br>Bestem halveringstiden.</p></td>
+												</tr>
+											</tbody>
+										</table>
+										</div>
+										<div style="color: #000099;" data-mce-style="color: #000099;">
+											<div style="text-align: left;" data-mce-style="text-align: left;">
+												<div style="text-align: left;" data-mce-style="text-align: left;"><br></div>
+												<div style="text-align: center;" data-mce-style="text-align: center;">
+													<table border="0" style="border-collapse: collapse; width: 99.9226%;" data-mce-style="border-collapse: collapse; width: 99.9226%;" class="mce-item-table">
+														<tbody>
+															<tr>
+																<td style="width: 32.7764%;" data-mce-style="width: 32.7764%;"></td>
+																<td style="width: 32.7764%;" data-mce-style="width: 32.7764%;"><img pbyg-data-src-id="15662" src="assets/figur_3_3-15662.png" alt="" width="209" height="213" data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/TRh_xyJB3WwEW3-uaFgDLQ/document/figur_3_3.png"></td>
+																<td style="width: 32.7789%;" data-mce-style="width: 32.7789%;"></td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+												<div style="text-align: center;" data-mce-style="text-align: center;"><br></div>
+												<div style="text-align: center;" data-mce-style="text-align: center;">Figur 3.3<br><br></div>
+												<div style="text-align: left;" data-mce-style="text-align: left;"><br></div>
+											</div>
+											<div style="text-align: left;" data-mce-style="text-align: left;">
+												<div style="color: #000099;" data-mce-style="color: #000099;">En forudsætning for, at vortioxetin kan anvendes som antidepressivt middel, der indtages som en tablet, er blandt andet, at stoffet kan passere forskellige upolære membraner i kroppen.<br><span style="color: #ff0000;" data-mce-style="color: #ff0000;"><br></span><span style="color: #ff0000;" data-mce-style="color: #ff0000;"></span></div>
+												<div style="color: #000099;" data-mce-style="color: #000099;">Fordelingsforholdet, <em>D</em>, for vortioxetin er givet ved</div>
+												<div style="color: #000099;" data-mce-style="color: #000099;"><br><br></div>
+												<div style="color: #000099; text-align: center;" data-mce-style="color: #000099; text-align: center;"><img pbyg-data-src-id="15080" src="assets/D-15080.png" alt="" width="185" height="44" data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/wObfTtGac4fXbKil6bw0tA/document/D.png"></div>
+												<div style="color: #000099;" data-mce-style="color: #000099;"><br></div>
+												<div style="color: #000099;" data-mce-style="color: #000099;"><br>Grafen i figur 3.4 viser log<em>D</em> for vortioxetin som funktion af pH i vandfasen. </div>
+												<div style="color: #000099;" data-mce-style="color: #000099;"><figure class="image align-center" contenteditable="false"><img pbyg-data-src-id="17944" src="assets/figur_3_4-17944.png" alt="logD, pH" width="505" height="293" data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/b0OQjdK3o1g5OGslm_w-UA/document/figur_3_4.png"></figure></div>
+											</div>
+											<div style="color: #000099; text-align: center;" data-mce-style="color: #000099; text-align: center;">Figur 3.4</div>
+											<div style="color: #000099; text-align: center;" data-mce-style="color: #000099; text-align: center;"><br></div>
+											<div style="color: #000099;" data-mce-style="color: #000099;">
+												<table style="width: 100%; height: 66.2422px;" data-mce-style="width: 100%; height: 66.2422px;" class="mce-item-table">
+													<tbody>
+														<tr style="height: 66.2422px;" data-mce-style="height: 66.2422px;">
+															<td style="width: 6.96698%; vertical-align: text-top; height: 66.2422px;" data-mce-style="width: 6.96698%; vertical-align: text-top; height: 66.2422px;"> </td>
+															<td style="width: 4.95023%; vertical-align: text-top; height: 66.2422px;" data-mce-style="width: 4.95023%; vertical-align: text-top; height: 66.2422px;"><p>d)</p></td>
+															<td style="width: 87.6373%; height: 66.2422px;" data-mce-style="width: 87.6373%; height: 66.2422px;"><p>Forklar ændringen i <em>D</em> for vortioxetin, når pH ændres fra 2 til 12.<br>Inddrag både strukturen af vortioxetin-molekylet i figur 3.3 og stoffets syre-baseegenskaber.</p></td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<p><br></p>
+							<p><br></p>
+							<p><br></p>
+						</div>
+						<div class="web-document" id="web-document-6694">
+							<div style="padding-right: 10%; padding-left: 10%;" data-mce-style="padding-right: 10%; padding-left: 10%;">
+								<div style="color: #000099;" data-mce-style="color: #000099;">
+									<h2 style="line-height: 1.2em;" data-mce-style="line-height: 1.2em;">Opgave 2:    Brillerens</h2>
+									<table style="width: 100%; border-color: #ffffff; height: 270.457px; border-spacing: 0px;" data-mce-style="width: 100%; border-color: #ffffff; height: 270.457px; border-spacing: 0px;" class="mce-item-table">
+										<tbody>
+											<tr style="height: 176.992px;" data-mce-style="height: 176.992px;">
+												<td style="width: 58.4807%; vertical-align: top; height: 176.992px;" data-mce-style="width: 58.4807%; vertical-align: top; height: 176.992px;">Brillerens bruges til at fjerne snavs og fedtpletter fra brilleglas. Et bestemt produkt indeholder ifølge producenten mellem 10 og 30 volumenprocent propan-2-ol.<p>En elev ønsker at bestemme indholdet af propan-2-ol i Brillerens kvantitativt.</p></td>
+												<td style="width: 41.5276%; vertical-align: top; height: 176.992px;" data-mce-style="width: 41.5276%; vertical-align: top; height: 176.992px;"><img pbyg-data-src-id="15670" src="assets/figur_2_0_s-15670.jpg" alt="" width="203" height="177" style="float: right;" data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/NN5pB9ihW5TblGDJtAhJaQ/document/figur_2_0_s.jpg" data-mce-style="float: right;"></td>
+											</tr>
+											<tr style="height: 93.465px;" data-mce-style="height: 93.465px;">
+												<td style="vertical-align: top; width: 100.008%; height: 93.465px;" colspan="2" data-mce-style="vertical-align: top; width: 100.008%; height: 93.465px;"><p>Til den kvantitative bestemmelse af propan-2-ol fremstilles en række standardopløsninger. Fremstillingen af en af opløsningerne er vist i filmen nedenfor.</p></td>
+											</tr>
+										</tbody>
+									</table>
+									<div style="margin-left: 0px;" data-mce-style="margin-left: 0px;">
+										<div class="new-player mceNonEditable" contenteditable="false">
+											<div class="new-player-video" style="width: 550px; height: 300px;" data-mce-style="width: 550px; height: 300px;"><video width="550" height="300" src="assets/23708_brillerens-18513.mp4" pbyg-data-src-id="18513" data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/4mVQyDPZeHAHUpzzIT7fug/document/23708_brillerens.mp4"></video></div>
+											<div class="subtitles new-player-subtitles" style="width: 550px;" data-mce-style="width: 550px;"><br></div>
+											<div class="new-player-footer" style="width: 550px;" data-mce-style="width: 550px;">
+												<div class="new-player-title">Fremstilling af en standardopløsning</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div style="color: #000099;" data-mce-style="color: #000099;"><br><br>									
+									<table style="width: 100%;" data-mce-style="width: 100%;" class="mce-item-table">
+										<tbody>
+											<tr>
+												<td style="width: 6.92883%; vertical-align: text-top;" data-mce-style="width: 6.92883%; vertical-align: text-top;"> </td>
+												<td style="width: 5.03915%; vertical-align: text-top;" data-mce-style="width: 5.03915%; vertical-align: text-top;">a)</td>
+												<td style="width: 87.3453%;" data-mce-style="width: 87.3453%;">Beregn stofmængdekoncentrationen af propan-2-ol i den fremstillede standardopløsning</td>
+											</tr>
+										</tbody>
+									</table>
+									<p><br>Eleven benytter gaschromatografi til undersøgelsen. Princippet i analysen er, at en lille portion af en prøve opvarmes og føres igennem en kolonne af bæregassen helium. Kolonnen er således den stationære fase, og helium er den mobile fase. Molekylerne kommer ud af kolonnen til forskellige tider, kaldet retentionstider. Der udskrives et chromatogram, hvor retentionstiden er angivet på 1. aksen. For hver top i chromatogrammet bestemmes et arealtal, der er proportionalt med volumenprocenten.</p>
+								</div>
+								<div style="color: #000099;" data-mce-style="color: #000099;"><br></div>
+								<div style="color: #000099;" data-mce-style="color: #000099;">I figur 2.1 er vist chromatogrammerne for to af standardopløsningerne.<br><br></div>
+								<div style="color: #000099;" data-mce-style="color: #000099;">
+									<table style="border-collapse: collapse; width: 100%;" border="0" data-mce-style="border-collapse: collapse; width: 100%;" class="mce-item-table">
+										<tbody>
+											<tr>
+												<td style="width: 99.418605%;" data-mce-style="width: 99.418605%;">  <img pbyg-data-src-id="15128" src="assets/gaschromatogram_2-15128.png" alt="propan-2-ol, propan-2-ol" width="578" height="253" data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/d5Hw_bzqxxc1vIO2DhssNA/document/gaschromatogram_2.png"></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div style="color: #000099; text-align: center;" data-mce-style="color: #000099; text-align: center;"><br></div>
+								<div style="color: #000099; text-align: center;" data-mce-style="color: #000099; text-align: center;">Figur 2.1<br><br><br></div>
+								<div style="color: #000099;" data-mce-style="color: #000099;">
+									<table style="width: 100%;" data-mce-style="width: 100%;" class="mce-item-table">
+										<tbody>
+											<tr>
+												<td style="width: 6.96723%; vertical-align: text-top;" data-mce-style="width: 6.96723%; vertical-align: text-top;"> </td>
+												<td style="width: 4.9504%; vertical-align: text-top;" data-mce-style="width: 4.9504%; vertical-align: text-top;">b)</td>
+												<td style="width: 87.4571%;" data-mce-style="width: 87.4571%;">Gør rede for, hvordan toppene i chromatogrammerne kan tilordnes propan-2-ol og vand.<br><br></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div style="color: #000099;" data-mce-style="color: #000099;"><p>Brillerens analyseres ved gaschromatografi på samme måde som standardopløsningerne. Arealtal for toppene for propan-2-ol bestemmes for alle standardopløsningerne. Der tegnes en standardkurve, som er vist i figur 2.2.</p></div>
+								<div style="color: #000099;" data-mce-style="color: #000099;">Arealtallet for propan-2-ol i Brillerens er 988. <br>Densiteten for propan-2-ol 0,781 g/mL ved 25 &deg;C.</div>
+								<div style="color: #000099;" data-mce-style="color: #000099;"><br><br></div>
+								<div style="color: #000099; text-align: center;" data-mce-style="color: #000099; text-align: center;"><img pbyg-data-src-id="15105" src="assets/Figur_2_2-15105.png" alt="Arealtal, propan-2-ol" width="489" height="283" data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/XaomMuut5FtsYlCiiQKjYQ/document/Figur_2_2.png"></div>
+								<div style="color: #000099; text-align: center;" data-mce-style="color: #000099; text-align: center;">Figur 2.2</div>
+								<div style="color: #000099;" data-mce-style="color: #000099;"><br></div>
+								<div style="color: #000099;" data-mce-style="color: #000099;">
+									<div style="text-align: left;" data-mce-style="text-align: left;">
+										<div style="color: #000099;" data-mce-style="color: #000099;"><br>
+											<table style="width: 100%;" data-mce-style="width: 100%;" class="mce-item-table">
+												<tbody>
+													<tr>
+														<td style="width: 6.92883%; vertical-align: text-top;" data-mce-style="width: 6.92883%; vertical-align: text-top;"> </td>
+														<td style="width: 5.03915%; vertical-align: text-top;" data-mce-style="width: 5.03915%; vertical-align: text-top;">c)</td>
+														<td style="width: 87.3453%;" data-mce-style="width: 87.3453%;">Bestem indholdet af propan-2-ol i Brillerens. <br>Angiv resultatet i volumenprocent.</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+							<p><br></p>
+							<p><br></p>
+							<p><br></p>
+						</div>
+						<div class="web-document" id="web-document-6695">
+							<div style="padding-right: 10%; padding-left: 10%;" data-mce-style="padding-right: 10%; padding-left: 10%;">
+								<div style="color: #000099;" data-mce-style="color: #000099;">
+									<h2 style="line-height: 1.2em;" data-mce-style="line-height: 1.2em;">Opgave 1:    Kødædende planter</h2>
+									<div>
+										<table style="width: 101%; border-color: #ffffff; height: 224.057px; border-spacing: 0px;" data-mce-style="width: 101%; border-color: #ffffff; height: 224.057px; border-spacing: 0px;" class="mce-item-table">
+											<tbody>
+												<tr style="height: 224.057px;" data-mce-style="height: 224.057px;">
+													<td style="width: 68.3344%; vertical-align: top; height: 224.057px;" data-mce-style="width: 68.3344%; vertical-align: top; height: 224.057px;"><em>Sarracenia</em> er en slægt af kødædende planter fra Nordamerika. Planterne bruger duftstoffer til at lokke insekter ned i deres tragtformede blade. Her lammes insekterne af gift, drukner og fordøjes ved hjælp af enzymer.<p>I flere <em>Sarracenia</em>-arter findes giftstoffet coniin, der har strukturen vist i figur 1.1.</p></td>
+													<td style="width: 31.5779%; vertical-align: top; height: 224.057px;" data-mce-style="width: 31.5779%; vertical-align: top; height: 224.057px;"><img pbyg-data-src-id="15104" src="assets/figur_1_0_s-15671.jpg" alt="" width="148" height="222" style="display: block; margin-left: auto; margin-right: auto;" data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/pRK2dyp19BT5lG2xrlbZCQ/document/figur_1_0_s.jpg" data-mce-style="display: block; margin-left: auto; margin-right: auto;"></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<div>
+										<table border="0" style="border-collapse: collapse; width: 99.9226%;" data-mce-style="border-collapse: collapse; width: 99.9226%;" class="mce-item-table">
+											<tbody>
+												<tr>
+													<td style="width: 32.7764%;" data-mce-style="width: 32.7764%;"></td>
+													<td style="width: 32.7764%;" data-mce-style="width: 32.7764%;"><img pbyg-data-src-id="15104" src="assets/figur_1_1-15104.png" alt="coniin, ved 25 &deg;C" width="190" height="214" data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/9qhjnsDRl5bh78MW6ZrRoQ/document/figur_1_1.png"></td>
+													<td style="width: 32.7789%;" data-mce-style="width: 32.7789%;"></td>
+												</tr>
+											</tbody>
+										</table>
+										<p style="text-align: center;" data-mce-style="text-align: center;">Figur 1.1</p>
+									</div>
+								</div>
+								<div style="color: #000099;" data-mce-style="color: #000099;">
+									<table style="width: 100%; height: 52px;" data-mce-style="width: 100%; height: 52px;" class="mce-item-table">
+										<tbody>
+											<tr style="height: 52px;" data-mce-style="height: 52px;">
+												<td style="width: 7%; vertical-align: text-top; height: 52px;" data-mce-style="width: 7%; vertical-align: text-top; height: 52px;"> </td>
+												<td style="width: 5%; vertical-align: text-top; height: 52px;" data-mce-style="width: 5%; vertical-align: text-top; height: 52px;"><p></p><p></p><p>a)</p></td>
+												<td style="height: 52px;" data-mce-style="height: 52px;"><p>Gør rede for, at coniin udviser stereoisomeri.</p></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div style="color: #000099;" data-mce-style="color: #000099;"><p>En mættet vandig opløsning af coniin har den formelle stofmængdekoncentration 0,067 <span style="font-variant: small-caps">m</span> ved 25 &deg;C.</p></div>
+								<div style="color: #000099;" data-mce-style="color: #000099;">
+									<table style="width: 100%; height: 71px;" class="mce-item-table">
+										<tbody>
+											<tr style="height: 71px;">
+												<td style="width: 6.98008%; vertical-align: text-top; height: 71px;"></td>
+												<td style="width: 4.95953%; vertical-align: text-top; height: 71px;"><p></p><p>b)</p></td>
+												<td style="height: 71px; width: 87.251%;"><p>Beregn pH i den mættede vandige opløsning af coniin.<br><br></p></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div style="color: #000099;" data-mce-style="color: #000099;">Forskellige arter af <em>Sarracenia</em> udsender forskellige duftstoffer og tiltrækker derfor forskellige insekter. Nogle af duftstofferne er vist i figur 1.2.</div>
+								<div style="color: #000099;" data-mce-style="color: #000099;"><br></div>
+								<div style="color: #000099;" data-mce-style="color: #000099;"><br></div>
+								<div style="color: #000099;" data-mce-style="color: #000099;">
+									<table border="0" style="border-collapse: collapse; width: 100%; height: 130.5px;" data-mce-style="border-collapse: collapse; width: 100%; height: 130.5px;" class="mce-item-table">
+										<tbody>
+											<tr style="height: 130.5px;" data-mce-style="height: 130.5px;">
+												<td style="height: 130.5px;" data-mce-style="height: 130.5px;"><img pbyg-data-src-id="16207" src="assets/figur_1_2-16207.png" alt="" width="560" height="127" data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/knFebTlxd1W2-UDhJ5Eong/document/figur_1_2.png"></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div style="color: #000099; text-align: center;" data-mce-style="color: #000099; text-align: center;">Figur 1.2<br><br></div>
+								<div style="color: #000099;" data-mce-style="color: #000099;"><p>De tre duftstoffer i figur 1.2 er fordelt i tre glas, 1, 2 og 3, med et duftstof i hvert glas. Der gennemføres kemiske tests på stofferne, som vist i filmen nedenfor.</p>
+									<div class="new-player mceNonEditable" contenteditable="false">
+										<div class="new-player-video" style="width: 550px; height: 300px;" data-mce-style="width: 550px; height: 300px;">
+											<video width="550" height="300" src="assets/saracenia-film-16625.mp4" pbyg-data-src-id="16625" data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/aic_fpA8cb4vA1ytik8bEg/document/saracenia-film.mp4"></video>
+										</div>
+										<div class="subtitles new-player-subtitles" style="width: 550px;" data-mce-style="width: 550px;"><br></div>
+										<div class="new-player-footer" style="width: 550px;" data-mce-style="width: 550px;">
+											<div class="new-player-title">Kødædende planter - kemiske tests</div>
+										</div>
+									</div>
+								</div>
+								<div style="color: #000099;" data-mce-style="color: #000099;"><br><br>
+									<table style="width: 100%;" data-mce-style="width: 100%;" class="mce-item-table">
+										<tbody>
+											<tr>
+												<td style="width: 7%; vertical-align: text-top;" data-mce-style="width: 7%; vertical-align: text-top;"> </td>
+												<td style="width: 5%; vertical-align: text-top;" data-mce-style="width: 5%; vertical-align: text-top;">c)</td>
+												<td>Argumenter for, hvilke af reagensglassene der kan tilordnes stofferne på baggrund af de kemiske tests vist i filmen.<br></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div style="color: #000099;" data-mce-style="color: #000099;"><p><br>Duftstoffet D, som også findes i <em>Sarracenia, </em>har stukturen vist i figur 1.3.</p></div>
+								<div style="color: #000099;" data-mce-style="color: #000099;">
+									<div style="text-align: center;" data-mce-style="text-align: center;">
+										<table border="0" style="border-collapse: collapse; width: 100.061%; background-color: #ffffff; border-color: #ffffff; border-style: outset; height: 178.5px;" data-mce-style="border-collapse: collapse; width: 100.061%; background-color: #ffffff; border-color: #ffffff; border-style: outset; height: 178.5px;" class="mce-item-table">
+											<tbody>
+												<tr style="height: 178.5px;" data-mce-style="height: 178.5px;">
+													<td style="width: 38.9201%; height: 178.5px;" data-mce-style="width: 38.9201%; height: 178.5px;"></td>
+													<td style="width: 20.2097%; height: 178.5px;" data-mce-style="width: 20.2097%; height: 178.5px;"><img pbyg-data-src-id="15107" src="assets/figur_1_3-15107.png" alt="" width="131" height="154" data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/ErcUV0XwIIjgMlow-B9rng/document/figur_1_3.png"></td>
+													<td style="width: 40.8986%; height: 178.5px;" data-mce-style="width: 40.8986%; height: 178.5px;"></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<div style="text-align: center;" data-mce-style="text-align: center;">Figur 1.3</div>
+								</div>
+								<div style="color: #000099;" data-mce-style="color: #000099;">
+									<div style="text-align: left;" data-mce-style="text-align: left;"> </div>
+									<div style="text-align: left;" data-mce-style="text-align: left;"><br></div>
+									<div style="text-align: left;" data-mce-style="text-align: left;">I figur 1.4 er vist IR-spektret af D. <div style="text-align: center;" data-mce-style="text-align: center;"><br></div>
+										<div style="text-align: center;" data-mce-style="text-align: center;">
+											<table border="0" style="border-collapse: collapse; width: 99.9262%;" data-mce-style="border-collapse: collapse; width: 99.9262%;" class="mce-item-table">
+												<tbody>
+													<tr>
+														<td style="width: 99.3465%;" data-mce-style="width: 99.3465%;"><img pbyg-data-src-id="15041" src="assets/figur_1_4-15041.png" alt="" width="548" height="291" data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/W9q172J4_vnKU6P1x587Uw/document/figur_1_4.png"></td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+										<div style="text-align: center;" data-mce-style="text-align: center;"><br></div>
+										<div style="text-align: center;" data-mce-style="text-align: center;">Figur 1.4<br><br></div>
+										<div style="text-align: center;" data-mce-style="text-align: center;"><br></div>
+										<div style="text-align: left;" data-mce-style="text-align: left;"><a pbyg-data-href-id="15043" href="assets/spektrum-figur-1.4-IR-15043.pdf" target="_blank" rel="noopener" data-mce-href="https://xn--prvebyggeren-wjb.dk/webdav/remuzwcx2VfPMnVLuyztuQ/document/spektrum-figur-2.4-IR.pdf"></a><a pbyg-data-href-id="17940" href="assets/spektrum-figur-1_4-IR1-17940.pdf" target="_blank" rel="noopener" data-mce-href="https://xn--prvebyggeren-wjb.dk/webdav/eMKsmx051wqtEGJBLCpiWw/document/spektrum-figur-1_4-IR1.pdf">Se forstørrelse af spektret i figur 1.4.</a><br><br></div>
+										<div style="text-align: left;" data-mce-style="text-align: left;"><br>I figur 1.5 er vist det udsnit af ¹H-NMR-spektret for stof D, som indeholder signaler for H-atomerne i gruppen X. Spektrometerfrekvensen er 600 MHz.</div>
+										<div style="text-align: center;" data-mce-style="text-align: center;"><br></div>
+										<div style="text-align: center;" data-mce-style="text-align: center;">
+											<table border="0" style="border-collapse: collapse; width: 99.9584%;" data-mce-style="border-collapse: collapse; width: 99.9584%;" class="mce-item-table">
+												<tbody>
+													<tr>
+														<td style="width: 99.4007%;" data-mce-style="width: 99.4007%;"><img pbyg-data-src-id="15042" src="assets/figur_1_5-15042.png" alt="" width="549" height="310" data-mce-src="https://xn--prvebyggeren-wjb.dk/webdav/pI8iUxBY-BcCsxiJlfBSwQ/document/figur_1_5.png"></td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+										<div style="text-align: center;" data-mce-style="text-align: center;"><br></div>
+										<div style="text-align: center;" data-mce-style="text-align: center;">Figur 1.5<br><br></div>
+										<div style="text-align: center;" data-mce-style="text-align: center;"><br></div>
+										<div style="text-align: left;" data-mce-style="text-align: left;"><a pbyg-data-href-id="17941" href="assets/spektrum-figur-1_5-NMR1-17941.pdf" target="_blank" rel="noopener" data-mce-href="https://xn--prvebyggeren-wjb.dk/webdav/d0i87ikl1ZWp1cpKiTKakg/document/spektrum-figur-1_5-NMR1.pdf">Se forstørrelse af spektret i figur 1.5.</a></div>
+										<div style="text-align: left;" data-mce-style="text-align: left;"><br></div>
+									</div>
+									<div style="text-align: left;" data-mce-style="text-align: left;">
+										<div style="color: #000099;" data-mce-style="color: #000099;">
+											<table style="width: 100%;" data-mce-style="width: 100%;" class="mce-item-table">
+												<tbody>
+													<tr>
+														<td style="width: 6.92883%; vertical-align: text-top;" data-mce-style="width: 6.92883%; vertical-align: text-top;"> </td>
+														<td style="width: 5.03915%; vertical-align: text-top;" data-mce-style="width: 5.03915%; vertical-align: text-top;"><p>d)</p></td>
+														<td style="width: 87.3453%;" data-mce-style="width: 87.3453%;"><p>Bestem strukturformlen for X-gruppen i stof D. <br>Argumenter ud fra IR-spektret og ¹H-NMR-spektret.<br>I IR-spektret inddrages absorptionsbånd over 1500 cm⁻¹.<br>I ¹H-NMR-spektret inddrages integralforhold, kemiske skift og koblingsmønstre, idet signalerne i spektret tilordnes X-gruppens strukturformel.</p></td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+							<p><br></p>
+							<p><br></p>
+							<p><br></p>
+						</div>
+						<div class="web-document" id="web-document-7134">
+							<div style="padding-right: 10%; padding-left: 10%;" data-mce-style="padding-right: 10%; padding-left: 10%;">
+								<div style="color: #000099;" data-mce-style="color: #000099;">
+									<h2 style="line-height: 1.2em;" data-mce-style="line-height: 1.2em;">Vejledning</h2>
+									<table style="width: 108.646%; border-color: rgb(255, 255, 255); height: 268.979px; border-spacing: 0px;" class="mce-item-table">
+										<tbody>
+											<tr style="height: 106.991px;">
+												<td style="vertical-align: top; width: 99.9504%; height: 106.991px;" colspan="2"><strong><strong>Prøven</strong></strong><br>Opgavesættet består af 4 opgaver med i alt 15 delopgaver.<br><br>Følgende hjælpemidler forudsættes:<br>DATABOG fysik kemi (F&K Forlaget), 11. udgave (2007) eller senere udgave.<br><br><br><strong>Opgavebesvarelsen</strong><br>Din opgavebesvarelse skal afleveres i et samlet dokument, gemt i pdf-format.<br><br><br><strong>Bedømmelse</strong><br>Ved den skriftlige prøve lægges der vægt på din evne til at:<br>
+													<table class="mce-item-table">
+														<tbody>
+															<tr>
+																<td></td>
+																<td>-</td>
+																<td>anvende fagets viden og metoder til behandling af kemiske problemstillinger</td>
+															</tr>
+															<tr>
+																<td></td>
+																<td>-</td>
+																<td>gøre iagttagelser og analysere eksperimentelt arbejde, samt efterbehandle og vurdere resultater herfra</td>
+															</tr>
+															<tr>
+																<td></td>
+																<td>-</td>
+																<td>gennemføre og præsentere relevante beregninger med korrekt brug af fagsprog</td>
+															</tr>
+															<tr>
+																<td></td>
+																<td>-</td>
+																<td>benytte relevante matematiske modeller, metoder og repræsentationsformer</td>
+															</tr>
+															<tr>
+																<td></td>
+																<td>-</td>
+																<td>benytte fagspecifikke digitale værktøjer hensigtsmæssigt</td>
+															</tr>
+															<tr>
+																<td></td>
+																<td>-</td>
+																<td>dokumentere anvendte informationer fra forskellige kilder</td>
+															</tr>
+															<tr>
+																<td></td>
+																<td>-</td>
+																<td>udtrykke sig skriftligt, således at tankegangen fremstår struktureret og tydelig.</td>
+															</tr>
+														</tbody>
+													</table>
+													<p><span>Der gives en karakter på baggrund af en helhedsvurdering.</span></p>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+									<p><br></p>
+								</div>
+							</div>
+						</div>
+						<div class="web-document frontpage-web-document web-document-active" id="web-document-5363">
+                            <div class="frontpage-fields">
+                                <h1 class="frontpage-proeve-title" contenteditable="false">Kemi A</h1>
+                                <p class="frontpage-proeve-proeveordning" contenteditable="false"></p>
+                                <p class="frontpage-dato-for-afholdelse" contenteditable="false">Tirsdag den 28. maj 2024</p>
+                                <p class="frontpage-proeve-start-slut-tidspunkt" contenteditable="false"></p>
+							</div>
+								<p class="optional-textfield-3">Kl. 9.00-14.00</p>
+								<p><br></p>
+						</div>
+					</div>
+                </div>
+            </div>
+        </div>
+        <script>
+            (function resetWordCounters() {
+                var wordCounters = document.getElementsByClassName('word-counter')
+                Array.prototype.forEach.call(wordCounters, function(wordCounter) {
+                    wordCounter.innerHTML = 0;
+                });
+            })();
+
+            function countWords(obj) {
+                let res = [];
+                let str = obj.value.replace(/[\t\n\r\.\?\!]/gm, ' ').split(' ');
+                str.map((s) => {
+                    let trimStr = s.trim();
+                    if (trimStr.length > 0)
+                    {
+                      res.push(trimStr);
+                    }
+                });
+                obj.closest('.wordcount-textarea').getElementsByClassName('word-counter')[0].innerHTML = res.length;
+            }
+        </script>
+        <script>
+        function changeDocument(element) {
+            document.querySelectorAll(".web-document").forEach(element => {
+                if(element.classList.contains("web-document-active")) {
+                    element.classList.remove("web-document-active");
+                }
+            });
+            var webDocument = document.getElementById("web-document-" + element.getAttribute("data-document-id"));
+            if (!webDocument.classList.contains("web-document-active")) {
+                webDocument.classList.add("web-document-active");
+            }
+            this.changeActiveMenuLink(element.id);
+        }
+
+        function changeActiveMenuLink(elementId) {
+            document.querySelectorAll(".web-document-link").forEach(element => {
+                if(element.classList.contains("active")) {
+                    element.classList.remove("active");
+                }
+            });
+
+            var activeElement = document.getElementById(elementId);
+            if (!activeElement.classList.contains("active")) {
+                activeElement.classList.add("active");
+            }
+
+            var activeElementParentId = activeElement.getAttribute("data-document-id");
+            if (activeElement.hasAttribute("data-parent-document-id")) {
+                activeElementParentId = activeElement.getAttribute("data-parent-document-id");
+            }
+
+            document.querySelectorAll(".web-document-link").forEach(document => {
+                if(document.classList.contains("parent-document") || activeElementParentId == document.getAttribute("data-parent-document-id")) {
+                    document.classList.remove("noActiveRelation");
+                } else {
+                    document.classList.add("noActiveRelation");
+                }
+            });
+        }
+
+        VideoPlayer.InitPlayers('.web-document-active .new-player');
+        VideoPlayer.PauseAll();
+        </script>
+</body>
+
+</html>

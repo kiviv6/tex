@@ -238,12 +238,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage[tmargin=2cm,rmargin=1in,lmargin=1in,margin=0.85in,bmargin=2cm,footskip=.2in]{geometry}\pagestyle{fancy}
 \lhead{Minrui Kevin Zhou 3.b $\bigpumpkin$}
-\rhead{Elektriske køretøjer}
+\rhead{Elektriske køretøjer $\mathghost$}
 
 \title{
 \[
 \mathwitch*
-\]\\
+\]
 Elektriske køretøjer\\
 {\Large \textbf{3.b fysik A}}}
 \author{Kevin Zhou}
@@ -310,5 +310,55 @@ Vi indsætter da de kendte værdier og får
 \end{equation*}
 Den indre resistans i færgens batteri er altså $0,13 \;\unit{\ohm}$.
 
+\begin{question}{Opladning af batteri}{}
+Et batteri har den indre modstand $0,090 \;\unit{\ohm}$ og hvilespændingen 4,2 V.
+\begin{itemize}
+  \item[a.] Beregn den maksimale effekt, hvormed batteriet kan afgive energi under afladning.
+\end{itemize}
+Under opladning af et helt afladet batteri måles strømstyrken $I$ igennem
+batteriet som funktion af tiden $t$.
+Efter 2,5 h er batteriet fuldt opladet.
+\begin{itemize}
+  \item[b.] Bestem den tid, det tager at oplade batteriet til ladningstilstanden 90 \%.
+\end{itemize}
+\end{question}
+\sol \\
+\textbf{a.}
+Den maksimale effekt må være
+\begin{equation*}
+\begin{split}
+  P _{\text{max} }&=\frac{U_0^2}{4 \cdot R_i}\\
+  &=\frac{\left(4,2 \;\unit{V} \right) ^2}{4 \cdot 0,090 \;\unit{\ohm}}\\
+  &=49 \;\unit{W}.
+\end{split}
+\end{equation*}
+Den maksimale effekt, hvormed batteriet kan afgive energi under afladning er altså $49 \;\unit{W}$.\\[1ex]
+\textbf{b.}
+Der gælder, at
+\[
+\Delta Q= \int_{t_1}^{t_2} I \,dt. 
+\] 
+Vi indsætter derfor de givne data i Logger Pro og finder arealet under $(t, I)$-grafen fra $t=0 \;\unit{h} $ til $t=2,5 \;\unit{h}$, som må svare til batteriets maksimale ladningskapacitet $Q _{\text{max} }$ (se \cref{fig:batteri}).
+Vi får fra den numeriske integration, at
+\[
+Q _{\text{max} }=0,8042 \;\unit{A \cdot h}.
+\] 
+Vi kan nu udregne, hvilken ladningsmængde $Q_t$ batteriet har, når $SoC_t=90 \%$:
+\begin{equation*}
+\begin{split}
+  Q_t &= SoC_t \cdot Q _{\text{max} }\\
+  &= 0,9 \cdot 0,8042 \;\unit{A \cdot h} \\
+  &\approx 0,7238 \;\unit{A \cdot h}. 
+\end{split}
+\end{equation*}
+Fra \cref{fig:batteri} ser vi, at dette netop er tilfældet, når $t=1,04 \;\unit{h}$.
+Altså tager det $1,04 \;\unit{h}$ at oplade batteriet til ladningstilstanden 90 \%.
+\begin{figure}[H]
+\begin{center}
+  \includegraphics[width=0.8\textwidth]{batteri.png}
+\end{center}
+  \caption{Numerisk integration på $(t,I)$-grafen}
+\label{fig:batteri}
+\end{figure}
 
 \end{document}
