@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1746352715.72923 "elektrisk.tex" "elektrisk.pdf" "elektrisk" 1746352719.43655 0
+["pdflatex"] 1746387930.18446 "elektrisk.tex" "elektrisk.pdf" "elektrisk" 1746387934.09448 0
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -40,6 +40,7 @@
   "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb" 1248133631 31809 8670ca339bf94e56da1fc21c80635e2a ""
   "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb" 1248133631 32762 224316ccc9ad3ca0423a14971cfa7fc1 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1248133631 32569 5e5ddc8df908dea60932f3c484a54c0d ""
+  "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb" 1248133631 32716 08e384dc442464e7285e891af9f45947 ""
   "/usr/local/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1461363279 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/usr/local/texlive/2025/texmf-dist/tex/generic/atbegshi/atbegshi.sty" 1575674566 24708 5584a51a7101caf7e6bbf1fc27d8f7b1 ""
   "/usr/local/texlive/2025/texmf-dist/tex/generic/babel-danish/danish.ldf" 1612650633 5008 e7335994089e80278a46fbf120b69b17 ""
@@ -280,10 +281,11 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1741885528 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1741885431 3345738 17f033cf893371d9bc234ba9517e9a8b ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
+  "IM.png" 1746382178.4181 97923 44b6b2f2612aa64e4be250cb604b287a ""
   "batteri.png" 1746352539.36262 197134 a22b634168f01b8837c3ee03444dc593 ""
-  "elektrisk.aux" 1746352719.1833 601 4735cf3f393f3bc763e52e0dcaacfdc6 "pdflatex"
-  "elektrisk.out" 1746352718.40438 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "elektrisk.tex" 1746352714.08304 12310 5a7da0d29c7f3c25dc24df5e92493afb ""
+  "elektrisk.aux" 1746387933.86274 986 3c964c24eec548c2143fb0e781152930 "pdflatex"
+  "elektrisk.out" 1746387932.74451 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "elektrisk.tex" 1746387928.61016 19004 31db93c6cbca4f2e9c9a28334ed67a2a ""
   (generated)
   "elektrisk.aux"
   "elektrisk.log"

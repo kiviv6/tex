@@ -497,6 +497,11 @@ INPUT ./batteri.png
 INPUT ./batteri.png
 INPUT ./batteri.png
 INPUT ./batteri.png
+INPUT ./IM.png
+INPUT ./IM.png
+INPUT ./IM.png
+INPUT ./IM.png
+INPUT ./IM.png
 INPUT elektrisk.aux
 INPUT ./elektrisk.out
 INPUT ./elektrisk.out
@@ -512,3 +517,4 @@ INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb

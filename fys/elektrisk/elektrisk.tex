@@ -361,4 +361,172 @@ Altså tager det $1,04 \;\unit{h}$ at oplade batteriet til ladningstilstanden 90
 \label{fig:batteri}
 \end{figure}
 
+\begin{question}{Elektrisk rallybil}{}
+  Under kørslen i en elektrisk rallybil afsættes energi i elektromotorens vindinger med effekten 2,08 kW.
+  Vindingsresistansen i motoren er $12 \;\unit{m\ohm}$.
+  \begin{itemize}
+    \item[a.] Beregn strømstyrken igennem elektromotorens vindinger.
+  \end{itemize}
+Elektromotoren forsynes med spændingsfaldet 100 V, og strømstyrken igennem motoren er 416 A. Motorkonstanten er 0,46 Vs.
+\begin{itemize}
+  \item[b.] Bestem motorens omdrejningstal, og bestem motorens mekaniske effekt.
+\end{itemize}
+\end{question}
+\sol \\
+\textbf{a.}
+Lad $R_0$ betegne vindingsresistansen i motoren.
+Et udtryk for strømstyrken gennem vindingerne må være
+\begin{equation*}
+\begin{split}
+P=R_0 \cdot I^2 \iff I=\sqrt{\frac{P}{R_0}}.
+\end{split}
+\end{equation*}
+Vi indsætter de kendte værdier, og udregner $I$.
+\begin{equation*}
+\begin{split}
+  I&=\sqrt{\frac{P}{R_0}}\\
+  &=\sqrt{\frac{2,08 \cdot 10^3 \;\unit{W} }{12 \cdot 10 ^{-3} \;\unit{\ohm} }} \\
+  &\approx 4,2 \cdot 10^2 \;\unit{A}.
+\end{split}
+\end{equation*}
+Strømstyrken igennem elektromotorens vindinger er altså $4,2 \cdot 10^2 \;\unit{A} $. \\[1ex]
+\textbf{b.}
+Vi starter med at finde et udtryk for det inducerede spændingsfald $U_m$.
+\begin{equation*}
+\begin{split}
+  U=R_0 \cdot I + U_m \iff U_m=U-R_0 \cdot I,
+\end{split}
+\end{equation*}
+hvor $U$ er forsyningsspændingen. 
+Vi kan nu finde et udtryk for motorens frekvens:
+\begin{equation*}
+\begin{split}
+  U_m=K \cdot \omega &\iff \omega =\frac{U_m}{K}\\
+  &\iff f =\frac{U-R_0 \cdot I}{K \cdot 2 \pi }.
+\end{split}
+\end{equation*}
+Vi indsætter da de kendte værdier og udregner frekvensen til at være
+\begin{equation*}
+\begin{split}
+  f &=\frac{U-R_0 \cdot I}{K \cdot 2 \pi }\\
+  &=\frac{100 \;\unit{V} - 12 \cdot 10 ^{-3} \;\unit{\ohm} \cdot 416 \;\unit{A} }{0,46 \;\unit{V \cdot s} \cdot 2 \pi }\\
+  &\approx 33 \;\unit{Hz}\\
+  &\approx 2,0 \cdot 10^3 \;\unit{min ^{-1}}.
+\end{split}
+\end{equation*}
+Det vil altså sige, at motoren har et omdrejningstal på $2,0 \cdot 10^3 \;\unit{rpm}$.
+
+Imidlertid har vi, at motorens mekaniske effekt må være
+\begin{equation*}
+\begin{split}
+  P _{\text{mek} }&=M \cdot \omega \\
+  &=K \cdot I \cdot \frac{U-R_0 \cdot I}{K}\\
+  &=I \cdot \left(U-R_0 \cdot I\right) \\
+  &=416 \;\unit{A} \cdot \left(100 \;\unit{V} - 12 \cdot 10 ^{-3} \;\unit{\ohm} \cdot 416 \;\unit{A} \right) \\
+  &\approx 4,0 \cdot 10^4 \;\unit{W} \\
+  &=40 \;\unit{kW}.
+\end{split}
+\end{equation*}
+Motorens mekaniske effekt er altså $40 \;\unit{kW} $.
+
+\begin{question}{Motor til elcykel}{}
+  Når motoren står stille, og spændingsfaldet over motoren er 1,05 V, er strømstyrken igennem motoren $0,66 \;\unit{A}$.
+  \begin{itemize}
+    \item[a.] Beregn motorens vindingsresistans.
+  \end{itemize}
+Ved et eksperiment måles sammenhørende værdier for motorens moment $M$  og strømstyrken $I$ igennem motoren.
+Bilaget Elcykel indeholder data fra eksperimentet.
+Motorens nyttevirkning er størst ved 1002 omdrejninger pr. minut, hvor strømstyrken igennem motoren er 6,99 A, og spændingsfaldet over motoren er 42,2 V.
+\begin{itemize}
+  \item[b.] Brug bilaget til at bestemme motorkonstanten for elmotoren. Beregn motorens største nyttevirkning.
+\end{itemize}
+\end{question}
+\sol \\
+\textbf{a.}
+Siden motoren står stille, så må det inducerede spændingsfald være 0, og vindingsresistansen bliver derfor
+\begin{equation*}
+\begin{split}
+  R_0&=\frac{U}{I}\\
+  &=\frac{1,05 \;\unit{V} }{0,66 \;\unit{A} }\\
+  &\approx 1,6 \;\unit{\ohm}.
+\end{split}
+\end{equation*}
+Motorens vindingsresistans er altså $1,6 \;\unit{\ohm}$.\\[1ex]
+\textbf{b.}
+Der gælder for en motors kraftmoment, at
+\begin{equation}
+\label{eq:moment} 
+M=K \cdot I,
+\end{equation}
+hvor $K$ er motorkonstanten. 
+Altså må punkterne på $(I, M)$-grafen ligge på en ret linje gennem (0,0) med en hældning på $K$.
+Vi laver derfor en ligefrem proportional regression på $(I, M)$-grafen, hvilket ses i \cref{fig:IM}.
+\begin{figure}[H]
+\begin{center}
+  \includegraphics[width=0.8\textwidth]{IM.png}
+\end{center}
+  \caption{Regression på $(I, M)$-grafen}
+\label{fig:IM}
+\end{figure}
+Det ses som forventet, at punkterne tilnærmelsesvist ligger på en ret linje gennem (0,0).
+Fra regressionen har vi, at 
+\[
+M=0,287 \;\unit{V \cdot s} \cdot I.
+\] 
+Sammenligner vi med ligning (\ref{eq:moment}), er det klart, at motorkonstanten for elmotoren må være $2,387 \;\unit{V \cdot s}$.
+
+Vi beregner nu motorens største nyttevirkning, som må være
+\begin{equation*}
+\begin{split}
+  \eta &=1-\frac{M \cdot R_0}{K \cdot U}\\
+  &=1- \frac{I \cdot R_0}{U}\\
+  &=1-\frac{6,99 \;\unit{A} \cdot 1,5909 \;\unit{\ohm} }{42,2 \;\unit{V}}\\
+  &\approx 0,736.
+\end{split}
+\end{equation*}
+Motorens største nyttevirkning er altså $0,736$.
+
+\begin{question}{Elfærgen Ellen}{}
+  Elfærgens batteri indeholder den tilgængelige energi 4,3 MWh, når det er fuldt opladet.
+  Når færgen sejler med farten 25,7 km/h, omsætter motorerne elektrisk energi med effekten 1000 kW.
+  \begin{itemize}
+    \item[a.] Vurdér, hvor langt elfærgen maksimalt kan sejle med farten 25,7 km/h.
+  \end{itemize}
+  Ved færgens ankomst til en havn er batteriets ladningstilstand 23 \%.
+I havnen oplades batteriet i 30 minutter med strømstyrken 4,8 kA.
+Batteriets nominelle spændingsfald er 750 V.
+\begin{itemize}
+  \item[b.] Beregn batteriets ladningstilstand efter opladningen.
+\end{itemize}
+\end{question}
+\sol \\
+\textbf{a.}
+Siden der gælder, at $t=\frac{E}{P}$, så må den maksimale afstand, som færgen kan sejle, være
+\begin{equation*}
+\begin{split}
+  s&=v \cdot t \\
+  &=v \cdot \frac{E}{P}\\
+  &=25,7 \;\unit{km/h} \cdot \frac{4,3 \cdot 10^6\;\unit{Wh}}{1000 \cdot 10^3 \;\unit{W}}\\
+  &\approx 1,1 \cdot 10^2 \;\unit{km}.
+\end{split}
+\end{equation*}
+Elfærgen kan altså maksimalt sejle $1,1 \cdot 10^2 \;\unit{km} $ med farten $25,7 \;\unit{km/h} $. \\[1ex]
+\textbf{b.}
+Fra sammenhængen mellem energiindholdet af et batteri og det nominelle spændingsfald har vi, at
+\begin{equation*}
+\begin{split}
+  E _{\text{max} }=U _{\text{nom} } \cdot Q _{\text{max} } \iff Q _{\text{max} }=\frac{E _{\text{max} }}{U _{\text{nom} }}.
+\end{split}
+\end{equation*}
+Efter opladningen må ladningstilstanden da være
+\begin{equation*}
+\begin{split}
+  SoC _{\text{efter} }&=SoC _{\text{før} } + \frac{I \cdot \Delta t}{Q _{\text{max} }}\\
+  &=SoC _{\text{før} } + \frac{I \cdot \Delta t \cdot U _{\text{nom} }}{E _{\text{max} }}\\
+  &=0,23 + \frac{4,8 \cdot 10^3 \;\unit{A} \cdot 30 \cdot 60 \;\unit{s} \cdot 750 \;\unit{V} }{4,3 \cdot 10^6 \;\unit{W} \cdot 3600 \;\unit{s} }\\
+  &\approx 0,65\\
+  &= 65 \%.
+\end{split}
+\end{equation*}
+Batteriets ladningstilstand efter opladningen er altså $65 \%$.
 \end{document}
