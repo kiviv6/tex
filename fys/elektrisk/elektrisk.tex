@@ -529,4 +529,107 @@ Efter opladningen må ladningstilstanden da være
 \end{split}
 \end{equation*}
 Batteriets ladningstilstand efter opladningen er altså $65 \%$.
+
+\begin{question}{Rekuperation}{}
+  En elektromotor i en Renault Clio forsynes fra et batteri.
+  Ved en fuld opladning er den maksimalt tilgængelige energi i batteriet 10,5 kWh, når det aflades under normale forhold.
+  Den tilgængelige ladningskapacitet er 100 Ah.
+  \begin{itemize}
+    \item[a.] Beregn batteriets nominelle spændingsfald.
+  \end{itemize}
+Bilen har regenererende bremser, hvilket betyder, at strømmen under bremsning skifter retning og løber ind i batteriet, hvorved det oplades lidt.
+Grafen viser belastningsstrømmen fra batteriet under en kørsel, hvor der bremses et par gange.
+\begin{itemize}
+  \item[b.] Beregn ændringen i ladningstilstanden for batteriet under kørslen
+\end{itemize}
+\end{question}
+\sol \\
+\textbf{a.}
+Batteriets nominelle spændingsfald må være
+\begin{equation*}
+\begin{split}
+  U _{\text{nom} }&=\frac{E _{\text{max} }}{Q _{\text{max} }}\\
+  &=\frac{10,5 \cdot 10^3 \;\unit{Wh} }{100 \;\unit{Ah} }\\
+  &=105 \;\unit{V}.
+\end{split}
+\end{equation*}
+Batteriets nominelle spændingsfald er altså $105 \;\unit{V} $. \\[1ex]
+\textbf{b.}
+Siden vi har 
+\begin{equation*}
+\begin{split}
+  \Delta Q = -\int_{t_1}^{t_2} I \,dt,
+\end{split}
+\end{equation*}
+så kan vi finde ændringen i ladningen ved at tælle antallet af tern mellem $(t,I)$-grafen og førsteaksen (numerisk integration), hvilket ses i \cref{fig:rekup}.
+\begin{figure}[H]
+\begin{center}
+  \includegraphics[width=0.8\textwidth]{rekup.png}
+\end{center}
+\caption{Numerisk integration af $(t, I)$-grafen}
+\label{fig:rekup}
+\end{figure}
+Ændringen af ladningen fås til $41,75$ tern.
+Imidlertid svarer hvert tern til 
+\[
+50 \;\unit{A} \cdot 1 \;\unit{s} =\frac{1}{72} \;\unit{A \cdot h}.
+\] 
+Ændringen i ladningstilstanden bliver da
+\begin{equation*}
+\begin{split}
+  \Delta SoC &= \frac{\Delta Q}{Q _{\text{max} }}\\
+  &=\frac{-41,75 \cdot \frac{1}{72} \;\unit{A \cdot h} }{100 \;\unit{A \cdot h} }\\
+  &\approx -0,00580\\
+  &=-0,580 \%.
+\end{split}
+\end{equation*}
+Ændringen i ladningstilstanden for batteriet under kørslen er altså $-0,580 \%$.
+
+\begin{question}{Kia Niro EV1}{}
+  Med en hurtigoplader kan batteriet i en Kia Niro EV oplades fra 10 \% til 80 \% ladningstilstand på 41,0 minutter.
+Den maksimalt tilgængelige kapacitet i batteriet er 181 Ah.
+Opladningen sker med konstant strømstyrke.
+\begin{itemize}
+  \item[a.] Beregn størrelsen af strømstyrken ved en hurtigopladning.
+\end{itemize}
+Grafen viser størrelsen af elektromotorens moment som funktion af motorens omdrejningstal.
+Under en kørsel leverer motoren en fremdriftskraft med størrelsen 6,8 kN.
+Gearingsforholdet imellem motor og hjul er 10,65, og hjulenes radius er 0,334 m.
+\begin{itemize}
+  \item[b.] Beregn bilens fart under kørslen.
+\end{itemize}
+\end{question}
+\sol \\
+\textbf{a.}
+Vi finder først et udtryk for strømstyrken ved opladningen.
+\begin{equation*}
+\begin{split}
+  SoC _{\text{efter} }=SoC _{\text{før} } + \frac{I \cdot \Delta t}{Q _{\text{max} }} \iff I=\frac{Q _{\text{max} } \cdot \left(SoC _{\text{efter} }- SoC _{\text{før} }\right) }{\Delta t}.
+\end{split}
+\end{equation*}
+Vi indsætter da de kendte værdier og udregner $I$, som er
+\begin{equation*}
+\begin{split}
+  I&=\frac{Q _{\text{max} } \cdot \left(SoC _{\text{efter} }- SoC _{\text{før} }\right) }{\Delta t} \\
+  &=\frac{181 \;\unit{A} \cdot 60 \;\unit{min} \cdot \left(0,80-0,10\right) }{41,0 \;\unit{min}}\\
+  &\approx 1,9 \cdot 10^2 \;\unit{A}.
+\end{split}
+\end{equation*}
+Størrelsen af strømstyrken ved en hurtigopladning er altså $1,9 \cdot 10^2 \;\unit{A} $.\\[1ex]
+\textbf{b.}
+Vi finder først et udtryk for motorens moment $M$ under kørslen. 
+\begin{equation*}
+\begin{split}
+  F _{\text{frem} }= i \cdot \frac{M}{r _{\text{hjul} }} \iff M=\frac{F _{\text{frem} } \cdot r _{\text{hjul} }}{i},
+\end{split}
+\end{equation*}
+hvor $i$ er gearingsforholdet. 
+\begin{equation*}
+\begin{split}
+  M&=\frac{F _{\text{frem} } \cdot r _{\text{hjul} }}{i}\\
+  &=
+\end{split}
+\end{equation*}
+Vi udregner nu motorens moment $M$ under kørslen. 
+
 \end{document}

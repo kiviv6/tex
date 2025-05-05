@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1746387930.18446 "elektrisk.tex" "elektrisk.pdf" "elektrisk" 1746387934.09448 0
+["pdflatex"] 1746442393.51812 "elektrisk.tex" "elektrisk.pdf" "elektrisk" 1746442398.86625 0
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -283,9 +283,10 @@
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
   "IM.png" 1746382178.4181 97923 44b6b2f2612aa64e4be250cb604b287a ""
   "batteri.png" 1746352539.36262 197134 a22b634168f01b8837c3ee03444dc593 ""
-  "elektrisk.aux" 1746387933.86274 986 3c964c24eec548c2143fb0e781152930 "pdflatex"
-  "elektrisk.out" 1746387932.74451 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "elektrisk.tex" 1746387928.61016 19004 31db93c6cbca4f2e9c9a28334ed67a2a ""
+  "elektrisk.aux" 1746442398.61619 1284 eadee74e8656d564ccf9872469935b1c "pdflatex"
+  "elektrisk.out" 1746442396.26299 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "elektrisk.tex" 1746442392.53865 23018 c3b11120c2f3a0bd667476f5baeb6518 ""
+  "rekup.png" 1746390732.31907 629671 f98d4d1ee34f5739d9f778719853f679 ""
   (generated)
   "elektrisk.aux"
   "elektrisk.log"
