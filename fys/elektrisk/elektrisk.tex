@@ -624,12 +624,123 @@ Vi finder først et udtryk for motorens moment $M$ under kørslen.
 \end{split}
 \end{equation*}
 hvor $i$ er gearingsforholdet. 
+Vi udregner nu motorens moment $M$ under kørslen. 
 \begin{equation*}
 \begin{split}
   M&=\frac{F _{\text{frem} } \cdot r _{\text{hjul} }}{i}\\
-  &=
+  &=\frac{6,8 \cdot 10^3 \;\unit{N} \cdot 0,334 \;\unit{m} }{10,65}\\
+  &\approx 213 \;\unit{Nm}.
 \end{split}
 \end{equation*}
-Vi udregner nu motorens moment $M$ under kørslen. 
+Motorens omdrejningstal kan da aflæses på grafen, hvilket ses i \cref{fig:fM}.
+Denne aflæses til at være 6650 omdrejninger pr. minut.
+Vi kan nu udregne bilens fart under kørslen, som må være
+\begin{equation*}
+\begin{split}
+  v&= \omega _{\text{hjul} } \cdot r \\
+  &=\frac{\omega _{\text{motor} }}{i } \cdot r \\
+  &=\frac{2 \pi \cdot f \cdot r}{i }\\
+  &=\frac{2 \pi \cdot 6650 \cdot \left(60 \;\unit{s} \right) ^{-1}\cdot 0,334 \;\unit{m} }{10,65}\\
+  &\approx 22 \;\unit{m/s}.
+\end{split}
+\end{equation*}
+Bilens fart under kørslen er altså $22 \;\unit{m/s} $.
+
+\begin{figure}[H]
+\begin{center}
+  \includegraphics[width=\textwidth]{fM.png}
+\end{center}
+\caption{Aflæsning på grafen}
+\label{fig:fM}
+\end{figure}
+
+\begin{question}{Batteri til elcykel}{}
+  Et batteri er sat sammen af 220 enkelte Li-ion elementer.
+  I batteriet er 20 elementer sat sammen i serie, og 11 sådanne serier er parallelforbundne i det samlede batteri.
+Hvert element har indre resistans $40 \;\unit{m\ohm}$.
+\begin{itemize}
+  \item[a.] Beregn den indre resistans af det samlede batteri.
+\end{itemize}
+Hvert element har den maksimalt tilgængelige ladningskapacitet 2,56 Ah.
+\begin{itemize}
+  \item[b.] Beregn ladningskapaciteten af det samlede batteri i enheden Ah.
+\end{itemize}
+Et enkelt element undersøges ved at aflade det med den konstante strømstyrke 1,0 A.
+Bilaget Batteri til elcykel indeholder sammenhørende værdier for spændingsfaldet $U$ over elementet, og den samlede ladning $Q$ der er løbet igennem elementet under afladningen.
+\begin{itemize}
+  \item[c.] Bestem den elektriske energi elementet afgiver under afladningen.
+Bestem den gennemsnitlige effekt, hvormed elementet afgiver elektrisk energi under afladningen.
+\end{itemize}
+\end{question}
+\sol \\
+\textbf{a.}
+Lad $R_{ie}$ betegne den indre resistans for et enkelt element. 
+Siden det samlede batteri består af 11 parallelkoblede serier af elementer 20 elementer, så må den samlede indre resistans være
+\begin{equation*}
+\begin{split}
+  R_i&=\frac{1}{11 \cdot \frac{1}{20 \cdot R_{ie}}}\\
+  &=\frac{20}{11} \cdot R _{ie}\\
+  &=\frac{20}{11} \cdot 40 \;\unit{m\ohm} \\
+  &\approx 73 \;\unit{m\ohm}.
+\end{split}
+\end{equation*}
+Den indre resistans af det samlede batteri er altså $73 \;\unit{m\ohm} $.\\[1ex]
+\textbf{b.}
+Det er åbenlyst, at ladningskapaciteten af et batteri er proportionalt med antallet af elementer.
+Lad $n$ betegne antallet af elementer, så må ladningskapaciteten være
+\begin{equation*}
+\begin{split}
+  Q _{\text{max} }&=n \cdot Q _{\text{element} }\\
+  &=220 \cdot 2,56 \;\unit{Ah} \\
+  &\approx 563 \;\unit{Ah}.
+\end{split}
+\end{equation*}
+Ladningskapaciteten af det samlede batteri er altså $563 \;\unit{Ah} $. \\[1ex]
+\textbf{c.}
+Siden vi har
+\begin{equation*}
+\begin{split}
+  \Delta E = \int_{t_1}^{t_2} U \,dQ, 
+\end{split}
+\end{equation*}
+så må den elektriske energi, som aflades, svare til arealet under $(Q, U)$-grafen.
+Denne bestemmes numerisk, hvilket ses i \cref{fig:QU}.
+\begin{figure}[H]
+\begin{center}
+  \includegraphics[width=0.8\textwidth]{QU.png}
+\end{center}
+  \caption{Numerisk integration på $(Q, U)$-grafen}
+\label{fig:QU}
+\end{figure}
+Fra den numeriske integration har vi, at energien, der aflades, må være
+\begin{equation*}
+\begin{split}
+  \Delta E&=9,354 \;\unit{V \cdot Ah} \\
+  &=9,354 \;\unit{\frac{J}{C}} \cdot 3600 \;\unit{C} \\
+  &\approx 3,37 \cdot 10^4 \;\unit{J} \\
+  &=33,7 \;\unit{kJ}.
+\end{split}
+\end{equation*}
+Den elektriske energi elementet afgiver under afladningen er altså $33,7 \;\unit{kJ} $.
+
+Vi vil nu bestemme effekten, hvormed batteriet aflades.
+Vi antager, at batteriet er fuldt opladet til start og bliver helt afladet under afladningen.
+Så har vi
+\begin{equation*}
+\begin{split}
+  SoC _{\text{efter} }= SoC _{\text{før} } - \frac{I \cdot \Delta t}{Q _{\text{max} }} &\iff 0=1-\frac{I \cdot \Delta t}{Q _{\text{max} }}\\
+  &\iff \Delta t = \frac{Q _{\text{max} }}{I}.
+\end{split}
+\end{equation*}
+Den gennemsnitlige effekt for afladningen må da være
+\begin{equation*}
+\begin{split}
+  P &= \frac{\Delta E}{\Delta t} \\
+  &=\frac{\Delta E \cdot I}{Q _{\text{max} }}\\
+  &=\frac{33,674 \cdot 10^3 \;\unit{J} \cdot 1,0 \;\unit{A} }{2,56 \;\unit{A} \cdot 3600 \;\unit{s} } \\
+  &\approx 3,7 \;\unit{W}.
+\end{split}
+\end{equation*}
+Den gennemsnitlige effekt, hvormed elementet afgiver elektrisk energi under afladningen er altså $3,7 \;\unit{W} $.
 
 \end{document}
