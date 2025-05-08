@@ -1,5 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1746521830.4548 "3opgavesæt10.tex" "3opgavesæt10.pdf" "3opgavesæt10" 1746521833.97129 0
+["pdflatex"] 1746697498.13097 "3opgavesæt10.tex" "3opgavesæt10.pdf" "3opgavesæt10" 1746697502.95185 0
+  "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/plimsoll/plimsoll.enc" 1602274624 2729 c13706cbb5adb3d40780adbd18e2ec3a ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -40,9 +41,11 @@
   "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1248133631 35752 024fb6c41858982481f6968b5fc26508 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb" 1248133631 32722 d7379af29a190c3f453aba36302ff5a9 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb" 1248133631 32362 179c33bbf43f19adbb3825bb4e36e57a ""
+  "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb" 1248133631 31809 8670ca339bf94e56da1fc21c80635e2a ""
   "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb" 1248133631 32762 224316ccc9ad3ca0423a14971cfa7fc1 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1248133631 32569 5e5ddc8df908dea60932f3c484a54c0d ""
   "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb" 1248133631 32716 08e384dc442464e7285e891af9f45947 ""
+  "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/plimsoll/plimsoll.pfb" 1602274624 2670 74c261b9b4facd38f6e0b38c95180434 ""
   "/usr/local/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1461363279 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/usr/local/texlive/2025/texmf-dist/tex/generic/atbegshi/atbegshi.sty" 1575674566 24708 5584a51a7101caf7e6bbf1fc27d8f7b1 ""
   "/usr/local/texlive/2025/texmf-dist/tex/generic/babel-danish/danish.ldf" 1612650633 5008 e7335994089e80278a46fbf120b69b17 ""
@@ -279,10 +282,15 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1741885528 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1741885431 3345738 17f033cf893371d9bc234ba9517e9a8b ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "3opgavesæt10.aux" 1746521833.74321 577 976ea21d4ce1819cb9094e215934363f "pdflatex"
-  "3opgavesæt10.out" 1746521833.20194 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "3opgavesæt10.tex" 1746521830.1575 9778 9fd123f10d4dc3e2363a55d4b0db3822 ""
+  "3opgavesæt10.aux" 1746697502.69553 1985 266b376b278f71340c34026bd5cdb82c "pdflatex"
+  "3opgavesæt10.out" 1746697500.89819 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "3opgavesæt10.tex" 1746697497.77508 18012 68e9a0cd959d41874c5e7714799ce4d0 ""
+  "ABC.png" 1746629291.43142 25263 c6dbbcbe1b4bcc517a8de8cf37deab34 ""
+  "chroma.png" 1746688437.82111 66586 77ff556692582a760893f90821dc69ef ""
   "coniin.png" 1746516865.07647 7628 ab9bc7ce023ff3d660f394a2e057b498 ""
+  "dibrom.png" 1746626337.02898 166359 7477ff8480d60f93647adfbd9de027e8 ""
+  "dnph.png" 1746626359.36811 136224 f295c8f5b7fa8ed144d79d41fa82887e ""
+  "fehling.png" 1746626378.69322 114139 b98c588b72d9327e5d6c2ea2a1cbb474 ""
   (generated)
   "3opgavesæt10.aux"
   "3opgavesæt10.log"

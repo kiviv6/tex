@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.13)  6 MAY 2025 10:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.13)  8 MAY 2025 11:44
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1043,8 +1043,63 @@ Package pdftex.def Info: coniin.png  used on input line 257.
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.284 \end{document}
-                     [1 <./coniin.png>] (./3opgavesæt10.aux)
+l.283 \begin
+            {figure}[H] [1 <./coniin.png>]
+<dibrom.png, id=77, 311.1625pt x 394.47375pt>
+File: dibrom.png Graphic file (type png)
+<use dibrom.png>
+Package pdftex.def Info: dibrom.png  used on input line 285.
+(pdftex.def)             Requested size: 163.64423pt x 207.45694pt.
+
+Overfull \hbox (6.49919pt too wide) in paragraph at lines 285--286
+ [] 
+ []
+
+<dnph.png, id=78, 311.1625pt x 394.47375pt>
+File: dnph.png Graphic file (type png)
+<use dnph.png>
+Package pdftex.def Info: dnph.png  used on input line 292.
+(pdftex.def)             Requested size: 163.64423pt x 207.45694pt.
+
+Overfull \hbox (6.49919pt too wide) in paragraph at lines 292--293
+ [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 294--294
+[]\OT1/cmr/m/n/10 Figur 3: []Reaktion med 2,4-
+ []
+
+<fehling.png, id=79, 311.1625pt x 394.47375pt>
+File: fehling.png Graphic file (type png)
+<use fehling.png>
+Package pdftex.def Info: fehling.png  used on input line 299.
+(pdftex.def)             Requested size: 163.64423pt x 207.45694pt.
+
+Overfull \hbox (6.49919pt too wide) in paragraph at lines 299--300
+ [] 
+ []
+
+<ABC.png, id=81, 772.8875pt x 201.75375pt>
+File: ABC.png Graphic file (type png)
+<use ABC.png>
+Package pdftex.def Info: ABC.png  used on input line 317.
+(pdftex.def)             Requested size: 393.1496pt x 102.6283pt.
+
+
+[2 <./dibrom.png> <./dnph.png> <./fehling.png> <./ABC.png>]
+<chroma.png, id=97, 780.9175pt x 358.33875pt>
+File: chroma.png Graphic file (type png)
+<use chroma.png>
+Package pdftex.def Info: chroma.png  used on input line 350.
+(pdftex.def)             Requested size: 393.1496pt x 180.40465pt.
+
+
+[3 <./chroma.png>]
+
+[4{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/plimsoll/plimsoll.enc}]
+
+[5] (./3opgavesæt10.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -1053,18 +1108,18 @@ Package rerunfilecheck Info: File `3opgavesæt10.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 48148 strings out of 473190
- 1156852 string characters out of 5715800
- 1671275 words of memory out of 5000000
- 70689 multiletter control sequences out of 15000+600000
+ 48442 strings out of 473190
+ 1163039 string characters out of 5715800
+ 1683275 words of memory out of 5000000
+ 70971 multiletter control sequences out of 15000+600000
  568812 words of font info for 88 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 98i,22n,105p,730b,1065s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on 3opgavesæt10.pdf (2 pages, 152440 bytes).
+ 98i,23n,105p,730b,1794s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/plimsoll/plimsoll.pfb>
+Output written on 3opgavesæt10.pdf (6 pages, 712949 bytes).
 PDF statistics:
- 131 PDF objects out of 1000 (max. 8388607)
- 72 compressed objects within 1 object stream
- 4 named destinations out of 1000 (max. 500000)
- 162 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 188 PDF objects out of 1000 (max. 8388607)
+ 108 compressed objects within 2 object streams
+ 15 named destinations out of 1000 (max. 500000)
+ 199 words of extra memory for PDF output out of 10000 (max. 10000000)
 
