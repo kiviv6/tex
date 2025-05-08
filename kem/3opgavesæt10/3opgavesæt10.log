@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.13)  8 MAY 2025 11:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.13)  8 MAY 2025 13:06
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1088,18 +1088,30 @@ Package pdftex.def Info: ABC.png  used on input line 317.
 
 
 [2 <./dibrom.png> <./dnph.png> <./fehling.png> <./ABC.png>]
-<chroma.png, id=97, 780.9175pt x 358.33875pt>
+Overfull \hbox (34.45502pt too wide) in paragraph at lines 348--357
+ [][] 
+ []
+
+<X.png, id=95, 1192.455pt x 610.28pt>
+File: X.png Graphic file (type png)
+<use X.png>
+Package pdftex.def Info: X.png  used on input line 367.
+(pdftex.def)             Requested size: 393.1496pt x 201.20677pt.
+
+
+[3 <./X.png>]
+<chroma.png, id=104, 780.9175pt x 358.33875pt>
 File: chroma.png Graphic file (type png)
 <use chroma.png>
-Package pdftex.def Info: chroma.png  used on input line 350.
+Package pdftex.def Info: chroma.png  used on input line 398.
 (pdftex.def)             Requested size: 393.1496pt x 180.40465pt.
 
 
-[3 <./chroma.png>]
+[4 <./chroma.png>]
 
-[4{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/plimsoll/plimsoll.enc}]
+[5{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/plimsoll/plimsoll.enc}]
 
-[5] (./3opgavesæt10.aux)
+[6] (./3opgavesæt10.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -1108,18 +1120,18 @@ Package rerunfilecheck Info: File `3opgavesæt10.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 48442 strings out of 473190
- 1163039 string characters out of 5715800
+ 48233 strings out of 473190
+ 1158047 string characters out of 5715800
  1683275 words of memory out of 5000000
- 70971 multiletter control sequences out of 15000+600000
- 568812 words of font info for 88 fonts, out of 8000000 for 9000
+ 70756 multiletter control sequences out of 15000+600000
+ 569431 words of font info for 90 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 98i,23n,105p,730b,1794s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 98i,32n,105p,730b,1066s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/plimsoll/plimsoll.pfb>
-Output written on 3opgavesæt10.pdf (6 pages, 712949 bytes).
+Output written on 3opgavesæt10.pdf (7 pages, 768583 bytes).
 PDF statistics:
- 188 PDF objects out of 1000 (max. 8388607)
- 108 compressed objects within 2 object streams
- 15 named destinations out of 1000 (max. 500000)
- 199 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 199 PDF objects out of 1000 (max. 8388607)
+ 118 compressed objects within 2 object streams
+ 19 named destinations out of 1000 (max. 500000)
+ 192 words of extra memory for PDF output out of 10000 (max. 10000000)
 

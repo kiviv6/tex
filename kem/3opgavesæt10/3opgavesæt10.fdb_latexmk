@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1746697498.13097 "3opgavesæt10.tex" "3opgavesæt10.pdf" "3opgavesæt10" 1746697502.95185 0
+["pdflatex"] 1746702401.95663 "3opgavesæt10.tex" "3opgavesæt10.pdf" "3opgavesæt10" 1746702408.08034 0
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/plimsoll/plimsoll.enc" 1602274624 2729 c13706cbb5adb3d40780adbd18e2ec3a ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -12,6 +12,8 @@
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm" 1246382020 940 228d6584342e91276bf566bcf9716b83 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1136768653 1328 c834bbb027764024c09d3d2bf908b5f0 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm" 1136768653 1324 c910af8c371558dc20f2d7822f66fe64 ""
+  "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmbx5.tfm" 1136768653 1332 f817c21a1ba54560425663374f1b651a ""
+  "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmbx7.tfm" 1136768653 1336 3125ccb448c1a09074e3aa4a9832f130 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmbxti10.tfm" 1136768653 1532 9162035f4e7176612125649e348e2195 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmcsc10.tfm" 1136768653 1300 63a6111ee6274895728663cf4b4e7e81 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmex10.tfm" 1136768653 992 662f679a0b3d2d53c1b94050fdaa3f50 ""
@@ -282,10 +284,11 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1741885528 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1741885431 3345738 17f033cf893371d9bc234ba9517e9a8b ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "3opgavesæt10.aux" 1746697502.69553 1985 266b376b278f71340c34026bd5cdb82c "pdflatex"
-  "3opgavesæt10.out" 1746697500.89819 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "3opgavesæt10.tex" 1746697497.77508 18012 68e9a0cd959d41874c5e7714799ce4d0 ""
+  "3opgavesæt10.aux" 1746702407.76368 2875 e3d2e37a739a0531d617ae9ba5ec342a "pdflatex"
+  "3opgavesæt10.out" 1746702404.56918 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "3opgavesæt10.tex" 1746702401.15702 20450 968b979af331fe5a108abf55f51cd126 ""
   "ABC.png" 1746629291.43142 25263 c6dbbcbe1b4bcc517a8de8cf37deab34 ""
+  "X.png" 1746702102.97889 87849 52a470cfbd0f9395e5ace36359324e01 ""
   "chroma.png" 1746688437.82111 66586 77ff556692582a760893f90821dc69ef ""
   "coniin.png" 1746516865.07647 7628 ab9bc7ce023ff3d660f394a2e057b498 ""
   "dibrom.png" 1746626337.02898 166359 7477ff8480d60f93647adfbd9de027e8 ""
